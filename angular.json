@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AHG-app"
+    }
+  },
+  "defaultProject": "AHG-app",
+  "cli": {
+    "analytics": "c0235598-07ab-4007-8d79-9da778045eb8"
+  }
 }
