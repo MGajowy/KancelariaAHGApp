@@ -5,17 +5,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { ResolutionComponent } from './modules/resolution/resolution.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ResolutionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DefaultModule,
-    FullwidthModule
+    FullwidthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
