@@ -1,3 +1,4 @@
+import { ResolutionComponent } from './modules/resolution/resolution.component';
 import { LoginComponent } from './modules/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,9 +15,18 @@ const routes: Routes = [{
     {
     path: '',
     component: HomeComponent
-  }, {
+  },
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./modules/modules.module').then (m => m.ModulesModule)
+  // },
+  {
   path: 'about',
   component: AboutComponent
+},
+{
+  path: 'resolutions',
+  component: ResolutionComponent
 }]
 }, {
   path: '',

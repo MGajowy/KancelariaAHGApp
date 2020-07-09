@@ -1,7 +1,6 @@
+import { ModulesModule } from './../../modules/modules.module';
 import { SharedModule } from './../../shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { AboutComponent } from './../../modules/about/about.component';
-import { HomeComponent } from './../../modules/home/home.component';
 import { DefaultComponent } from './default.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,8 +14,6 @@ import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     DefaultComponent,
-    HomeComponent,
-    AboutComponent
   ],
   imports: [
     CommonModule,
@@ -26,8 +23,8 @@ import {MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
-
+    MatCardModule,
+    ModulesModule
   ]
 })
 export class DefaultModule { }
