@@ -1,27 +1,33 @@
-import { ResolutionService } from './resolution.service';
+import { ResolutionService, RootObject } from './resolution.service';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import {Resolution} from '../resolution/resolution';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+
 
 @Component({
   selector: 'app-resolution',
   templateUrl: './resolution.component.html',
   styleUrls: ['./resolution.component.scss']
 })
+
 export class ResolutionComponent implements OnInit {
 
-  listaKategorii: Observable<Resolution[]>;
+  listaKategorii: RootObject;
 
   constructor(private resolutionService: ResolutionService) {}
+
 
     ngOnInit(): void {
     this.reloadData();
     console.log(this.listaKategorii);
   }
     reloadData() {
-    this.listaKategorii = this.resolutionService.getResolutionList();
-    return this.listaKategorii;
+    this.resolutionService.getResolutionList().subscribe(value => {
+    this.listaKategorii = value;
+    console.log(value);
+
+    });
   }
+
 
 }
 

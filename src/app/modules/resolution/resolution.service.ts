@@ -1,5 +1,4 @@
 
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -18,7 +17,16 @@ export class ResolutionService {
   // getResolutionList(): Observable<any> {
   //   return this.http.get(`${baseUrl}kategorie/wszystkieKategorie`);
   // }
-  getResolutionList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+  getResolutionList(): Observable<RootObject> {
+    return this.http.get<RootObject>(`${this.baseUrl}`);
   }
+
+}
+export interface ListaKategorii {
+  czyPubliczny: string;
+  rodzajKategorii: string;
+}
+
+export interface RootObject {
+  listaKategorii: ListaKategorii[];
 }

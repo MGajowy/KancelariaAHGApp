@@ -11,14 +11,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let resolutions of listaKategorii | async">
+        <tr *ngFor="let resolutions of listaKategorii.listaKategorii">
           <td>{{resolutions.rodzajKategorii}}</td>
-          <td><button  class="btn btn-danger">Delete</button>
-              <button  class="btn btn-info" style="margin-left: 10px">Details</button>
+          <td><button  class="btn btn-danger">Usuń</button>
+              <button  class="btn btn-info" style="margin-left: 10px">Szczegóły</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-<button mat-stroked-button color="primary" (click) = "reloadData()" >Wyswietl uchwaly</button>
+<!-- <button mat-stroked-button color="primary" " >Wyswietl uchwaly</button> -->
+
