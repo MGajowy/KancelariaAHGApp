@@ -1,4 +1,7 @@
+import { ResolutionService } from './resolution.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import {Resolution} from '../resolution/resolution';
 
 @Component({
   selector: 'app-resolution',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResolutionComponent implements OnInit {
 
-  constructor() { }
+  listaKategorii: Observable<Resolution[]>;
 
-  ngOnInit(): void {
+  constructor(private resolutionService: ResolutionService) {}
+
+    ngOnInit(): void {
+    this.reloadData();
+    console.log(this.listaKategorii);
+  }
+    reloadData() {
+    this.listaKategorii = this.resolutionService.getResolutionList();
+    return this.listaKategorii;
   }
 
 }
+

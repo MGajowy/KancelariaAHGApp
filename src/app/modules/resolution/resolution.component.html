@@ -1,1 +1,24 @@
 <p>resolution works!</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Lista kategorii</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>RodzajKategorii</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resolutions of listaKategorii | async">
+          <td>{{resolutions.rodzajKategorii}}</td>
+          <td><button  class="btn btn-danger">Delete</button>
+              <button  class="btn btn-info" style="margin-left: 10px">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<button mat-stroked-button color="primary" (click) = "reloadData()" >Wyswietl uchwaly</button>

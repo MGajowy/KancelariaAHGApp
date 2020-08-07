@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { FullwidthModule } from './layouts/fullwidth/fullwidth.module';
 import { DefaultModule } from './layouts/default/default.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DefaultModule,
     FullwidthModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

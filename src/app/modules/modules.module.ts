@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   declarations: [
     HomeComponent,
     AboutComponent,
-    ResolutionComponent
+    ResolutionComponent,
   ],
   imports: [
   CommonModule,

@@ -6,6 +6,7 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { HomeComponent } from './modules/home/home.component';
 import { AboutComponent } from './modules/about/about.component';
 import { FullwidthComponent } from './layouts/fullwidth/fullwidth.component';
+import { RegistrationComponent } from './modules/registration/registration.component';
 
 
 const routes: Routes = [{
@@ -33,10 +34,13 @@ const routes: Routes = [{
   component: FullwidthComponent,
   children: [
     {
-      path:'login',
+      path: 'login',
       component: LoginComponent
-    }
-  ]
+    },
+    {
+      path: 'registration',
+      component: RegistrationComponent
+    }]
 }];
 
 @NgModule({
