@@ -1,7 +1,9 @@
-
 import { HttpClient } from '@angular/common/http';
+import { RestService } from './../../core/services/rest/rest.service';
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { baseUrl } from 'src/environments/environment';
 
 
 
@@ -10,17 +12,18 @@ import { Observable } from 'rxjs';
 })
 export class ResolutionService {
 
- private baseUrl = 'http://localhost:8020/kategorie/wszystkieKategorie';
+// private baseUrl = 'http://localhost:8020/kategorie/wszystkieKategorie';
 
-  constructor(private http: HttpClient ) { }
+  constructor(private httpClient: HttpClient, private restService: RestService, ) { }
 
-  // getResolutionList(): Observable<any> {
-  //   return this.http.get(`${baseUrl}kategorie/wszystkieKategorie`);
-  // }
-  getResolutionList(): Observable<RootObject> {
-    return this.http.get<RootObject>(`${this.baseUrl}`);
+  getResolutionList(): Observable<any> {
+    return this.httpClient.get(`${baseUrl}kategorie/pub/wszystkieKategorie`);
   }
 
+  //metoda przez wygenerowane resty z beckendu, implementacja poprzez SERVICE (ResrService)
+  // getResolutionList(): Observable<RootObject> {
+  //   return this.restService.wszystkieRestAdmin().pobierzListCategoryDto();
+  // }
 }
 export interface ListaKategorii {
   czyPubliczny: string;

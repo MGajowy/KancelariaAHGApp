@@ -13,8 +13,8 @@
       <tbody>
         <tr *ngFor="let resolutions of listaKategorii.listaKategorii">
           <td>{{resolutions.rodzajKategorii}}</td>
-          <td><button  class="btn btn-danger">Usuń</button>
-              <button  class="btn btn-info" style="margin-left: 10px">Szczegóły</button>
+          <td><button  mat-button color = "warn" >Usuń</button>
+              <button mat-button style="margin-left: 10px">Szczegóły</button>
           </td>
         </tr>
       </tbody>
@@ -22,4 +22,14 @@
   </div>
 </div>
 <!-- <button mat-stroked-button color="primary" " >Wyswietl uchwaly</button> -->
+<mat-selection-list #shoes [multiple]="false">
+  <mat-list-option *ngFor="let resolutions of listaKategorii.listaKategorii">
+    <td>{{resolutions.rodzajKategorii}}
+      <button  mat-button color = "warn" style="margin-left: 300px" >Usuń</button>
+      <button mat-button style="margin-left: 300px">Szczegóły</button>
+    </td>
+
+
+  </mat-list-option>
+</mat-selection-list>
 
