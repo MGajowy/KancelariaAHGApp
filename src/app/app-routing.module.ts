@@ -1,3 +1,4 @@
+import { UserComponent } from './modules/admin/user/user.component';
 import { ResolutionComponent } from './modules/resolution/resolution.component';
 import { LoginComponent } from './modules/login/login.component';
 import { NgModule } from '@angular/core';
@@ -28,6 +29,10 @@ const routes: Routes = [{
 {
   path: 'resolutions',
   component: ResolutionComponent
+},
+{
+  path: 'user',
+  component: UserComponent
 }]
 }, {
   path: '',

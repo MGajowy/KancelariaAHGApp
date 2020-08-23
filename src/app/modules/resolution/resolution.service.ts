@@ -14,7 +14,7 @@ export class ResolutionService {
 
 // private baseUrl = 'http://localhost:8020/kategorie/wszystkieKategorie';
 
-  constructor(private httpClient: HttpClient, private restService: RestService, ) { }
+  constructor(private httpClient: HttpClient, private restService: RestService ) { }
 
   getResolutionList(): Observable<any> {
     return this.httpClient.get(`${baseUrl}kategorie/pub/wszystkieKategorie`);

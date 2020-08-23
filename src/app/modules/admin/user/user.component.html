@@ -1,0 +1,10 @@
+<p>user works!</p>
+
+<mat-selection-list #shoes [multiple]="false">
+  <mat-list-option *ngFor="let user of listaUzytkownikow.listaUzytkownikow">
+    <td>{{user.imie}} {{user.nazwisko}} {{user.plec}}
+      <button  mat-button color = "warn" style="margin-left: 300px" >Usuń</button>
+      <button mat-button style="margin-left: 300px">Szczegóły</button>
+    </td>
+  </mat-list-option>
+</mat-selection-list>
