@@ -52,6 +52,7 @@ interface ExampleFlatNode {
   name: string;
   level: number;
   isExpanded?: boolean;
+  // command: Router;
 }
 
 
@@ -63,33 +64,66 @@ interface ExampleFlatNode {
 export class SidebarComponent implements OnInit {
 
   panelOpenState = false;
+  public items: any = [];
 
 
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level, node => node.expandable);
 
-dataSource = new ArrayDataSource(TREE_DATA);
+  dataSource = new ArrayDataSource(TREE_DATA);
 
-hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
-constructor(){}
+  constructor(private router: Router) { }
 
-getParentNode(node: ExampleFlatNode) {
-  const nodeIndex = TREE_DATA.indexOf(node);
+  getParentNode(node: ExampleFlatNode) {
+    const nodeIndex = TREE_DATA.indexOf(node);
 
-  for (let i = nodeIndex - 1; i >= 0; i--) {
-    if (TREE_DATA[i].level === node.level - 1) {
-      return TREE_DATA[i];
+    for (let i = nodeIndex - 1; i >= 0; i--) {
+      if (TREE_DATA[i].level === node.level - 1) {
+        return TREE_DATA[i];
+      }
     }
+
+    return null;
   }
 
-  return null;
-}
-
-shouldRender(node: ExampleFlatNode) {
-  const parent = this.getParentNode(node);
-  return !parent || parent.isExpanded;
-}
+  shouldRender(node: ExampleFlatNode) {
+    const parent = this.getParentNode(node);
+    return !parent || parent.isExpanded;
+  }
   ngOnInit(): void {
+    this.loadMenu();
   }
+
+  loadMenu() {
+
+    this.items = [
+      {
+        label: 'Biuro obsługi',
+        id: 'eboi',
+        command: () => this.nav('/eboi'),
+        items:[
+        {
+          label: 'Usługi',
+          id: 'uslugi',
+          command: () => this.nav('/eboi/choice'),
+        },
+        {
+        label: 'Dokumenty',
+        id: 'dokumenty',
+        command: () => this.nav('/eboi/eod-documents'),
+      },
+      {
+        label: 'Sprawy',
+        id: 'uslugi',
+        command: () => this.nav('/eboi/issues'),
+      }
+     ] } ];
 }
+nav(url) {
+  this.router.navigateByUrl(url);
+}
+
+}
+

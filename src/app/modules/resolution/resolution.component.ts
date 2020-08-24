@@ -1,7 +1,5 @@
 import { ResolutionService, RootObject } from './resolution.service';
 import { Component, OnInit } from '@angular/core';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-
 
 @Component({
   selector: 'app-resolution',
@@ -14,7 +12,6 @@ export class ResolutionComponent implements OnInit {
   listaKategorii: RootObject;
 
   constructor(private resolutionService: ResolutionService) {}
-
 
     ngOnInit(): void {
     this.reloadData();

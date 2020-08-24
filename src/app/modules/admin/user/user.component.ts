@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
+  panelOpenState = false;
   listaUzytkownikow: UserListDTO;
 
   constructor(private userService: UserService) { }

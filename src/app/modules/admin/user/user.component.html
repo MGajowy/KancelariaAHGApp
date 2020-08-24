@@ -1,10 +1,37 @@
-<p>user works!</p>
+<p>Lista użytkowników</p>
+ <mat-accordion *ngFor="let user of listaUzytkownikow.listaUzytkownikow">
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <br>{{user.imie}} {{user.nazwisko}}
+      </mat-panel-title>
+      <mat-panel-description>
+     <!-- {{panelOpenState ? 'Pokaż szczegóły' : 'Ukryj szczegóy'}} -->
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Login: {{user.login}}</p>
+    <p>E-mail: {{user.email}}</p>
+    <p>Płeć: {{user.plec}}</p>
+    <p>Telefon: {{user.telefon}}</p>
+    <button  mat-raised-button color="primary" style="margin-right: 5px" >
+      <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
+      Usuń</button>
+    <button  mat-raised-button color="primary" style="margin-right: 5px" >
+    <mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon>
+      Modyfikuj</button>
+    <button mat-raised-button color="primary" style="margin-right: 5px">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
+      Szczegóły</button>
+  </mat-expansion-panel>
+</mat-accordion>
 
 <mat-selection-list #shoes [multiple]="false">
   <mat-list-option *ngFor="let user of listaUzytkownikow.listaUzytkownikow">
     <td>{{user.imie}} {{user.nazwisko}} {{user.plec}}
-      <button  mat-button color = "warn" style="margin-left: 300px" >Usuń</button>
-      <button mat-button style="margin-left: 300px">Szczegóły</button>
+      <button  mat-raised-button color="primary" style="margin-right: 5px" >Usuń</button>
+      <button  mat-raised-button color="primary" style="margin-right: 5px" >Modyfikuj</button>
+      <button mat-raised-button color="primary" style="margin-right: 5px">Szczegóły</button>
     </td>
   </mat-list-option>
 </mat-selection-list>

@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import { UserComponent } from './admin/user/user.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { UserComponent } from './admin/user/user.component';
   CommonModule,
   AppRoutingModule,
   MatButtonModule,
-  MatListModule
+  MatListModule,
+  MatExpansionModule,
+  MatIconModule
   ]
 })
 export class ModulesModule { }

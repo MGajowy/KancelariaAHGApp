@@ -1,35 +1,28 @@
-<p>resolution works!</p>
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h2>Lista kategorii</h2>
-  </div>
-  <div class="panel-body">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>RodzajKategorii</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let resolutions of listaKategorii.listaKategorii">
-          <td>{{resolutions.rodzajKategorii}}</td>
-          <td><button  mat-button color = "warn" >Usuń</button>
-              <button mat-button style="margin-left: 10px">Szczegóły</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-<!-- <button mat-stroked-button color="primary" " >Wyswietl uchwaly</button> -->
+<p>Kategorie uchwał</p>
+
 <mat-selection-list #shoes [multiple]="false">
   <mat-list-option *ngFor="let resolutions of listaKategorii.listaKategorii">
-    <td>{{resolutions.rodzajKategorii}}
-      <button  mat-button color = "warn" style="margin-left: 300px" >Usuń</button>
-      <button mat-button style="margin-left: 300px">Szczegóły</button>
-    </td>
-
-
+      <td>
+        {{resolutions.rodzajKategorii}}
+      <button  mat-raised-button color="primary" style="margin-right: 5px" >
+        <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
+        Usuń</button>
+      <button  mat-raised-button color="primary" style="margin-right: 5px" >
+        <mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon>
+        Modyfikuj</button>
+      <button  mat-raised-button color="primary" style="margin-right: 5px">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
+        Szczegóły</button>
+</td>
   </mat-list-option>
 </mat-selection-list>
 
+
+<mat-list>
+  <div mat-subheader>Kategorie uchwał</div>
+  <mat-list-item *ngFor="let resolutions of listaKategorii.listaKategorii">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <div mat-line>{{resolutions.rodzajKategorii}}</div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>
