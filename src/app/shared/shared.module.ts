@@ -11,7 +11,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {CdkTreeModule} from '@angular/cdk/tree';
-
+import {PanelMenuModule} from 'primeng/panelmenu';
+import {TabViewModule} from 'primeng/tabview';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ FooterComponent,
     MatMenuModule,
     MatExpansionModule,
     MatIconModule,
-    CdkTreeModule
+    CdkTreeModule,
+    PanelMenuModule,
+    TabViewModule
   ],
   exports: [
     HeaderComponent,

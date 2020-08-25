@@ -2,58 +2,7 @@ import { RouterModule, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { ArrayDataSource } from '@angular/cdk/collections';
-
-const TREE_DATA: ExampleFlatNode[] = [
-  {
-    name: 'Uchwały',
-    expandable: true,
-    level: 0,
-  }, {
-    name: 'Kategorie uchwał',
-    expandable: false,
-    level: 1,
-  }, {
-    name: 'Najnowsze uchwały',
-    expandable: false,
-    level: 1,
-  }, {
-    name: 'Rozporządzenia',
-    expandable: true,
-    level: 0,
-  }, {
-    name: 'Rozporządzenie1',
-    expandable: true,
-    level: 1,
-  }, {
-    name: 'tresc1',
-    expandable: false,
-    level: 2,
-  }, {
-    name: 'tresc2',
-    expandable: false,
-    level: 2,
-  }, {
-    name: 'Rozporządzenie2',
-    expandable: true,
-    level: 1,
-  }, {
-    name: '1',
-    expandable: false,
-    level: 2,
-  }, {
-    name: '2',
-    expandable: false,
-    level: 2,
-  }
-];
-
-interface ExampleFlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
-  isExpanded?: boolean;
-  // command: Router;
-}
+import { MenuItem } from 'primeng/api';
 
 
 @Component({
@@ -61,69 +10,141 @@ interface ExampleFlatNode {
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
 
-  panelOpenState = false;
-  public items: any = [];
-
-
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
-    node => node.level, node => node.expandable);
-
-  dataSource = new ArrayDataSource(TREE_DATA);
-
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  //panelOpenState = false;
+  items: MenuItem[];
 
   constructor(private router: Router) { }
 
-  getParentNode(node: ExampleFlatNode) {
-    const nodeIndex = TREE_DATA.indexOf(node);
-
-    for (let i = nodeIndex - 1; i >= 0; i--) {
-      if (TREE_DATA[i].level === node.level - 1) {
-        return TREE_DATA[i];
-      }
-    }
-
-    return null;
-  }
-
-  shouldRender(node: ExampleFlatNode) {
-    const parent = this.getParentNode(node);
-    return !parent || parent.isExpanded;
-  }
-  ngOnInit(): void {
+  ngOnInit() {
     this.loadMenu();
   }
 
   loadMenu() {
-
     this.items = [
       {
-        label: 'Biuro obsługi',
-        id: 'eboi',
-        command: () => this.nav('/eboi'),
-        items:[
-        {
-          label: 'Usługi',
-          id: 'uslugi',
-          command: () => this.nav('/eboi/choice'),
-        },
-        {
-        label: 'Dokumenty',
-        id: 'dokumenty',
-        command: () => this.nav('/eboi/eod-documents'),
+        label: 'Uchwały',
+        icon: 'pi pi-fw pi-file',
+        items: [
+          {
+            label: 'Dodaj kategorie',
+            icon: 'pi pi-fw pi-plus',
+            items: [
+              {
+                label: 'dodaj kategorie',
+                icon: 'pi pi-fw pi-bookmark'
+              },
+              {
+                label: 'dodaj uchwałe',
+                icon: 'pi pi-fw pi-video'
+              }
+            ]
+          },
+          {
+            label: 'Kategorie uchwał',
+            icon: 'pi pi-fw pi-trash',
+            command: () => this.nav('/resolutions')
+          }
+        ]
       },
       {
-        label: 'Sprawy',
-        id: 'uslugi',
-        command: () => this.nav('/eboi/issues'),
+        label: 'Rozporządzenia',
+        icon: 'pi pi-fw pi-pencil',
+        items: [
+          {
+            label: 'Rozporządzenia1',
+            icon: 'pi pi-fw pi-align-left'
+          },
+          {
+            label: 'Rozporządzenia2',
+            icon: 'pi pi-fw pi-align-right'
+          },
+          {
+            label: 'Rozporządzenia3',
+            icon: 'pi pi-fw pi-align-center'
+          },
+          {
+            label: 'Rozporządzenia4',
+            icon: 'pi pi-fw pi-align-justify'
+          }
+        ]
+      },
+      {
+        label: 'Użytkownicy',
+        icon: 'pi pi-fw pi-user',
+        items: [
+          {
+            label: 'Dodaj użytkownika',
+            icon: 'pi pi-fw pi-user-plus',
+
+          },
+          {
+            label: 'Lista użytkowników',
+            icon: 'pi pi-fw pi-users',
+            command: () => this.nav('/user')
+          },
+          {
+            label: 'Wyszukaj',
+            icon: 'pi pi-fw pi-users',
+            items: [
+              {
+                label: 'Filter',
+                icon: 'pi pi-fw pi-filter',
+                items: [
+                  {
+                    label: 'Print',
+                    icon: 'pi pi-fw pi-print'
+                  }
+                ]
+              },
+              {
+                icon: 'pi pi-fw pi-bars',
+                label: 'List'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        label: 'O Kancelarii',
+        icon: 'pi pi-fw pi-calendar',
+        items: [
+          {
+            label: 'Kontakt',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+              {
+                label: 'Mapa dojazdu',
+                icon: 'pi pi-fw pi-calendar-plus'
+              },
+            ]
+          },
+          {
+            label: 'Specjalizacje',
+            icon: 'pi pi-fw pi-calendar-times',
+            items: [
+              {
+                label: 'Lista sprcjalizacji',
+                icon: 'pi pi-fw pi-calendar-minus'
+              }
+            ]
+          },
+          {
+            label: 'Pomoc online',
+            icon: 'pi pi-fw pi-calendar-times',
+          }
+
+        ]
+      },
+      {
+        label: 'Kariera',
+        icon: 'pi pi-fw pi-file',
       }
-     ] } ];
-}
-nav(url) {
-  this.router.navigateByUrl(url);
-}
+    ];
 
+  }
+  nav(url) {
+    this.router.navigateByUrl(url);
+  }
 }
-
