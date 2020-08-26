@@ -1,13 +1,13 @@
-import { UserListDTO } from './../../../generated/REST';
-import { UserService } from './user.service';
 import { Component, OnInit } from '@angular/core';
+import { UserListDTO } from 'src/app/generated/REST';
+import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: 'app-users-list',
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UsersListComponent implements OnInit {
 
   panelOpenState = false;
   listaUzytkownikow: UserListDTO;
@@ -24,6 +24,4 @@ export class UserComponent implements OnInit {
       console.log(value);
       });
     }
-  }
-
-
+}

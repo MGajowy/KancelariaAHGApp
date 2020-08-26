@@ -1,4 +1,4 @@
-import { ResolutionComponent } from './resolution/resolution.component';
+
 
 import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './../app-routing.module';
@@ -7,10 +7,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
-import { UserComponent } from './admin/user/user.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import { UsersListComponent } from './admin/user/users-list/users-list.component';
+import { ResolutionsListComponent } from './resolution/resolutions-list/resolutions-list.component';
+import { ResolutionKategoryComponent } from './resolution/resolution-kategory/resolution-kategory.component';
 
 
 
@@ -19,8 +21,10 @@ import {MatDividerModule} from '@angular/material/divider';
   declarations: [
     HomeComponent,
     AboutComponent,
-    ResolutionComponent,
-    UserComponent,
+    ResolutionKategoryComponent,
+    UsersListComponent,
+    ResolutionsListComponent,
+    ResolutionKategoryComponent,
   ],
   imports: [
   CommonModule,

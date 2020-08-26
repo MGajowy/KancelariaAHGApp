@@ -1,13 +1,12 @@
-import { ResolutionService, RootObject } from './resolution.service';
 import { Component, OnInit } from '@angular/core';
+import { RootObject, ResolutionService } from '../services/resolution.service';
 
 @Component({
-  selector: 'app-resolution',
-  templateUrl: './resolution.component.html',
-  styleUrls: ['./resolution.component.scss']
+  selector: 'app-resolution-kategory',
+  templateUrl: './resolution-kategory.component.html',
+  styleUrls: ['./resolution-kategory.component.scss']
 })
-
-export class ResolutionComponent implements OnInit {
+export class ResolutionKategoryComponent implements OnInit {
 
   listaKategorii: RootObject;
 
@@ -27,4 +26,3 @@ export class ResolutionComponent implements OnInit {
 
 
 }
-

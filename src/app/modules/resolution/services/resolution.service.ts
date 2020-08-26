@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { RestService } from './../../core/services/rest/rest.service';
+import { RestService } from '../../../core/services/rest/rest.service';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

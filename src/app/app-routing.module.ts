@@ -1,5 +1,4 @@
-import { UserComponent } from './modules/admin/user/user.component';
-import { ResolutionComponent } from './modules/resolution/resolution.component';
+
 import { LoginComponent } from './modules/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,6 +7,8 @@ import { HomeComponent } from './modules/home/home.component';
 import { AboutComponent } from './modules/about/about.component';
 import { FullwidthComponent } from './layouts/fullwidth/fullwidth.component';
 import { RegistrationComponent } from './modules/registration/registration.component';
+import { ResolutionKategoryComponent } from './modules/resolution/resolution-kategory/resolution-kategory.component';
+import { UsersListComponent } from './modules/admin/user/users-list/users-list.component';
 
 
 const routes: Routes = [{
@@ -27,12 +28,12 @@ const routes: Routes = [{
   component: AboutComponent
 },
 {
-  path: 'resolutions',
-  component: ResolutionComponent
+  path: 'kategory-resolutions',
+  component: ResolutionKategoryComponent
 },
 {
-  path: 'user',
-  component: UserComponent
+  path: 'user-list',
+  component: UsersListComponent,
 }]
 }, {
   path: '',

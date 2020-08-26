@@ -39,7 +39,7 @@ export class SidebarComponent {
           {
             label: 'Lista użytkowników',
             icon: 'pi pi-fw pi-users',
-            command: () => this.nav('/user')
+            command: () => this.nav('/user-list')
           },
           // {
           //   label: 'Wyszukaj',
@@ -76,7 +76,7 @@ export class SidebarComponent {
           {
             label: 'Konfiguracja systemu',
             icon: 'pi pi-cog',
-            command: () => this.nav('/resolutions')
+            command: () => this.nav('/kategory-resolutions')
           },
            {
             label: 'Ustawienia strony',
@@ -105,7 +105,7 @@ export class SidebarComponent {
           {
             label: 'Kategorie uchwał',
             icon: 'pi pi-folder-open',
-            command: () => this.nav('/resolutions')
+            command: () => this.nav('/kategory-resolutions')
           },
            {
             label: 'Lista uchwał',
