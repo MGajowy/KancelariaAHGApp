@@ -1,4 +1,8 @@
-<p>Lista użytkowników</p>
+
+<mat-list>
+  <mat-list-item>Lista użytkowników</mat-list-item>
+  <mat-divider></mat-divider><br>
+</mat-list>
  <mat-accordion *ngFor="let user of listaUzytkownikow.listaUzytkownikow">
   <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">

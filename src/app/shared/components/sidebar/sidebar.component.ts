@@ -24,54 +24,11 @@ export class SidebarComponent {
   loadMenu() {
     this.items = [
       {
-        label: 'Uchwały',
-        icon: 'pi pi-fw pi-file',
+        label: 'Administracja',
+        icon: 'pi pi-cog',
         items: [
           {
-            label: 'Dodaj kategorie',
-            icon: 'pi pi-fw pi-plus',
-            items: [
-              {
-                label: 'dodaj kategorie',
-                icon: 'pi pi-fw pi-bookmark'
-              },
-              {
-                label: 'dodaj uchwałe',
-                icon: 'pi pi-fw pi-video'
-              }
-            ]
-          },
-          {
-            label: 'Kategorie uchwał',
-            icon: 'pi pi-fw pi-trash',
-            command: () => this.nav('/resolutions')
-          }
-        ]
-      },
-      {
-        label: 'Rozporządzenia',
-        icon: 'pi pi-fw pi-pencil',
-        items: [
-          {
-            label: 'Rozporządzenia1',
-            icon: 'pi pi-fw pi-align-left'
-          },
-          {
-            label: 'Rozporządzenia2',
-            icon: 'pi pi-fw pi-align-right'
-          },
-          {
-            label: 'Rozporządzenia3',
-            icon: 'pi pi-fw pi-align-center'
-          },
-          {
-            label: 'Rozporządzenia4',
-            icon: 'pi pi-fw pi-align-justify'
-          }
-        ]
-      },
-      {
-        label: 'Użytkownicy',
+            label: 'Użytkownicy',
         icon: 'pi pi-fw pi-user',
         items: [
           {
@@ -84,39 +41,117 @@ export class SidebarComponent {
             icon: 'pi pi-fw pi-users',
             command: () => this.nav('/user')
           },
+          // {
+          //   label: 'Wyszukaj',
+          //   icon: 'pi pi-fw pi-users',
+          //   items: [
+          //     {
+          //       label: 'Filter',
+          //       icon: 'pi pi-fw pi-filter',
+          //       items: [
+          //         {
+          //           label: 'Print',
+          //           icon: 'pi pi-fw pi-print'
+          //         }
+          //       ]
+          //     },
+          //     {
+          //       icon: 'pi pi-fw pi-bars',
+          //       label: 'List'
+          //     }
+          //   ]
+          // }
+        ]
+          },
           {
-            label: 'Wyszukaj',
-            icon: 'pi pi-fw pi-users',
+            label: 'Monitoring',
+            icon: 'pi pi-fw pi-video',
             items: [
               {
-                label: 'Filter',
-                icon: 'pi pi-fw pi-filter',
-                items: [
-                  {
-                    label: 'Print',
-                    icon: 'pi pi-fw pi-print'
-                  }
-                ]
-              },
-              {
-                icon: 'pi pi-fw pi-bars',
-                label: 'List'
+                label: 'Dziennik zdarzen',
+                icon: 'pi pi-chart-bar'
               }
             ]
+          },
+          {
+            label: 'Konfiguracja systemu',
+            icon: 'pi pi-cog',
+            command: () => this.nav('/resolutions')
+          },
+           {
+            label: 'Ustawienia strony',
+            icon: 'pi pi-cog',
+          }
+        ]
+      },
+      {
+        label: 'Uchwały',
+        icon: 'pi pi-fw pi-file',
+        items: [
+          {
+            label: 'Dodaj',
+            icon: 'pi pi-fw pi-plus',
+            items: [
+              {
+                label: 'Dodaj kategorie',
+                icon: 'pi pi-folder'
+              },
+              {
+                label: 'Dodaj uchwałe',
+                icon: 'pi pi-fw pi-file'
+              }
+            ]
+          },
+          {
+            label: 'Kategorie uchwał',
+            icon: 'pi pi-folder-open',
+            command: () => this.nav('/resolutions')
+          },
+           {
+            label: 'Lista uchwał',
+            icon: 'pi pi-fw pi-file',
+          }
+        ]
+      },
+      {
+        label: 'Rozporządzenia',
+        icon: 'pi pi-fw pi-file',
+        items: [
+          {
+            label: 'Dodaj',
+            icon: 'pi pi-fw pi-plus',
+            items: [
+              {
+                label: 'Dodaj kategorie',
+                icon: 'pi pi-folder'
+              },
+              {
+                label: 'Dodaj rozporządzenia',
+                icon: 'pi pi-fw pi-file'
+              }
+            ]
+          },
+          {
+            label: 'Kategorie rozporzadzen',
+            icon: 'pi pi-folder-open'
+          },
+          {
+            label: 'Lista rozporzadzen',
+            icon: 'pi pi-fw pi-file'
           }
         ]
       },
       {
         label: 'O Kancelarii',
-        icon: 'pi pi-fw pi-calendar',
+        icon: 'pi pi-info-circle',
         items: [
           {
             label: 'Kontakt',
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-envelope',
             items: [
               {
                 label: 'Mapa dojazdu',
-                icon: 'pi pi-fw pi-calendar-plus'
+                icon: 'pi pi-compass'
               },
             ]
           },
@@ -139,7 +174,7 @@ export class SidebarComponent {
       },
       {
         label: 'Kariera',
-        icon: 'pi pi-fw pi-file',
+        icon: 'pi pi-info',
       }
     ];
 

@@ -1,5 +1,8 @@
-<p>Kategorie uchwał</p>
 
+<mat-list>
+  <mat-list-item>Kategorie uchwał</mat-list-item>
+  <mat-divider></mat-divider><br>
+</mat-list>
 <mat-selection-list #shoes [multiple]="false">
   <mat-list-option *ngFor="let resolutions of listaKategorii.listaKategorii">
       <td>
@@ -16,8 +19,6 @@
 </td>
   </mat-list-option>
 </mat-selection-list>
-
-
 <mat-list>
   <div mat-subheader>Kategorie uchwał</div>
   <mat-list-item *ngFor="let resolutions of listaKategorii.listaKategorii">
@@ -26,3 +27,4 @@
   </mat-list-item>
   <mat-divider></mat-divider>
 </mat-list>
+
