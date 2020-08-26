@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RegistrationComponent } from './../../modules/registration/registration.component';
 
-import { LoginComponent } from './../../modules/login/login.component';
+import { RegistrationComponent } from './../../modules/registration/component/registration.component';
+import { LoginComponent } from './../../modules/login/component/login.component';
+import { NgModule } from '@angular/core';
 import { SharedModule } from './../../shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [

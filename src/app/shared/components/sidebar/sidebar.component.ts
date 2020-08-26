@@ -1,7 +1,5 @@
 import { RouterModule, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FlatTreeControl } from '@angular/cdk/tree';
-import { ArrayDataSource } from '@angular/cdk/collections';
 import { MenuItem } from 'primeng/api';
 
 
@@ -34,12 +32,12 @@ export class SidebarComponent {
           {
             label: 'Dodaj użytkownika',
             icon: 'pi pi-fw pi-user-plus',
-
+            command: () => this.nav('/kancelaria/add-user')
           },
           {
             label: 'Lista użytkowników',
             icon: 'pi pi-fw pi-users',
-            command: () => this.nav('/user-list')
+            command: () => this.nav('/kancelaria/user-list')
           },
           // {
           //   label: 'Wyszukaj',
@@ -69,14 +67,15 @@ export class SidebarComponent {
             items: [
               {
                 label: 'Dziennik zdarzen',
-                icon: 'pi pi-chart-bar'
+                icon: 'pi pi-chart-bar',
+                command: () => this.nav('/kancelaria/event-log')
               }
             ]
           },
           {
             label: 'Konfiguracja systemu',
             icon: 'pi pi-cog',
-            command: () => this.nav('/kategory-resolutions')
+            //command: () => this.nav('')
           },
            {
             label: 'Ustawienia strony',
@@ -105,11 +104,12 @@ export class SidebarComponent {
           {
             label: 'Kategorie uchwał',
             icon: 'pi pi-folder-open',
-            command: () => this.nav('/kategory-resolutions')
+            command: () => this.nav('/kancelaria/category-resolutions')
           },
            {
             label: 'Lista uchwał',
             icon: 'pi pi-fw pi-file',
+            command: () => this.nav('/kancelaria/list-resolutions')
           }
         ]
       },
@@ -133,11 +133,13 @@ export class SidebarComponent {
           },
           {
             label: 'Kategorie rozporzadzen',
-            icon: 'pi pi-folder-open'
+            icon: 'pi pi-folder-open',
+            command: () => this.nav('/kancelaria/category-regulations')
           },
           {
             label: 'Lista rozporzadzen',
-            icon: 'pi pi-fw pi-file'
+            icon: 'pi pi-fw pi-file',
+            command: () => this.nav('/kancelaria/list-regulations')
           }
         ]
       },

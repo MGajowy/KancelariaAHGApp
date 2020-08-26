@@ -25,11 +25,3 @@ export class ResolutionService {
   //   return this.restService.wszystkieRestAdmin().pobierzListCategoryDto();
   // }
 }
-export interface ListaKategorii {
-  czyPubliczny: string;
-  rodzajKategorii: string;
-}
-
-export interface RootObject {
-  listaKategorii: ListaKategorii[];
-}

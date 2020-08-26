@@ -6,19 +6,19 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule} from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatIconModule} from '@angular/material/icon';
-import {CdkTreeModule} from '@angular/cdk/tree';
-import {PanelMenuModule} from 'primeng/panelmenu';
-import {TabViewModule} from 'primeng/tabview';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [
-HeaderComponent,
-SidebarComponent,
-FooterComponent,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,8 @@
+import { CategoryListDTO } from '../../../../generated/REST';
+import { ResolutionService } from '../../service/resolution.service';
+
 import { Component, OnInit } from '@angular/core';
-import { RootObject, ResolutionService } from '../services/resolution.service';
+
 
 @Component({
   selector: 'app-resolution-kategory',
@@ -8,7 +11,7 @@ import { RootObject, ResolutionService } from '../services/resolution.service';
 })
 export class ResolutionKategoryComponent implements OnInit {
 
-  listaKategorii: RootObject;
+  listaKategorii: CategoryListDTO;
 
   constructor(private resolutionService: ResolutionService) {}
 
@@ -19,8 +22,7 @@ export class ResolutionKategoryComponent implements OnInit {
     reloadData() {
     this.resolutionService.getResolutionList().subscribe(value => {
     this.listaKategorii = value;
-    console.log(value);
-
+    //console.log(value);
     });
   }
 
