@@ -17,11 +17,11 @@ export class ResolutionService {
   constructor(private httpClient: HttpClient, private restService: RestService ) { }
 
   getResolutionList(): Observable<any> {
-    return this.httpClient.get(`${baseUrl}kategorie/pub/wszystkieKategorie`);
+    return this.httpClient.get(`${baseUrl}rest/kategorie/pub/wszystkieKategorie`);
   }
 
-  //metoda przez wygenerowane resty z beckendu, implementacja poprzez SERVICE (ResrService)
-  // getResolutionList(): Observable<RootObject> {
+ // metoda przez wygenerowane resty z beckendu, implementacja poprzez SERVICE (RestService)
+  // getResolutionList(): Observable<any> {
   //   return this.restService.wszystkieRestAdmin().pobierzListCategoryDto();
   // }
 }

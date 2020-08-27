@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TSAllRestApiClient } from 'src/app/generated/DTO';
+import { TSAllRestApiClient } from 'src/app/generated/REST';
 
 
 @Injectable({
@@ -12,10 +12,9 @@ export class RestService {
 
   constructor(private httpClient: HttpClient) { }
 
-
   wszystkieRestAdmin() {
     if (!this.restApiAdmin)
     this.restApiAdmin = new TSAllRestApiClient(this.httpClient);
-    return this.restApiAdmin;
+     return this.restApiAdmin;
   }
 }

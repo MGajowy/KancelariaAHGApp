@@ -12,6 +12,10 @@ export class UserService {
   constructor(private httpClient: HttpClient, private restService: RestService) { }
 
   getUserList(): Observable<any> {
-    return this.httpClient.get(`${baseUrl}uzytkownicy/secured/listaUzytkownikow`);
+    return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/listaUzytkownikow`);
   }
+  //metoda przez restService
+  // getUserList(): Observable<any> {
+  //   return this.restService.wszystkieRestAdmin().pobierzListeUzytkownikowDto();
+  // }
 }

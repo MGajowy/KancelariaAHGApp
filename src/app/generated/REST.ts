@@ -16,16 +16,38 @@ export class UserListDTO {
     listaUzytkownikow: UserDTO[];
 }
 
+export class RegistrationDTO {
+    imie: string;
+    nazwisko: string;
+    login: string;
+    haslo: string;
+    stan: UserStateEnum;
+    email: string;
+    telefon: string;
+    plec: UserSexEnum;
+}
+
+export class UserOB {
+    id: number;
+    imie: string;
+    nazwisko: string;
+    login: string;
+    haslo: string;
+    email: string;
+    telefon: string;
+    plec: UserSexEnum;
+    stan: UserStateEnum;
+}
+
 export class UserDTO {
     imie: string;
     nazwisko: string;
     login: string;
-    typ_konta: UserAccountType;
+    haslo: string;
+    stan: UserStateEnum;
     email: string;
-    czy_zaakceptowano_regulamin: boolean;
     telefon: string;
     plec: UserSexEnum;
-    dataRejestracji: Date;
 }
 
 export interface HttpClient {
@@ -39,27 +61,51 @@ export class TSAllRestApiClient {
     }
 
     /**
-     * HTTP GET /kategorie/pub/1
+     * HTTP GET /rest/kategorie/pub/1
      * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.getStr
      */
     getStr(): RestResponse<string> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`kategorie/pub/1` });
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/pub/1` });
     }
 
     /**
-     * HTTP GET /kategorie/pub/wszystkieKategorie
+     * HTTP GET /rest/kategorie/pub/wszystkieKategorie
      * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.pobierzListCategoryDto
      */
     pobierzListCategoryDto(): RestResponse<CategoryListDTO> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`kategorie/pub/wszystkieKategorie` });
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/pub/wszystkieKategorie` });
     }
 
     /**
-     * HTTP GET /uzytkownicy/secured/listaUzytkownikow
+     * HTTP POST /rest/uzytkownicy/secured/dodajUzytkownika
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.utworzUzytkownika
+     */
+    utworzUzytkownika(userOB: UserOB): RestResponse<any> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/dodajUzytkownika`, data: userOB });
+    }
+
+    /**
+     * HTTP GET /rest/uzytkownicy/secured/listaUzytkownikow
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.pobierzListeUzytkownikowDto
      */
     pobierzListeUzytkownikowDto(): RestResponse<UserListDTO> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`uzytkownicy/secured/listaUzytkownikow` });
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/listaUzytkownikow` });
+    }
+
+    /**
+     * HTTP GET /rest/uzytkownicy/secured/login
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.login
+     */
+    login(): RestResponse<string> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/login` });
+    }
+
+    /**
+     * HTTP POST /rest/uzytkownicy/secured/rejestracja
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.rejestracjaNowegoUzytkownika
+     */
+    rejestracjaNowegoUzytkownika(registrationDTO: RegistrationDTO): RestResponse<any> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/rejestracja`, data: registrationDTO });
     }
 }
 
@@ -67,7 +113,7 @@ export type RestResponse<R> = Observable<R>;
 
 export type OrPublic = "TAK" | "NIE";
 
-export type UserAccountType = "ADMINISTRATOR" | "UZYTKOWNIK";
+export type UserStateEnum = "AKTYWNY" | "NIEAKTYWNY" | "ZABLOKOWANY" | "USUNIETY";
 
 export type UserSexEnum = "KOBIETA" | "MEZCZYZNA";
 
