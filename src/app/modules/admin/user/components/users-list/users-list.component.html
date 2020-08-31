@@ -1,6 +1,25 @@
 
 <mat-list>
-  <mat-list-item>Lista użytkowników</mat-list-item>
+  <mat-list-item>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>playlist_add</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>add_circle_outline</mat-icon>
+        <span>Dodaj nowego użtkownika</span>
+      </button>
+      <!-- <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button> -->
+    </mat-menu>
+    Lista użytkowników
+  </mat-list-item>
   <mat-divider></mat-divider><br>
 </mat-list>
  <mat-accordion *ngFor="let user of listaUzytkownikow.listaUzytkownikow">
@@ -14,7 +33,7 @@
      <!-- {{panelOpenState ? 'Pokaż szczegóły' : 'Ukryj szczegóy'}} -->
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>Login: {{user.login}}</p>
+    <p>Login: {{user.username}}</p>
     <p>E-mail: {{user.email}}</p>
     <p>Płeć: {{user.plec}}</p>
     <p>Telefon: {{user.telefon}}</p>
@@ -24,7 +43,7 @@
     <button  mat-raised-button color="primary" style="margin-right: 5px" >
     <mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon>
       Modyfikuj</button>
-    <button mat-raised-button color="primary" style="margin-right: 5px">
+    <button mat-raised-button color="primary"  style="margin-right: 5px" routerLink="kancelaria/user-detail">
       <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
       Szczegóły</button>
   </mat-expansion-panel>
@@ -35,7 +54,7 @@
     <td>{{user.imie}} {{user.nazwisko}} {{user.plec}}
       <button  mat-raised-button color="primary" style="margin-right: 5px" >Usuń</button>
       <button  mat-raised-button color="primary" style="margin-right: 5px" >Modyfikuj</button>
-      <button mat-raised-button color="primary" style="margin-right: 5px">Szczegóły</button>
+      <button mat-raised-button color="primary" routerLink="kancelaria/user-detail" style="margin-right: 5px">Szczegóły</button>
     </td>
   </mat-list-option>
 </mat-selection-list>

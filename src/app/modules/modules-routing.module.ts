@@ -1,3 +1,4 @@
+import { AddResolutionCategoryComponent } from './resolution/component/add-resolution-category/add-resolution-category.component';
 import { RegulationListComponent } from './regulation/component/regulation-list/regulation-list.component';
 import { RegulationCategoryComponent } from './regulation/component/regulation-category/regulation-category.component';
 import { EventLogComponent } from './admin/configuration-comp/monitoring/event-log/event-log.component';
@@ -9,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ResolutionsListComponent } from './resolution/component/resolutions-list/resolutions-list.component';
+import { UserDetailsComponent } from './admin/user/components/user-details/user-details.component';
 
 
 const routes: Routes = [
@@ -34,6 +36,10 @@ const routes: Routes = [
     component: ResolutionKategoryComponent
   },
   {
+    path: 'add-category-resolutions',
+    component: AddResolutionCategoryComponent
+  },
+  {
     path: 'list-resolutions',
     component: ResolutionsListComponent
   },
@@ -53,6 +59,10 @@ const routes: Routes = [
     path: 'add-user',
     component: AddUserComponent
   },
+  {
+    path: 'user-detail',
+    component: UserDetailsComponent
+  }
 
 ];
 

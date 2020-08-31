@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 
 import { ModulesRoutingModule } from './modules-routing.module';
 import { ResolutionsListComponent } from './resolution/component/resolutions-list/resolutions-list.component';
@@ -19,6 +20,9 @@ import { UserProfileComponent } from './admin/user/components/user-profile/user-
 import { EventLogComponent } from './admin/configuration-comp/monitoring/event-log/event-log.component';
 import { RegulationCategoryComponent } from './regulation/component/regulation-category/regulation-category.component';
 import { RegulationListComponent } from './regulation/component/regulation-list/regulation-list.component';
+import { AppRoutingModule } from '../app-routing.module';
+import {MatMenuModule} from '@angular/material/menu';
+import { AddResolutionCategoryComponent } from './resolution/component/add-resolution-category/add-resolution-category.component';
 
 
 
@@ -37,16 +41,19 @@ import { RegulationListComponent } from './regulation/component/regulation-list/
     EventLogComponent,
     RegulationCategoryComponent,
     RegulationListComponent,
+    AddResolutionCategoryComponent,
   ],
   imports: [
   CommonModule,
+  RouterModule,
   ModulesRoutingModule,
   //AppRoutingModule,
   MatButtonModule,
   MatListModule,
   MatExpansionModule,
   MatIconModule,
-  MatDividerModule
+  MatDividerModule,
+  MatMenuModule
   ]
 })
 export class ModulesModule { }

@@ -93,7 +93,8 @@ export class SidebarComponent {
             items: [
               {
                 label: 'Dodaj kategorie',
-                icon: 'pi pi-folder'
+                icon: 'pi pi-folder',
+                command: () => this.nav('/kancelaria/add-category-resolutions')
               },
               {
                 label: 'Dodaj uchwałe',

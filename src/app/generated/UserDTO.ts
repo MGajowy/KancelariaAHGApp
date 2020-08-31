@@ -4,8 +4,8 @@
 export class UserDTO {
     imie: string;
     nazwisko: string;
-    login: string;
-    haslo: string;
+    username: string;
+    password: string;
     stan: UserStateEnum;
     email: string;
     telefon: string;
