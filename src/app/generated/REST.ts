@@ -9,6 +9,22 @@ export class CategoryDTO {
     rodzajKategorii: string;
 }
 
+export class JwtRequest implements Serializable {
+    username: string;
+    password: string;
+}
+
+export class RegistrationDTO {
+    imie: string;
+    nazwisko: string;
+    username: string;
+    password: string;
+    stan: UserStateEnum;
+    email: string;
+    telefon: string;
+    plec: UserSexEnum;
+}
+
 export class CategoryListDTO {
     listaKategorii: CategoryDTO[];
 }
@@ -38,24 +54,13 @@ export class UserListDTO {
     listaUzytkownikow: UserDTO[];
 }
 
-export class RegistrationDTO {
-    imie: string;
-    nazwisko: string;
-    username: string;
-    password: string;
-    stan: UserStateEnum;
-    email: string;
-    telefon: string;
-    plec: UserSexEnum;
-}
-
 export class UserOB implements UserDetails {
     password: string;
     enabled: boolean;
     username: string;
-    accountNonExpired: boolean;
-    accountNonLocked: boolean;
     credentialsNonExpired: boolean;
+    accountNonLocked: boolean;
+    accountNonExpired: boolean;
     authorities: GrantedAuthority[];
     id: number;
     imie: string;
@@ -64,6 +69,9 @@ export class UserOB implements UserDetails {
     telefon: string;
     plec: UserSexEnum;
     stan: UserStateEnum;
+}
+
+export interface Serializable {
 }
 
 export class HttpEntity<T> {
@@ -84,13 +92,10 @@ export interface UserDetails extends Serializable {
     password: string;
     enabled: boolean;
     username: string;
-    accountNonExpired: boolean;
-    accountNonLocked: boolean;
     credentialsNonExpired: boolean;
+    accountNonLocked: boolean;
+    accountNonExpired: boolean;
     authorities: GrantedAuthority[];
-}
-
-export interface Serializable {
 }
 
 export interface HttpClient {
@@ -101,6 +106,14 @@ export interface HttpClient {
 export class TSAllRestApiClient {
 
     constructor(protected httpClient: HttpClient) {
+    }
+
+    /**
+     * HTTP POST /rest/authenticate
+     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.AuthPublicRestApi.createAuthenticationToken
+     */
+    createAuthenticationToken(authenticationRequest: JwtRequest): RestResponse<ResponseEntity<any>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/authenticate`, data: authenticationRequest });
     }
 
     /**
@@ -144,6 +157,14 @@ export class TSAllRestApiClient {
     }
 
     /**
+     * HTTP POST /rest/register
+     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.AuthPublicRestApi.saveUser
+     */
+    saveUser(user: RegistrationDTO): RestResponse<ResponseEntity<any>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/register`, data: user });
+    }
+
+    /**
      * HTTP POST /rest/uzytkownicy/secured/dodaj-uzytkownika
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.utworzUzytkownika
      */
@@ -160,27 +181,11 @@ export class TSAllRestApiClient {
     }
 
     /**
-     * HTTP GET /rest/uzytkownicy/secured/login
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.login
-     */
-    login(): RestResponse<string> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/login` });
-    }
-
-    /**
      * HTTP POST /rest/uzytkownicy/secured/modyfikuj-uzytkownika
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.modyfikujUzytkownika
      */
     modyfikujUzytkownika(): RestResponse<UserDTO> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/modyfikuj-uzytkownika` });
-    }
-
-    /**
-     * HTTP POST /rest/uzytkownicy/secured/rejestracja
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.rejestracjaNowegoUzytkownika
-     */
-    rejestracjaNowegoUzytkownika(registrationDTO: RegistrationDTO): RestResponse<any> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/rejestracja`, data: registrationDTO });
     }
 
     /**
@@ -196,11 +201,11 @@ export type RestResponse<R> = Observable<R>;
 
 export type OrPublic = "TAK" | "NIE";
 
-export type HttpStatus = "CONTINUE" | "SWITCHING_PROTOCOLS" | "PROCESSING" | "CHECKPOINT" | "OK" | "CREATED" | "ACCEPTED" | "NON_AUTHORITATIVE_INFORMATION" | "NO_CONTENT" | "RESET_CONTENT" | "PARTIAL_CONTENT" | "MULTI_STATUS" | "ALREADY_REPORTED" | "IM_USED" | "MULTIPLE_CHOICES" | "MOVED_PERMANENTLY" | "FOUND" | "MOVED_TEMPORARILY" | "SEE_OTHER" | "NOT_MODIFIED" | "USE_PROXY" | "TEMPORARY_REDIRECT" | "PERMANENT_REDIRECT" | "BAD_REQUEST" | "UNAUTHORIZED" | "PAYMENT_REQUIRED" | "FORBIDDEN" | "NOT_FOUND" | "METHOD_NOT_ALLOWED" | "NOT_ACCEPTABLE" | "PROXY_AUTHENTICATION_REQUIRED" | "REQUEST_TIMEOUT" | "CONFLICT" | "GONE" | "LENGTH_REQUIRED" | "PRECONDITION_FAILED" | "PAYLOAD_TOO_LARGE" | "REQUEST_ENTITY_TOO_LARGE" | "URI_TOO_LONG" | "REQUEST_URI_TOO_LONG" | "UNSUPPORTED_MEDIA_TYPE" | "REQUESTED_RANGE_NOT_SATISFIABLE" | "EXPECTATION_FAILED" | "I_AM_A_TEAPOT" | "INSUFFICIENT_SPACE_ON_RESOURCE" | "METHOD_FAILURE" | "DESTINATION_LOCKED" | "UNPROCESSABLE_ENTITY" | "LOCKED" | "FAILED_DEPENDENCY" | "TOO_EARLY" | "UPGRADE_REQUIRED" | "PRECONDITION_REQUIRED" | "TOO_MANY_REQUESTS" | "REQUEST_HEADER_FIELDS_TOO_LARGE" | "UNAVAILABLE_FOR_LEGAL_REASONS" | "INTERNAL_SERVER_ERROR" | "NOT_IMPLEMENTED" | "BAD_GATEWAY" | "SERVICE_UNAVAILABLE" | "GATEWAY_TIMEOUT" | "HTTP_VERSION_NOT_SUPPORTED" | "VARIANT_ALSO_NEGOTIATES" | "INSUFFICIENT_STORAGE" | "LOOP_DETECTED" | "BANDWIDTH_LIMIT_EXCEEDED" | "NOT_EXTENDED" | "NETWORK_AUTHENTICATION_REQUIRED";
-
 export type UserStateEnum = "AKTYWNY" | "NIEAKTYWNY" | "ZABLOKOWANY" | "USUNIETY";
 
 export type UserSexEnum = "KOBIETA" | "MEZCZYZNA";
+
+export type HttpStatus = "CONTINUE" | "SWITCHING_PROTOCOLS" | "PROCESSING" | "CHECKPOINT" | "OK" | "CREATED" | "ACCEPTED" | "NON_AUTHORITATIVE_INFORMATION" | "NO_CONTENT" | "RESET_CONTENT" | "PARTIAL_CONTENT" | "MULTI_STATUS" | "ALREADY_REPORTED" | "IM_USED" | "MULTIPLE_CHOICES" | "MOVED_PERMANENTLY" | "FOUND" | "MOVED_TEMPORARILY" | "SEE_OTHER" | "NOT_MODIFIED" | "USE_PROXY" | "TEMPORARY_REDIRECT" | "PERMANENT_REDIRECT" | "BAD_REQUEST" | "UNAUTHORIZED" | "PAYMENT_REQUIRED" | "FORBIDDEN" | "NOT_FOUND" | "METHOD_NOT_ALLOWED" | "NOT_ACCEPTABLE" | "PROXY_AUTHENTICATION_REQUIRED" | "REQUEST_TIMEOUT" | "CONFLICT" | "GONE" | "LENGTH_REQUIRED" | "PRECONDITION_FAILED" | "PAYLOAD_TOO_LARGE" | "REQUEST_ENTITY_TOO_LARGE" | "URI_TOO_LONG" | "REQUEST_URI_TOO_LONG" | "UNSUPPORTED_MEDIA_TYPE" | "REQUESTED_RANGE_NOT_SATISFIABLE" | "EXPECTATION_FAILED" | "I_AM_A_TEAPOT" | "INSUFFICIENT_SPACE_ON_RESOURCE" | "METHOD_FAILURE" | "DESTINATION_LOCKED" | "UNPROCESSABLE_ENTITY" | "LOCKED" | "FAILED_DEPENDENCY" | "TOO_EARLY" | "UPGRADE_REQUIRED" | "PRECONDITION_REQUIRED" | "TOO_MANY_REQUESTS" | "REQUEST_HEADER_FIELDS_TOO_LARGE" | "UNAVAILABLE_FOR_LEGAL_REASONS" | "INTERNAL_SERVER_ERROR" | "NOT_IMPLEMENTED" | "BAD_GATEWAY" | "SERVICE_UNAVAILABLE" | "GATEWAY_TIMEOUT" | "HTTP_VERSION_NOT_SUPPORTED" | "VARIANT_ALSO_NEGOTIATES" | "INSUFFICIENT_STORAGE" | "LOOP_DETECTED" | "BANDWIDTH_LIMIT_EXCEEDED" | "NOT_EXTENDED" | "NETWORK_AUTHENTICATION_REQUIRED";
 
 function uriEncoding(template: TemplateStringsArray, ...substitutions: any[]): string {
     let result = "";
