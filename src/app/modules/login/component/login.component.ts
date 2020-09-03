@@ -2,6 +2,7 @@ import { AuthServiceService } from './../../../core/services/auth/auth-service.s
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
 
-  constructor(private authService: AuthServiceService) { }
+  constructor(private authService: AuthServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -19,21 +20,20 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.formGroup = new FormGroup({
-      email: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
     });
   }
-  loginProces() {
+   loginProces() {
     if (this.formGroup.valid){
-      this.authService.login(this.formGroup.value).subscribe(result => {
+      this.authService.authenticate(this.formGroup.get('username').value, this.formGroup.get('password').value).subscribe(result => {
         if (result.success){
-          console.log(result);
-          alert(result.message);
+          console.log(result)
         }else {
-          alert(result.message);
+          this.router.navigate([''])
         }
       });
+
     }
   }
-
 }

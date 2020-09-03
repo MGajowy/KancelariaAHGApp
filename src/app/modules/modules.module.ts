@@ -27,6 +27,7 @@ import { AddResolutionCategoryComponent } from './resolution/component/add-resol
 
 
 
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -42,6 +43,7 @@ import { AddResolutionCategoryComponent } from './resolution/component/add-resol
     RegulationCategoryComponent,
     RegulationListComponent,
     AddResolutionCategoryComponent,
+    //LogoutComponent,
   ],
   imports: [
   CommonModule,

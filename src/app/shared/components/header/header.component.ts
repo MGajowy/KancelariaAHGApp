@@ -1,3 +1,5 @@
+import { Routes, Router } from '@angular/router';
+import { AuthServiceService } from './../../../core/services/auth/auth-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class  HeaderComponent implements OnInit {
 
-  constructor() { }
+  czyZalogowany: boolean ;
+  nazwaPrzysiku = '';
+  zalogujText = 'Zaloguj';
+  wylogujText = 'Wyloguj';
 
-  ngOnInit(): void {
+  constructor(private router: Router, private authService: AuthServiceService) { }
+
+  ngOnInit() {
+    if (this.authService.isUserLoggedIn()) {
+      this.nazwaPrzysiku = this.wylogujText;
+    }else{
+      this.nazwaPrzysiku = this.zalogujText;
+    }
+
+  }
+
+  wybor(){
+    this.czyZalogowany = this.authService.isUserLoggedIn();
+    if (this.czyZalogowany){
+     return this.wyloguj();
+    }else {
+    return this.zaloguj();
+    }
+  }
+
+  zaloguj() {
+  this.router.navigate(['login']);
+  }
+
+  wyloguj(){
+    this.router.navigate(['logout']);
   }
 
 }

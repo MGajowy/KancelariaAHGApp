@@ -1,3 +1,4 @@
+import { LogoutComponent } from './../../modules/logout/component/logout.component';
 
 import { RegistrationComponent } from './../../modules/registration/component/registration.component';
 import { LoginComponent } from './../../modules/login/component/login.component';
@@ -13,13 +14,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+
 
 
 @NgModule({
   declarations: [
     FullwidthComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatToolbarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ]
 })
 export class FullwidthModule { }

@@ -1,3 +1,4 @@
+import { LogoutComponent } from './modules/logout/component/logout.component';
 import { RegistrationComponent } from './modules/registration/component/registration.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -26,7 +27,11 @@ const routes: Routes = [{
     {
       path: 'registration',
       component: RegistrationComponent
-    }
+    },
+    {
+      path: 'logout',
+      component: LogoutComponent
+    },
     // {
     //   path: 'logowanie',
     //   loadChildren: () => import('./fullwidth/fullwidth.module').then (m => m.FullwidthModule)

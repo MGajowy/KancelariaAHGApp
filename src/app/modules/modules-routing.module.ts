@@ -1,3 +1,4 @@
+import { AuthGuardService } from './../core/services/guard/auth-guard.service';
 import { AddResolutionCategoryComponent } from './resolution/component/add-resolution-category/add-resolution-category.component';
 import { RegulationListComponent } from './regulation/component/regulation-list/regulation-list.component';
 import { RegulationCategoryComponent } from './regulation/component/regulation-category/regulation-category.component';
@@ -11,6 +12,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ResolutionsListComponent } from './resolution/component/resolutions-list/resolutions-list.component';
 import { UserDetailsComponent } from './admin/user/components/user-details/user-details.component';
+import { AuthServiceService } from '../core/services/auth/auth-service.service';
 
 
 const routes: Routes = [
@@ -33,11 +35,13 @@ const routes: Routes = [
   },
   {
     path: 'category-resolutions',
-    component: ResolutionKategoryComponent
+    component: ResolutionKategoryComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-category-resolutions',
-    component: AddResolutionCategoryComponent
+    component: AddResolutionCategoryComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'list-resolutions',
@@ -54,14 +58,17 @@ const routes: Routes = [
   {
     path: 'user-list',
     component: UsersListComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-user',
-    component: AddUserComponent
+    component: AddUserComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'user-detail',
-    component: UserDetailsComponent
+    component: UserDetailsComponent,
+    canActivate: [AuthGuardService]
   }
 
 ];

@@ -4,14 +4,12 @@
     <button mat-raised-button color="primary" routerLink="/">
       <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
       Strona startowa</button>
-    <!-- <button mat-raised-button color="primary" routerLink="/about">O mnie</button> -->
     <button mat-raised-button color="primary" routerLink="/registration">
       <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>
       Rejestracja</button>
-    <button mat-raised-button color="primary" routerLink="/login">
+    <button mat-raised-button color="primary" (click)= wybor();>
       <mat-icon aria-hidden="false" aria-label="Example home icon">login</mat-icon>
-      Logowanie</button>
-    <!-- <button mat-raised-button color="primary" routerLink="/resolutions">Uchwaly</button> -->
+      {{nazwaPrzysiku}}</button>
   </div>
 </header>
