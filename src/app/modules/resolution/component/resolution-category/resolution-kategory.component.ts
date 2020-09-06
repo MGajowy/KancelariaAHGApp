@@ -1,7 +1,9 @@
-import { CategoryListDTO } from '../../../../generated/REST';
+import { Observable } from 'rxjs';
+import { CategoryDTO, CategoryListDTO } from './../../../../generated/REST';
+
 import { ResolutionService } from '../../service/resolution.service';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 @Component({
@@ -22,9 +24,16 @@ export class ResolutionKategoryComponent implements OnInit {
     reloadData() {
     this.resolutionService.getResolutionList().subscribe(value => {
     this.listaKategorii = value;
-    //console.log(value);
     });
   }
 
+    deleteCategoryResolutions (id: number){
+    this.resolutionService.deleteCategory(id)
+    .subscribe(data => {
+      console.log(data);
+      this.reloadData();
+    },
+    error => console.log(error));
+  }
 
 }

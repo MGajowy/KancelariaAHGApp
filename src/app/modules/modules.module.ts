@@ -24,10 +24,6 @@ import { AppRoutingModule } from '../app-routing.module';
 import {MatMenuModule} from '@angular/material/menu';
 import { AddResolutionCategoryComponent } from './resolution/component/add-resolution-category/add-resolution-category.component';
 
-
-
-
-
 @NgModule({
   declarations: [
     HomeComponent,
@@ -42,8 +38,7 @@ import { AddResolutionCategoryComponent } from './resolution/component/add-resol
     EventLogComponent,
     RegulationCategoryComponent,
     RegulationListComponent,
-    AddResolutionCategoryComponent,
-    //LogoutComponent,
+    AddResolutionCategoryComponent
   ],
   imports: [
   CommonModule,

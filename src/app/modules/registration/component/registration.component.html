@@ -1,1 +1,44 @@
-<p>Rejestracja</p>
+
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="25">
+    <mat-toolbar color="primary">Rejestracja</mat-toolbar>
+    <form fxLayoutAlign="streach" fxLayout="column" [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+      <mat-form-field>
+        <mat-label>Login</mat-label>
+        <input matInput placeholder="Podaj login" formControlName="username" class="login-form">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Hasło</mat-label>
+        <input matInput type = "password" placeholder="Podaj hasło" formControlName="password" class="login-form">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Imię</mat-label>
+        <input matInput  placeholder="Podaj imię" formControlName="imie" class="login-form">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nazwisko</mat-label>
+        <input matInput placeholder="Podaj nazwisko" formControlName="nazwisko" class="login-form">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label >e-mail</mat-label>
+        <input matInput  placeholder="Podaj e-mail"  formControlName="email" class="login-form">
+        <mat-error *ngIf="registerForm.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Telefon</mat-label>
+        <input matInput type = "tel" placeholder="Podaj telefon" formControlName="telefon" class="login-form">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Płeć</mat-label>
+        <input matInput placeholder="Podaj płeć" formControlName="plec" class="login-form">
+      </mat-form-field>
+      <!-- <mat-form-field>
+        <mat-label>stan</mat-label>
+        <input matInput placeholder="Podaj stan" formControlName="stan" class="login-form">
+      </mat-form-field> -->
+      <button mat-raised-button type="submit">Zarejestruj</button>
+    </form>
+  </mat-card>
+</div>

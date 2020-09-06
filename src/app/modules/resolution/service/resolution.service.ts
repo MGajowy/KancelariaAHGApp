@@ -24,4 +24,8 @@ export class ResolutionService {
   // getResolutionList(): Observable<any> {
   //   return this.restService.wszystkieRestAdmin().pobierzListCategoryDto();
   // }
+
+  deleteCategory(id: number): Observable <any>{
+    return this.httpClient.delete(`${baseUrl}rest/kategorie/secured/usun-kategorie/${id}`);
+  }
 }

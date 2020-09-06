@@ -4,13 +4,12 @@
     <mat-toolbar color="primary">Logowanie do aplikacji</mat-toolbar>
     <form fxLayoutAlign="streach" fxLayout="column" class="login-form"[formGroup]="formGroup" (ngSubmit)="loginProces()" >
       <mat-form-field>
-        <mat-label>Wpisz login</mat-label>
-        <input matInput placeholder="Uzytkownik" formControlName="username">
+        <mat-label>Login</mat-label>
+        <input matInput placeholder="Wpisz login" formControlName="username">
       </mat-form-field>
-
       <mat-form-field>
-        <mat-label>Wpisz haslo</mat-label>
-        <input matInput Type="password" placeholder="Haslo" formControlName="password">
+        <mat-label>Hasło</mat-label>
+        <input matInput Type="password" placeholder="Wpisz haslo" formControlName="password">
       </mat-form-field>
       <button mat-raised-button type="submit">Zaloguj</button>
     </form>

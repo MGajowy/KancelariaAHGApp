@@ -6,7 +6,7 @@
   <mat-list-option *ngFor="let resolutions of listaKategorii.listaKategorii">
       <td>
         {{resolutions.rodzajKategorii}}
-      <button  mat-raised-button color="primary" style="margin-right: 5px" >
+      <button  mat-raised-button color="primary" style="margin-right: 5px" (click) ='deleteCategoryResolutions(resolutions.id)'>
         <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
         Usuń</button>
       <button  mat-raised-button color="primary" style="margin-right: 5px" >
@@ -18,13 +18,13 @@
 </td>
   </mat-list-option>
 </mat-selection-list>
-<mat-list>
+<!-- <mat-list>
   <div mat-subheader>Kategorie uchwał</div>
   <mat-list-item *ngFor="let resolutions of listaKategorii.listaKategorii">
     <mat-icon mat-list-icon>folder</mat-icon>
     <div mat-line>{{resolutions.rodzajKategorii}}</div>
   </mat-list-item>
   <mat-divider></mat-divider>
-</mat-list>
+</mat-list> -->
 
 
