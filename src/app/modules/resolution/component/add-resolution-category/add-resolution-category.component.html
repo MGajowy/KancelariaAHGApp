@@ -2,3 +2,28 @@
   <mat-list-item>Dodaj kategorie uchwał</mat-list-item>
   <mat-divider></mat-divider><br>
 </mat-list>
+
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="rodzajKategorii">Rodzaj kategorii</label>
+      <input type="text" class="form-control" id="kategoria" required [(ngModel)]="category.rodzajKategorii" name="rodzajKategorii">
+    </div>
+
+    <div class="form-group">
+      <label for="czyPubliczny">Czy publiczny</label>
+      <input type="text" class="form-control" id="isPublic" required [(ngModel)]="category.czyPubliczny" name="czyPubliczny">
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" class="btn btn-success">Dodaj kategorie</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>Kategoria została poprawnie dodana!</h4>
+  <button mat-raised-button color="primary" class="btn btn-success" (click)="newCategory()">Dodaj nową kategorie</button>
+</div>
+
+
+
+

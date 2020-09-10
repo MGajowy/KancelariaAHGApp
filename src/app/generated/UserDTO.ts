@@ -2,6 +2,7 @@
 /* eslint-disable */
 
 export class UserDTO {
+    id: number;
     imie: string;
     nazwisko: string;
     username: string;

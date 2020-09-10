@@ -1,4 +1,4 @@
-import { RegistrationDTO } from './../../../../generated/REST';
+import { RegistrationDTO, AddUserDTO } from './../../../../generated/REST';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RestService } from 'src/app/core/services/rest/rest.service';
@@ -23,8 +23,12 @@ export class UserService {
   register(user: RegistrationDTO): Observable<any> {
     return this.httpClient.post(`${baseUrl}rest/register`, user);
   }
-//todo dodać poprawny path !!
-  // deleteUser(id: number): Observable <any>{
-  //   return this.httpClient.delete(`${baseUrl}rest/uzytkownicy/secured/usun-..../${id}`);
-  // }
+
+  deleteUser(id: number){
+    return this.httpClient.delete(`${baseUrl}rest/uzytkownicy/secured/usun-uzytkownika/${id}`);
+  }
+
+  addUser(user: AddUserDTO ): Observable<any> {
+    return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/dodaj-uzytkownika`, user);
+  }
 }

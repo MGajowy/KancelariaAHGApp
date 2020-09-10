@@ -19,10 +19,7 @@ export class RegistrationComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthServiceService,
         private userService: UserService,
-
-
-    ) {
-       }
+    ) {}
     ngOnInit()
     {
       if (this.authenticationService.isUserLoggedIn()) {
@@ -38,12 +35,12 @@ export class RegistrationComponent implements OnInit {
         email: ['', Validators.required, Validators.email],
         telefon: ['', Validators.required],
         plec: ['', Validators.required],
-        stan: ['', Validators.required],
+        stan: ['NIEAKTYWNY']
       });
       }
     }
 
-    get f() { return this.registerForm.controls; }
+    //get f() { return this.registerForm.controls; }
 
     onSubmit(){
       this.submitted = true;
@@ -51,19 +48,20 @@ export class RegistrationComponent implements OnInit {
       if (this.registerForm.invalid) {
         alert('Uzupełnij pola wymagane zanaczone na kolor czerwony')
 
-            return;
+        return;
+
         }else{
       this.userService.register(
          this.registerForm.value)
         .subscribe(result => {
           if (result.success){
             console.log(result);
-            this.router.navigate(['login']);
-
           }else {
             this.router.navigate(['']);
           }
         });
+        alert('Rejestracja zakoczona powodzeniem, zaloguj sie do aplikacji')
+        this.router.navigate(['login']);
       }
       }
     }

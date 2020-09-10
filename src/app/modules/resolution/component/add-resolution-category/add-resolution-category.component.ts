@@ -1,3 +1,5 @@
+import { CategoryDTO, OrPublic } from './../../../../generated/REST';
+import { ResolutionService } from './../../service/resolution.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddResolutionCategoryComponent implements OnInit {
 
-  constructor() { }
+  category: CategoryDTO = new CategoryDTO();
+  czyPubliczny: OrPublic;
+  submitted = false;
+
+  constructor(private resolutionServices: ResolutionService) { }
 
   ngOnInit(): void {
+
+  }
+
+  newCategory(): void
+  {
+    this.submitted = false;
+    this.category = new CategoryDTO();
+  }
+
+  save(){
+   // this.category.czyPubliczny = this.czyPubliczny;
+    this.resolutionServices.createCategory(this.category)
+      .subscribe(data => {
+        console.log(data);
+        this.submitted = true;
+      },
+      error => console.log(error));
+       this.category = new CategoryDTO();
+  }
+  onSubmit(){
+    this.save();
   }
 
 }

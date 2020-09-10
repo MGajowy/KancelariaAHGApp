@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { ModulesRoutingModule } from './modules-routing.module';
@@ -23,6 +24,13 @@ import { RegulationListComponent } from './regulation/component/regulation-list/
 import { AppRoutingModule } from '../app-routing.module';
 import {MatMenuModule} from '@angular/material/menu';
 import { AddResolutionCategoryComponent } from './resolution/component/add-resolution-category/add-resolution-category.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -50,7 +58,16 @@ import { AddResolutionCategoryComponent } from './resolution/component/add-resol
   MatExpansionModule,
   MatIconModule,
   MatDividerModule,
-  MatMenuModule
+  MatMenuModule,
+  FormsModule,
+  MatFormFieldModule,
+  MatRadioModule,
+  ReactiveFormsModule,
+  MatToolbarModule,
+  MatCardModule,
+  MatInputModule,
+  FlexLayoutModule,
+  MatGridListModule
   ]
 })
 export class ModulesModule { }

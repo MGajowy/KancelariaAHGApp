@@ -5,7 +5,7 @@
       <mat-icon>playlist_add</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item routerLink="/kancelaria/add-user" >
         <mat-icon>add_circle_outline</mat-icon>
         <span>Dodaj nowego użtkownika</span>
       </button>
@@ -37,7 +37,7 @@
     <p>E-mail: {{user.email}}</p>
     <p>Płeć: {{user.plec}}</p>
     <p>Telefon: {{user.telefon}}</p>
-    <button  mat-raised-button color="primary" style="margin-right: 5px" >
+    <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="deleteUser(user.id)">
       <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
       Usuń</button>
     <button  mat-raised-button color="primary" style="margin-right: 5px" >
@@ -49,7 +49,7 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<mat-selection-list #shoes [multiple]="false">
+<!-- <mat-selection-list #shoes [multiple]="false">
   <mat-list-option *ngFor="let user of listaUzytkownikow.listaUzytkownikow">
     <td>{{user.imie}} {{user.nazwisko}} {{user.plec}}
       <button  mat-raised-button color="primary" style="margin-right: 5px" >Usuń</button>
@@ -57,5 +57,5 @@
       <button mat-raised-button color="primary" routerLink="kancelaria/user-detail" style="margin-right: 5px">Szczegóły</button>
     </td>
   </mat-list-option>
-</mat-selection-list>
+</mat-selection-list> -->
 

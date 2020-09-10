@@ -40,6 +40,7 @@ export class CategoryDTOresponse {
 }
 
 export class UserDTO {
+    id: number;
     imie: string;
     nazwisko: string;
     username: string;
@@ -54,21 +55,14 @@ export class UserListDTO {
     listaUzytkownikow: UserDTO[];
 }
 
-export class UserOB implements UserDetails {
-    password: string;
-    enabled: boolean;
-    username: string;
-    credentialsNonExpired: boolean;
-    accountNonLocked: boolean;
-    accountNonExpired: boolean;
-    authorities: GrantedAuthority[];
-    id: number;
+export class AddUserDTO {
     imie: string;
     nazwisko: string;
+    username: string;
+    stan: UserStateEnum;
     email: string;
     telefon: string;
     plec: UserSexEnum;
-    stan: UserStateEnum;
 }
 
 export interface Serializable {
@@ -82,20 +76,6 @@ export class HttpEntity<T> {
 export class ResponseEntity<T> extends HttpEntity<T> {
     statusCode: HttpStatus;
     statusCodeValue: number;
-}
-
-export interface GrantedAuthority extends Serializable {
-    authority: string;
-}
-
-export interface UserDetails extends Serializable {
-    password: string;
-    enabled: boolean;
-    username: string;
-    credentialsNonExpired: boolean;
-    accountNonLocked: boolean;
-    accountNonExpired: boolean;
-    authorities: GrantedAuthority[];
 }
 
 export interface HttpClient {
@@ -168,8 +148,8 @@ export class TSAllRestApiClient {
      * HTTP POST /rest/uzytkownicy/secured/dodaj-uzytkownika
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.utworzUzytkownika
      */
-    utworzUzytkownika(userOB: UserOB): RestResponse<any> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/dodaj-uzytkownika`, data: userOB });
+    utworzUzytkownika(addUserDTO: AddUserDTO): RestResponse<ResponseEntity<HttpStatus>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/dodaj-uzytkownika`, data: addUserDTO });
     }
 
     /**
@@ -192,8 +172,8 @@ export class TSAllRestApiClient {
      * HTTP DELETE /rest/uzytkownicy/secured/usun-uzytkownika
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.usunUzytkownika
      */
-    usunUzytkownika(): RestResponse<UserDTO> {
-        return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/uzytkownicy/secured/usun-uzytkownika` });
+    usunUzytkownika(id: number): RestResponse<ResponseEntity<HttpStatus>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/uzytkownicy/secured/usun-uzytkownika`, data: id });
     }
 }
 
