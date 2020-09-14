@@ -175,6 +175,22 @@ export class TSAllRestApiClient {
     usunUzytkownika(id: number): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/uzytkownicy/secured/usun-uzytkownika`, data: id });
     }
+
+    /**
+     * HTTP GET /rest/uzytkownicy/secured/weryfikuj-token
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.weryfikujToken
+     */
+    weryfikujToken(token: string): RestResponse<boolean> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/weryfikuj-token`, data: token });
+    }
+
+    /**
+     * HTTP GET /rest/uzytkownicy/secured/wyslij-email-aktywacyjny
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.wyslijMailAktywacyjny
+     */
+    wyslijMailAktywacyjny(id: number): RestResponse<boolean> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/wyslij-email-aktywacyjny`, data: id });
+    }
 }
 
 export type RestResponse<R> = Observable<R>;

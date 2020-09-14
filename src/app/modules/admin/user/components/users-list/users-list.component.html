@@ -46,6 +46,19 @@
     <button mat-raised-button color="primary"  style="margin-right: 5px" routerLink="kancelaria/user-detail">
       <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
       Szczegóły</button>
+      <ng-container *ngIf = "user.stan === userStateEnum.NIEAKTYWNY; else unActivate" >
+      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="activeUser(user.id)" >
+        <mat-icon aria-hidden="false" aria-label="Example home icon">mail_outline</mat-icon>
+      Aktywuj użytkownika
+      </button>
+    </ng-container>
+    <ng-template #unActivate>
+      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="activeUser(user.id)" >
+        <mat-icon aria-hidden="false" aria-label="Example home icon">mail_outline</mat-icon>
+        Dezaktywuj uzytkownika
+      </button>
+    </ng-template>
+
   </mat-expansion-panel>
 </mat-accordion>
 

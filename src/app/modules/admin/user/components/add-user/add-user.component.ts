@@ -1,8 +1,10 @@
+import { UserStateEnum } from './../../../../../generated/UserStateEnum';
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { UserSexEnum } from 'src/app/generated/UserSexEnum';
 
 @Component({
   selector: 'app-add-user',
@@ -12,6 +14,8 @@ import { UserService } from '../../services/user.service';
 export class AddUserComponent implements OnInit {
   submitted = false;
   registerForm: FormGroup;
+  userStateEnum = UserStateEnum;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,7 +31,7 @@ export class AddUserComponent implements OnInit {
       email: ['', Validators.required, Validators.email],
       telefon: ['', Validators.required],
       plec: ['', Validators.required],
-      stan: ['NIEAKTYWNY'],
+      stan: [this.userStateEnum.NIEAKTYWNY],
     });
     }
 
