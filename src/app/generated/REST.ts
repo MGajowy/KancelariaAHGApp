@@ -145,6 +145,14 @@ export class TSAllRestApiClient {
     }
 
     /**
+     * HTTP POST /rest/uzytkownicy/secured/dezaktywuj-uzytkownika
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.dezaktywacjaUzytkownika
+     */
+    dezaktywacjaUzytkownika(id: number): RestResponse<boolean> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/dezaktywuj-uzytkownika`, data: id });
+    }
+
+    /**
      * HTTP POST /rest/uzytkownicy/secured/dodaj-uzytkownika
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.utworzUzytkownika
      */
@@ -161,11 +169,19 @@ export class TSAllRestApiClient {
     }
 
     /**
-     * HTTP POST /rest/uzytkownicy/secured/modyfikuj-uzytkownika
+     * HTTP PUT /rest/uzytkownicy/secured/modyfikuj-uzytkownika
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.modyfikujUzytkownika
      */
-    modyfikujUzytkownika(): RestResponse<UserDTO> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/modyfikuj-uzytkownika` });
+    modyfikujUzytkownika(id: number): RestResponse<UserDTO> {
+        return this.httpClient.request({ method: "PUT", url: uriEncoding`rest/uzytkownicy/secured/modyfikuj-uzytkownika`, data: id });
+    }
+
+    /**
+     * HTTP GET /rest/uzytkownicy/secured/szczegoly-uzytkownika
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.szczegolyUzytkownika
+     */
+    szczegolyUzytkownika(id: number): RestResponse<UserDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/szczegoly-uzytkownika`, data: id });
     }
 
     /**

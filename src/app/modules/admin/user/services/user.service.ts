@@ -35,4 +35,16 @@ export class UserService {
   activateUser(id: number): Observable<any>{
     return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/wyslij-email-aktywacyjny/${id}`);
   }
+
+  unActivateUser(id: number): Observable<any>{
+    return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/dezaktywuj-uzytkownika/${id}`, id);
+  }
+
+  updateUser(id: number, value: any): Observable <any>{
+  return this.httpClient.put(`${baseUrl}rest/uzytkownicy/secured/modyfikuj-uzytkownika/${id}`, value);
+  }
+
+  detailsUser(id: number): Observable <any>{
+  return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/szczegoly-uzytkownika/${id}`);
+  }
 }

@@ -2,6 +2,7 @@ import { UserStateEnum } from './../../../../../generated/UserStateEnum';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { UserListDTO } from 'src/app/generated/REST';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class UsersListComponent implements OnInit {
   listaUzytkownikow: UserListDTO;
   userStateEnum = UserStateEnum;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
       this.reloadData();
@@ -45,12 +46,20 @@ export class UsersListComponent implements OnInit {
       this.reloadData();
     }
     unActivateUser(id: number){
-    //   this.userService.unActivateUser(id)
-    //     .subscribe(data => {
-    //       console.log(data)
-    //     },
-    //     error => console.log(error));
+      this.userService.unActivateUser(id)
+        .subscribe(data => {
+          console.log(data)
+        },
+        error => console.log(error));
     this.reloadData();
+    }
+
+    upDateUser(id: number){
+      this.router.navigate(['/kancelaria/update-user', id]);
+    }
+
+    detailsUser(id: number){
+      this.router.navigate(['/kancelaria/user-detail', id]);
     }
 
 

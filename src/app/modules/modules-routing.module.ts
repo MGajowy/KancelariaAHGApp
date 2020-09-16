@@ -13,6 +13,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ResolutionsListComponent } from './resolution/component/resolutions-list/resolutions-list.component';
 import { UserDetailsComponent } from './admin/user/components/user-details/user-details.component';
 import { AuthServiceService } from '../core/services/auth/auth-service.service';
+import { UpdateUserComponent } from './admin/user/components/update-user/update-user.component';
 
 
 const routes: Routes = [
@@ -66,8 +67,13 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'user-detail',
+    path: 'user-detail/:id',
     component: UserDetailsComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'update-user/:id',
+    component: UpdateUserComponent,
     canActivate: [AuthGuardService]
   }
 

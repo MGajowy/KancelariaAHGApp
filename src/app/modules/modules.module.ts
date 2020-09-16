@@ -31,6 +31,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { UpdateUserComponent } from './admin/user/components/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     EventLogComponent,
     RegulationCategoryComponent,
     RegulationListComponent,
-    AddResolutionCategoryComponent
+    AddResolutionCategoryComponent,
+    UpdateUserComponent
   ],
   imports: [
   CommonModule,

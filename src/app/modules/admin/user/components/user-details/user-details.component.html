@@ -2,3 +2,35 @@
   <mat-list-item>Szczegóły użytkownika</mat-list-item>
   <mat-divider></mat-divider><br>
 </mat-list>
+
+
+<div *ngIf="user">
+  <div>
+    <label><b>Imie:</b></label> {{user.imie}}
+  </div>
+  <div>
+    <label><b>Nazwisko: </b></label> {{user.nazwisko}}
+  </div>
+  <div>
+    <label><b>Login: </b></label> {{user.username}}
+  </div>
+  <div>
+    <label><b>Haslo: </b></label> {{user.password}}
+  </div>
+  <div>
+    <label><b>e-mail: </b></label> {{user.email}}
+  </div>
+  <div>
+    <label><b>Plec: </b></label> {{user.plec}}
+  </div>
+  <div>
+    <label><b>Telefon: </b></label> {{user.telefon}}
+  </div>
+  <div>
+    <label><b>Stan konta: </b></label> {{user.stan}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Wroc do listy uzytkownikow</button><br>
