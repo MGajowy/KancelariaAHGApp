@@ -22,6 +22,8 @@
   </mat-list-item>
   <mat-divider></mat-divider><br>
 </mat-list>
+<p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000"></p-confirmDialog>
+<p-messages [value]="msgs"></p-messages>
  <mat-accordion *ngFor="let user of listaUzytkownikow.listaUzytkownikow">
   <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">
@@ -37,9 +39,13 @@
     <p>E-mail: {{user.email}}</p>
     <p>Płeć: {{user.plec}}</p>
     <p>Telefon: {{user.telefon}}</p>
-    <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="deleteUser(user.id)">
+    <!-- <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="deleteUser(user.id)">
       <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
-      Usuń</button>
+      Usuń</button> -->
+      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="confirmPosition('top', user.id, user.username)">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
+        Usuń</button>
+
     <button  mat-raised-button color="primary" style="margin-right: 5px"(click)="upDateUser(user.id)" >
     <mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon>
       Modyfikuj</button>
@@ -61,6 +67,9 @@
 
   </mat-expansion-panel>
 </mat-accordion>
+
+
+
 
 <!-- <mat-selection-list #shoes [multiple]="false">
   <mat-list-option *ngFor="let user of listaUzytkownikow.listaUzytkownikow">

@@ -14,7 +14,18 @@
       <label for="czyPubliczny">Czy publiczny</label>
       <input type="text" class="form-control" id="isPublic" required [(ngModel)]="category.czyPubliczny" name="czyPubliczny">
     </div>
-
+    <mat-form-field>
+      <mat-label>Nazwa kategorii</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Wpisz nazwe kategorii" required [(ngModel)]="category.rodzajKategorii">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Czy opublikowac kategorie</mat-label>
+      <mat-select>
+        <mat-option>TAK</mat-option>
+        <mat-option>NIE</mat-option>
+        <!-- <mat-option *ngFor="let wybor of lista" [value]="wybor" formControlName="czyPubliczny">{{wybor}} </mat-option> -->
+      </mat-select>
+    </mat-form-field>
     <button mat-raised-button color="primary" type="submit" class="btn btn-success">Dodaj kategorie</button>
   </form>
 </div>

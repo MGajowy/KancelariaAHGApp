@@ -15,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -37,7 +38,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     MatToolbarModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSelectModule
   ]
 })
 export class FullwidthModule { }

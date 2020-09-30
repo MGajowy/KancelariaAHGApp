@@ -32,6 +32,14 @@ import {MatInputModule} from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { UpdateUserComponent } from './admin/user/components/update-user/update-user.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+import { ButtonModule } from 'primeng/button';
+import { MessagesModule } from 'primeng/messages';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+
 
 @NgModule({
   declarations: [
@@ -69,7 +77,13 @@ import { UpdateUserComponent } from './admin/user/components/update-user/update-
   MatCardModule,
   MatInputModule,
   FlexLayoutModule,
-  MatGridListModule
-  ]
+  MatGridListModule,
+  MatSelectModule,
+  MatCheckboxModule,
+  ConfirmDialogModule,
+  ButtonModule,
+  MessagesModule,
+  ],
+  providers: [ConfirmationService]
 })
 export class ModulesModule { }

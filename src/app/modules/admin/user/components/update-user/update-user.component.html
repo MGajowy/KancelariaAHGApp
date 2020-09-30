@@ -39,7 +39,11 @@
       <label for="name">Plec</label>
       <input type="text" class="form-control" id="sexId" required [(ngModel)]="user.plec" name="sexId">
     </div>
+<section>
+  <button  mat-raised-button color="primary" style="margin-right: 5px">Zapisz</button>
+  <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="gotoList()">Cofnij</button>
+</section>
 
-    <button type="submit" class="btn btn-primary">Zapisz</button>
+
   </form>
 </div>

@@ -15,7 +15,7 @@ export class AddUserComponent implements OnInit {
   submitted = false;
   registerForm: FormGroup;
   userStateEnum = UserStateEnum;
-
+  listaPlci = Object.keys(UserSexEnum);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,7 +40,6 @@ export class AddUserComponent implements OnInit {
 
     if (this.registerForm.invalid) {
       alert('Uzupełnij pola wymagane zanaczone na kolor czerwony')
-
           return;
       }else{
     this.userService.addUser(

@@ -1,9 +1,11 @@
+import { UserSexEnum } from 'src/app/generated/UserSexEnum';
 
 import { UserService } from './../../admin/user/services/user.service';
 import { AuthServiceService } from './../../../core/services/auth/auth-service.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserStateEnum } from 'src/app/generated/UserStateEnum';
 
 @Component({
   selector: 'app-registration',
@@ -13,6 +15,7 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
     submitted = false;
     registerForm: FormGroup;
+    listaPlci = Object.keys(UserSexEnum);
 
     constructor(
         private formBuilder: FormBuilder,
@@ -35,7 +38,7 @@ export class RegistrationComponent implements OnInit {
         email: ['', Validators.required, Validators.email],
         telefon: ['', Validators.required],
         plec: ['', Validators.required],
-        stan: ['NIEAKTYWNY']
+        stan: [UserStateEnum.NIEAKTYWNY]
       });
       }
     }
