@@ -5,31 +5,33 @@
 
 <div [hidden]="submitted" style="width: 300px;">
   <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="rodzajKategorii">Rodzaj kategorii</label>
+    <!-- <div class="form-group">
+      <label for="rodzajKategorii">Nazwa kategorii</label>
       <input type="text" class="form-control" id="kategoria" required [(ngModel)]="category.rodzajKategorii" name="rodzajKategorii">
-    </div>
-
-    <div class="form-group">
+    </div> -->
+    <!-- <div class="form-group">
       <label for="czyPubliczny">Czy publiczny</label>
       <input type="text" class="form-control" id="isPublic" required [(ngModel)]="category.czyPubliczny" name="czyPubliczny">
-    </div>
-    <mat-form-field>
+    </div> -->
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nazwa kategorii</mat-label>
+        <input matInput placeholder="Wpisz nazwe kategorii" required [(ngModel)]="category.rodzajKategorii" name="rodzajKategorii" >
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+
+        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="category.czyPubliczny" name="czyPubliczny">Czy opublikowac kategorie</mat-checkbox>
+
+    <!-- <mat-form-field>
       <mat-label>Nazwa kategorii</mat-label>
-      <input matInput type="text" class="form-control" placeholder="Wpisz nazwe kategorii" required [(ngModel)]="category.rodzajKategorii">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Czy opublikowac kategorie</mat-label>
-      <mat-select>
-        <mat-option>TAK</mat-option>
-        <mat-option>NIE</mat-option>
-        <!-- <mat-option *ngFor="let wybor of lista" [value]="wybor" formControlName="czyPubliczny">{{wybor}} </mat-option> -->
-      </mat-select>
-    </mat-form-field>
+      <input matInput type="text" class="form-control" color="primary" placeholder="Wpisz nazwe kategorii" required [(ngModel)]="category.rodzajKategorii" name="rodzajKategorii">
+    </mat-form-field> -->
+    <div>
     <button mat-raised-button color="primary" type="submit" class="btn btn-success">Dodaj kategorie</button>
+   </div>
   </form>
 </div>
-
 <div [hidden]="!submitted">
   <h4>Kategoria została poprawnie dodana!</h4>
   <button mat-raised-button color="primary" class="btn btn-success" (click)="newCategory()">Dodaj nową kategorie</button>

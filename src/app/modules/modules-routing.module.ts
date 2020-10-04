@@ -1,3 +1,4 @@
+import { ModifyCategoryComponent } from './resolution/component/modify-category/modify-category.component';
 import { AuthGuardService } from './../core/services/guard/auth-guard.service';
 import { AddResolutionCategoryComponent } from './resolution/component/add-resolution-category/add-resolution-category.component';
 import { RegulationListComponent } from './regulation/component/regulation-list/regulation-list.component';
@@ -43,6 +44,10 @@ const routes: Routes = [
     path: 'add-category-resolutions',
     component: AddResolutionCategoryComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'modify-category',
+    component: ModifyCategoryComponent
   },
   {
     path: 'list-resolutions',

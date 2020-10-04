@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 
 export class CategoryDTO {
     id: number;
-    czyPubliczny: OrPublic;
+    czyPubliczny: boolean;
     rodzajKategorii: string;
 }
 
@@ -31,7 +31,7 @@ export class CategoryListDTO {
 
 export class CategoryDTOrequest {
     id: number;
-    czyPubliczny: OrPublic;
+    czyPubliczny: boolean;
     rodzajKategorii: string;
 }
 
@@ -210,8 +210,6 @@ export class TSAllRestApiClient {
 }
 
 export type RestResponse<R> = Observable<R>;
-
-export type OrPublic = "TAK" | "NIE";
 
 export type UserStateEnum = "AKTYWNY" | "NIEAKTYWNY" | "ZABLOKOWANY" | "USUNIETY";
 

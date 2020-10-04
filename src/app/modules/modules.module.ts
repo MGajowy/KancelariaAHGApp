@@ -39,6 +39,7 @@ import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { ModifyCategoryComponent } from './resolution/component/modify-category/modify-category.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { ConfirmationService } from 'primeng/api';
     RegulationCategoryComponent,
     RegulationListComponent,
     AddResolutionCategoryComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    ModifyCategoryComponent
   ],
   imports: [
   CommonModule,

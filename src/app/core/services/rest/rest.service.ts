@@ -14,6 +14,7 @@ export class RestService {
 
   wszystkieRestAdmin() {
     if (!this.restApiAdmin)
+    console.log(this.restApiAdmin);
     this.restApiAdmin = new TSAllRestApiClient(this.httpClient);
      return this.restApiAdmin;
   }

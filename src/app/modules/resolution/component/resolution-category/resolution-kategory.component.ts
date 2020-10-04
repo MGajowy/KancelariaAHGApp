@@ -23,7 +23,7 @@ export class ResolutionKategoryComponent implements OnInit {
   }
     reloadData() {
     this.resolutionService.getResolutionList().subscribe(value => {
-    this.listaKategorii = value;
+     this.listaKategorii = value;
     });
   }
 

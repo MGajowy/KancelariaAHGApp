@@ -2,6 +2,7 @@ import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { UserDTO } from 'src/app/generated/REST';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UserSexEnum } from 'src/app/generated/UserSexEnum';
 
 @Component({
   selector: 'app-update-user',
@@ -13,6 +14,7 @@ export class UpdateUserComponent implements OnInit {
   id: number;
   user: UserDTO;
   submitted = false;
+  listaPlci = Object.keys(UserSexEnum);
 
   constructor(
     private route: ActivatedRoute,

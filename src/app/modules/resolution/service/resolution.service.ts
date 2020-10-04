@@ -18,6 +18,10 @@ export class ResolutionService {
 
   constructor(private httpClient: HttpClient, private restService: RestService ) { }
 
+  // getStryng(){
+
+  //   return this.restService.wszystkieRestAdmin().getStr();
+  // }
   getResolutionList(): Observable<any> {
     return this.httpClient.get(`${baseUrl}rest/kategorie/pub/wszystkieKategorie`);
   }

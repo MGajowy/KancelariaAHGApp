@@ -1,5 +1,5 @@
 import { UserStateEnum } from './../../../../generated/UserStateEnum';
-import { CategoryDTO, OrPublic } from './../../../../generated/REST';
+import { CategoryDTO} from './../../../../generated/REST';
 import { ResolutionService } from './../../service/resolution.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,14 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class AddResolutionCategoryComponent implements OnInit {
 
   category: CategoryDTO = new CategoryDTO();
-  czyPubliczny: OrPublic;
   submitted = false;
-
-  lista = Object.keys(UserStateEnum);
 
   constructor(private resolutionServices: ResolutionService) { }
 
   ngOnInit(): void {
+  this.category.czyPubliczny = false;
 
   }
 
@@ -29,7 +27,6 @@ export class AddResolutionCategoryComponent implements OnInit {
   }
 
   save(){
-
     this.resolutionServices.createCategory(this.category)
       .subscribe(data => {
         console.log(data);
