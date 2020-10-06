@@ -35,10 +35,6 @@ export class CategoryDTOrequest {
     rodzajKategorii: string;
 }
 
-export class CategoryDTOresponse {
-    id: number;
-}
-
 export class UserDTO {
     id: number;
     imie: string;
@@ -121,11 +117,19 @@ export class TSAllRestApiClient {
     }
 
     /**
-     * HTTP POST /rest/kategorie/secured/modyfikuj-kategorie
+     * HTTP PUT /rest/kategorie/secured/modyfikuj-kategorie
      * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.modyfikujKategorie
      */
-    modyfikujKategorie(request: CategoryDTOrequest): RestResponse<CategoryDTOresponse> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/kategorie/secured/modyfikuj-kategorie`, data: request });
+    modyfikujKategorie(id: number): RestResponse<CategoryDTOrequest> {
+        return this.httpClient.request({ method: "PUT", url: uriEncoding`rest/kategorie/secured/modyfikuj-kategorie`, data: id });
+    }
+
+    /**
+     * HTTP GET /rest/kategorie/secured/szczegoly-kategorii
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.szczegolyKategorii
+     */
+    szczegolyKategorii(id: number): RestResponse<CategoryDTOrequest> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/secured/szczegoly-kategorii`, data: id });
     }
 
     /**

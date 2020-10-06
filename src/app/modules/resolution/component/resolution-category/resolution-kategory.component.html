@@ -2,19 +2,21 @@
   <mat-list-item>Kategorie uchwał</mat-list-item>
   <mat-divider></mat-divider><br>
 </mat-list>
+<p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000"></p-confirmDialog>
+<p-messages [value]="msgs"></p-messages>
 <mat-grid-list cols="2" rowHeight="10:1">
   <div *ngFor="let resolutions of listaKategorii.listaKategorii">
     <mat-grid-tile>
         {{resolutions.rodzajKategorii}}
       </mat-grid-tile>
       <mat-grid-tile>
-      <button  mat-raised-button color="primary" style="margin-right: 5px" (click) ='deleteCategoryResolutions(resolutions.id)'>
+      <button  mat-raised-button color="primary" style="margin-right: 5px" (click) ="confirmPosition('top', resolutions.id, resolutions.rodzajKategorii)">
         <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
         Usuń</button>
-      <button  mat-raised-button color="primary" style="margin-right: 5px" >
+      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="modifyCategory(resolutions.id)">
         <mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon>
         Modyfikuj</button>
-      <button  mat-raised-button color="primary" style="margin-right: 5px">
+      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="detailsCategory(resolutions.id)" >
         <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
         Szczegóły</button>
       </mat-grid-tile>

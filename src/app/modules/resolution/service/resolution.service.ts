@@ -4,7 +4,7 @@ import { RestService } from '../../../core/services/rest/rest.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseUrl } from 'src/environments/environment';
-import { CategoryDTO } from 'src/app/generated/REST';
+import { CategoryDTO, CategoryDTOrequest } from 'src/app/generated/REST';
 
 
 
@@ -38,4 +38,12 @@ export class ResolutionService {
     return this.httpClient.post(`${baseUrl}rest/kategorie/secured/dodaj-kategorie`, categoryDTO);
   }
 
-}
+  updateCategory(id: number, value: any): Observable <any>{
+    return this.httpClient.put(`${baseUrl}rest/kategorie/secured/modyfikuj-kategorie/${id}`, value);
+  }
+
+  detailsCategory(id: number): Observable <any>{
+    return this.httpClient.get(`${baseUrl}rest/kategorie/secured/szczegoly-kategorii/${id}`);
+    }
+  }
+

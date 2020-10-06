@@ -1,0 +1,18 @@
+<mat-list>
+  <mat-list-item>Szczegóły kategorii</mat-list-item>
+  <mat-divider></mat-divider><br>
+</mat-list>
+
+
+<div *ngIf="category">
+  <div>
+    <label><b>Nazwa kategorii:</b></label> {{category.rodzajKategorii}}
+  </div>
+  <div>
+    <label><b>Czy opublikowana: </b></label> {{category.czyPubliczny}}
+  </div>
+  <div>
+<br>
+<br>
+<button  mat-raised-button color="primary" style="margin-right: 5px" (click)="list()">Wróć do listy użytkowników</button><br>
+

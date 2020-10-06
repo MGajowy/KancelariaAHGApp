@@ -1,1 +1,26 @@
-<p>modify-category works!</p>
+<mat-list>
+  <mat-list-item>Modyfikuj kategorie</mat-list-item>
+  <mat-divider></mat-divider><br>
+</mat-list>
+<p>
+  <mat-form-field class="example-form-field">
+    <mat-label>Nazwa kategorii</mat-label>
+    <input matInput type="text" [(ngModel)]="category.rodzajKategorii">
+    <button mat-button *ngIf="category.rodzajKategorii" matSuffix mat-icon-button aria-label="Clear" (click)="category.rodzajKategorii=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="example-form-field">
+      <mat-label>Czy publiczny</mat-label>
+      <input matInput type="text" [(ngModel)]="category.czyPubliczny">
+      <button mat-button *ngIf="category.czyPubliczny" matSuffix mat-icon-button aria-label="Clear" (click)="category.czyPubliczny=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    </p>
+  <section>
+    <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="onSubmit()">Zapisz</button>
+    <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="gotoList()">Cofnij</button>
+  </section>

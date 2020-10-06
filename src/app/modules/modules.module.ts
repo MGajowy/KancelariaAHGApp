@@ -40,6 +40,7 @@ import { MessagesModule } from 'primeng/messages';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ModifyCategoryComponent } from './resolution/component/modify-category/modify-category.component';
+import { DetailsCategoryComponent } from './resolution/component/details-category/details-category.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ModifyCategoryComponent } from './resolution/component/modify-category/
     RegulationListComponent,
     AddResolutionCategoryComponent,
     UpdateUserComponent,
-    ModifyCategoryComponent
+    ModifyCategoryComponent,
+    DetailsCategoryComponent
   ],
   imports: [
   CommonModule,

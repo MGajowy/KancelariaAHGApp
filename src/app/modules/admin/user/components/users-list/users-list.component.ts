@@ -24,7 +24,7 @@ export class UsersListComponent implements OnInit {
   constructor(private userService: UserService,
     private router: Router,
     private confirmationService: ConfirmationService,
-     private primengConfig: PrimeNGConfig) { }
+    private primengConfig: PrimeNGConfig) { }
 
 
   ngOnInit(): void {
