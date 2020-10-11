@@ -61,6 +61,11 @@ export class AddUserDTO {
     plec: UserSexEnum;
 }
 
+export class LocationDTO {
+    id: number;
+    appUrl: string;
+}
+
 export interface Serializable {
 }
 
@@ -205,11 +210,11 @@ export class TSAllRestApiClient {
     }
 
     /**
-     * HTTP GET /rest/uzytkownicy/secured/wyslij-email-aktywacyjny
+     * HTTP POST /rest/uzytkownicy/secured/wyslij-email-aktywacyjny
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.wyslijMailAktywacyjny
      */
-    wyslijMailAktywacyjny(id: number): RestResponse<boolean> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/wyslij-email-aktywacyjny`, data: id });
+    wyslijMailAktywacyjny(locationDTO: LocationDTO): RestResponse<boolean> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/wyslij-email-aktywacyjny`, data: locationDTO });
     }
 }
 

@@ -1,3 +1,4 @@
+import { SetPasswordComponent } from './modules/admin/user/components/set-password/set-password.component';
 import { LogoutComponent } from './modules/logout/component/logout.component';
 import { RegistrationComponent } from './modules/registration/component/registration.component';
 import { NgModule } from '@angular/core';
@@ -32,6 +33,10 @@ const routes: Routes = [{
       path: 'logout',
       component: LogoutComponent
     },
+    {
+      path: 'set-password',
+      component: SetPasswordComponent
+    }
     // {
     //   path: 'logowanie',
     //   loadChildren: () => import('./fullwidth/fullwidth.module').then (m => m.FullwidthModule)

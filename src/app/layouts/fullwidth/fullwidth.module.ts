@@ -16,6 +16,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import {MatSelectModule} from '@angular/material/select';
+import { SetPasswordComponent } from 'src/app/modules/admin/user/components/set-password/set-password.component';
 
 
 
@@ -24,7 +25,8 @@ import {MatSelectModule} from '@angular/material/select';
     FullwidthComponent,
     LoginComponent,
     RegistrationComponent,
-    LogoutComponent
+    LogoutComponent,
+    SetPasswordComponent
   ],
   imports: [
     CommonModule,

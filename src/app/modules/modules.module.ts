@@ -41,6 +41,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ModifyCategoryComponent } from './resolution/component/modify-category/modify-category.component';
 import { DetailsCategoryComponent } from './resolution/component/details-category/details-category.component';
+import { SetPasswordComponent } from './admin/user/components/set-password/set-password.component';
 
 
 @NgModule({

@@ -38,7 +38,6 @@ export class UpdateUserComponent implements OnInit {
     this.userService.updateUser(this.id, this.user)
       .subscribe(data => console.log(data), error => console.log(error));
     this.user = new UserDTO();
-    this.reloadData();
     this.gotoList();
   }
 
@@ -48,6 +47,7 @@ export class UpdateUserComponent implements OnInit {
 
  gotoList(){
     this.router.navigate(['/kancelaria/user-list']);
+    this.reloadData();
 
   }
 

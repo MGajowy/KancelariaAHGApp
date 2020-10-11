@@ -1,4 +1,4 @@
-import { RegistrationDTO, AddUserDTO, UserDTO } from './../../../../generated/REST';
+import { RegistrationDTO, AddUserDTO, UserDTO, LocationDTO } from './../../../../generated/REST';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RestService } from 'src/app/core/services/rest/rest.service';
@@ -32,8 +32,8 @@ export class UserService {
     return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/dodaj-uzytkownika`, user);
   }
 
-  activateUser(id: number): Observable<any>{
-    return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/wyslij-email-aktywacyjny/${id}`);
+  activateUser(loca: LocationDTO): Observable<any>{
+    return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/wyslij-email-aktywacyjny`, loca);
   }
 
   unActivateUser(id: number): Observable<any>{

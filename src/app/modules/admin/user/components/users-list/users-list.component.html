@@ -42,7 +42,7 @@
     <!-- <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="deleteUser(user.id)">
       <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
       Usuń</button> -->
-      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="confirmPosition('top', user.id, user.username)">
+      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="confirmPosition('top', user.id)">
         <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
         Usuń</button>
 
@@ -53,7 +53,7 @@
       <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
       Szczegóły</button>
       <ng-container *ngIf = "user.stan === userStateEnum.NIEAKTYWNY; else unActivate" >
-      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="activeUser(user.id)" >
+      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="activeUser(user.id, url)" >
         <mat-icon aria-hidden="false" aria-label="Example home icon">mail_outline</mat-icon>
       Aktywuj użytkownika
       </button>

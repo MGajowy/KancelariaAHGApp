@@ -1,7 +1,8 @@
+
 import { UserStateEnum } from './../../../../../generated/UserStateEnum';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { UserListDTO } from 'src/app/generated/REST';
+import { LocationDTO, UserListDTO } from 'src/app/generated/REST';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message, PrimeNGConfig } from 'primeng/api';
 
@@ -12,7 +13,8 @@ import { ConfirmationService, Message, PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
-
+  url: string;
+  loca: LocationDTO;
     msgs: Message[] = [];
     position: string;
 
@@ -28,6 +30,7 @@ export class UsersListComponent implements OnInit {
 
 
   ngOnInit(): void {
+      this.url = window.location.origin;
       this.primengConfig.ripple = true;
       this.reloadData();
     }
@@ -47,12 +50,18 @@ export class UsersListComponent implements OnInit {
     }
 
     activeUser(id: number){
-      this.userService.activateUser(id).subscribe(data => {
+      this.loca = new LocationDTO();
+      this.loca.id = id;
+      this.loca.appUrl = this.url;
+
+      this.userService.activateUser(this.loca).subscribe(data => {
+        this.loca = data;
         console.log(data);
       },
       error => console.log(error));
       this.reloadData();
     }
+
     unActivateUser(id: number){
       this.userService.unActivateUser(id)
         .subscribe(data => {
