@@ -5,6 +5,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { UserPasswordDTO } from 'src/app/generated/REST';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,15 @@ export class AuthServiceService {
   logOut() {
     sessionStorage.removeItem('username')
     //sessionStorage.removeItem('token')
+  }
+
+  checkTokenSetPassword(token: string): Observable <any>{
+   return this.httpClient.get<any>(`${baseUrl}rest/uzytkownicy/pub/weryfikuj-token/${token}`);
+  }
+
+  setNewPassword(dto: UserPasswordDTO ): Observable<any> {
+ return this.httpClient.post<any>(`${baseUrl}rest/ustaw-haslo`, dto );
+
   }
 
 }

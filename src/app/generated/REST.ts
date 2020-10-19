@@ -9,6 +9,11 @@ export class CategoryDTO {
     rodzajKategorii: string;
 }
 
+export class UserPasswordDTO {
+    token: string;
+    password: string;
+}
+
 export class JwtRequest implements Serializable {
     username: string;
     password: string;
@@ -154,6 +159,22 @@ export class TSAllRestApiClient {
     }
 
     /**
+     * HTTP POST /rest/ustaw-haslo
+     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.AuthPublicRestApi.aktywacjaHasla
+     */
+    aktywacjaHasla(dto: UserPasswordDTO): RestResponse<boolean> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/ustaw-haslo`, data: dto });
+    }
+
+    /**
+     * HTTP GET /rest/uzytkownicy/pub/weryfikuj-token
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.pub.UserPublicRestApi.weryfikujToken
+     */
+    weryfikujToken(token: string): RestResponse<boolean> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/pub/weryfikuj-token`, data: token });
+    }
+
+    /**
      * HTTP POST /rest/uzytkownicy/secured/dezaktywuj-uzytkownika
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.dezaktywacjaUzytkownika
      */
@@ -199,14 +220,6 @@ export class TSAllRestApiClient {
      */
     usunUzytkownika(id: number): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/uzytkownicy/secured/usun-uzytkownika`, data: id });
-    }
-
-    /**
-     * HTTP GET /rest/uzytkownicy/secured/weryfikuj-token
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.weryfikujToken
-     */
-    weryfikujToken(token: string): RestResponse<boolean> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/weryfikuj-token`, data: token });
     }
 
     /**
