@@ -64,7 +64,9 @@
         Dezaktywuj użytkownika
       </button>
     </ng-template>
-
+    <button mat-raised-button color="primary"  style="margin-right: 5px" (click)="resetPassword(user.username)">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">mail_outline</mat-icon>
+      Reset hasła</button>
   </mat-expansion-panel>
 </mat-accordion>
 

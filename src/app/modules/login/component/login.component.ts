@@ -1,3 +1,5 @@
+import { ResetPasswordDTO } from './../../../generated/REST';
+import { LoginService } from './../service/login.service';
 import { AuthServiceService } from './../../../core/services/auth/auth-service.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -11,12 +13,17 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
+  dto = new ResetPasswordDTO();
 
-  constructor(private authService: AuthServiceService, private router: Router) { }
+  constructor(private authService: AuthServiceService, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.initForm();
   }
+
+  // resetPassword(){
+  //   this.loginService.sendResetPassword(this.dto).subscribe(res => {this.dto = res; });
+  // }
 
   initForm() {
     this.formGroup = new FormGroup({

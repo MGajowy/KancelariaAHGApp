@@ -1,3 +1,4 @@
+import { ResetPasswordComponent } from './modules/admin/user/components/reset-password/reset-password.component';
 import { SetPasswordComponent } from './modules/admin/user/components/set-password/set-password.component';
 import { LogoutComponent } from './modules/logout/component/logout.component';
 import { RegistrationComponent } from './modules/registration/component/registration.component';
@@ -36,6 +37,10 @@ const routes: Routes = [{
     {
       path: 'set-password',
       component: SetPasswordComponent
+    },
+    {
+      path: 'reset-password',
+      component: ResetPasswordComponent
     }
     // {
     //   path: 'logowanie',

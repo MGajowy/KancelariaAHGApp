@@ -1,3 +1,4 @@
+import { ResetPasswordComponent } from './../../modules/admin/user/components/reset-password/reset-password.component';
 import { LogoutComponent } from './../../modules/logout/component/logout.component';
 
 import { RegistrationComponent } from './../../modules/registration/component/registration.component';
@@ -26,7 +27,8 @@ import { SetPasswordComponent } from 'src/app/modules/admin/user/components/set-
     LoginComponent,
     RegistrationComponent,
     LogoutComponent,
-    SetPasswordComponent
+    SetPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

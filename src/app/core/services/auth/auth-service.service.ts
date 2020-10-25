@@ -12,21 +12,21 @@ import { UserPasswordDTO } from 'src/app/generated/REST';
 })
 export class AuthServiceService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
-    authenticate(username, password) {
-      return this.httpClient.post<any>(`${baseUrl}rest/authenticate`, {username, password}).pipe(
-       map(
-         userData => {
+  authenticate(username, password) {
+    return this.httpClient.post<any>(`${baseUrl}rest/authenticate`, { username, password }).pipe(
+      map(
+        userData => {
           sessionStorage.setItem('username', username);
-          const tokenStr = 'Bearer '+ userData.token;
+          const tokenStr = 'Bearer ' + userData.token;
           sessionStorage.setItem('token', tokenStr);
           return userData;
-         }
-       )
+        }
+      )
 
-      );
-    }
+    );
+  }
 
 
   isUserLoggedIn(): boolean {
@@ -46,13 +46,17 @@ export class AuthServiceService {
     //sessionStorage.removeItem('token')
   }
 
-  checkTokenSetPassword(token: string): Observable <any>{
-   return this.httpClient.get<any>(`${baseUrl}rest/uzytkownicy/pub/weryfikuj-token/${token}`);
+  checkTokenSetPassword(token: string): Observable<any> {
+    return this.httpClient.get<any>(`${baseUrl}rest/uzytkownicy/pub/weryfikuj-token/${token}`);
   }
 
-  setNewPassword(dto: UserPasswordDTO ): Observable<any> {
- return this.httpClient.post<any>(`${baseUrl}rest/ustaw-haslo`, dto );
+  setNewPassword(dto: UserPasswordDTO): Observable<any> {
+    return this.httpClient.post<any>(`${baseUrl}rest/ustaw-haslo`, dto);
 
+  }
+
+  resetPassword(dto: UserPasswordDTO): Observable<any> {
+    return this.httpClient.post<any>(`${baseUrl}rest/reset-hasla`, dto);
   }
 
 }

@@ -40,6 +40,11 @@ export class CategoryDTOrequest {
     rodzajKategorii: string;
 }
 
+export class ResetPasswordDTO {
+    username: string;
+    appUrl: string;
+}
+
 export class UserDTO {
     id: number;
     imie: string;
@@ -159,11 +164,27 @@ export class TSAllRestApiClient {
     }
 
     /**
+     * HTTP POST /rest/reset-hasla
+     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.AuthPublicRestApi.resetHasla
+     */
+    resetHasla(dto: UserPasswordDTO): RestResponse<boolean> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/reset-hasla`, data: dto });
+    }
+
+    /**
      * HTTP POST /rest/ustaw-haslo
      * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.AuthPublicRestApi.aktywacjaHasla
      */
     aktywacjaHasla(dto: UserPasswordDTO): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/ustaw-haslo`, data: dto });
+    }
+
+    /**
+     * HTTP POST /rest/uzytkownicy/pub/reset-hasla
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.pub.UserPublicRestApi.ResetHasla
+     */
+    ResetHasla(dto: ResetPasswordDTO): RestResponse<boolean> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/pub/reset-hasla`, data: dto });
     }
 
     /**

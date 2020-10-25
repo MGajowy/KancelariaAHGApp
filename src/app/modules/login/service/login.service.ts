@@ -1,4 +1,4 @@
-import { LoginDTO } from './../../../generated/REST';
+import { ResetPasswordDTO } from './../../../generated/REST';
 
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -13,7 +13,11 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient, private restService: RestService) { }
 
-  Login(loginDTO: LoginDTO ): Observable<any> {
-    return this.httpClient.post(`${baseUrl}rest/authenticate`, loginDTO);
+  // Login(loginDTO: LoginDTO ): Observable<any> {
+  //   return this.httpClient.post(`${baseUrl}rest/authenticate`, loginDTO);
+  // }
+
+  sendResetPassword(dto: ResetPasswordDTO): Observable<any>{
+    return this.httpClient.post(`${baseUrl}rest/uzytkownicy/pub/reset-hasla`, dto);
   }
 }
