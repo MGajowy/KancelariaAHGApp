@@ -1,5 +1,6 @@
-import { UserStateEnum } from './../../../../../generated/UserStateEnum';
+import { RolesName } from './../../../../../generated/RolesName';
 
+import { UserStateEnum } from './../../../../../generated/UserStateEnum';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,45 +16,47 @@ export class AddUserComponent implements OnInit {
   submitted = false;
   registerForm: FormGroup;
   userStateEnum = UserStateEnum;
+  roleName = RolesName;
   listaPlci = Object.keys(UserSexEnum);
+  listaRol = Object.keys(RolesName);
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService
-    ) { }
-  ngOnInit()
-  {
+  ) { }
+  ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      username:  ['', Validators.required],
+      username: ['', Validators.required],
       imie: ['', Validators.required],
       nazwisko: ['', Validators.required],
       email: ['', Validators.required, Validators.email],
       telefon: ['', Validators.required],
       plec: ['', Validators.required],
+      rola: [this.roleName.USER, Validators.required],
       stan: [this.userStateEnum.NIEAKTYWNY],
     });
-    }
+  }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
 
     if (this.registerForm.invalid) {
       alert('Uzupełnij pola wymagane zanaczone na kolor czerwony')
-          return;
-      }else{
-    this.userService.addUser(
-       this.registerForm.value)
-      .subscribe(result => {
-        if (result.success){
-          console.log(result);
-        }else {
-          this.router.navigate(['']);
-        }
-      });
+      return;
+    } else {
+      this.userService.addUser(
+        this.registerForm.value)
+        .subscribe(result => {
+          if (result.success) {
+            console.log(result);
+          } else {
+            this.router.navigate(['']);
+          }
+        });
       alert('Uzytkownik zostal dodany do listy uzytkownikow')
-        this.router.navigate(['kancelaria/user-list']);
+      this.router.navigate(['kancelaria/user-list']);
     }
-    }
+  }
 
 }

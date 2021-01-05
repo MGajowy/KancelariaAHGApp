@@ -163,7 +163,7 @@ export class SidebarComponent {
             icon: 'pi pi-fw pi-calendar-times',
             items: [
               {
-                label: 'Lista sprcjalizacji',
+                label: 'Lista specjalizacji',
                 icon: 'pi pi-fw pi-calendar-minus'
               }
             ]

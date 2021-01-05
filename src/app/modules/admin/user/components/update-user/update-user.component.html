@@ -116,6 +116,14 @@
     </mat-select>
   </mat-form-field>
 </p>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>Rola systemowa</mat-label>
+    <mat-select [(ngModel)]="rola">
+      <mat-option *ngFor="let rola of listaRol" [value]="rola">{{rola}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</p>
 <section>
   <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="onSubmit()">Zapisz</button>
   <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="gotoList()">Cofnij</button>

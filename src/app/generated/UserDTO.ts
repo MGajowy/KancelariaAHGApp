@@ -11,8 +11,11 @@ export class UserDTO {
     email: string;
     telefon: string;
     plec: UserSexEnum;
+    role: RolesName[];
 }
 
 export type UserStateEnum = "AKTYWNY" | "NIEAKTYWNY" | "ZABLOKOWANY" | "USUNIETY";
 
 export type UserSexEnum = "KOBIETA" | "MEZCZYZNA";
+
+export type RolesName = "USER" | "ADMIN";

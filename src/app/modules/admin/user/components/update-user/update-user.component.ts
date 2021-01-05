@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserDTO } from 'src/app/generated/REST';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserSexEnum } from 'src/app/generated/UserSexEnum';
+import { RolesName } from 'src/app/generated/RolesName';
 
 @Component({
   selector: 'app-update-user',
@@ -13,14 +14,17 @@ export class UpdateUserComponent implements OnInit {
 
   id: number;
   user: UserDTO;
+  rola: RolesName;
+  role: RolesName[];
   submitted = false;
   listaPlci = Object.keys(UserSexEnum);
+  listaRol = Object.keys(RolesName);
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.user = new UserDTO();
@@ -29,15 +33,16 @@ export class UpdateUserComponent implements OnInit {
 
     this.userService.detailsUser(this.id)
       .subscribe(data => {
-        console.log(data)
         this.user = data;
       }, error => console.log(error));
   }
 
   updateUser() {
     this.userService.updateUser(this.id, this.user)
-      .subscribe(data => console.log(data), error => console.log(error));
-    this.user = new UserDTO();
+      .subscribe(data => { this.user = data });
+
+    // this.role.push(this.rola);
+    // this.user.role = this.role;
     this.gotoList();
   }
 
@@ -45,13 +50,12 @@ export class UpdateUserComponent implements OnInit {
     this.updateUser();
   }
 
- gotoList(){
-    this.router.navigate(['/kancelaria/user-list']);
+  gotoList() {
     this.reloadData();
-
+    this.router.navigate(['/kancelaria/user-list']);
   }
 
-  reloadData(){
+  reloadData() {
     this.userService.getUserList();
   }
 }

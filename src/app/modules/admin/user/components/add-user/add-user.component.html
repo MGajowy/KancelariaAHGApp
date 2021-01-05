@@ -45,6 +45,12 @@
           <mat-option *ngFor="let wybor of listaPlci" [value]="wybor">{{wybor}} </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Rola systemowa</mat-label>
+        <mat-select formControlName="rola">
+          <mat-option *ngFor="let rola of listaRol" [value]="rola">{{rola}} </mat-option>
+        </mat-select>
+      </mat-form-field>
       <mat-form-field>
         <mat-label>stan</mat-label>
         <input matInput disabled value="NIEAKTYWNY">

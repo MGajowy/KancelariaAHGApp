@@ -1,3 +1,4 @@
+import { RolesName } from './../../../../../generated/REST';
 import { UserService } from './../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -12,6 +13,7 @@ export class UserDetailsComponent implements OnInit {
 
   id: number;
   user: UserDTO;
+  role: RolesName[];
 
   constructor(private route: ActivatedRoute, private router: Router,
     private userService: UserService) { }
