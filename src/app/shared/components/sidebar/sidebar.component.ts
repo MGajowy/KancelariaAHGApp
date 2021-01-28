@@ -27,39 +27,39 @@ export class SidebarComponent {
         items: [
           {
             label: 'Użytkownicy',
-        icon: 'pi pi-fw pi-user',
-        items: [
-          {
-            label: 'Dodaj użytkownika',
-            icon: 'pi pi-fw pi-user-plus',
-            command: () => this.nav('/kancelaria/add-user')
-          },
-          {
-            label: 'Lista użytkowników',
-            icon: 'pi pi-fw pi-users',
-            command: () => this.nav('/kancelaria/user-list')
-          },
-          // {
-          //   label: 'Wyszukaj',
-          //   icon: 'pi pi-fw pi-users',
-          //   items: [
-          //     {
-          //       label: 'Filter',
-          //       icon: 'pi pi-fw pi-filter',
-          //       items: [
-          //         {
-          //           label: 'Print',
-          //           icon: 'pi pi-fw pi-print'
-          //         }
-          //       ]
-          //     },
-          //     {
-          //       icon: 'pi pi-fw pi-bars',
-          //       label: 'List'
-          //     }
-          //   ]
-          // }
-        ]
+            icon: 'pi pi-fw pi-user',
+            items: [
+              {
+                label: 'Dodaj użytkownika',
+                icon: 'pi pi-fw pi-user-plus',
+                command: () => this.nav('/kancelaria/add-user')
+              },
+              {
+                label: 'Lista użytkowników',
+                icon: 'pi pi-fw pi-users',
+                command: () => this.nav('/kancelaria/user-list')
+              },
+              // {
+              //   label: 'Wyszukaj',
+              //   icon: 'pi pi-fw pi-users',
+              //   items: [
+              //     {
+              //       label: 'Filter',
+              //       icon: 'pi pi-fw pi-filter',
+              //       items: [
+              //         {
+              //           label: 'Print',
+              //           icon: 'pi pi-fw pi-print'
+              //         }
+              //       ]
+              //     },
+              //     {
+              //       icon: 'pi pi-fw pi-bars',
+              //       label: 'List'
+              //     }
+              //   ]
+              // }
+            ]
           },
           {
             label: 'Monitoring',
@@ -77,7 +77,7 @@ export class SidebarComponent {
             icon: 'pi pi-cog',
             //command: () => this.nav('')
           },
-           {
+          {
             label: 'Ustawienia strony',
             icon: 'pi pi-cog',
           }
@@ -98,7 +98,8 @@ export class SidebarComponent {
               },
               {
                 label: 'Dodaj uchwałe',
-                icon: 'pi pi-fw pi-file'
+                icon: 'pi pi-fw pi-file',
+                command: () => this.nav('/kancelaria/add-resolutions')
               }
             ]
           },
@@ -107,7 +108,7 @@ export class SidebarComponent {
             icon: 'pi pi-folder-open',
             command: () => this.nav('/kancelaria/category-resolutions')
           },
-           {
+          {
             label: 'Lista uchwał',
             icon: 'pi pi-fw pi-file',
             command: () => this.nav('/kancelaria/list-resolutions')

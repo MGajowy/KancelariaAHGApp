@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
     {
       if (this.authenticationService.isUserLoggedIn()) {
         this.router.navigate(['/']);
-        alert('Jesteś zalogowany, aby zarejstrować się pomownie wyloguj się.')
+        alert('Jesteś zalogowany, aby zarejstrować się ponownie wyloguj się.')
     }else
     {
       this.registerForm = this.formBuilder.group({

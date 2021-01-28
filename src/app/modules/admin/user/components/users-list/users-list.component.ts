@@ -26,17 +26,20 @@ export class UsersListComponent implements OnInit {
   listaUzytkownikow: UserListDTO;
   userStateEnum = UserStateEnum;
 
-  constructor(private userService: UserService, private loginService: LoginService,
+  constructor(
+    private userService: UserService,
+    private loginService: LoginService,
     private router: Router,
     private confirmationService: ConfirmationService,
     private primengConfig: PrimeNGConfig) { }
 
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.url = window.location.origin;
     this.primengConfig.ripple = true;
     this.reloadData();
   }
+
   reloadData() {
     this.userService.getUserList().subscribe(value => {
       this.listaUzytkownikow = value;

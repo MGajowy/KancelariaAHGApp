@@ -23,15 +23,14 @@ export class UserDetailsComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
 
     this.userService.detailsUser(this.id)
-    .subscribe(data => {
-      this.user = data;
+      .subscribe(data => {
+        this.user = data;
 
-    }, error => console.log(error));
-}
+      }, error => console.log(error));
+  }
 
-list(){
-  this.router.navigate(['/kancelaria/user-list']);
-
+  list() {
+    this.router.navigate(['/kancelaria/user-list']);
   }
 
 }

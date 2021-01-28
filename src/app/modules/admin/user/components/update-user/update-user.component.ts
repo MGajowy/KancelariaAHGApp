@@ -38,6 +38,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateUser() {
+    // this.user = new UserDTO();
     this.userService.updateUser(this.id, this.user)
       .subscribe(data => { this.user = data });
 
@@ -51,7 +52,6 @@ export class UpdateUserComponent implements OnInit {
   }
 
   gotoList() {
-    this.reloadData();
     this.router.navigate(['/kancelaria/user-list']);
   }
 

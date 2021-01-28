@@ -9,7 +9,9 @@
     <label><b>Nazwa kategorii:</b></label> {{category.rodzajKategorii}}
   </div>
   <div>
-    <label><b>Czy opublikowana: </b></label> {{category.czyPubliczny}}
+    <label><b>Czy opublikowana: </b></label>
+    <mat-checkbox class="example-margin" color="primary" [(ngModel)]="category.czyPubliczny" name="czyPubliczny">
+    </mat-checkbox>
   </div>
   <div>
 <br>

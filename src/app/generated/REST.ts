@@ -9,6 +9,10 @@ export class CategoryDTO {
     rodzajKategorii: string;
 }
 
+export class EventLogListDTO {
+    listaLogow: EventLogDTO[];
+}
+
 export class UserPasswordDTO {
     token: string;
     password: string;
@@ -38,6 +42,26 @@ export class CategoryDTOrequest {
     id: number;
     czyPubliczny: boolean;
     rodzajKategorii: string;
+}
+
+export class ResolutionListDTO {
+    listaUchwal: ResolutionDTO[];
+}
+
+export class CreateResotutionDTO {
+    id: number;
+    opis: string;
+    tresc: string;
+    czyPubliczny: boolean;
+    kategoria: number;
+}
+
+export class ResolutionDTO {
+    id: number;
+    opis: string;
+    tresc: string;
+    czyPubliczny: boolean;
+    kategoria: number;
 }
 
 export class ResetPasswordDTO {
@@ -78,6 +102,13 @@ export class LocationDTO {
     appUrl: string;
 }
 
+export class EventLogDTO {
+    id: number;
+    czynnosc: string;
+    data_czynnosci: Calendar;
+    uzytkownik: string;
+}
+
 export interface Serializable {
 }
 
@@ -91,6 +122,15 @@ export class ResponseEntity<T> extends HttpEntity<T> {
     statusCodeValue: number;
 }
 
+export class Calendar implements Serializable, Cloneable, Comparable<Calendar> {
+}
+
+export interface Cloneable {
+}
+
+export interface Comparable<T> {
+}
+
 export interface HttpClient {
 
     request<R>(requestConfig: { method: string; url: string; queryParams?: any; data?: any; copyFn?: (data: R) => R; }): RestResponse<R>;
@@ -99,6 +139,14 @@ export interface HttpClient {
 export class TSAllRestApiClient {
 
     constructor(protected httpClient: HttpClient) {
+    }
+
+    /**
+     * HTTP GET /rest/administracja/secured/dziennikZdarzen
+     * Java method: pl.kancelaria.AHG.shared.restapi.administration.restapi.secured.AdministrationSecuredRestApi.pobierzDziennikZdarzenDto
+     */
+    pobierzDziennikZdarzenDto(): RestResponse<EventLogListDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/administracja/secured/dziennikZdarzen` });
     }
 
     /**
@@ -171,6 +219,46 @@ export class TSAllRestApiClient {
      */
     resetHasla(dto: UserPasswordDTO): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/reset-hasla`, data: dto });
+    }
+
+    /**
+     * HTTP GET /rest/uchwaly/pub/ListaUchwał
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.pub.ResolutionPublicRestApi.pobierzListeUchwalDto
+     */
+    pobierzListeUchwalDto(): RestResponse<ResolutionListDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uchwaly/pub/ListaUchwał` });
+    }
+
+    /**
+     * HTTP POST /rest/uchwaly/secured/dodaj-uchwale
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.dodajUchale
+     */
+    dodajUchale(resolutionDTO: CreateResotutionDTO): RestResponse<ResponseEntity<HttpStatus>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uchwaly/secured/dodaj-uchwale`, data: resolutionDTO });
+    }
+
+    /**
+     * HTTP PUT /rest/uchwaly/secured/modyfikuj-uchwale
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.modyfikujUchwale
+     */
+    modyfikujUchwale(id: number): RestResponse<ResolutionDTO> {
+        return this.httpClient.request({ method: "PUT", url: uriEncoding`rest/uchwaly/secured/modyfikuj-uchwale`, data: id });
+    }
+
+    /**
+     * HTTP GET /rest/uchwaly/secured/szczegoly-uchwaly
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.szczegolyUchwaly
+     */
+    szczegolyUchwaly(id: number): RestResponse<ResolutionDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uchwaly/secured/szczegoly-uchwaly`, data: id });
+    }
+
+    /**
+     * HTTP DELETE /rest/uchwaly/secured/usun-uchwale
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.usunUchwale
+     */
+    usunUchwale(id: number): RestResponse<ResponseEntity<HttpStatus>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/uchwaly/secured/usun-uchwale`, data: id });
     }
 
     /**

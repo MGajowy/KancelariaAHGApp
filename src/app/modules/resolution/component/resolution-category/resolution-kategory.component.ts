@@ -18,52 +18,57 @@ export class ResolutionKategoryComponent implements OnInit {
   position: string;
   listaKategorii: CategoryListDTO;
 
-  constructor(private resolutionService: ResolutionService, private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig, private router: Router) {}
+  constructor(
+    private resolutionService: ResolutionService,
+    private confirmationService: ConfirmationService,
+    private primengConfig: PrimeNGConfig,
+    private router: Router) { }
 
-    ngOnInit(): void {
+  ngOnInit() {
     this.reloadData();
-    console.log(this.listaKategorii);
+    // console.log(this.listaKategorii);
   }
-    reloadData() {
+
+  reloadData() {
     this.resolutionService.getResolutionList().subscribe(value => {
-     this.listaKategorii = value;
+      this.listaKategorii = value;
     });
   }
 
-    deleteCategoryResolutions (id: number){
+  deleteCategoryResolutions(id: number) {
     this.resolutionService.deleteCategory(id)
-    .subscribe(data => {
-      console.log(data);
-      this.reloadData();
-    },
-    error => console.log(error));
+      .subscribe(data => {
+        console.log(data);
+        this.reloadData();
+      },
+        error => console.log(error));
   }
 
   confirmPosition(position: string, id: number, nameCategory: string) {
     this.position = position;
 
     this.confirmationService.confirm({
-        message: 'Czy chcesz usunac kategorie: ' + nameCategory +  '?',
-        header: 'Usuwanie kategorii',
-        icon: 'pi pi-info-circle',
-        accept: () => {
-            this.msgs = [{severity:'info', summary:'OK.', detail:'Kategoria ' + nameCategory + ' została usunięta.'}];
-            this.deleteCategoryResolutions(id);
-        },
-        reject: () => {
-            this.msgs = [{severity:'info', summary:'Anulowano usuwanie kategorii ' + nameCategory}];
-        },
-        key: "positionDialog"
+      message: 'Czy chcesz usunac kategorie: ' + nameCategory + '?',
+      header: 'Usuwanie kategorii',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.msgs = [{ severity: 'info', summary: 'OK.', detail: 'Kategoria ' + nameCategory + ' została usunięta.' }];
+        this.deleteCategoryResolutions(id);
+      },
+      reject: () => {
+        this.msgs = [{ severity: 'info', summary: 'Anulowano usuwanie kategorii ' + nameCategory }];
+      },
+      key: "positionDialog"
     });
-}
+  }
 
-modifyCategory(id: number){
-  this.router.navigate(['/kancelaria/modify-category', id]);
+  modifyCategory(id: number) {
+    this.router.navigate(['/kancelaria/modify-category', id]);
 
-}
+  }
 
-detailsCategory(id: number){
-  this.router.navigate(['/kancelaria/category-detail', id]);
-}
+  detailsCategory(id: number) {
+    this.router.navigate(['/kancelaria/category-detail', id]);
+  }
 
 }

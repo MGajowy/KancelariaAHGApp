@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventLogComponent } from './event-log.component';
+import { AddResolutionComponent } from './add-resolution.component';
 
-describe('EventLogComponent', () => {
-  let component: EventLogComponent;
-  let fixture: ComponentFixture<EventLogComponent>;
+describe('AddResolutionComponent', () => {
+  let component: AddResolutionComponent;
+  let fixture: ComponentFixture<AddResolutionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventLogComponent ]
+      declarations: [ AddResolutionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventLogComponent);
+    fixture = TestBed.createComponent(AddResolutionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

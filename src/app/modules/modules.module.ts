@@ -18,7 +18,7 @@ import { ResolutionKategoryComponent } from './resolution/component/resolution-c
 import { AddUserComponent } from './admin/user/components/add-user/add-user.component';
 import { UserDetailsComponent } from './admin/user/components/user-details/user-details.component';
 import { UserProfileComponent } from './admin/user/components/user-profile/user-profile.component';
-import { EventLogComponent } from './admin/configuration-comp/monitoring/event-log/event-log.component';
+import { EventLogComponent } from './admin/event-log/component/event-log.component';
 import { RegulationCategoryComponent } from './regulation/component/regulation-category/regulation-category.component';
 import { RegulationListComponent } from './regulation/component/regulation-list/regulation-list.component';
 import { AppRoutingModule } from '../app-routing.module';
@@ -42,7 +42,8 @@ import { ConfirmationService } from 'primeng/api';
 import { ModifyCategoryComponent } from './resolution/component/modify-category/modify-category.component';
 import { DetailsCategoryComponent } from './resolution/component/details-category/details-category.component';
 import { SetPasswordComponent } from './admin/user/components/set-password/set-password.component';
-
+import {TableModule} from 'primeng/table';
+import {AddResolutionComponent} from './resolution/component/add-resolution/add-resolution.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { SetPasswordComponent } from './admin/user/components/set-password/set-p
     AddResolutionCategoryComponent,
     UpdateUserComponent,
     ModifyCategoryComponent,
-    DetailsCategoryComponent
+    DetailsCategoryComponent,
+    AddResolutionComponent
   ],
   imports: [
   CommonModule,
@@ -88,6 +90,8 @@ import { SetPasswordComponent } from './admin/user/components/set-password/set-p
   ConfirmDialogModule,
   ButtonModule,
   MessagesModule,
+  TableModule
+
   ],
   providers: [ConfirmationService]
 })

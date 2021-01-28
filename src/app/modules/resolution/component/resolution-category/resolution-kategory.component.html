@@ -4,7 +4,7 @@
 </mat-list>
 <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000"></p-confirmDialog>
 <p-messages [value]="msgs"></p-messages>
-<mat-grid-list cols="2" rowHeight="10:1">
+<mat-grid-list *ngIf="listaKategorii.listaKategorii.length > 0" cols="2" rowHeight="10:1">
   <div *ngFor="let resolutions of listaKategorii.listaKategorii">
     <mat-grid-tile>
         {{resolutions.rodzajKategorii}}
@@ -22,6 +22,7 @@
       </mat-grid-tile>
     </div>
 </mat-grid-list>
+<p *ngIf="listaKategorii.listaKategorii.length == 0">Lista kategorii jest pusta.</p>
 <!-- <mat-list>
   <div mat-subheader>Kategorie uchwał</div>
   <mat-list-item *ngFor="let resolutions of listaKategorii.listaKategorii">

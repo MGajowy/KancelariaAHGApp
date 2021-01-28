@@ -1,0 +1,28 @@
+<mat-list>
+  <mat-list-item>Dziennik zdarzen</mat-list-item>
+  <mat-divider></mat-divider><br>
+</mat-list>
+
+<div class="row">
+  <div class="col-xs-12">
+    <mat-card style="margin-top: 20px; margin-bottom: 20px;">
+      <p-table *ngIf="logList.listaLogow.length > 0" [columns]="cols" [value]="logList.listaLogow">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p *ngIf="logList.listaLogow.length == 0">Dziennik zdarzeń jest pusty.</p>
+    </mat-card>
+  </div>
+</div>
