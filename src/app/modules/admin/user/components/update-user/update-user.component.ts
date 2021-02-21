@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { UserDTO } from 'src/app/generated/REST';
@@ -19,6 +20,7 @@ export class UpdateUserComponent implements OnInit {
   submitted = false;
   listaPlci = Object.keys(UserSexEnum);
   listaRol = Object.keys(RolesName);
+  term: FormControl;
 
   constructor(
     private route: ActivatedRoute,
@@ -56,6 +58,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
   reloadData() {
-    this.userService.getUserList();
+    this.term = new FormControl('');
+    this.userService.getUserList(({ term: this.term.value }));
   }
 }

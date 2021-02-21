@@ -7,6 +7,8 @@ import { LocationDTO, UserListDTO } from 'src/app/generated/REST';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message, PrimeNGConfig } from 'primeng/api';
 import { LoginService } from 'src/app/modules/login/service/login.service';
+import { FormControl } from '@angular/forms';
+import { debounce, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 
 @Component({
@@ -25,6 +27,7 @@ export class UsersListComponent implements OnInit {
   panelOpenState = false;
   listaUzytkownikow: UserListDTO;
   userStateEnum = UserStateEnum;
+  term: FormControl;
 
   constructor(
     private userService: UserService,
@@ -37,14 +40,31 @@ export class UsersListComponent implements OnInit {
   ngOnInit() {
     this.url = window.location.origin;
     this.primengConfig.ripple = true;
-    this.reloadData();
+    // this.reloadData();
+     this.wyszukiwarkaUzytkownikow();
+  }
+
+
+  private wyszukiwarkaUzytkownikow(): void {
+    this.term = new FormControl('');
+     this.reloadData();
+    this.term.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    )
+    .subscribe(() => {
+      this.reloadData();
+
+    })
+    console.log(this.term.value)
+
   }
 
   reloadData() {
-    this.userService.getUserList().subscribe(value => {
-      this.listaUzytkownikow = value;
-      console.log(value);
-    });
+    this.userService.getUserList(this.term.value).subscribe(res => {
+      this.listaUzytkownikow = res;
+      console.log(res);
+    })
   }
 
   deleteUser(id: number) {

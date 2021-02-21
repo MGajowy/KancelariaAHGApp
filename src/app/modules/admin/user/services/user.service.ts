@@ -1,6 +1,6 @@
 import { RegistrationDTO, AddUserDTO, UserDTO, LocationDTO } from './../../../../generated/REST';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { RestService } from 'src/app/core/services/rest/rest.service';
 import { Observable } from 'rxjs';
 import { baseUrl } from 'src/environments/environment';
@@ -12,8 +12,10 @@ export class UserService {
 
   constructor(private httpClient: HttpClient, private restService: RestService) { }
 
-  getUserList(): Observable<any> {
-    return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/listaUzytkownikow`);
+  getUserList(term): Observable<any> {
+    const params = new HttpParams()
+      .set('term', term);
+    return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/listaUzytkownikow`, { params });
   }
   //metoda przez restService
   // getUserList(): Observable<any> {
@@ -24,27 +26,27 @@ export class UserService {
     return this.httpClient.post(`${baseUrl}rest/register`, user);
   }
 
-  deleteUser(id: number){
+  deleteUser(id: number) {
     return this.httpClient.delete(`${baseUrl}rest/uzytkownicy/secured/usun-uzytkownika/${id}`);
   }
 
-  addUser(user: AddUserDTO ): Observable<any> {
+  addUser(user: AddUserDTO): Observable<any> {
     return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/dodaj-uzytkownika`, user);
   }
 
-  activateUser(loca: LocationDTO): Observable<any>{
+  activateUser(loca: LocationDTO): Observable<any> {
     return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/wyslij-email-aktywacyjny`, loca);
   }
 
-  unActivateUser(id: number): Observable<any>{
+  unActivateUser(id: number): Observable<any> {
     return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/dezaktywuj-uzytkownika/${id}`, id);
   }
 
-  updateUser(id: number, value: any): Observable <any>{
-  return this.httpClient.put(`${baseUrl}rest/uzytkownicy/secured/modyfikuj-uzytkownika/${id}`, value);
+  updateUser(id: number, value: any): Observable<any> {
+    return this.httpClient.put(`${baseUrl}rest/uzytkownicy/secured/modyfikuj-uzytkownika/${id}`, value);
   }
 
-  detailsUser(id: number): Observable <any>{
-  return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/szczegoly-uzytkownika/${id}`);
+  detailsUser(id: number): Observable<any> {
+    return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/szczegoly-uzytkownika/${id}`);
   }
 }

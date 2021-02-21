@@ -305,8 +305,8 @@ export class TSAllRestApiClient {
      * HTTP GET /rest/uzytkownicy/secured/listaUzytkownikow
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.pobierzListeUzytkownikowDto
      */
-    pobierzListeUzytkownikowDto(): RestResponse<UserListDTO> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/listaUzytkownikow` });
+    pobierzListeUzytkownikowDto(queryParams?: { term?: string; }): RestResponse<UserListDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/listaUzytkownikow`, queryParams: queryParams });
     }
 
     /**
