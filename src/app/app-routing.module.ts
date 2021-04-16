@@ -9,6 +9,7 @@ import { FullwidthComponent } from './layouts/fullwidth/fullwidth.component';
 import { LoginComponent } from './modules/login/component/login.component';
 
 
+
 const routes: Routes = [{
   path: '',
   component: DefaultComponent,
