@@ -143,7 +143,7 @@ export class TSAllRestApiClient {
 
     /**
      * HTTP GET /rest/administracja/secured/dziennikZdarzen
-     * Java method: pl.kancelaria.AHG.shared.restapi.administration.restapi.secured.AdministrationSecuredRestApi.pobierzDziennikZdarzenDto
+     * Java method: pl.kancelaria.AHG.shared.restapi.administration.restapi.secured.IAdministrationSecuredRestApi.pobierzDziennikZdarzenDto
      */
     pobierzDziennikZdarzenDto(): RestResponse<EventLogListDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/administracja/secured/dziennikZdarzen` });
@@ -151,7 +151,7 @@ export class TSAllRestApiClient {
 
     /**
      * HTTP POST /rest/authenticate
-     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.AuthPublicRestApi.createAuthenticationToken
+     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.IAuthPublicRestApi.createAuthenticationToken
      */
     createAuthenticationToken(authenticationRequest: JwtRequest): RestResponse<ResponseEntity<any>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/authenticate`, data: authenticationRequest });
@@ -207,7 +207,7 @@ export class TSAllRestApiClient {
 
     /**
      * HTTP POST /rest/register
-     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.AuthPublicRestApi.saveUser
+     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.IAuthPublicRestApi.saveUser
      */
     saveUser(user: RegistrationDTO): RestResponse<ResponseEntity<any>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/register`, data: user });
@@ -215,7 +215,7 @@ export class TSAllRestApiClient {
 
     /**
      * HTTP POST /rest/reset-hasla
-     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.AuthPublicRestApi.resetHasla
+     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.IAuthPublicRestApi.resetHasla
      */
     resetHasla(dto: UserPasswordDTO): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/reset-hasla`, data: dto });
@@ -263,7 +263,7 @@ export class TSAllRestApiClient {
 
     /**
      * HTTP POST /rest/ustaw-haslo
-     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.AuthPublicRestApi.aktywacjaHasla
+     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.IAuthPublicRestApi.aktywacjaHasla
      */
     aktywacjaHasla(dto: UserPasswordDTO): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/ustaw-haslo`, data: dto });

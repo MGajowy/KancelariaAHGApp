@@ -10,13 +10,12 @@ import { EventLogListDTO } from 'src/app/generated/REST';
 export class EventLogComponent implements OnInit {
 
   logList: EventLogListDTO;
-
   cols: any[];
 
-  constructor(private eventLog: EventLogService) { }
+  constructor(private eventLogServices: EventLogService) { }
 
   ngOnInit() {
-    this.eventLog.getEventLogList().subscribe(data => {
+    this.eventLogServices.getEventLogList().subscribe(data => {
       this.logList = data;
     });
 
