@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ResolutionService } from '../../service/resolution.service';
+import { ResolutionListDTO, ResolutionDTO } from './../../../../generated/REST';
 
 @Component({
   selector: 'app-resolutions-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResolutionsListComponent implements OnInit {
 
-  constructor() { }
+  lista: ResolutionListDTO;
+  uchwaly: ResolutionDTO;
+  komunikat: String = 'Lista uchwał jest pusta.'
+
+  constructor (
+    private resolutionService: ResolutionService
+    ) { }
 
   ngOnInit(): void {
+    this.resolutionService.getResolutionsAll().subscribe(res => 
+      this.lista = res);
   }
 
 }

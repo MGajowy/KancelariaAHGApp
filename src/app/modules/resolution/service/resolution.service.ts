@@ -59,7 +59,7 @@ export class ResolutionService {
   }
 
   getResolutionsAll(): Observable<any> {
-    return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/ListaUchwał`);
+    return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwal`);
   }
 
 }

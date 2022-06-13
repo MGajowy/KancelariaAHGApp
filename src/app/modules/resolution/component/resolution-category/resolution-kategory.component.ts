@@ -26,7 +26,6 @@ export class ResolutionKategoryComponent implements OnInit {
 
   ngOnInit() {
     this.reloadData();
-    // console.log(this.listaKategorii);
   }
 
   reloadData() {
@@ -38,7 +37,6 @@ export class ResolutionKategoryComponent implements OnInit {
   deleteCategoryResolutions(id: number) {
     this.resolutionService.deleteCategory(id)
       .subscribe(data => {
-        console.log(data);
         this.reloadData();
       },
         error => console.log(error));
