@@ -17,9 +17,9 @@ export class UserService {
       .set('term', term);
     return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/listaUzytkownikow`, { params });
   }
-  //metoda przez restService
-  // getUserList(): Observable<any> {
-  //   return this.restService.wszystkieRestAdmin().pobierzListeUzytkownikowDto();
+  // metoda przez restService
+  // getUserList(term): Observable<any> {
+  //   return this.restService.wszystkieRestAdmin().pobierzListeUzytkownikowDto(term);
   // }
 
   register(user: RegistrationDTO): Observable<any> {

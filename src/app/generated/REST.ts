@@ -61,7 +61,7 @@ export class ResolutionDTO {
     opis: string;
     tresc: string;
     czyPubliczny: boolean;
-    kategoria: number;
+    nazwaKategorii: string;
 }
 
 export class ResetPasswordDTO {
@@ -222,11 +222,11 @@ export class TSAllRestApiClient {
     }
 
     /**
-     * HTTP GET /rest/uchwaly/pub/ListaUchwał
+     * HTTP GET /rest/uchwaly/pub/listaUchwal
      * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.pub.ResolutionPublicRestApi.pobierzListeUchwalDto
      */
     pobierzListeUchwalDto(): RestResponse<ResolutionListDTO> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uchwaly/pub/ListaUchwał` });
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uchwaly/pub/listaUchwal` });
     }
 
     /**
