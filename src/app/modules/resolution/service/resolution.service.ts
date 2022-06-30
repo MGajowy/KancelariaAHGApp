@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { RestService } from '../../../core/services/rest/rest.service';
 
 import { Injectable } from '@angular/core';
@@ -29,6 +29,12 @@ export class ResolutionService {
   // getResolutionList(): Observable<any> {
   //   return this.restService.wszystkieRestAdmin().pobierzListCategoryDto();
   // }
+
+  getResolutionCategoryListOfTerm(term): Observable<any> {
+    const params = new HttpParams()
+    .set('term', term)
+    return this.httpClient.get(`${baseUrl}rest/kategorie/pub/wyszukajKategorie`, { params })
+  }
 
   deleteCategory(id: number): Observable<any> {
     return this.httpClient.delete(`${baseUrl}rest/kategorie/secured/usun-kategorie/${id}`);

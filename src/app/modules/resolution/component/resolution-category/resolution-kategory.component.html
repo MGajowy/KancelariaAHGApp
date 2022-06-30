@@ -1,10 +1,20 @@
+
 <mat-list>
+  <mat-list-item >
+    <div style="float: right;">
+      <mat-form-field>
+        <input Simply-Space type="text" matInput placeholder="wyszukaj kategorie" [formControl]="term">
+        <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
+      </mat-form-field>
+    </div>
+    </mat-list-item>
+  <mat-divider></mat-divider><br>
   <mat-list-item>Kategorie uchwał</mat-list-item>
   <mat-divider></mat-divider><br>
 </mat-list>
 <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000"></p-confirmDialog>
 <p-messages [value]="msgs"></p-messages>
-<mat-grid-list *ngIf="listaKategorii.listaKategorii.length > 0" cols="2" rowHeight="10:1">
+<mat-grid-list *ngIf="listaKategorii.listaKategorii.length > 0" cols="3" rowHeight="10:2">
   <div *ngFor="let resolutions of listaKategorii.listaKategorii">
     <mat-grid-tile>
         {{resolutions.rodzajKategorii}}
@@ -19,6 +29,10 @@
       <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="detailsCategory(resolutions.id)" >
         <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
         Szczegóły</button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <span>{{resolutions.czyPubliczny ? "Publiczna " : "Niepubliczna "}}</span>
+        <p-inputSwitch [(ngModel)]="resolutions.czyPubliczny"></p-inputSwitch>
       </mat-grid-tile>
     </div>
 </mat-grid-list>

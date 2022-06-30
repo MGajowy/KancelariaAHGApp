@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs';
 import { CategoryDTO, CategoryListDTO } from './../../../../generated/REST';
-
 import { ResolutionService } from '../../service/resolution.service';
 
 import { Component, OnInit, Input } from '@angular/core';
 import { ConfirmationService, Message, PrimeNGConfig } from 'primeng/api';
 import { Router } from '@angular/router';
-
+import { FormControl } from '@angular/forms';
+import { debounce, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-resolution-kategory',
@@ -17,6 +17,8 @@ export class ResolutionKategoryComponent implements OnInit {
   msgs: Message[] = [];
   position: string;
   listaKategorii: CategoryListDTO;
+  term: FormControl;
+  checked: boolean = true;
 
   constructor(
     private resolutionService: ResolutionService,
@@ -25,11 +27,27 @@ export class ResolutionKategoryComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.reloadData();
+    // this.reloadData();
+    this.wyszukiwarkaKategorii();
+  }
+
+  private wyszukiwarkaKategorii(): void {
+    this.term = new FormControl('');
+     this.reloadData();
+    this.term.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    )
+    .subscribe(() => {
+      this.reloadData();
+
+    })
+    console.log(this.term.value)
+
   }
 
   reloadData() {
-    this.resolutionService.getResolutionList().subscribe(value => {
+    this.resolutionService.getResolutionCategoryListOfTerm(this.term.value).subscribe(value => {
       this.listaKategorii = value;
     });
   }

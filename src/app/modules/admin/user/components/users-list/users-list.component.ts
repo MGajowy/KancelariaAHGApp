@@ -44,7 +44,6 @@ export class UsersListComponent implements OnInit {
      this.wyszukiwarkaUzytkownikow();
   }
 
-
   private wyszukiwarkaUzytkownikow(): void {
     this.term = new FormControl('');
      this.reloadData();
@@ -57,7 +56,6 @@ export class UsersListComponent implements OnInit {
 
     })
     console.log(this.term.value)
-
   }
 
   reloadData() {

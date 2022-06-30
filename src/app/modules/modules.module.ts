@@ -46,6 +46,7 @@ import { DetailsCategoryComponent } from './resolution/component/details-categor
 import { SetPasswordComponent } from './admin/user/components/set-password/set-password.component';
 import { TableModule } from 'primeng/table';
 import { AddResolutionComponent } from './resolution/component/add-resolution/add-resolution.component';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { AddResolutionComponent } from './resolution/component/add-resolution/ad
     ButtonModule,
     MessagesModule,
     TableModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    InputSwitchModule
   ],
   providers: [ConfirmationService]
 })

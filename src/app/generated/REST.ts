@@ -9,6 +9,27 @@ export class CategoryDTO {
     rodzajKategorii: string;
 }
 
+export class CategoryListDTO {
+    listaKategorii: CategoryDTO[];
+}
+
+export class UserListDTO {
+    listaUzytkownikow: UserDTO[];
+}
+
+export class UserDTO {
+    id: number;
+    imie: string;
+    nazwisko: string;
+    username: string;
+    password: string;
+    stan: UserStateEnum;
+    email: string;
+    telefon: string;
+    plec: UserSexEnum;
+    role: RolesName[];
+}
+
 export class EventLogListDTO {
     listaLogow: EventLogDTO[];
 }
@@ -34,10 +55,6 @@ export class RegistrationDTO {
     plec: UserSexEnum;
 }
 
-export class CategoryListDTO {
-    listaKategorii: CategoryDTO[];
-}
-
 export class CategoryDTOrequest {
     id: number;
     czyPubliczny: boolean;
@@ -45,6 +62,11 @@ export class CategoryDTOrequest {
 }
 
 export class ResolutionListDTO {
+    listaUchwal: ResolutionDTO[];
+}
+
+export class ResolutionListOfCategoryDTO {
+    nazwaKategorii: string;
     listaUchwal: ResolutionDTO[];
 }
 
@@ -67,23 +89,6 @@ export class ResolutionDTO {
 export class ResetPasswordDTO {
     username: string;
     appUrl: string;
-}
-
-export class UserDTO {
-    id: number;
-    imie: string;
-    nazwisko: string;
-    username: string;
-    password: string;
-    stan: UserStateEnum;
-    email: string;
-    telefon: string;
-    plec: UserSexEnum;
-    role: RolesName[];
-}
-
-export class UserListDTO {
-    listaUzytkownikow: UserDTO[];
 }
 
 export class AddUserDTO {
@@ -174,6 +179,22 @@ export class TSAllRestApiClient {
     }
 
     /**
+     * HTTP GET /rest/kategorie/pub/wyszukajKategorie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.wyszukajKategorie
+     */
+    wyszukajKategorie(queryParams?: { term?: string; }): RestResponse<CategoryListDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/pub/wyszukajKategorie`, queryParams: queryParams });
+    }
+
+    /**
+     * HTTP GET /rest/kategorie/secured
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.listaKategoriiPoStatusie
+     */
+    listaKategoriiPoStatusie(status: boolean): RestResponse<CategoryListDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/secured`, data: status });
+    }
+
+    /**
      * HTTP POST /rest/kategorie/secured/dodaj-kategorie
      * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.dodajKategorie
      */
@@ -219,6 +240,14 @@ export class TSAllRestApiClient {
      */
     resetHasla(dto: UserPasswordDTO): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/reset-hasla`, data: dto });
+    }
+
+    /**
+     * HTTP GET /rest/uchwaly/pub
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.pub.ResolutionPublicRestApi.pobierzListeUchwalPoKategorii
+     */
+    pobierzListeUchwalPoKategorii(id: number): RestResponse<ResolutionListOfCategoryDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uchwaly/pub`, data: id });
     }
 
     /**
@@ -348,9 +377,9 @@ export type UserStateEnum = "AKTYWNY" | "NIEAKTYWNY" | "ZABLOKOWANY" | "USUNIETY
 
 export type UserSexEnum = "KOBIETA" | "MEZCZYZNA";
 
-export type HttpStatus = "CONTINUE" | "SWITCHING_PROTOCOLS" | "PROCESSING" | "CHECKPOINT" | "OK" | "CREATED" | "ACCEPTED" | "NON_AUTHORITATIVE_INFORMATION" | "NO_CONTENT" | "RESET_CONTENT" | "PARTIAL_CONTENT" | "MULTI_STATUS" | "ALREADY_REPORTED" | "IM_USED" | "MULTIPLE_CHOICES" | "MOVED_PERMANENTLY" | "FOUND" | "MOVED_TEMPORARILY" | "SEE_OTHER" | "NOT_MODIFIED" | "USE_PROXY" | "TEMPORARY_REDIRECT" | "PERMANENT_REDIRECT" | "BAD_REQUEST" | "UNAUTHORIZED" | "PAYMENT_REQUIRED" | "FORBIDDEN" | "NOT_FOUND" | "METHOD_NOT_ALLOWED" | "NOT_ACCEPTABLE" | "PROXY_AUTHENTICATION_REQUIRED" | "REQUEST_TIMEOUT" | "CONFLICT" | "GONE" | "LENGTH_REQUIRED" | "PRECONDITION_FAILED" | "PAYLOAD_TOO_LARGE" | "REQUEST_ENTITY_TOO_LARGE" | "URI_TOO_LONG" | "REQUEST_URI_TOO_LONG" | "UNSUPPORTED_MEDIA_TYPE" | "REQUESTED_RANGE_NOT_SATISFIABLE" | "EXPECTATION_FAILED" | "I_AM_A_TEAPOT" | "INSUFFICIENT_SPACE_ON_RESOURCE" | "METHOD_FAILURE" | "DESTINATION_LOCKED" | "UNPROCESSABLE_ENTITY" | "LOCKED" | "FAILED_DEPENDENCY" | "TOO_EARLY" | "UPGRADE_REQUIRED" | "PRECONDITION_REQUIRED" | "TOO_MANY_REQUESTS" | "REQUEST_HEADER_FIELDS_TOO_LARGE" | "UNAVAILABLE_FOR_LEGAL_REASONS" | "INTERNAL_SERVER_ERROR" | "NOT_IMPLEMENTED" | "BAD_GATEWAY" | "SERVICE_UNAVAILABLE" | "GATEWAY_TIMEOUT" | "HTTP_VERSION_NOT_SUPPORTED" | "VARIANT_ALSO_NEGOTIATES" | "INSUFFICIENT_STORAGE" | "LOOP_DETECTED" | "BANDWIDTH_LIMIT_EXCEEDED" | "NOT_EXTENDED" | "NETWORK_AUTHENTICATION_REQUIRED";
-
 export type RolesName = "USER" | "ADMIN";
+
+export type HttpStatus = "CONTINUE" | "SWITCHING_PROTOCOLS" | "PROCESSING" | "CHECKPOINT" | "OK" | "CREATED" | "ACCEPTED" | "NON_AUTHORITATIVE_INFORMATION" | "NO_CONTENT" | "RESET_CONTENT" | "PARTIAL_CONTENT" | "MULTI_STATUS" | "ALREADY_REPORTED" | "IM_USED" | "MULTIPLE_CHOICES" | "MOVED_PERMANENTLY" | "FOUND" | "MOVED_TEMPORARILY" | "SEE_OTHER" | "NOT_MODIFIED" | "USE_PROXY" | "TEMPORARY_REDIRECT" | "PERMANENT_REDIRECT" | "BAD_REQUEST" | "UNAUTHORIZED" | "PAYMENT_REQUIRED" | "FORBIDDEN" | "NOT_FOUND" | "METHOD_NOT_ALLOWED" | "NOT_ACCEPTABLE" | "PROXY_AUTHENTICATION_REQUIRED" | "REQUEST_TIMEOUT" | "CONFLICT" | "GONE" | "LENGTH_REQUIRED" | "PRECONDITION_FAILED" | "PAYLOAD_TOO_LARGE" | "REQUEST_ENTITY_TOO_LARGE" | "URI_TOO_LONG" | "REQUEST_URI_TOO_LONG" | "UNSUPPORTED_MEDIA_TYPE" | "REQUESTED_RANGE_NOT_SATISFIABLE" | "EXPECTATION_FAILED" | "I_AM_A_TEAPOT" | "INSUFFICIENT_SPACE_ON_RESOURCE" | "METHOD_FAILURE" | "DESTINATION_LOCKED" | "UNPROCESSABLE_ENTITY" | "LOCKED" | "FAILED_DEPENDENCY" | "TOO_EARLY" | "UPGRADE_REQUIRED" | "PRECONDITION_REQUIRED" | "TOO_MANY_REQUESTS" | "REQUEST_HEADER_FIELDS_TOO_LARGE" | "UNAVAILABLE_FOR_LEGAL_REASONS" | "INTERNAL_SERVER_ERROR" | "NOT_IMPLEMENTED" | "BAD_GATEWAY" | "SERVICE_UNAVAILABLE" | "GATEWAY_TIMEOUT" | "HTTP_VERSION_NOT_SUPPORTED" | "VARIANT_ALSO_NEGOTIATES" | "INSUFFICIENT_STORAGE" | "LOOP_DETECTED" | "BANDWIDTH_LIMIT_EXCEEDED" | "NOT_EXTENDED" | "NETWORK_AUTHENTICATION_REQUIRED";
 
 function uriEncoding(template: TemplateStringsArray, ...substitutions: any[]): string {
     let result = "";

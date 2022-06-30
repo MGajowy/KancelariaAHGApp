@@ -17,7 +17,6 @@ export class AddResolutionCategoryComponent implements OnInit {
 
   ngOnInit(): void {
   this.category.czyPubliczny = false;
-
   }
 
   newCategory(): void
@@ -26,10 +25,11 @@ export class AddResolutionCategoryComponent implements OnInit {
     this.category = new CategoryDTO();
   }
 
-  save(){
+   private save(){
+    if (this.category.czyPubliczny == null)
+    this.category.czyPubliczny = false;
     this.resolutionServices.createCategory(this.category)
-      .subscribe(data => {
-        console.log(data);
+      .subscribe(() => {
         this.submitted = true;
       },
       error => console.log(error));
