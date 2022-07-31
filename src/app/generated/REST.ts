@@ -179,6 +179,14 @@ export class TSAllRestApiClient {
     }
 
     /**
+     * HTTP GET /rest/kategorie/pub/wyszukajKategoiePoNazwa
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.wyszukajKategoriePoNazwa
+     */
+    wyszukajKategoriePoNazwa(queryParams?: { rodzajKategorii?: string; }): RestResponse<string[]> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/pub/wyszukajKategoiePoNazwa`, queryParams: queryParams });
+    }
+
+    /**
      * HTTP GET /rest/kategorie/pub/wyszukajKategorie
      * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.wyszukajKategorie
      */
@@ -312,6 +320,14 @@ export class TSAllRestApiClient {
      */
     weryfikujToken(token: string): RestResponse<boolean> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/pub/weryfikuj-token`, data: token });
+    }
+
+    /**
+     * HTTP GET /rest/uzytkownicy/secured
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.pobierzListeUzytkownikowPoStan
+     */
+    pobierzListeUzytkownikowPoStan(queryParams?: { stan?: string; }): RestResponse<UserListDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured`, queryParams: queryParams });
     }
 
     /**

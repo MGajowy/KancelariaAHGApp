@@ -6,8 +6,6 @@ import { Observable } from 'rxjs';
 import { baseUrl } from 'src/environments/environment';
 import { CategoryDTO, CategoryDTOrequest, CreateResotutionDTO, ResolutionDTO } from 'src/app/generated/REST';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -66,6 +64,12 @@ export class ResolutionService {
 
   getResolutionsAll(): Observable<any> {
     return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwal`);
+  }
+
+  getResolutionOfDescription(opis) : Observable<any> {
+    const params = new HttpParams()
+    .set('opis', opis)
+    return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwalWgOpis`, { params })
   }
 
 }

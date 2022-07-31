@@ -55,13 +55,11 @@ export class UsersListComponent implements OnInit {
       this.reloadData();
 
     })
-    console.log(this.term.value)
   }
 
   reloadData() {
     this.userService.getUserList(this.term.value).subscribe(res => {
       this.listaUzytkownikow = res;
-      console.log(res);
     })
   }
 

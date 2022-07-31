@@ -1,4 +1,12 @@
 <mat-list>
+  <mat-list-item >
+  <div style="float: right;">
+    <mat-form-field>
+      <input Simply-Space type="text" matInput placeholder="wyszukaj..." [formControl]="term">
+      <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
+    </mat-form-field>
+  </div>
+  </mat-list-item>
   <mat-list-item>Lista uchwał</mat-list-item>
   <mat-divider></mat-divider><br>
 </mat-list>
