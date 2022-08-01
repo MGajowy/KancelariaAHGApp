@@ -15,4 +15,9 @@ constructor(private httpClient: HttpClient, private restService: RestService ) {
 getEventLogList(): Observable<any> {
   return this.httpClient.get(`${baseUrl}rest/administracja/secured/dziennikZdarzen`)
 }
+
+getExportEventLogToPDF(): Observable<Blob> {
+  return this.httpClient.get(`${baseUrl}rest/administracja/secured/exportPDF`, {responseType: 'blob'})
+}
+
 }
