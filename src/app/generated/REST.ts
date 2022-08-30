@@ -61,6 +61,18 @@ export class CategoryDTOrequest {
     rodzajKategorii: string;
 }
 
+export class RegulationListDTO {
+    listaRozporzadzen: RegulationDTO[];
+}
+
+export class CreateRegulationDTO {
+    id: number;
+    nazwa: string;
+    tresc: string;
+    czyPubliczny: boolean;
+    kategoria: number;
+}
+
 export class ResolutionListDTO {
     listaUchwal: ResolutionDTO[];
 }
@@ -123,8 +135,16 @@ export class HttpEntity<T> {
 }
 
 export class ResponseEntity<T> extends HttpEntity<T> {
-    statusCode: HttpStatus;
     statusCodeValue: number;
+    statusCode: HttpStatus;
+}
+
+export class RegulationDTO {
+    id: number;
+    nazwa: string;
+    tresc: string;
+    czyPubliczny: boolean;
+    nazwaKategorii: string;
 }
 
 export class Calendar implements Serializable, Cloneable, Comparable<Calendar> {
@@ -235,6 +255,38 @@ export class TSAllRestApiClient {
     }
 
     /**
+     * HTTP GET /rest/kategorieRozporzadzen/pub/wszystkieKategorieRozporzadzen
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.pub.CategoryRegulationPublicRestApi.pobierzListeKategorii
+     */
+    pobierzListeKategorii(): RestResponse<CategoryListDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorieRozporzadzen/pub/wszystkieKategorieRozporzadzen` });
+    }
+
+    /**
+     * HTTP POST /rest/kategorieRozporzadzen/secured/dodaj-kategorie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.dodajKategorieRozporzadzenia
+     */
+    dodajKategorieRozporzadzenia(categoryDTO: CategoryDTO): RestResponse<ResponseEntity<HttpStatus>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/kategorieRozporzadzen/secured/dodaj-kategorie`, data: categoryDTO });
+    }
+
+    /**
+     * HTTP GET /rest/kategorieRozporzadzen/secured/szczegoly-kategorii
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.szczegolyKategoriiRozporzadzenia
+     */
+    szczegolyKategoriiRozporzadzenia(id: number): RestResponse<CategoryDTOrequest> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorieRozporzadzen/secured/szczegoly-kategorii`, data: id });
+    }
+
+    /**
+     * HTTP DELETE /rest/kategorieRozporzadzen/secured/usun-kategorie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.usunKategorieRozporzadzenia
+     */
+    usunKategorieRozporzadzenia(id: number): RestResponse<ResponseEntity<HttpStatus>> {
+        return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/kategorieRozporzadzen/secured/usun-kategorie`, data: id });
+    }
+
+    /**
      * HTTP POST /rest/register
      * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.IAuthPublicRestApi.saveUser
      */
@@ -248,6 +300,22 @@ export class TSAllRestApiClient {
      */
     resetHasla(dto: UserPasswordDTO): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/reset-hasla`, data: dto });
+    }
+
+    /**
+     * HTTP GET /rest/rozporzadzenia/pub/listaRozporzadzenWgOpis
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.regulations.restApi.pub.RegulationPublicRestApi.pobierzListeRozporzadzenPoNazwie
+     */
+    pobierzListeRozporzadzenPoNazwie(queryParams?: { nazwa?: string; }): RestResponse<RegulationListDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/rozporzadzenia/pub/listaRozporzadzenWgOpis`, queryParams: queryParams });
+    }
+
+    /**
+     * HTTP POST /rest/rozporzadzenia/secured/dodaj-rozporzadzenie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.regulations.restApi.secured.RegulationSecuredRestApi.dodajRozporzadzenie
+     */
+    dodajRozporzadzenie(regulationDTO: CreateRegulationDTO): RestResponse<ResponseEntity<HttpStatus>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/rozporzadzenia/secured/dodaj-rozporzadzenie`, data: regulationDTO });
     }
 
     /**

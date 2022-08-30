@@ -1,6 +1,6 @@
 <mat-list>
   <mat-list-item>Dziennik zdarzen</mat-list-item>
-  <mat-list-item>
+  <mat-list-item *ngIf="logList.listaLogow.length > 0">
   <button mat-raised-button color="primary" class="btn btn-success" (click)="exportToPDF()">Pobierz PDF</button>
   </mat-list-item>
   <mat-divider></mat-divider><br>

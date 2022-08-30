@@ -47,7 +47,8 @@ import { SetPasswordComponent } from './admin/user/components/set-password/set-p
 import { TableModule } from 'primeng/table';
 import { AddResolutionComponent } from './resolution/component/add-resolution/add-resolution.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
-
+import { AddRegulationCategoryComponent } from './regulation/component/add-regulation-category/add-regulation-category.component'
+import { AddRegulationComponent } from './/regulation/component/add-regulation/add-regulation.component'
 @NgModule({
   declarations: [
     HomeComponent,
@@ -66,7 +67,9 @@ import {InputSwitchModule} from 'primeng/inputswitch';
     UpdateUserComponent,
     ModifyCategoryComponent,
     DetailsCategoryComponent,
-    AddResolutionComponent
+    AddResolutionComponent,
+    AddRegulationCategoryComponent,
+    AddRegulationComponent
   ],
   imports: [
     CommonModule,

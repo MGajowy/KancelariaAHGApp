@@ -1,0 +1,26 @@
+<mat-list>
+  <mat-list-item>Dodaj kategorie rozporządzenia</mat-list-item>
+  <mat-divider></mat-divider><br>
+</mat-list>
+
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nazwa kategorii</mat-label>
+      <input matInput placeholder="Wpisz nazwe kategorii" required [(ngModel)]="category.rodzajKategorii"
+        name="rodzajKategorii" #nazwaKategorii>
+    </mat-form-field>
+
+    <mat-checkbox class="example-margin" color="primary" [(ngModel)]="category.czyPubliczny" name="czyPubliczny">Czy
+      opublikowac kategorie</mat-checkbox>
+    <div>
+      <button [disabled]="nazwaKategorii.value === ''" mat-raised-button color="primary" type="submit"
+        class="btn btn-success">Dodaj kategorie</button>
+    </div>
+  </form>
+</div>
+<div [hidden]="!submitted">
+  <h4>Kategoria została poprawnie dodana!</h4>
+  <button mat-raised-button color="primary" class="btn btn-success" (click)="newCategory()">Dodaj nową
+    kategorie</button>
+</div>

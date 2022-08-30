@@ -1,0 +1,35 @@
+<mat-list>
+  <mat-list-item>Dodaj nowe rozporządzenie</mat-list-item>
+  <mat-divider></mat-divider><br>
+</mat-list>
+
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nazwa</mat-label>
+      <input matInput placeholder="Opis rozporzadzenia" required [(ngModel)]="regulation.nazwa" name="opis">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Treść</mat-label>
+      <input type="text" matInput placeholder="Treść rozporzadzenia" required [(ngModel)]="regulation.tresc" name="treść">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Kategoria</mat-label>
+      <mat-select required [(ngModel)]="regulation.kategoria" name="kategoria">
+        <mat-option *ngFor="let kategoria of category.listaKategorii" [value]="kategoria.id">
+          {{kategoria.rodzajKategorii}} </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-checkbox class="example-margin" color="primary" [(ngModel)]="regulation.czyPubliczny" name="czyPubliczny">Czy
+      opublikowac rozporzadzenie</mat-checkbox>
+    <div>
+      <button mat-raised-button color="primary" type="submit" class="btn btn-success">Dodaj rozporzadzenie</button>
+    </div>
+  </form>
+</div>
+<div [hidden]="!submitted">
+  <h4>Rozporzadzenie zostało poprawnie dodane!</h4>
+  <button mat-raised-button color="primary" class="btn btn-success" (click)="newRegulation()">Dodaj nowe
+    rozporzadzenie</button>
+</div>

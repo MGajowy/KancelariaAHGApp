@@ -17,7 +17,8 @@ import { UserDetailsComponent } from './admin/user/components/user-details/user-
 import { AuthServiceService } from '../core/services/auth/auth-service.service';
 import { UpdateUserComponent } from './admin/user/components/update-user/update-user.component';
 import { AddResolutionComponent } from './resolution/component/add-resolution/add-resolution.component';
-
+import { AddRegulationCategoryComponent } from './regulation/component/add-regulation-category/add-regulation-category.component';
+import { AddRegulationComponent } from './regulation/component/add-regulation/add-regulation.component';
 
 const routes: Routes = [
   {
@@ -69,6 +70,17 @@ const routes: Routes = [
     path: 'category-regulations',
     component: RegulationCategoryComponent
   },
+  {
+    path: 'add-category-regulations',
+    component: AddRegulationCategoryComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'add-regulations',
+    component: AddRegulationComponent,
+    canActivate: [AuthGuardService]
+  },
+  
   {
     path: 'list-regulations',
     component: RegulationListComponent

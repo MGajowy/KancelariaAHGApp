@@ -15,7 +15,7 @@ import { ResolutionService } from '../../service/resolution.service';
 export class AddResolutionComponent implements OnInit {
 
   resolution: CreateResotutionDTO = new CreateResotutionDTO();
-  Kategorie: CategoryListDTO;
+  category: CategoryListDTO;
   submitted = false;
   resolutionForm: FormGroup;
   constructor(
@@ -45,7 +45,6 @@ export class AddResolutionComponent implements OnInit {
   save(){
     this.resolutionServices.createResolution(this.resolution)
       .subscribe(data => {
-        console.log(data);
         this.submitted = true;
       },
       error => console.log(error));
@@ -57,7 +56,7 @@ export class AddResolutionComponent implements OnInit {
 
   private categoryList() {
     this.resolutionServices.getResolutionList().subscribe(value => {
-      this.Kategorie = value;
+      this.category = value;
     });
   }
 

@@ -23,13 +23,13 @@
     <mat-form-field appearance="fill">
       <mat-label>Kategoria</mat-label>
       <mat-select required [(ngModel)]="resolution.kategoria" name="kategoria">
-        <mat-option *ngFor="let kategoria of Kategorie.listaKategorii" [value]="kategoria.id">{{kategoria.rodzajKategorii}} </mat-option>
+        <mat-option *ngFor="let kategoria of category.listaKategorii" [value]="kategoria.id">{{kategoria.rodzajKategorii}} </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-checkbox class="example-margin" color="primary" [(ngModel)]="resolution.czyPubliczny" name="czyPubliczny">Czy
       opublikowac uchwałe</mat-checkbox>
     <div>
-      <button mat-raised-button color="primary" type="submit" class="btn btn-success">Dodaj kategorie</button>
+      <button mat-raised-button color="primary" type="submit" class="btn btn-success">Dodaj uchwale</button>
     </div>
   </form>
 </div>

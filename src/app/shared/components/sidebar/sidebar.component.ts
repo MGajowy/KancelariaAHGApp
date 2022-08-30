@@ -125,11 +125,13 @@ export class SidebarComponent {
             items: [
               {
                 label: 'Dodaj kategorie',
-                icon: 'pi pi-folder'
+                icon: 'pi pi-folder',
+                command: () => this.nav('/kancelaria/add-category-regulations')
               },
               {
                 label: 'Dodaj rozporządzenia',
-                icon: 'pi pi-fw pi-file'
+                icon: 'pi pi-fw pi-file',
+                command: () => this.nav('/kancelaria/add-regulations')
               }
             ]
           },
