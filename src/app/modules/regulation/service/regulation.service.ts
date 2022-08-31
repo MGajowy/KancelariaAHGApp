@@ -18,11 +18,11 @@ export class RegulationService {
     return this.httpClient.get(`${baseUrl}rest/kategorieRozporzadzen/pub/wszystkieKategorieRozporzadzen`);
   }
 
-  // getRegulationCategoryListOfTerm(term): Observable<any> {
-  //   const params = new HttpParams()
-  //   .set('term', term)
-  //   return this.httpClient.get(`${baseUrl}rest/kategorieRozporzadzen/pub/wyszukajKategorie`, { params })
-  // }
+  getRegulationCategoryListOfTerm(term): Observable<any> {
+    const params = new HttpParams()
+    .set('term', term)
+    return this.httpClient.get(`${baseUrl}rest/kategorieRozporzadzen/pub/wyszukajKategorieRozporzadzeniaPoNazwa`, { params })
+  }
 
   deleteCategory(id: number): Observable<any> {
     return this.httpClient.delete(`${baseUrl}rest/kategorieRozporzadzen/secured/usun-kategorie/${id}`);

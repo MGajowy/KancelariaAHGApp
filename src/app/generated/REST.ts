@@ -135,8 +135,8 @@ export class HttpEntity<T> {
 }
 
 export class ResponseEntity<T> extends HttpEntity<T> {
-    statusCodeValue: number;
     statusCode: HttpStatus;
+    statusCodeValue: number;
 }
 
 export class RegulationDTO {
@@ -263,11 +263,27 @@ export class TSAllRestApiClient {
     }
 
     /**
+     * HTTP GET /rest/kategorieRozporzadzen/pub/wyszukajKategorieRozporzadzeniaPoNazwa
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.pub.CategoryRegulationPublicRestApi.wyszukajKategorieRozporzadzenPoNazwie
+     */
+    wyszukajKategorieRozporzadzenPoNazwie(queryParams?: { term?: string; }): RestResponse<CategoryListDTO> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorieRozporzadzen/pub/wyszukajKategorieRozporzadzeniaPoNazwa`, queryParams: queryParams });
+    }
+
+    /**
      * HTTP POST /rest/kategorieRozporzadzen/secured/dodaj-kategorie
      * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.dodajKategorieRozporzadzenia
      */
     dodajKategorieRozporzadzenia(categoryDTO: CategoryDTO): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/kategorieRozporzadzen/secured/dodaj-kategorie`, data: categoryDTO });
+    }
+
+    /**
+     * HTTP PUT /rest/kategorieRozporzadzen/secured/modyfikuj-kategorie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.modyfikujKategorieRozporzadzenia
+     */
+    modyfikujKategorieRozporzadzenia(id: number): RestResponse<CategoryDTOrequest> {
+        return this.httpClient.request({ method: "PUT", url: uriEncoding`rest/kategorieRozporzadzen/secured/modyfikuj-kategorie`, data: id });
     }
 
     /**

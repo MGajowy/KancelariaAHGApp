@@ -4,7 +4,7 @@ import { CategoryDTO, CategoryListDTO } from './../../../../generated/REST';
 import { RegulationService} from '../../service/regulation.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 @Component({
   selector: 'app-regulation-category',
   templateUrl: './regulation-category.component.html',
@@ -24,12 +24,23 @@ export class RegulationCategoryComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.wyszukiwarkaKategorii();
+  }
+
+  private wyszukiwarkaKategorii(): void {
+    this.term = new FormControl('');
     this.reloadData();
+    this.term.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged())
+      .subscribe(() => {
+        this.reloadData();
+      })
   }
 
   reloadData() {
-    this.regulationService.getRegulationCategoryList().subscribe(value => {
-      this.listaKategorii = value;
+    this.regulationService.getRegulationCategoryListOfTerm(this.term.value).subscribe(res => {
+      this.listaKategorii = res;
     });
   }
 
