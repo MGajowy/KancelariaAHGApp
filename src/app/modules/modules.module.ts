@@ -49,6 +49,8 @@ import { AddResolutionComponent } from './resolution/component/add-resolution/ad
 import {InputSwitchModule} from 'primeng/inputswitch';
 import { AddRegulationCategoryComponent } from './regulation/component/add-regulation-category/add-regulation-category.component'
 import { AddRegulationComponent } from './/regulation/component/add-regulation/add-regulation.component'
+import { DetailsRegulationCategoryComponent } from './regulation/component/details-regulation-category/details-regulation-category.component'
+import { ModifyRegulationCategoryComponent } from './regulation/component/modify-regulation-category/modify-regulation-category.component'
 @NgModule({
   declarations: [
     HomeComponent,
@@ -69,7 +71,9 @@ import { AddRegulationComponent } from './/regulation/component/add-regulation/a
     DetailsCategoryComponent,
     AddResolutionComponent,
     AddRegulationCategoryComponent,
-    AddRegulationComponent
+    AddRegulationComponent,
+    DetailsRegulationCategoryComponent,
+    ModifyRegulationCategoryComponent
   ],
   imports: [
     CommonModule,

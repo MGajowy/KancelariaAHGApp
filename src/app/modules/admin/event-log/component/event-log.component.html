@@ -1,11 +1,11 @@
+<div class="shadowbox-page">
 <mat-list>
   <mat-list-item class="subpage-header">Dziennik zdarzen</mat-list-item>
-  <mat-list-item *ngIf="logList.listaLogow.length > 0 else emptyEventLog">
-    <button mat-raised-button color="primary" class="btn btn-success" (click)="exportToPDF()">Pobierz PDF</button>
-  </mat-list-item>
   <mat-divider></mat-divider><br>
 </mat-list>
-
+<div *ngIf="logList.listaLogow.length > 0 else emptyEventLog">
+  <button mat-raised-button color="primary" class="btn btn-success" (click)="exportToPDF()">Pobierz PDF</button>
+</div>
 <div class="row">
   <div class="col-xs-12">
     <mat-card style="margin-top: 20px; margin-bottom: 20px;">
@@ -30,4 +30,5 @@
       </ng-template>
     </mat-card>
   </div>
+</div>
 </div>

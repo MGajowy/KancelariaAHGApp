@@ -19,6 +19,8 @@ import { UpdateUserComponent } from './admin/user/components/update-user/update-
 import { AddResolutionComponent } from './resolution/component/add-resolution/add-resolution.component';
 import { AddRegulationCategoryComponent } from './regulation/component/add-regulation-category/add-regulation-category.component';
 import { AddRegulationComponent } from './regulation/component/add-regulation/add-regulation.component';
+import { DetailsRegulationCategoryComponent } from './regulation/component/details-regulation-category/details-regulation-category.component';
+import { ModifyRegulationCategoryComponent } from './regulation/component/modify-regulation-category/modify-regulation-category.component';
 
 const routes: Routes = [
   {
@@ -80,7 +82,16 @@ const routes: Routes = [
     component: AddRegulationComponent,
     canActivate: [AuthGuardService]
   },
-  
+  {
+    path: 'detail-regulation-category/:id',
+    component: DetailsRegulationCategoryComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'modify-regulation-category/:id',
+    component: ModifyRegulationCategoryComponent,
+    canActivate: [AuthGuardService]
+  },
   {
     path: 'list-regulations',
     component: RegulationListComponent

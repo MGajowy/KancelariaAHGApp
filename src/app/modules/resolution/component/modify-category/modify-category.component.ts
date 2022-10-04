@@ -31,7 +31,6 @@ export class ModifyCategoryComponent implements OnInit {
   }
 
   onSubmit() {
-
     this.updateCategory();
   }
 

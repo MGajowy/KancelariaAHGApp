@@ -53,12 +53,12 @@ export class RegulationCategoryComponent implements OnInit {
   }
 
   modifyCategory(id: number) {
-    this.router.navigate(['/kancelaria/modify-category', id]);
+    this.router.navigate(['/kancelaria/modify-regulation-category', id]);
 
   }
 
   detailsCategory(id: number) {
-    this.router.navigate(['/kancelaria/category-detail', id]);
+    this.router.navigate(['/kancelaria/detail-regulation-category', id]);
   }
 
   confirmPosition(position: string, id: number, nameCategory: string) {
