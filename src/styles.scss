@@ -4,6 +4,8 @@
 @import "../node_modules/primeflex/primeflex.css";
 @import "../node_modules/primeicons/primeicons.css";
 @import "../node_modules/@fullcalendar/common/main.css";
+@import "./src/styles/palette.scss";
+@import "./src/styles/typography.scss";
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -40,6 +42,7 @@ $AHG-app-theme: mat-light-theme((
 @include angular-material-theme($AHG-app-theme);
 
 /* You can add global styles to this file, and also import other style files */
+
 body,
 html {
   padding: 0;
@@ -49,3 +52,45 @@ html {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif,-apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”;; }
+
+.subpage-header {
+    color: $white !important;
+    background: $subpage-header-color;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 6px 6px 0px 0px;
+    display: inline-block;
+}
+
+
+.mat-raised-button.mat-primary {
+  background-color: $button-color;
+}
+
+.p-panelmenu .p-panelmenu-header:not(.p-highlight):not(.p-disabled) > a:hover {
+  background: $button-color;
+  border-color: $button-color;
+  color: #333333;
+}
+
+.p-panelmenu .p-panelmenu-header.p-highlight > a {
+  background: $button-color;
+  border-color: $button-color;
+  color: #ffffff;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.mat-toolbar.mat-primary {
+  background: $side-color;
+  color: white;
+}
+
+.mat-expansion-panel {
+  background: $background-extention-panel;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: $button-color;
+}

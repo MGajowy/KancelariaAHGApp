@@ -34,7 +34,6 @@ export class AuthServiceService {
     const user = sessionStorage.getItem('username');
     console.log(!(user === null));
     return !(user === null);
-
   }
 
   getUser() {

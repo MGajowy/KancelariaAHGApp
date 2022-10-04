@@ -1,6 +1,7 @@
 <header fxLayoutAlign="space-between center">
-  <div class="logo">
-    LOGO
+  <div fxLayout="row" fxLayoutGap="10px">
+    <img class="logo" src="assets/ap_symbol.jpg">
+    <span class="navbar-text">Kancelaria Adwokacka AHG</span>
   </div>
   <div fxLayout="row" fxLayoutGap="10px">
     <button mat-raised-button color="primary" routerLink="/kancelaria/home">
@@ -12,6 +13,6 @@
       Rejestracja</button>
     <button mat-raised-button color="primary" (click)= wybor();>
       <mat-icon aria-hidden="false" aria-label="Example home icon">login</mat-icon>
-      {{nazwaPrzysiku}}</button>
+      {{nazwaPrzycisku}}</button>
   </div>
 </header>

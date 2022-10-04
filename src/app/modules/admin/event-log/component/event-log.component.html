@@ -1,7 +1,7 @@
 <mat-list>
-  <mat-list-item>Dziennik zdarzen</mat-list-item>
-  <mat-list-item *ngIf="logList.listaLogow.length > 0">
-  <button mat-raised-button color="primary" class="btn btn-success" (click)="exportToPDF()">Pobierz PDF</button>
+  <mat-list-item class="subpage-header">Dziennik zdarzen</mat-list-item>
+  <mat-list-item *ngIf="logList.listaLogow.length > 0 else emptyEventLog">
+    <button mat-raised-button color="primary" class="btn btn-success" (click)="exportToPDF()">Pobierz PDF</button>
   </mat-list-item>
   <mat-divider></mat-divider><br>
 </mat-list>
@@ -11,21 +11,23 @@
     <mat-card style="margin-top: 20px; margin-bottom: 20px;">
       <p-table *ngIf="logList.listaLogow.length > 0" [columns]="cols" [value]="logList.listaLogow">
         <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th *ngFor="let col of columns">
-                    {{col.header}}
-                </th>
-            </tr>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{col.header}}
+            </th>
+          </tr>
         </ng-template>
         <ng-template pTemplate="body" let-rowData let-columns="columns">
-            <tr>
-                <td *ngFor="let col of columns">
-                    {{rowData[col.field]}}
-                </td>
-            </tr>
+          <tr>
+            <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+            </td>
+          </tr>
         </ng-template>
-    </p-table>
-    <p *ngIf="logList.listaLogow.length == 0">Dziennik zdarzeń jest pusty.</p>
+      </p-table>
+      <ng-template #emptyEventLog>
+        <p *ngIf="logList.listaLogow.length == 0">Dziennik zdarzeń jest pusty.</p>
+      </ng-template>
     </mat-card>
   </div>
 </div>

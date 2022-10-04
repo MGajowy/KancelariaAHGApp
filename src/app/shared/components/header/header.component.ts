@@ -10,17 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class  HeaderComponent implements OnInit {
 
   czyZalogowany: boolean ;
-  nazwaPrzysiku = '';
+  nazwaPrzycisku = '';
+  uzytkownik ='';
   zalogujText = 'Zaloguj';
   wylogujText = 'Wyloguj';
 
   constructor(private router: Router, private authService: AuthServiceService) { }
 
   ngOnInit() {
+
     if (this.authService.isUserLoggedIn()) {
-      this.nazwaPrzysiku = this.wylogujText;
+      this.uzytkownik = this.authService.getUser();
+      this.nazwaPrzycisku = this.wylogujText + " " +  this.uzytkownik;
     }else{
-      this.nazwaPrzysiku = this.zalogujText;
+      this.nazwaPrzycisku = this.zalogujText;
     }
 
   }

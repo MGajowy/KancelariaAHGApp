@@ -9,7 +9,7 @@
   </div>
   </mat-list-item>
   <mat-divider></mat-divider><br>
-  <mat-list-item>
+  <mat-list-item class="subpage-header">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
       <mat-icon>playlist_add</mat-icon>
     </button>
@@ -86,14 +86,3 @@
   </mat-accordion>
 </div>
 
-
-
-<!-- <mat-selection-list #shoes [multiple]="false">
-  <mat-list-option *ngFor="let user of listaUzytkownikow.listaUzytkownikow">
-    <td>{{user.imie}} {{user.nazwisko}} {{user.plec}}
-      <button  mat-raised-button color="primary" style="margin-right: 5px" >Usuń</button>
-      <button  mat-raised-button color="primary" style="margin-right: 5px" >Modyfikuj</button>
-      <button mat-raised-button color="primary" routerLink="kancelaria/user-detail" style="margin-right: 5px">Szczegóły</button>
-    </td>
-  </mat-list-option>
-</mat-selection-list> -->

@@ -1,4 +1,7 @@
+@import "./src/styles/palette.scss";
+
 footer {
   padding: 5px;
-  background-color: dimgrey;
+  background-color: $footer-color;
+  color: $white;
 }
