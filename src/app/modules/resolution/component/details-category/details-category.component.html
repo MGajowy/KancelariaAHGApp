@@ -4,10 +4,10 @@
   <mat-divider></mat-divider><br>
 </mat-list>
 <div *ngIf="category">
-  <div>
+  <div class="item-detail">
     <label><b>Nazwa kategorii:</b></label> {{category.rodzajKategorii}}
   </div>
-  <div>
+  <div class="item-detail">
     <label><b>Czy opublikowana: </b></label>
     <mat-checkbox class="example-margin" color="primary" [(ngModel)]="category.czyPubliczny" name="czyPubliczny">
     </mat-checkbox>

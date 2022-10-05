@@ -1,51 +1,53 @@
-
 <div class="shadowbox-page">
-<mat-list>
-  <mat-list-item >
-    <div style="float: right;">
-      <mat-form-field>
-        <input Simply-Space type="text" matInput placeholder="wyszukaj kategorie" [formControl]="term">
-        <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
-      </mat-form-field>
-    </div>
+  <mat-list>
+    <mat-list-item>
+      <div style="float: right;">
+        <mat-form-field>
+          <input Simply-Space type="text" matInput placeholder="wyszukaj kategorie" [formControl]="term">
+          <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
+        </mat-form-field>
+      </div>
     </mat-list-item>
-  <mat-divider></mat-divider><br>
-  <mat-list-item class="subpage-header">Kategorie uchwał</mat-list-item>
-  <mat-divider></mat-divider><br>
-</mat-list>
-<p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000"></p-confirmDialog>
-<p-messages [value]="msgs"></p-messages>
-<mat-grid-list *ngIf="listaKategorii.listaKategorii.length > 0" cols="3" rowHeight="10:2">
-  <div *ngFor="let resolutions of listaKategorii.listaKategorii">
-    <mat-grid-tile>
-        {{resolutions.rodzajKategorii}}
+    <mat-divider></mat-divider><br>
+    <mat-list-item class="subpage-header">Kategorie uchwał</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
+  <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000">
+  </p-confirmDialog>
+  <p-messages [value]="msgs"></p-messages>
+  <mat-grid-list *ngIf="listaKategorii.listaKategorii.length > 0" cols="3" rowHeight="10:2">
+    <div *ngFor="let kategoria of listaKategorii.listaKategorii">
+      <mat-grid-tile>
+        {{kategoria.rodzajKategorii}}
       </mat-grid-tile>
       <mat-grid-tile>
-      <button  mat-raised-button color="primary" style="margin-right: 5px" (click) ="confirmPosition('top', resolutions.id, resolutions.rodzajKategorii)">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
-        Usuń</button>
-      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="modifyCategory(resolutions.id)">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon>
-        Modyfikuj</button>
-      <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="detailsCategory(resolutions.id)" >
-        <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
-        Szczegóły</button>
+        <button mat-raised-button color="primary" style="margin-right: 5px"
+          (click)="confirmPosition('top', kategoria.id, kategoria.rodzajKategorii)">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
+          Usuń
+        </button>
+        <button mat-raised-button color="primary" style="margin-right: 5px" (click)="modifyCategory(kategoria.id)">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon>
+          Modyfikuj
+        </button>
+        <button mat-raised-button color="primary" style="margin-right: 5px" (click)="detailsCategory(kategoria.id)">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
+          Szczegóły
+        </button>
       </mat-grid-tile>
       <mat-grid-tile>
-        <span>{{resolutions.czyPubliczny ? "Publiczna " : "Niepubliczna "}}</span>
-        <p-inputSwitch [(ngModel)]="resolutions.czyPubliczny"></p-inputSwitch>
+        <span>{{kategoria.czyPubliczny ? "Publiczna " : "Niepubliczna "}}</span>
+        <p-inputSwitch [(ngModel)]="kategoria.czyPubliczny"></p-inputSwitch>
       </mat-grid-tile>
     </div>
-</mat-grid-list>
-<p *ngIf="listaKategorii.listaKategorii.length == 0">Lista kategorii jest pusta.</p>
-<!-- <mat-list>
+  </mat-grid-list>
+  <p *ngIf="listaKategorii.listaKategorii.length == 0">Lista kategorii jest pusta.</p>
+  <!-- <mat-list>
   <div mat-subheader>Kategorie uchwał</div>
-  <mat-list-item *ngFor="let resolutions of listaKategorii.listaKategorii">
+  <mat-list-item *ngFor="let kategoria of listaKategorii.listaKategorii">
     <mat-icon mat-list-icon>folder</mat-icon>
-    <div mat-line>{{resolutions.rodzajKategorii}}</div>
+    <div mat-line>{{kategoria.rodzajKategorii}}</div>
   </mat-list-item>
   <mat-divider></mat-divider>
 </mat-list> -->
 </div>
-
-

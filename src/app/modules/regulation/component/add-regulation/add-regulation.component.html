@@ -21,8 +21,13 @@
           {{kategoria.rodzajKategorii}} </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-checkbox class="example-margin" color="primary" [(ngModel)]="regulation.czyPubliczny" name="czyPubliczny">Czy
-      opublikowac rozporzadzenie</mat-checkbox>
+    <mat-form-field appearance="fill">
+      <mat-label>Czy publiczny</mat-label>
+      <mat-select required [(ngModel)]="regulation.czyPubliczny" name="czyPubliczny">
+        <mat-option value="true">Tak</mat-option>
+        <mat-option value="false">Nie</mat-option>
+      </mat-select>
+    </mat-form-field>
     <div>
       <button mat-raised-button color="primary" type="submit" class="btn btn-success">Dodaj rozporzadzenie</button>
     </div>

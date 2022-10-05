@@ -40,6 +40,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif,-apple-syste
     display: inline-block;
 }
 
+.mat-accordion .mat-expansion-panel {
+  margin-bottom: 5px;
+}
+
 .mat-raised-button.mat-primary {
   background-color: $button-color;
 }
@@ -80,4 +84,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif,-apple-syste
   padding: 8px 12px;
   background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
   border-radius: 4px 4px 4px 4px;
+}
+
+.item-detail {
+  min-height: 30px;
+  margin-left: 10px;
+  font-size: $regular-size;
 }

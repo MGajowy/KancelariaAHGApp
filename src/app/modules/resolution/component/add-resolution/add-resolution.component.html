@@ -27,8 +27,13 @@
         <mat-option *ngFor="let kategoria of category.listaKategorii" [value]="kategoria.id">{{kategoria.rodzajKategorii}} </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-checkbox class="example-margin" color="primary" [(ngModel)]="resolution.czyPubliczny" name="czyPubliczny">Czy
-      opublikowac uchwałe</mat-checkbox>
+    <mat-form-field appearance="fill">
+      <mat-label>Czy publiczny</mat-label>
+      <mat-select required [(ngModel)]="resolution.czyPubliczny" name="czyPubliczny">
+        <mat-option value="true">Tak</mat-option>
+        <mat-option value="false">Nie</mat-option>
+      </mat-select>
+    </mat-form-field>
     <div>
       <button mat-raised-button color="primary" type="submit" class="btn btn-success">Dodaj uchwale</button>
     </div>

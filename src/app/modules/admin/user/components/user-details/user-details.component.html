@@ -1,41 +1,42 @@
 <div class="shadowbox-page">
-<mat-list>
-  <mat-list-item class="subpage-header">Szczegóły użytkownika</mat-list-item>
-  <mat-divider></mat-divider><br>
-</mat-list>
+  <mat-list>
+    <mat-list-item class="subpage-header">Szczegóły użytkownika</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
 
 
-<div *ngIf="user">
-  <div>
-    <label><b>Imię:</b></label> {{user.imie}}
+  <div *ngIf="user">
+    <div class="item-detail">
+      <label><b>Imię:</b></label> {{user.imie}}
+    </div>
+    <div class="item-detail">
+      <label><b>Nazwisko: </b></label> {{user.nazwisko}}
+    </div>
+    <div class="item-detail">
+      <label><b>Login: </b></label> {{user.username}}
+    </div>
+    <div class="item-detail">
+      <label><b>Haslo: </b></label> {{user.password}}
+    </div>
+    <div class="item-detail">
+      <label><b>e-mail: </b></label> {{user.email}}
+    </div>
+    <div class="item-detail">
+      <label><b>Pleć: </b></label> {{user.plec}}
+    </div>
+    <div class="item-detail">
+      <label><b>Telefon: </b></label> {{user.telefon}}
+    </div>
+    <div class="item-detail">
+      <label><b>Stan konta: </b></label> {{user.stan}}
+    </div>
+    <div class="item-detail">
+      <label><b>Rola systemowa: </b></label> {{user.role}}
+    </div>
   </div>
-  <div>
-    <label><b>Nazwisko: </b></label> {{user.nazwisko}}
-  </div>
-  <div>
-    <label><b>Login: </b></label> {{user.username}}
-  </div>
-  <div>
-    <label><b>Haslo: </b></label> {{user.password}}
-  </div>
-  <div>
-    <label><b>e-mail: </b></label> {{user.email}}
-  </div>
-  <div>
-    <label><b>Pleć: </b></label> {{user.plec}}
-  </div>
-  <div>
-    <label><b>Telefon: </b></label> {{user.telefon}}
-  </div>
-  <div>
-    <label><b>Stan konta: </b></label> {{user.stan}}
-  </div>
-  <div>
-    <label><b>Rola systemowa: </b></label> {{user.role}}
-  </div>
-</div>
 
-<br>
-<br>
-<button  mat-raised-button color="primary" style="margin-right: 5px" (click)="list()">Wróć do listy użytkowników</button><br>
+  <br>
+  <br>
+  <button mat-raised-button color="primary" style="margin-right: 5px" (click)="list()">Wróć do listy
+    użytkowników</button><br>
 </div>

@@ -18,6 +18,7 @@ export class AddResolutionComponent implements OnInit {
   category: CategoryListDTO;
   submitted = false;
   resolutionForm: FormGroup;
+  list: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,

@@ -1,30 +1,30 @@
 <div class="shadowbox-page">
-<mat-list>
-  <mat-list-item >
-  <div style="float: right;">
-    <mat-form-field>
-      <input Simply-Space type="text" matInput placeholder="wyszukaj..." [formControl]="term">
-      <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
-    </mat-form-field>
+  <mat-list>
+    <mat-list-item>
+      <div style="float: right;">
+        <mat-form-field>
+          <input Simply-Space type="text" matInput placeholder="wyszukaj..." [formControl]="term">
+          <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
+        </mat-form-field>
+      </div>
+    </mat-list-item>
+    <mat-list-item class="subpage-header">Lista rozporzadzen</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
+  <div *ngIf="lista.listaRozporzadzen.length > 0; else emptyList ">
+    <mat-accordion *ngFor="let regulation of lista.listaRozporzadzen">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <br>{{regulation.nazwa}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Kategoria: {{regulation.nazwaKategorii}}</p>
+        <p>Treść: {{regulation.tresc}}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
-  </mat-list-item>
-  <mat-list-item class="subpage-header">Lista rozporzadzen</mat-list-item>
-  <mat-divider></mat-divider><br>
-</mat-list>
-<div *ngIf="lista.listaRozporzadzen.length > 0; else emptyList ">
-  <mat-accordion *ngFor="let regulation of lista.listaRozporzadzen">
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <br>{{regulation.nazwa}}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p>Kategoria: {{regulation.nazwaKategorii}}</p>
-      <p>Treść: {{regulation.tresc}}</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
-<ng-template #emptyList>
-  <p>{{ komunikat }}</p>
-</ng-template>
+  <ng-template #emptyList>
+    <p>{{ komunikat }}</p>
+  </ng-template>
 </div>

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { CategoryDTO, CategoryListDTO } from '../../../../generated/REST';
+import { CategoryDTO, CategoryDTOrequest, CategoryListDTO } from '../../../../generated/REST';
 import { ResolutionService } from '../../service/resolution.service';
 
 import { Component, OnInit, Input } from '@angular/core';
@@ -19,6 +19,7 @@ export class ResolutionCategoryComponent implements OnInit {
   listaKategorii: CategoryListDTO;
   term: FormControl;
   checked: boolean = true;
+  category: CategoryDTOrequest;
 
   constructor(
     private resolutionService: ResolutionService,
@@ -80,7 +81,13 @@ export class ResolutionCategoryComponent implements OnInit {
 
   modifyCategory(id: number) {
     this.router.navigate(['/office/modify-category', id]);
+  }
 
+  modifyStatusCategory(id: number, category: CategoryDTOrequest ) {
+    this.category = new CategoryDTOrequest();
+    this.category.rodzajKategorii = category.rodzajKategorii;
+    this.category.czyPubliczny = category.czyPubliczny;
+    this.resolutionService.updateCategory(id, this.category)
   }
 
   detailsCategory(id: number) {
