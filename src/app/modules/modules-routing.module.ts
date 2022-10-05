@@ -38,7 +38,8 @@ const routes: Routes = [
   },
   {
     path: 'event-log',
-    component: EventLogComponent
+    component: EventLogComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'about',
@@ -66,7 +67,8 @@ const routes: Routes = [
   },
   {
     path: 'modify-category/:id',
-    component: ModifyCategoryComponent
+    component: ModifyCategoryComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'list-resolutions',
@@ -74,7 +76,8 @@ const routes: Routes = [
   },
   {
     path: 'category-regulations',
-    component: RegulationCategoryComponent
+    component: RegulationCategoryComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-category-regulations',
