@@ -32,12 +32,12 @@ export class SidebarComponent {
               {
                 label: 'Dodaj użytkownika',
                 icon: 'pi pi-fw pi-user-plus',
-                command: () => this.nav('/kancelaria/add-user')
+                command: () => this.nav('/office/add-user')
               },
               {
                 label: 'Lista użytkowników',
                 icon: 'pi pi-fw pi-users',
-                command: () => this.nav('/kancelaria/user-list')
+                command: () => this.nav('/office/user-list')
               },
               // {
               //   label: 'Wyszukaj',
@@ -68,7 +68,7 @@ export class SidebarComponent {
               {
                 label: 'Dziennik zdarzen',
                 icon: 'pi pi-chart-bar',
-                command: () => this.nav('/kancelaria/event-log')
+                command: () => this.nav('/office/event-log')
               }
             ]
           },
@@ -94,24 +94,24 @@ export class SidebarComponent {
               {
                 label: 'Dodaj kategorie',
                 icon: 'pi pi-folder',
-                command: () => this.nav('/kancelaria/add-category-resolutions')
+                command: () => this.nav('/office/add-category-resolutions')
               },
               {
                 label: 'Dodaj uchwałe',
                 icon: 'pi pi-fw pi-file',
-                command: () => this.nav('/kancelaria/add-resolutions')
+                command: () => this.nav('/office/add-resolutions')
               }
             ]
           },
           {
             label: 'Kategorie uchwał',
             icon: 'pi pi-folder-open',
-            command: () => this.nav('/kancelaria/category-resolutions')
+            command: () => this.nav('/office/category-resolutions')
           },
           {
             label: 'Lista uchwał',
             icon: 'pi pi-fw pi-file',
-            command: () => this.nav('/kancelaria/list-resolutions')
+            command: () => this.nav('/office/list-resolutions')
           }
         ]
       },
@@ -126,24 +126,24 @@ export class SidebarComponent {
               {
                 label: 'Dodaj kategorie',
                 icon: 'pi pi-folder',
-                command: () => this.nav('/kancelaria/add-category-regulations')
+                command: () => this.nav('/office/add-category-regulations')
               },
               {
                 label: 'Dodaj rozporządzenia',
                 icon: 'pi pi-fw pi-file',
-                command: () => this.nav('/kancelaria/add-regulations')
+                command: () => this.nav('/office/add-regulations')
               }
             ]
           },
           {
             label: 'Kategorie rozporzadzen',
             icon: 'pi pi-folder-open',
-            command: () => this.nav('/kancelaria/category-regulations')
+            command: () => this.nav('/office/category-regulations')
           },
           {
             label: 'Lista rozporzadzen',
             icon: 'pi pi-fw pi-file',
-            command: () => this.nav('/kancelaria/list-regulations')
+            command: () => this.nav('/office/list-regulations')
           }
         ]
       },
@@ -157,7 +157,8 @@ export class SidebarComponent {
             items: [
               {
                 label: 'Mapa dojazdu',
-                icon: 'pi pi-compass'
+                icon: 'pi pi-compass',
+                command: () => this.nav('/office/access-map')
               },
             ]
           },
@@ -167,13 +168,15 @@ export class SidebarComponent {
             items: [
               {
                 label: 'Lista specjalizacji',
-                icon: 'pi pi-fw pi-calendar-minus'
+                icon: 'pi pi-fw pi-calendar-minus',
+                command: () => this.nav('/office/specialization')
               }
             ]
           },
           {
             label: 'Pomoc online',
             icon: 'pi pi-fw pi-calendar-times',
+            command: () => this.nav('/office/online-help')
           }
 
         ]
@@ -181,9 +184,9 @@ export class SidebarComponent {
       {
         label: 'Kariera',
         icon: 'pi pi-info',
+        command: () => this.nav('/office/career')
       }
     ];
-
   }
   nav(url) {
     this.router.navigateByUrl(url);

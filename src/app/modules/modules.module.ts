@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { UsersListComponent } from './admin/user/components/users-list/users-list.component';
 
-import { ResolutionKategoryComponent } from './resolution/component/resolution-category/resolution-kategory.component';
+import { ResolutionCategoryComponent } from './resolution/component/resolution-category/resolution-category.component';
 import { AddUserComponent } from './admin/user/components/add-user/add-user.component';
 import { UserDetailsComponent } from './admin/user/components/user-details/user-details.component';
 import { UserProfileComponent } from './admin/user/components/user-profile/user-profile.component';
@@ -47,18 +47,22 @@ import { SetPasswordComponent } from './admin/user/components/set-password/set-p
 import { TableModule } from 'primeng/table';
 import { AddResolutionComponent } from './resolution/component/add-resolution/add-resolution.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
-import { AddRegulationCategoryComponent } from './regulation/component/add-regulation-category/add-regulation-category.component'
-import { AddRegulationComponent } from './/regulation/component/add-regulation/add-regulation.component'
-import { DetailsRegulationCategoryComponent } from './regulation/component/details-regulation-category/details-regulation-category.component'
-import { ModifyRegulationCategoryComponent } from './regulation/component/modify-regulation-category/modify-regulation-category.component'
+import { AddRegulationCategoryComponent } from './regulation/component/add-regulation-category/add-regulation-category.component';
+import { AddRegulationComponent } from './/regulation/component/add-regulation/add-regulation.component';
+import { DetailsRegulationCategoryComponent } from './regulation/component/details-regulation-category/details-regulation-category.component';
+import { ModifyRegulationCategoryComponent } from './regulation/component/modify-regulation-category/modify-regulation-category.component';
+import { AccessMapComponent } from './about/access-map/access-map.component';
+import { SpecializationComponent } from './about/specialization/specialization.component';
+import { OnlineHelpComponent } from './about/online-help/online-help.component';
+import { CareerComponent } from './about/career/career.component';
+
 @NgModule({
   declarations: [
     HomeComponent,
     AboutComponent,
-    ResolutionKategoryComponent,
     UsersListComponent,
     ResolutionsListComponent,
-    ResolutionKategoryComponent,
+    ResolutionCategoryComponent,
     AddUserComponent,
     UserDetailsComponent,
     UserProfileComponent,
@@ -73,7 +77,11 @@ import { ModifyRegulationCategoryComponent } from './regulation/component/modify
     AddRegulationCategoryComponent,
     AddRegulationComponent,
     DetailsRegulationCategoryComponent,
-    ModifyRegulationCategoryComponent
+    ModifyRegulationCategoryComponent,
+    AccessMapComponent,
+    SpecializationComponent,
+    OnlineHelpComponent,
+    CareerComponent
   ],
   imports: [
     CommonModule,

@@ -54,7 +54,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/kancelaria/user-list']);
+    this.router.navigate(['/office/user-list']);
   }
 
   reloadData() {

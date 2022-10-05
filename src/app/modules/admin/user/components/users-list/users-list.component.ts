@@ -96,11 +96,11 @@ export class UsersListComponent implements OnInit {
   }
 
   upDateUser(id: number) {
-    this.router.navigate(['/kancelaria/update-user', id]);
+    this.router.navigate(['/office/update-user', id]);
   }
 
   detailsUser(id: number) {
-    this.router.navigate(['/kancelaria/user-detail', id]);
+    this.router.navigate(['/office/user-detail', id]);
   }
 
   confirmPosition(position: string, id: number, login: string) {

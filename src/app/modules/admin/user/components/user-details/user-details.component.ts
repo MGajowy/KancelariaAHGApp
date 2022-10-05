@@ -30,7 +30,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   list() {
-    this.router.navigate(['/kancelaria/user-list']);
+    this.router.navigate(['/office/user-list']);
   }
 
 }

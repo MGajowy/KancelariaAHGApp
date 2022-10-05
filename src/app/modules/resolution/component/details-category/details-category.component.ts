@@ -27,7 +27,7 @@ export class DetailsCategoryComponent implements OnInit {
 }
 
   list(){
-    this.router.navigate(['/kancelaria/category-resolutions']);
+    this.router.navigate(['/office/category-resolutions']);
 
 }
 }

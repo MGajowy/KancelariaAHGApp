@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { CategoryDTO, CategoryListDTO } from './../../../../generated/REST';
+import { CategoryDTO, CategoryListDTO } from '../../../../generated/REST';
 import { ResolutionService } from '../../service/resolution.service';
 
 import { Component, OnInit, Input } from '@angular/core';
@@ -9,11 +9,11 @@ import { FormControl } from '@angular/forms';
 import { debounce, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-resolution-kategory',
-  templateUrl: './resolution-kategory.component.html',
-  styleUrls: ['./resolution-kategory.component.scss']
+  selector: 'app-resolution-category',
+  templateUrl: './resolution-category.component.html',
+  styleUrls: ['./resolution-category.component.scss']
 })
-export class ResolutionKategoryComponent implements OnInit {
+export class ResolutionCategoryComponent implements OnInit {
   msgs: Message[] = [];
   position: string;
   listaKategorii: CategoryListDTO;
@@ -79,12 +79,12 @@ export class ResolutionKategoryComponent implements OnInit {
   }
 
   modifyCategory(id: number) {
-    this.router.navigate(['/kancelaria/modify-category', id]);
+    this.router.navigate(['/office/modify-category', id]);
 
   }
 
   detailsCategory(id: number) {
-    this.router.navigate(['/kancelaria/category-detail', id]);
+    this.router.navigate(['/office/category-detail', id]);
   }
 
 }

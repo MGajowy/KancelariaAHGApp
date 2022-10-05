@@ -15,7 +15,7 @@ const routes: Routes = [{
   component: DefaultComponent,
   children: [
   {
-    path: 'kancelaria',
+    path: 'office',
     loadChildren: () => import('./modules/modules.module').then (m => m.ModulesModule)
   }
 ]

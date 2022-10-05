@@ -26,7 +26,7 @@ export class DetailsRegulationCategoryComponent implements OnInit {
   }
 
   list() {
-    this.router.navigate(['/kancelaria/category-regulations'])
+    this.router.navigate(['/office/category-regulations'])
   }
 
 }

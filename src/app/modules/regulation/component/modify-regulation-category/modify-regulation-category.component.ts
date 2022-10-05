@@ -25,7 +25,7 @@ export class ModifyRegulationCategoryComponent implements OnInit {
 
   gotoList(){
     this.reloadData();
-    this.router.navigate(['/kancelaria/category-regulations']);
+    this.router.navigate(['/office/category-regulations']);
   }
 
   onSubmit() {

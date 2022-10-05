@@ -55,7 +55,7 @@ export class AddUserComponent implements OnInit {
           }
         });
       alert('Uzytkownik zostal dodany do listy uzytkownikow')
-      this.router.navigate(['kancelaria/user-list']);
+      this.router.navigate(['office/user-list']);
     }
   }
 

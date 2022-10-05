@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         if (result.success){
           console.log(result)
         }else {
-          this.router.navigate(['kancelaria/home'])
+          this.router.navigate(['office/home'])
         }
       });
 

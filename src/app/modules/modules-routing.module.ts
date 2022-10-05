@@ -7,7 +7,7 @@ import { RegulationCategoryComponent } from './regulation/component/regulation-c
 import { EventLogComponent } from './admin/event-log/component/event-log.component';
 import { AddUserComponent } from './admin/user/components/add-user/add-user.component';
 import { UsersListComponent } from './admin/user/components/users-list/users-list.component';
-import { ResolutionKategoryComponent } from './resolution/component/resolution-category/resolution-kategory.component';
+import { ResolutionCategoryComponent } from './resolution/component/resolution-category/resolution-category.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
@@ -21,6 +21,10 @@ import { AddRegulationCategoryComponent } from './regulation/component/add-regul
 import { AddRegulationComponent } from './regulation/component/add-regulation/add-regulation.component';
 import { DetailsRegulationCategoryComponent } from './regulation/component/details-regulation-category/details-regulation-category.component';
 import { ModifyRegulationCategoryComponent } from './regulation/component/modify-regulation-category/modify-regulation-category.component';
+import { AccessMapComponent } from './about/access-map/access-map.component';
+import { SpecializationComponent } from './about/specialization/specialization.component';
+import { OnlineHelpComponent } from './about/online-help/online-help.component';
+import { CareerComponent } from './about/career/career.component';
 
 const routes: Routes = [
   {
@@ -42,7 +46,7 @@ const routes: Routes = [
   },
   {
     path: 'category-resolutions',
-    component: ResolutionKategoryComponent,
+    component: ResolutionCategoryComponent,
     canActivate: [AuthGuardService]
   },
   {
@@ -115,6 +119,22 @@ const routes: Routes = [
     path: 'update-user/:id',
     component: UpdateUserComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'access-map',
+    component: AccessMapComponent,
+  },
+  {
+    path: 'specialization',
+    component: SpecializationComponent,
+  },
+  {
+    path: 'online-help',
+    component: OnlineHelpComponent,
+  },
+  {
+    path: 'career',
+    component: CareerComponent,
   }
 
 ];

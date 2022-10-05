@@ -27,7 +27,7 @@ export class ModifyCategoryComponent implements OnInit {
 
   gotoList(){
     this.reloadData();
-    this.router.navigate(['/kancelaria/category-resolutions']);
+    this.router.navigate(['/office/category-resolutions']);
   }
 
   onSubmit() {
