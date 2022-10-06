@@ -46,7 +46,7 @@ import { DetailsCategoryComponent } from './resolution/component/details-categor
 import { SetPasswordComponent } from './admin/user/components/set-password/set-password.component';
 import { TableModule } from 'primeng/table';
 import { AddResolutionComponent } from './resolution/component/add-resolution/add-resolution.component';
-import {InputSwitchModule} from 'primeng/inputswitch';
+import { InputSwitchModule } from 'primeng/inputswitch';
 import { AddRegulationCategoryComponent } from './regulation/component/add-regulation-category/add-regulation-category.component';
 import { AddRegulationComponent } from './/regulation/component/add-regulation/add-regulation.component';
 import { DetailsRegulationCategoryComponent } from './regulation/component/details-regulation-category/details-regulation-category.component';
@@ -55,7 +55,8 @@ import { AccessMapComponent } from './about/access-map/access-map.component';
 import { SpecializationComponent } from './about/specialization/specialization.component';
 import { OnlineHelpComponent } from './about/online-help/online-help.component';
 import { CareerComponent } from './about/career/career.component';
-
+import { GMapModule } from 'primeng/gmap';
+import {TreeModule} from 'primeng/tree';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -110,7 +111,9 @@ import { CareerComponent } from './about/career/career.component';
     MessagesModule,
     TableModule,
     MatButtonToggleModule,
-    InputSwitchModule
+    InputSwitchModule,
+    GMapModule,
+    TreeModule
   ],
   providers: [ConfirmationService]
 })

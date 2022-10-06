@@ -1,0 +1,60 @@
+{
+    "data": 
+    [
+        {
+            "label": "Sprawy o rozwód",
+            "data": "Documents Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder"
+        },
+        {
+            "label": "Prawa karnego",
+            "data": "Documents Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder"
+        },
+        {
+            "label": "Prawa karnego wykonawczego",
+            "data": "Documents Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder"
+        },
+        {
+            "label": "Prawa cywilnego i gospodarczego",
+            "data": "Documents Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder"
+        },
+        {
+            "label": "Prawa umów",
+            "data": "Documents Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder"
+        },
+        {
+            "label": "Prawa spółek (tworzenie i bieżąca obsługa spółek cywilnych i handlowych)",
+            "data": "Documents Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder"
+        },
+        {
+            "label": "Prawa spadkowego",
+            "data": "Documents Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder"
+        },
+        {
+            "label": "Prawa rodzinnego i opiekuńczego",
+            "data": "Documents Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder"
+        },        
+        {
+            "label": "Prawa administracyjnego i podatkowego",
+            "data": "Documents Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder"
+        }
+        
+    ]
+}

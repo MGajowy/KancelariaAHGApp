@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {AboutServiceService} from '../service/about-service.service';
+import {TreeNode} from 'primeng/api';
 @Component({
   selector: 'app-specialization',
   templateUrl: './specialization.component.html',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpecializationComponent implements OnInit {
 
-  constructor() { }
+  files1: TreeNode[];
 
-  ngOnInit() {
+  constructor(private aboutService: AboutServiceService) { }
+
+    ngOnInit() {
+      this.aboutService.getFiles().then(files => this.files1 = files);
   }
 
 }
