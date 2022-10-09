@@ -1,63 +1,64 @@
 <div class="shadowbox-page">
-<mat-list>
-  <mat-list-item class="subpage-header">Modyfikuj użytkownika {{user.username}}</mat-list-item>
-  <mat-divider></mat-divider><br>
-</mat-list>
+  <mat-list>
+    <mat-list-item class="subpage-header">Modyfikuj użytkownika {{user.username}}</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
 
-<p>
-<mat-form-field class="example-form-field">
-  <mat-label>Imię</mat-label>
-  <input matInput type="text" [(ngModel)]="user.imie">
-  <button mat-button *ngIf="user.imie" matSuffix mat-icon-button aria-label="Clear" (click)="user.imie=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
-</p>
-<p>
-<mat-form-field class="example-form-field">
-  <mat-label>Nazwisko</mat-label>
-  <input matInput type="text" [(ngModel)]="user.nazwisko">
-  <button mat-button *ngIf="user.nazwisko" matSuffix mat-icon-button aria-label="Clear" (click)="user.nazwisko=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
-</p>
-<p>
-<mat-form-field class="example-form-field">
-  <mat-label>Login</mat-label>
-  <input matInput type="text" [(ngModel)]="user.username">
-  <button mat-button *ngIf="user.username" matSuffix mat-icon-button aria-label="Clear" (click)="user.username=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
-</p>
-<p>
-<mat-form-field class="example-form-field">
-  <mat-label>Hasło</mat-label>
-  <input matInput type="text" [(ngModel)]="user.password">
-  <button mat-button *ngIf="user.password" matSuffix mat-icon-button aria-label="Clear" (click)="user.password=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
-</p>
-<p>
-<mat-form-field class="example-form-field">
-  <mat-label>E-mail</mat-label>
-  <input matInput type="text" [(ngModel)]="user.email">
-  <button mat-button *ngIf="user.email" matSuffix mat-icon-button aria-label="Clear" (click)="user.email=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
-<p>
-<mat-form-field class="example-form-field">
-  <mat-label>Telefon</mat-label>
-  <input matInput type="text" [(ngModel)]="user.telefon">
-  <button mat-button *ngIf="user.telefon" matSuffix mat-icon-button aria-label="Clear" (click)="user.telefon=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
-</p>
-<!-- <p>
+  <div class="item-detail">
+    <mat-form-field class="example-form-field">
+      <mat-label>Imię</mat-label>
+      <input matInput type="text" [(ngModel)]="user.imie">
+      <button mat-button *ngIf="user.imie" matSuffix mat-icon-button aria-label="Clear" (click)="user.imie=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="item-detail">
+    <mat-form-field class="example-form-field">
+      <mat-label>Nazwisko</mat-label>
+      <input matInput type="text" [(ngModel)]="user.nazwisko">
+      <button mat-button *ngIf="user.nazwisko" matSuffix mat-icon-button aria-label="Clear" (click)="user.nazwisko=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="item-detail">
+    <mat-form-field class="example-form-field">
+      <mat-label>Login</mat-label>
+      <input matInput type="text" [(ngModel)]="user.username">
+      <button mat-button *ngIf="user.username" matSuffix mat-icon-button aria-label="Clear" (click)="user.username=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="item-detail">
+    <mat-form-field class="example-form-field">
+      <mat-label>Hasło</mat-label>
+      <input matInput type="text" [(ngModel)]="user.password">
+      <button mat-button *ngIf="user.password" matSuffix mat-icon-button aria-label="Clear" (click)="user.password=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="item-detail">
+    <mat-form-field class="example-form-field">
+      <mat-label>E-mail</mat-label>
+      <input matInput type="text" [(ngModel)]="user.email">
+      <button mat-button *ngIf="user.email" matSuffix mat-icon-button aria-label="Clear" (click)="user.email=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="item-detail">
+    <mat-form-field class="example-form-field">
+      <mat-label>Telefon</mat-label>
+      <input matInput type="text" [(ngModel)]="user.telefon">
+      <button mat-button *ngIf="user.telefon" matSuffix mat-icon-button aria-label="Clear" (click)="user.telefon=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <!-- <p>
 <mat-form-field class="example-form-field">
   <mat-label>Płeć</mat-label>
   <input matInput type="text" [(ngModel)]="user.plec">
@@ -66,24 +67,24 @@
   </button>
 </mat-form-field>
 </p> -->
-<p>
-  <mat-form-field appearance="fill">
-    <mat-label>Płeć</mat-label>
-    <mat-select [(ngModel)]="user.plec">
-      <mat-option *ngFor="let plec of listaPlci" [value]="plec">{{plec}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</p>
-<p>
-  <mat-form-field appearance="fill">
-    <mat-label>Rola systemowa</mat-label>
-    <mat-select [(ngModel)]="rola">
-      <mat-option *ngFor="let rola of listaRol" [value]="rola">{{rola}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</p>
-<section>
-  <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="onSubmit()">Zapisz</button>
-  <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="gotoList()">Cofnij</button>
-</section>
+  <div class="item-detail">
+    <mat-form-field appearance="fill">
+      <mat-label>Płeć</mat-label>
+      <mat-select [(ngModel)]="user.plec">
+        <mat-option *ngFor="let plec of listaPlci" [value]="plec">{{plec}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="item-detail">
+    <mat-form-field appearance="fill">
+      <mat-label>Rola systemowa</mat-label>
+      <mat-select [(ngModel)]="rola">
+        <mat-option *ngFor="let rola of listaRol" [value]="rola">{{rola}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <section>
+    <button mat-raised-button color="primary" style="margin-right: 5px" (click)="onSubmit()">Zapisz</button>
+    <button mat-raised-button color="primary" style="margin-right: 5px" (click)="gotoList()">Cofnij</button>
+  </section>
 </div>
