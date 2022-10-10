@@ -3,6 +3,7 @@ import { RestService } from '../../../core/services/rest/rest.service';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { baseUrl } from 'src/environments/environment';
 import { CategoryDTO, CategoryDTOrequest, CreateRegulationDTO } from 'src/app/generated/REST';
 
@@ -29,7 +30,10 @@ export class RegulationService {
   }
 
   createCategory(categoryDTO: CategoryDTO): Observable<any> {
-    return this.httpClient.post(`${baseUrl}rest/kategorieRozporzadzen/secured/dodaj-kategorie`, categoryDTO);
+    return this.httpClient.post(`${baseUrl}rest/kategorieRozporzadzen/secured/dodaj-kategorie`, categoryDTO, {observe: 'response'})
+    .pipe(map(data => {
+      return data.status;
+    }));
   }
 
   updateCategory(id: number, value: any): Observable<any> {

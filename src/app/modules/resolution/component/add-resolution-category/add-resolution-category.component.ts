@@ -2,6 +2,7 @@ import { UserStateEnum } from './../../../../generated/UserStateEnum';
 import { CategoryDTO} from './../../../../generated/REST';
 import { ResolutionService } from './../../service/resolution.service';
 import { Component, OnInit } from '@angular/core';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-add-resolution-category',
@@ -13,7 +14,10 @@ export class AddResolutionCategoryComponent implements OnInit {
   category: CategoryDTO = new CategoryDTO();
   submitted = false;
 
-  constructor(private resolutionServices: ResolutionService) { }
+  constructor(
+    private resolutionServices: ResolutionService,
+    private messageService: MessageService,
+    ) { }
 
   ngOnInit(): void {
   this.category.czyPubliczny = false;
@@ -29,7 +33,12 @@ export class AddResolutionCategoryComponent implements OnInit {
     if (this.category.czyPubliczny == null)
     this.category.czyPubliczny = false;
     this.resolutionServices.createCategory(this.category)
-      .subscribe(() => {
+      .subscribe(res => {
+        if (res === 201) {
+          this.showSuccessMessage();
+        } else {
+          this.showErrorMessage();
+        }
         this.submitted = true;
       },
       error => console.log(error));
@@ -39,4 +48,12 @@ export class AddResolutionCategoryComponent implements OnInit {
     this.save();
   }
 
+  showSuccessMessage() {
+    this.messageService.add({severity:'success', summary:'Dodano nową kategorie.'});
+  }
+
+  showErrorMessage() {
+    this.messageService.add({severity:'error', summary:'Błąd dodania kategorii', detail:'Skontaktuj się z administratorem'});
+
+  }
 }

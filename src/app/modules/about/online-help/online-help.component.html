@@ -3,7 +3,28 @@
     <mat-list-item class="subpage-header">Pomoc online</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
-  <div class="item-detail">
-    <p>Strona w budowie...</p>
+  <div class="container-box" [hidden]="submitted" style="width: 300px;">
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Imię i nazwisko</mat-label>
+        <input matInput placeholder="Imię i nazwisko" required [(ngModel)]="notification.name" name="imie">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput placeholder="Email" required [(ngModel)]="notification.email" name="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Nr. telefonu</mat-label>
+        <input type="text" matInput placeholder="Telefon" required [(ngModel)]="notification.phoneNumber" name="telefon">
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="width: 500px;">
+        <mat-label>Treść wiadomości</mat-label>
+        <textarea matInput placeholder="Treść" required [(ngModel)]="notification.message" name="tresc"></textarea>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button color="primary" type="submit" class="btn btn-success">Wyślij wiadomość</button>
+      </div>
+    </form>
   </div>
+  <p-messages></p-messages>
 </div>

@@ -55,6 +55,13 @@ export class RegistrationDTO {
     plec: UserSexEnum;
 }
 
+export class OnlineHelpRequestDto {
+    name: string;
+    email: string;
+    message: string;
+    phoneNumber: string;
+}
+
 export class CategoryDTOrequest {
     id: number;
     czyPubliczny: boolean;
@@ -300,6 +307,14 @@ export class TSAllRestApiClient {
      */
     usunKategorieRozporzadzenia(id: number): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/kategorieRozporzadzen/secured/usun-kategorie`, data: id });
+    }
+
+    /**
+     * HTTP POST /rest/pomocOnline/pub/wyslijPowiadomienie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.about.onlineHelp.pub.IOnlineHelpPublicRestApi.wyslijPowiadomienie
+     */
+    wyslijPowiadomienie(request: OnlineHelpRequestDto): RestResponse<ResponseEntity<HttpStatus>> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`rest/pomocOnline/pub/wyslijPowiadomienie`, data: request });
     }
 
     /**

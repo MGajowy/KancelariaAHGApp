@@ -39,6 +39,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ModifyCategoryComponent } from './resolution/component/modify-category/modify-category.component';
@@ -57,6 +58,7 @@ import { OnlineHelpComponent } from './about/online-help/online-help.component';
 import { CareerComponent } from './about/career/career.component';
 import { GMapModule } from 'primeng/gmap';
 import {TreeModule} from 'primeng/tree';
+import {Message,MessageService} from 'primeng/api';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -113,8 +115,11 @@ import {TreeModule} from 'primeng/tree';
     MatButtonToggleModule,
     InputSwitchModule,
     GMapModule,
-    TreeModule
+    TreeModule,  
+    MessageModule,
   ],
-  providers: [ConfirmationService]
+  providers: [
+    ConfirmationService,
+    MessageService]
 })
 export class ModulesModule { }
