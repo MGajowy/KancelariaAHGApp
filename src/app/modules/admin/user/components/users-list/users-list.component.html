@@ -18,7 +18,6 @@
         <mat-icon>add_circle_outline</mat-icon>
         <span>Dodaj nowego użtkownika</span>
       </button>
-
       <!-- <button matt-menu-item disabled>
         <mat-icon>voicemail</mat-icon>
         <span>Check voice mail</span>
@@ -53,7 +52,7 @@
       <!-- <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="deleteUser(user.id)">
       <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
       Usuń</button> -->
-      <button mat-raised-button color="primary" style="margin-right: 5px" (click)="confirmPosition('top', user.id)">
+      <button mat-raised-button color="primary" style="margin-right: 5px" (click)="confirmPosition('top', user.id, user.username)">
         <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
         Usuń
       </button>

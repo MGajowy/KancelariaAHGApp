@@ -19,7 +19,7 @@ getFiles() {
   }
 
   sendEmail(notification: OnlineHelpRequestDto): Observable<any> {
-    return this.http.post(`${baseUrl}rest/pomocOnline/pub/wyslijPowiadomienie`, notification,{observe: 'response'}).pipe(map(data => {
+    return this.http.post(`${baseUrl}rest/pomocOnline/pub/wyslijPowiadomienie`, notification, {observe: 'response'}).pipe(map(data => {
       return data.status;
     }));
   }
