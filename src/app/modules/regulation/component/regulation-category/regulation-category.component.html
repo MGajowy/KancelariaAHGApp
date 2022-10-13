@@ -14,8 +14,8 @@
 </mat-list>
 <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000"></p-confirmDialog>
 <p-messages [value]="msgs"></p-messages>
-<mat-grid-list *ngIf="listaKategorii.listaKategorii.length > 0" cols="3" rowHeight="10:2">
-  <div *ngFor="let category of listaKategorii.listaKategorii">
+<mat-grid-list *ngIf="listCategory.listaKategorii.length > 0" cols="3" rowHeight="10:2">
+  <div *ngFor="let category of listCategory.listaKategorii">
     <mat-grid-tile>
         {{category.rodzajKategorii}}
       </mat-grid-tile>
@@ -36,5 +36,5 @@
       </mat-grid-tile>
     </div>
 </mat-grid-list>
-<p *ngIf="listaKategorii.listaKategorii.length == 0">Lista kategorii jest pusta.</p>
+<p *ngIf="listCategory.listaKategorii.length == 0">Lista kategorii jest pusta.</p>
 </div>

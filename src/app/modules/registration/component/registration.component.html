@@ -33,7 +33,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Płeć</mat-label>
         <mat-select formControlName="plec">
-          <mat-option *ngFor="let wybor of listaPlci" [value]="wybor" >{{wybor}} </mat-option>
+          <mat-option *ngFor="let item of listSex" [value]="item" >{{item}} </mat-option>
         </mat-select>
       </mat-form-field>
       <!-- <mat-form-field>

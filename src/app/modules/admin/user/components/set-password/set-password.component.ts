@@ -19,8 +19,8 @@ export class SetPasswordComponent implements OnInit {
   formGroup: FormGroup;
   token: string;
   private destroy$: Subject<boolean>;
-  private haslo_1: string;
-  private haslo_2: string;
+  private password_1: string;
+  private password_2: string;
 
 
   constructor(private route: ActivatedRoute, private router: Router, private authService: AuthServiceService) {
@@ -46,10 +46,10 @@ export class SetPasswordComponent implements OnInit {
 
   setPassword() {
 
-    this.haslo_1 = this.formGroup.get('password_1').value;
-    this.haslo_2 = this.formGroup.get('password_2').value;
+    this.password_1 = this.formGroup.get('password_1').value;
+    this.password_2 = this.formGroup.get('password_2').value;
 
-    if (this.formGroup.valid && this.haslo_1 === this.haslo_2) {
+    if (this.formGroup.valid && this.password_1 === this.password_2) {
         this.dto.token = this.token;
         this.dto.password = this.formGroup.get('password_1').value;
         this.authService.setNewPassword(this.dto).subscribe(res => {

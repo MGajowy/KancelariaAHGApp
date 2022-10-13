@@ -15,7 +15,7 @@ import { UserStateEnum } from 'src/app/generated/UserStateEnum';
 export class RegistrationComponent implements OnInit {
     submitted = false;
     registerForm: FormGroup;
-    listaPlci = Object.keys(UserSexEnum);
+    listSex = Object.keys(UserSexEnum);
 
     constructor(
         private formBuilder: FormBuilder,

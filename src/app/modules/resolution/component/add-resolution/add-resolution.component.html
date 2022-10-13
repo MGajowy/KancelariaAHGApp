@@ -24,7 +24,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Kategoria</mat-label>
       <mat-select required [(ngModel)]="resolution.kategoria" name="kategoria">
-        <mat-option *ngFor="let kategoria of category.listaKategorii" [value]="kategoria.id">{{kategoria.rodzajKategorii}} </mat-option>
+        <mat-option *ngFor="let categoryResolution of category.listaKategorii" [value]="categoryResolution.id">{{categoryResolution.rodzajKategorii}} </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">

@@ -14,7 +14,7 @@ export class RegulationCategoryComponent implements OnInit {
 
   msgs: Message[] = [];
   position: string;
-  listaKategorii: CategoryListDTO;
+  listCategory: CategoryListDTO;
   term: FormControl;
   checked: boolean = true;
 
@@ -40,7 +40,7 @@ export class RegulationCategoryComponent implements OnInit {
 
   reloadData() {
     this.regulationService.getRegulationCategoryListOfTerm(this.term.value).subscribe(res => {
-      this.listaKategorii = res;
+      this.listCategory = res;
     });
   }
 

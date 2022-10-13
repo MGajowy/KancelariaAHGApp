@@ -10,7 +10,7 @@ import { CategoryListDTO, CreateRegulationDTO } from './../../../../generated/RE
 export class AddRegulationComponent implements OnInit {
 
   regulation: CreateRegulationDTO = new CreateRegulationDTO;
-  category: CategoryListDTO;
+  categoryList: CategoryListDTO;
   submitted = false;
 
   constructor(
@@ -18,7 +18,7 @@ export class AddRegulationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.categoryList();
+    this.getCategoryList();
     this.regulation.czyPubliczny = true;
   }
 
@@ -27,9 +27,9 @@ export class AddRegulationComponent implements OnInit {
     this.regulation = new CreateRegulationDTO;
   }
 
-  categoryList() {
+  getCategoryList() {
     this.regulationServices.getRegulationCategoryList().subscribe(value => {
-      this.category = value;
+      this.categoryList = value;
     })
   }
 

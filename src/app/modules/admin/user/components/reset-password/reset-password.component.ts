@@ -31,7 +31,7 @@ export class ResetPasswordComponent implements OnInit {
       this.initForm();
     }
 
-    initForm(){
+    initForm() {
       this.formGroup = new FormGroup({
         password_1: new FormControl('', [Validators.required, Validators.minLength(6)]),
         password_2: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -39,7 +39,6 @@ export class ResetPasswordComponent implements OnInit {
         }
 
     setPassword(){
-
           //todo dodac porownanie dwoch hasel czy sa identyczne !!!
           if (this.formGroup.valid){
             this.dto.token = this.token;

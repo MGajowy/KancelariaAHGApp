@@ -10,9 +10,9 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class RegulationListComponent implements OnInit {
 
-  lista: RegulationListDTO;
-  uchwaly: RegulationDTO;
-  komunikat: String = 'Lista rozporzadzen jest pusta.'
+  regulationList: RegulationListDTO;
+  regulation: RegulationDTO;
+  message: String = 'Lista rozporzadzen jest pusta.'
   term: FormControl;
 
   constructor (
@@ -36,7 +36,7 @@ export class RegulationListComponent implements OnInit {
 
   reloadData() {
     this.regulationService.getResolutionOfDescription(this.term.value).subscribe(res => {
-      this.lista = res;
+      this.regulationList = res;
     })
   }
 

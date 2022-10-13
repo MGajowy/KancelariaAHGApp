@@ -17,8 +17,8 @@ export class AddUserComponent implements OnInit {
   registerForm: FormGroup;
   userStateEnum = UserStateEnum;
   roleName = RolesName;
-  listaPlci = Object.keys(UserSexEnum);
-  listaRol = Object.keys(RolesName);
+  listSex = Object.keys(UserSexEnum);
+  listRole = Object.keys(RolesName);
 
   constructor(
     private formBuilder: FormBuilder,

@@ -25,7 +25,7 @@ export class UsersListComponent implements OnInit {
 
   acticeButton = '';
   panelOpenState = false;
-  listaUzytkownikow: UserListDTO;
+  listUsers: UserListDTO;
   userStateEnum = UserStateEnum;
   term: FormControl;
 
@@ -59,7 +59,7 @@ export class UsersListComponent implements OnInit {
 
   reloadData() {
     this.userService.getUserList(this.term.value).subscribe(res => {
-      this.listaUzytkownikow = res;
+      this.listUsers = res;
     })
   }
 

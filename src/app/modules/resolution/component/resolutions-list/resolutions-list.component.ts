@@ -11,9 +11,9 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class ResolutionsListComponent implements OnInit {
 
-  lista: ResolutionListDTO;
-  uchwaly: ResolutionDTO;
-  komunikat: String = 'Lista uchwał jest pusta.'
+  resolutionList: ResolutionListDTO;
+  resolution: ResolutionDTO;
+  message: String = 'Lista uchwał jest pusta.'
   term: FormControl;
 
   constructor (
@@ -37,7 +37,7 @@ export class ResolutionsListComponent implements OnInit {
 
   reloadData() {
     this.resolutionService.getResolutionOfDescription(this.term.value).subscribe(res => {
-      this.lista = res;
+      this.resolutionList = res;
     })
   }
 
