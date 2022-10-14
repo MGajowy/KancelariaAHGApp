@@ -4,6 +4,7 @@
   <mat-divider></mat-divider><br>
 </mat-list>
 
+<p-toast position="top-center" key="tc"></p-toast>
 <div class="container-box" [hidden]="submitted" style="width: 300px;">
   <form (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
@@ -25,7 +26,6 @@
   </form>
 </div>
 <div [hidden]="!submitted">
-  <p-messages></p-messages>
   <button mat-raised-button color="primary" class="btn btn-success" (click)="newCategory()">Dodaj nową
     kategorie</button>
 </div>

@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { UserSexEnum } from 'src/app/generated/UserSexEnum';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-add-user',
@@ -23,7 +24,8 @@ export class AddUserComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private messageService: MessageService,
   ) { }
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -42,21 +44,35 @@ export class AddUserComponent implements OnInit {
     this.submitted = true;
 
     if (this.registerForm.invalid) {
-      alert('Uzupełnij pola wymagane zanaczone na kolor czerwony')
+      this.showValidationMessage();
       return;
     } else {
       this.userService.addUser(
         this.registerForm.value)
         .subscribe(result => {
-          if (result.success) {
-            console.log(result);
+
+          if (result.status === 201) {
+            this.showSuccessMessage();
           } else {
-            this.router.navigate(['']);
+            this.showErrorMessage();
           }
         });
-      alert('Uzytkownik zostal dodany do listy uzytkownikow')
-      this.router.navigate(['office/user-list']);
+        setTimeout(() => {
+          this.router.navigate(['office/user-list'])
+        }, 3000);
     }
+  }
+
+  showSuccessMessage() {
+    this.messageService.add({key: 'tc', severity:'success', summary:'Dodano nowego użytkownika.', detail:'Za chwilę zostaniesz przekierowny na listę użytkowników...'});
+  }
+
+  showErrorMessage() {
+    this.messageService.add({key: 'tc', severity:'error', summary:'Błąd podczas zapisu użytkownika.', detail:'Skontaktuj się z administratorem, lub spróbuj ponownie.'});
+  }
+
+  showValidationMessage() {
+    this.messageService.add({key: 'tc', severity:'error', summary:'Uzupełnij wymagane pola.'});
   }
 
 }

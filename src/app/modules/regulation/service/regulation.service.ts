@@ -45,7 +45,7 @@ export class RegulationService {
   }
 
   createRegulation(regulationDTO: CreateRegulationDTO): Observable<any> {
-    return this.httpClient.post(`${baseUrl}rest/rozporzadzenia/secured/dodaj-rozporzadzenie`, regulationDTO);
+    return this.httpClient.post(`${baseUrl}rest/rozporzadzenia/secured/dodaj-rozporzadzenie`, regulationDTO, {observe: 'response'});
   }
 
   // updateResolution(id: number, resolutionDTO: ResolutionDTO): Observable<any> {

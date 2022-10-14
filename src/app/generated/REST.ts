@@ -34,13 +34,13 @@ export class EventLogListDTO {
     listaLogow: EventLogDTO[];
 }
 
-export class UserPasswordDTO {
-    token: string;
+export class JwtRequest implements Serializable {
+    username: string;
     password: string;
 }
 
-export class JwtRequest implements Serializable {
-    username: string;
+export class UserPasswordDTO {
+    token: string;
     password: string;
 }
 
@@ -199,121 +199,121 @@ export class TSAllRestApiClient {
 
     /**
      * HTTP GET /rest/kategorie/pub/wszystkieKategorie
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.pobierzListCategoryDto
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.getCategoryList
      */
-    pobierzListCategoryDto(): RestResponse<CategoryListDTO> {
+    getCategoryList$GET$rest_kategorie_pub_wszystkieKategorie(): RestResponse<CategoryListDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/pub/wszystkieKategorie` });
     }
 
     /**
      * HTTP GET /rest/kategorie/pub/wyszukajKategoiePoNazwa
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.wyszukajKategoriePoNazwa
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.getCategoryListByName2
      */
-    wyszukajKategoriePoNazwa(queryParams?: { rodzajKategorii?: string; }): RestResponse<string[]> {
+    getCategoryListByName2(queryParams?: { rodzajKategorii?: string; }): RestResponse<string[]> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/pub/wyszukajKategoiePoNazwa`, queryParams: queryParams });
     }
 
     /**
      * HTTP GET /rest/kategorie/pub/wyszukajKategorie
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.wyszukajKategorie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.pub.CategoryPublicRestApi.searchCategories
      */
-    wyszukajKategorie(queryParams?: { term?: string; }): RestResponse<CategoryListDTO> {
+    searchCategories(queryParams?: { term?: string; }): RestResponse<CategoryListDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/pub/wyszukajKategorie`, queryParams: queryParams });
     }
 
     /**
      * HTTP GET /rest/kategorie/secured
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.listaKategoriiPoStatusie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.searchCategoriesByStatus
      */
-    listaKategoriiPoStatusie(status: boolean): RestResponse<CategoryListDTO> {
+    searchCategoriesByStatus(status: boolean): RestResponse<CategoryListDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/secured`, data: status });
     }
 
     /**
      * HTTP POST /rest/kategorie/secured/dodaj-kategorie
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.dodajKategorie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.addNewCategories
      */
-    dodajKategorie(categoryDTO: CategoryDTO): RestResponse<ResponseEntity<HttpStatus>> {
+    addNewCategories$POST$rest_kategorie_secured_dodajkategorie(categoryDTO: CategoryDTO): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/kategorie/secured/dodaj-kategorie`, data: categoryDTO });
     }
 
     /**
      * HTTP PUT /rest/kategorie/secured/modyfikuj-kategorie
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.modyfikujKategorie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.modifyCategories
      */
-    modyfikujKategorie(id: number): RestResponse<CategoryDTOrequest> {
+    modifyCategories$PUT$rest_kategorie_secured_modyfikujkategorie(id: number): RestResponse<CategoryDTOrequest> {
         return this.httpClient.request({ method: "PUT", url: uriEncoding`rest/kategorie/secured/modyfikuj-kategorie`, data: id });
     }
 
     /**
      * HTTP GET /rest/kategorie/secured/szczegoly-kategorii
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.szczegolyKategorii
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.getCategoriesById
      */
-    szczegolyKategorii(id: number): RestResponse<CategoryDTOrequest> {
+    getCategoriesById$GET$rest_kategorie_secured_szczegolykategorii(id: number): RestResponse<CategoryDTOrequest> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorie/secured/szczegoly-kategorii`, data: id });
     }
 
     /**
      * HTTP DELETE /rest/kategorie/secured/usun-kategorie
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.usunKategorie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categories.restapi.secured.CategorySecuredRestApi.deleteCategories
      */
-    usunKategorie(id: number): RestResponse<ResponseEntity<HttpStatus>> {
+    deleteCategories$DELETE$rest_kategorie_secured_usunkategorie(id: number): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/kategorie/secured/usun-kategorie`, data: id });
     }
 
     /**
      * HTTP GET /rest/kategorieRozporzadzen/pub/wszystkieKategorieRozporzadzen
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.pub.CategoryRegulationPublicRestApi.pobierzListeKategorii
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.pub.CategoryRegulationPublicRestApi.getCategoryList
      */
-    pobierzListeKategorii(): RestResponse<CategoryListDTO> {
+    getCategoryList$GET$rest_kategorieRozporzadzen_pub_wszystkieKategorieRozporzadzen(): RestResponse<CategoryListDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorieRozporzadzen/pub/wszystkieKategorieRozporzadzen` });
     }
 
     /**
      * HTTP GET /rest/kategorieRozporzadzen/pub/wyszukajKategorieRozporzadzeniaPoNazwa
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.pub.CategoryRegulationPublicRestApi.wyszukajKategorieRozporzadzenPoNazwie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.pub.CategoryRegulationPublicRestApi.getCategoryListByName
      */
-    wyszukajKategorieRozporzadzenPoNazwie(queryParams?: { term?: string; }): RestResponse<CategoryListDTO> {
+    getCategoryListByName(queryParams?: { term?: string; }): RestResponse<CategoryListDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorieRozporzadzen/pub/wyszukajKategorieRozporzadzeniaPoNazwa`, queryParams: queryParams });
     }
 
     /**
      * HTTP POST /rest/kategorieRozporzadzen/secured/dodaj-kategorie
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.dodajKategorieRozporzadzenia
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.addNewCategories
      */
-    dodajKategorieRozporzadzenia(categoryDTO: CategoryDTO): RestResponse<ResponseEntity<HttpStatus>> {
+    addNewCategories$POST$rest_kategorieRozporzadzen_secured_dodajkategorie(categoryDTO: CategoryDTO): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/kategorieRozporzadzen/secured/dodaj-kategorie`, data: categoryDTO });
     }
 
     /**
      * HTTP PUT /rest/kategorieRozporzadzen/secured/modyfikuj-kategorie
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.modyfikujKategorieRozporzadzenia
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.modifyCategories
      */
-    modyfikujKategorieRozporzadzenia(id: number): RestResponse<CategoryDTOrequest> {
+    modifyCategories$PUT$rest_kategorieRozporzadzen_secured_modyfikujkategorie(id: number): RestResponse<CategoryDTOrequest> {
         return this.httpClient.request({ method: "PUT", url: uriEncoding`rest/kategorieRozporzadzen/secured/modyfikuj-kategorie`, data: id });
     }
 
     /**
      * HTTP GET /rest/kategorieRozporzadzen/secured/szczegoly-kategorii
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.szczegolyKategoriiRozporzadzenia
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.getCategoriesById
      */
-    szczegolyKategoriiRozporzadzenia(id: number): RestResponse<CategoryDTOrequest> {
+    getCategoriesById$GET$rest_kategorieRozporzadzen_secured_szczegolykategorii(id: number): RestResponse<CategoryDTOrequest> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/kategorieRozporzadzen/secured/szczegoly-kategorii`, data: id });
     }
 
     /**
      * HTTP DELETE /rest/kategorieRozporzadzen/secured/usun-kategorie
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.usunKategorieRozporzadzenia
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.categoriesRegulations.restApi.secured.CategoryRegulationSecuredRestApi.deleteCategories
      */
-    usunKategorieRozporzadzenia(id: number): RestResponse<ResponseEntity<HttpStatus>> {
+    deleteCategories$DELETE$rest_kategorieRozporzadzen_secured_usunkategorie(id: number): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/kategorieRozporzadzen/secured/usun-kategorie`, data: id });
     }
 
     /**
      * HTTP POST /rest/pomocOnline/pub/wyslijPowiadomienie
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.about.onlineHelp.pub.IOnlineHelpPublicRestApi.wyslijPowiadomienie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.about.onlineHelp.pub.IOnlineHelpPublicRestApi.sendEmailNotification
      */
-    wyslijPowiadomienie(request: OnlineHelpRequestDto): RestResponse<ResponseEntity<HttpStatus>> {
+    sendEmailNotification(request: OnlineHelpRequestDto): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/pomocOnline/pub/wyslijPowiadomienie`, data: request });
     }
 
@@ -327,161 +327,161 @@ export class TSAllRestApiClient {
 
     /**
      * HTTP POST /rest/reset-hasla
-     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.IAuthPublicRestApi.resetHasla
+     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.IAuthPublicRestApi.resetPassword
      */
-    resetHasla(dto: UserPasswordDTO): RestResponse<boolean> {
+    resetPassword(dto: UserPasswordDTO): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/reset-hasla`, data: dto });
     }
 
     /**
      * HTTP GET /rest/rozporzadzenia/pub/listaRozporzadzenWgOpis
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.regulations.restApi.pub.RegulationPublicRestApi.pobierzListeRozporzadzenPoNazwie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.regulations.restApi.pub.RegulationPublicRestApi.getRegulationsListByName
      */
-    pobierzListeRozporzadzenPoNazwie(queryParams?: { nazwa?: string; }): RestResponse<RegulationListDTO> {
+    getRegulationsListByName(queryParams?: { nazwa?: string; }): RestResponse<RegulationListDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/rozporzadzenia/pub/listaRozporzadzenWgOpis`, queryParams: queryParams });
     }
 
     /**
      * HTTP POST /rest/rozporzadzenia/secured/dodaj-rozporzadzenie
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.regulations.restApi.secured.RegulationSecuredRestApi.dodajRozporzadzenie
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.regulations.restApi.secured.RegulationSecuredRestApi.addNewRegulation
      */
-    dodajRozporzadzenie(regulationDTO: CreateRegulationDTO): RestResponse<ResponseEntity<HttpStatus>> {
+    addNewRegulation(regulationDTO: CreateRegulationDTO): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/rozporzadzenia/secured/dodaj-rozporzadzenie`, data: regulationDTO });
     }
 
     /**
      * HTTP GET /rest/uchwaly/pub
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.pub.ResolutionPublicRestApi.pobierzListeUchwalPoKategorii
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.pub.ResolutionPublicRestApi.getResolutionListByCategories
      */
-    pobierzListeUchwalPoKategorii(id: number): RestResponse<ResolutionListOfCategoryDTO> {
+    getResolutionListByCategories(id: number): RestResponse<ResolutionListOfCategoryDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uchwaly/pub`, data: id });
     }
 
     /**
      * HTTP GET /rest/uchwaly/pub/listaUchwal
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.pub.ResolutionPublicRestApi.pobierzListeUchwalDto
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.pub.ResolutionPublicRestApi.getResolutionList
      */
-    pobierzListeUchwalDto(): RestResponse<ResolutionListDTO> {
+    getResolutionList(): RestResponse<ResolutionListDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uchwaly/pub/listaUchwal` });
     }
 
     /**
      * HTTP POST /rest/uchwaly/secured/dodaj-uchwale
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.dodajUchale
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.addNewResolution
      */
-    dodajUchale(resolutionDTO: CreateResotutionDTO): RestResponse<ResponseEntity<HttpStatus>> {
+    addNewResolution(resolutionDTO: CreateResotutionDTO): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uchwaly/secured/dodaj-uchwale`, data: resolutionDTO });
     }
 
     /**
      * HTTP PUT /rest/uchwaly/secured/modyfikuj-uchwale
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.modyfikujUchwale
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.modifyResolution
      */
-    modyfikujUchwale(id: number): RestResponse<ResolutionDTO> {
+    modifyResolution(id: number): RestResponse<ResolutionDTO> {
         return this.httpClient.request({ method: "PUT", url: uriEncoding`rest/uchwaly/secured/modyfikuj-uchwale`, data: id });
     }
 
     /**
      * HTTP GET /rest/uchwaly/secured/szczegoly-uchwaly
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.szczegolyUchwaly
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.detailsResolution
      */
-    szczegolyUchwaly(id: number): RestResponse<ResolutionDTO> {
+    detailsResolution(id: number): RestResponse<ResolutionDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uchwaly/secured/szczegoly-uchwaly`, data: id });
     }
 
     /**
      * HTTP DELETE /rest/uchwaly/secured/usun-uchwale
-     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.usunUchwale
+     * Java method: pl.kancelaria.AHG.shared.restapi.modules.resolutions.restapi.secured.ResolutionSecuredRestApi.deleteResolution
      */
-    usunUchwale(id: number): RestResponse<ResponseEntity<HttpStatus>> {
+    deleteResolution(id: number): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/uchwaly/secured/usun-uchwale`, data: id });
     }
 
     /**
      * HTTP POST /rest/ustaw-haslo
-     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.IAuthPublicRestApi.aktywacjaHasla
+     * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.IAuthPublicRestApi.verifyTokenAndSetPassword
      */
-    aktywacjaHasla(dto: UserPasswordDTO): RestResponse<boolean> {
+    verifyTokenAndSetPassword(dto: UserPasswordDTO): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/ustaw-haslo`, data: dto });
     }
 
     /**
      * HTTP POST /rest/uzytkownicy/pub/reset-hasla
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.pub.UserPublicRestApi.ResetHasla
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.pub.UserPublicRestApi.passwordReset
      */
-    ResetHasla(dto: ResetPasswordDTO): RestResponse<boolean> {
+    passwordReset(dto: ResetPasswordDTO): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/pub/reset-hasla`, data: dto });
     }
 
     /**
      * HTTP GET /rest/uzytkownicy/pub/weryfikuj-token
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.pub.UserPublicRestApi.weryfikujToken
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.pub.UserPublicRestApi.checkToken
      */
-    weryfikujToken(token: string): RestResponse<boolean> {
+    checkToken(token: string): RestResponse<boolean> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/pub/weryfikuj-token`, data: token });
     }
 
     /**
      * HTTP GET /rest/uzytkownicy/secured
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.pobierzListeUzytkownikowPoStan
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.getUserListOfStatus
      */
-    pobierzListeUzytkownikowPoStan(queryParams?: { stan?: string; }): RestResponse<UserListDTO> {
+    getUserListOfStatus(queryParams?: { stan?: string; }): RestResponse<UserListDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured`, queryParams: queryParams });
     }
 
     /**
      * HTTP POST /rest/uzytkownicy/secured/dezaktywuj-uzytkownika
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.dezaktywacjaUzytkownika
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.userDeactivation
      */
-    dezaktywacjaUzytkownika(id: number): RestResponse<boolean> {
+    userDeactivation(id: number): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/dezaktywuj-uzytkownika`, data: id });
     }
 
     /**
      * HTTP POST /rest/uzytkownicy/secured/dodaj-uzytkownika
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.utworzUzytkownika
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.createNewUser
      */
-    utworzUzytkownika(addUserDTO: AddUserDTO): RestResponse<ResponseEntity<HttpStatus>> {
+    createNewUser(addUserDTO: AddUserDTO): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/dodaj-uzytkownika`, data: addUserDTO });
     }
 
     /**
      * HTTP GET /rest/uzytkownicy/secured/listaUzytkownikow
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.pobierzListeUzytkownikowDto
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.getUserList
      */
-    pobierzListeUzytkownikowDto(queryParams?: { term?: string; }): RestResponse<UserListDTO> {
+    getUserList(queryParams?: { term?: string; }): RestResponse<UserListDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/listaUzytkownikow`, queryParams: queryParams });
     }
 
     /**
      * HTTP PUT /rest/uzytkownicy/secured/modyfikuj-uzytkownika
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.modyfikujUzytkownika
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.modifyUser
      */
-    modyfikujUzytkownika(id: number): RestResponse<UserDTO> {
+    modifyUser(id: number): RestResponse<UserDTO> {
         return this.httpClient.request({ method: "PUT", url: uriEncoding`rest/uzytkownicy/secured/modyfikuj-uzytkownika`, data: id });
     }
 
     /**
      * HTTP GET /rest/uzytkownicy/secured/szczegoly-uzytkownika
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.szczegolyUzytkownika
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.userDetails
      */
-    szczegolyUzytkownika(id: number): RestResponse<UserDTO> {
+    userDetails(id: number): RestResponse<UserDTO> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/secured/szczegoly-uzytkownika`, data: id });
     }
 
     /**
      * HTTP DELETE /rest/uzytkownicy/secured/usun-uzytkownika
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.usunUzytkownika
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.deleteUser
      */
-    usunUzytkownika(id: number): RestResponse<ResponseEntity<HttpStatus>> {
+    deleteUser(id: number): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/uzytkownicy/secured/usun-uzytkownika`, data: id });
     }
 
     /**
      * HTTP POST /rest/uzytkownicy/secured/wyslij-email-aktywacyjny
-     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.wyslijMailAktywacyjny
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.secured.UserSecuredRestApi.userActivation
      */
-    wyslijMailAktywacyjny(locationDTO: LocationDTO): RestResponse<boolean> {
+    userActivation(locationDTO: LocationDTO): RestResponse<boolean> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/uzytkownicy/secured/wyslij-email-aktywacyjny`, data: locationDTO });
     }
 }

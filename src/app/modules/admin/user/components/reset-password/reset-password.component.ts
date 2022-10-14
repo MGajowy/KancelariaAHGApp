@@ -21,37 +21,36 @@ export class ResetPasswordComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private authService: AuthServiceService) {
-      this.destroy$ = new Subject<boolean>();
-      route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(res => {
-      this.token =  res['token'];
+    this.destroy$ = new Subject<boolean>();
+    route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(res => {
+      this.token = res['token'];
       console.log(this.token);
+    });
+  }
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() {
+    this.formGroup = new FormGroup({
+      password_1: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password_2: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    });
+  }
+
+  setPassword() {
+    //todo dodac porownanie dwoch hasel czy sa identyczne !!!
+    if (this.formGroup.valid) {
+      this.dto.token = this.token;
+      this.dto.password = this.formGroup.get('password_1').value;
+      this.authService.resetPassword(this.dto).subscribe(res => {
+        this.dto = res;
+        this.router.navigate(['login']);
       });
+    } else {
+      this.router.navigate(['logout']);
     }
-    ngOnInit(): void {
-      this.initForm();
-    }
 
-    initForm() {
-      this.formGroup = new FormGroup({
-        password_1: new FormControl('', [Validators.required, Validators.minLength(6)]),
-        password_2: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      });
-        }
-
-    setPassword(){
-          //todo dodac porownanie dwoch hasel czy sa identyczne !!!
-          if (this.formGroup.valid){
-            this.dto.token = this.token;
-            this.dto.password = this.formGroup.get('password_1').value;
-            this.authService.resetPassword(this.dto).subscribe(res =>
-              {
-                this.dto = res;
-                this.router.navigate(['login']);
-              });
-          }else{
-            this.router.navigate(['logout']);
-          }
-
-        }
+  }
 
 }

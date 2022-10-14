@@ -49,11 +49,10 @@ export class AddResolutionCategoryComponent implements OnInit {
   }
 
   showSuccessMessage() {
-    this.messageService.add({severity:'success', summary:'Dodano nową kategorie.'});
+    this.messageService.add({key: 'tc', severity:'success', summary:'Dodano nową kategorie.'});
   }
 
   showErrorMessage() {
-    this.messageService.add({severity:'error', summary:'Błąd dodania kategorii', detail:'Skontaktuj się z administratorem'});
-
+    this.messageService.add({key: 'tc', severity:'error', summary:'Błąd dodania kategorii', detail:'Skontaktuj się z administratorem'});
   }
 }

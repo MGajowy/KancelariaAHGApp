@@ -55,7 +55,7 @@ export class ResolutionService {
   }
 
   createResolution(resolutionDTO: CreateResotutionDTO): Observable<any> {
-    return this.httpClient.post(`${baseUrl}rest/uchwaly/secured/dodaj-uchwale`, resolutionDTO);
+    return this.httpClient.post(`${baseUrl}rest/uchwaly/secured/dodaj-uchwale`, resolutionDTO, {observe: 'response'});
   }
 
   updateResolution(id: number, resolutionDTO: ResolutionDTO): Observable<any> {

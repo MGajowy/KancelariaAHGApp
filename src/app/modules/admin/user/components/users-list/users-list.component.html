@@ -1,3 +1,4 @@
+<p-toast position="top-center" key="tc"></p-toast>
 <div class="shadowbox-page">
 <mat-list>
   <mat-list-item >
@@ -35,7 +36,7 @@
 </p-confirmDialog>
 <p-messages [value]="msgs"></p-messages>
 <div>
-  <mat-accordion *ngFor="let user of listUsers.listaUzytkownikow">
+  <mat-accordion *ngFor="let user of listUsers?.listaUzytkownikow">
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
         <mat-panel-title>

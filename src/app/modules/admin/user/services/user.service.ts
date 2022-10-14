@@ -19,7 +19,8 @@ export class UserService {
   }
   // metoda przez restService
   // getUserList(term): Observable<any> {
-  //   return this.restService.wszystkieRestAdmin().pobierzListeUzytkownikowDto(term);
+  //   console.log(this.restService.wszystkieRestAdmin().getUserList(term));
+  //   return this.restService.wszystkieRestAdmin().getUserList(term);
   // }
 
   register(user: RegistrationDTO): Observable<any> {
@@ -27,11 +28,11 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-    return this.httpClient.delete(`${baseUrl}rest/uzytkownicy/secured/usun-uzytkownika/${id}`);
+    return this.httpClient.delete(`${baseUrl}rest/uzytkownicy/secured/usun-uzytkownika/${id}`, {observe: 'response'});
   }
 
   addUser(user: AddUserDTO): Observable<any> {
-    return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/dodaj-uzytkownika`, user);
+    return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/dodaj-uzytkownika`, user, {observe: 'response'});
   }
 
   activateUser(loca: LocationDTO): Observable<any> {

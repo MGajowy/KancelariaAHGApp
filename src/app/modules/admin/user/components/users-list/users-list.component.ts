@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 import { ConfirmationService, Message, PrimeNGConfig } from 'primeng/api';
 import { LoginService } from 'src/app/modules/login/service/login.service';
 import { FormControl } from '@angular/forms';
-import { debounce, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-users-list',
@@ -34,14 +34,14 @@ export class UsersListComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private confirmationService: ConfirmationService,
-    private primengConfig: PrimeNGConfig) { }
-
+    private primengConfig: PrimeNGConfig,
+    private messageService: MessageService,
+    ) { }
 
   ngOnInit() {
     this.url = window.location.origin;
     this.primengConfig.ripple = true;
-    // this.reloadData();
-     this.wyszukiwarkaUzytkownikow();
+    this.wyszukiwarkaUzytkownikow();
   }
 
   private wyszukiwarkaUzytkownikow(): void {
@@ -65,7 +65,11 @@ export class UsersListComponent implements OnInit {
 
   deleteUser(id: number) {
     this.userService.deleteUser(id).subscribe(data => {
-      console.log(data);
+      if (data.status === 200) {
+        this.showSuccessDeleteUserMessage();
+      } else {
+        this.showErrorDeleteUserMessage()
+      }
       this.reloadData();
     },
       error => console.log(error));
@@ -78,8 +82,11 @@ export class UsersListComponent implements OnInit {
 
     this.userService.activateUser(this.loca).subscribe(data => {
       this.loca = data;
-      console.log(data);
-      alert('E-mail aktywacyjny został wysłany do użytkownika');
+      if (data) {
+        this.showSuccessActivateUserMessage();
+      } else {
+        this.showErrorActivateUserMessage();
+      }
     },
       error => console.log(error));
     this.reloadData();
@@ -88,11 +95,14 @@ export class UsersListComponent implements OnInit {
   unActivateUser(id: number) {
     this.userService.unActivateUser(id)
       .subscribe(data => {
-        console.log(data)
+        if (data) {
+          this.showSuccessUnactivateUserMessage();
+        } else {
+          this.showErrorUnactivateUserMessage();
+        }
       },
         error => console.log(error));
     this.reloadData();
-    alert('Użytkownik został zdezaktywowany')
   }
 
   upDateUser(id: number) {
@@ -127,12 +137,47 @@ export class UsersListComponent implements OnInit {
     this.resetPass.username = username;
     this.loginService.sendResetPassword(this.resetPass).subscribe(data => {
       this.resetPass = data;
-      console.log(data);
+      if (data) {
+        this.showSuccessSendEmailResetMessage();
+      } else {
+        this.showErrorSendEmailResetMessage();
+      }
     });
     this.reloadData();
-    alert('E-mail z resetem hasła został wysłany do użytkownika')
-
   }
+
+  showSuccessSendEmailResetMessage() {
+    this.messageService.add({key: 'tc', severity:'success', summary:'E-mail z resetem hasła został wysłany do użytkownika.'});
+  }
+
+  showErrorSendEmailResetMessage() {
+    this.messageService.add({key: 'tc', severity:'error', summary:'E-mail z resetem hasła nie został wysłany do użytkownika'});
+  }
+
+  showSuccessActivateUserMessage() {
+    this.messageService.add({key: 'tc', severity:'success', summary:'E-mail aktywacyjny został wysłany do użytkownika.'});
+  }
+
+  showErrorActivateUserMessage() {
+    this.messageService.add({key: 'tc', severity:'error', summary:'E-mail aktywacyjny nie został wysłany.'});
+  }
+
+  showSuccessDeleteUserMessage() {
+    this.messageService.add({key: 'tc', severity:'success', summary:'Usunięto użytkownika.'});
+  }
+
+  showErrorDeleteUserMessage() {
+    this.messageService.add({key: 'tc', severity:'error', summary:'Błąd podaczas usuwania użytkownika.'});
+  }
+
+  showSuccessUnactivateUserMessage() {
+    this.messageService.add({key: 'tc', severity:'success', summary:'Użytkownik został zdezaktywowany.'});
+  }
+
+  showErrorUnactivateUserMessage() {
+    this.messageService.add({key: 'tc', severity:'error', summary:'Błąd podaczas dezaktywacji użytkownika.'});
+  }
+
 
 
 }

@@ -1,3 +1,4 @@
+<p-toast position="top-center" key="tc"></p-toast>
 <div class="shadowbox-page">
   <mat-list>
     <mat-list-item class="subpage-header">Dodaj kategorie uchwał</mat-list-item>
@@ -25,7 +26,6 @@
     </form>
   </div>
   <div [hidden]="!submitted">
-    <p-messages></p-messages>
     <button mat-raised-button color="primary" class="btn btn-success" (click)="newCategory()">Dodaj nową
       kategorie</button>
   </div>

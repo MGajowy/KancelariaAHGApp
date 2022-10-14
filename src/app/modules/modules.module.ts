@@ -59,6 +59,7 @@ import { CareerComponent } from './about/career/career.component';
 import { GMapModule } from 'primeng/gmap';
 import {TreeModule} from 'primeng/tree';
 import {Message,MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -117,6 +118,7 @@ import {Message,MessageService} from 'primeng/api';
     GMapModule,
     TreeModule,  
     MessageModule,
+    ToastModule
   ],
   providers: [
     ConfirmationService,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegulationService } from '../../service/regulation.service';
 import { CategoryListDTO, CreateRegulationDTO } from './../../../../generated/REST';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-add-regulation',
@@ -14,7 +15,8 @@ export class AddRegulationComponent implements OnInit {
   submitted = false;
 
   constructor(
-    private regulationServices: RegulationService
+    private regulationServices: RegulationService,
+    private messageService: MessageService,
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,11 @@ export class AddRegulationComponent implements OnInit {
   save() {
     this.regulationServices.createRegulation(this.regulation)
       .subscribe(data => {
+        if (data.status === 201) {
+          this.showSuccessMessage();
+        } else {
+          this.showErrorMessage();
+        }
         this.submitted = true;
       },
         error => console.log(error));
@@ -44,6 +51,14 @@ export class AddRegulationComponent implements OnInit {
 
   onSubmit() {
     this.save();
+  }
+
+  showSuccessMessage() {
+    this.messageService.add({key: 'tc', severity:'success', summary:'Dodano rozporządzenie.'});
+  }
+
+  showErrorMessage() {
+    this.messageService.add({key: 'tc', severity:'error', summary:'Błąd dodania rozporządzenia.', detail:'Skontaktuj się z administratorem'});
   }
 
 }

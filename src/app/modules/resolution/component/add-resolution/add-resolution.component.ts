@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CreateResotutionDTO } from 'src/app/generated/REST';
-import { UserService } from 'src/app/modules/admin/user/services/user.service';
 import { ResolutionService } from '../../service/resolution.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-add-resolution',
@@ -22,7 +22,8 @@ export class AddResolutionComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private resolutionServices: ResolutionService
+    private resolutionServices: ResolutionService,
+    private messageService: MessageService,
 
   ) { }
 
@@ -43,9 +44,14 @@ export class AddResolutionComponent implements OnInit {
     this.resolution = new CreateResotutionDTO;
   }
 
-  save(){
+  save() {
     this.resolutionServices.createResolution(this.resolution)
       .subscribe(data => {
+        if (data.status === 201) {
+          this.showSuccessMessage();
+        } else {
+          this.showErrorMessage();
+        }
         this.submitted = true;
       },
       error => console.log(error));
@@ -61,25 +67,12 @@ export class AddResolutionComponent implements OnInit {
     });
   }
 
-  // onSubmit() {
-  //   this.submitted = true;
+  showSuccessMessage() {
+    this.messageService.add({key: 'tc', severity:'success', summary:'Dodano uchwałę.'});
+  }
 
-  //   if (this.resolutionForm.invalid) {
-  //     alert('Uzupełnij pola wymagane zanaczone na kolor czerwony')
-  //     return;
-  //   } else {
-  //     this.resolutionServices.createResolution(
-  //       this.resolutionForm.value)
-  //       .subscribe(result => {
-  //         if (result.success) {
-  //           console.log(result);
-  //         } else {
-  //           this.router.navigate(['']);
-  //         }
-  //       });
-  //     alert('Uzytkownik zostal dodany do listy uzytkownikow')
-  //     this.router.navigate(['office/user-list']);
-  //   }
-  // }
+  showErrorMessage() {
+    this.messageService.add({key: 'tc', severity:'error', summary:'Błąd dodania uchwały.', detail:'Skontaktuj się z administratorem'});
+  }
 
 }
