@@ -125,7 +125,7 @@ export class UsersListComponent implements OnInit {
         this.deleteUser(id);
       },
       reject: () => {
-        this.msgs = [{ severity: 'info', summary: 'Anulowano usuwanie ' + login + '.' }];
+        this.msgs = [{ severity: 'info', summary: 'Anulowano usuwanie użytkownika' + login + '.' }];
       },
       key: "positionDialog"
     });

@@ -11,8 +11,8 @@
     <mat-list-item class="subpage-header">Lista rozporzadzen</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
-  <div *ngIf="regulationList.listaRozporzadzen.length > 0; else emptyList ">
-    <mat-accordion *ngFor="let regulation of regulationList.listaRozporzadzen">
+  <div *ngIf="regulationList?.listaRozporzadzen.length > 0; else emptyList ">
+    <mat-accordion *ngFor="let regulation of regulationList?.listaRozporzadzen">
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>

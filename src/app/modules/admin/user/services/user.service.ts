@@ -44,7 +44,7 @@ export class UserService {
   }
 
   updateUser(id: number, value: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}rest/uzytkownicy/secured/modyfikuj-uzytkownika/${id}`, value);
+    return this.httpClient.put(`${baseUrl}rest/uzytkownicy/secured/modyfikuj-uzytkownika/${id}`, value, {observe: 'response'});
   }
 
   detailsUser(id: number): Observable<any> {

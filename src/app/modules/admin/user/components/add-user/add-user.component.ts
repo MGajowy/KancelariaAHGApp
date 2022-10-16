@@ -50,7 +50,6 @@ export class AddUserComponent implements OnInit {
       this.userService.addUser(
         this.registerForm.value)
         .subscribe(result => {
-
           if (result.status === 201) {
             this.showSuccessMessage();
           } else {

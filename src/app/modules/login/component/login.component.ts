@@ -5,6 +5,7 @@ import { AuthServiceService } from './../../../core/services/auth/auth-service.s
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,12 @@ export class LoginComponent implements OnInit {
   formGroup: FormGroup;
   dto = new ResetPasswordDTO();
 
-  constructor(private authService: AuthServiceService, private loginService: LoginService, private router: Router) { }
+  constructor(
+    private authService: AuthServiceService,
+      private loginService: LoginService,
+      private router: Router,
+      private messageService: MessageService,
+      ) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -33,14 +39,27 @@ export class LoginComponent implements OnInit {
   }
    loginProces() {
     if (this.formGroup.valid){
-      this.authService.authenticate(this.formGroup.get('username').value, this.formGroup.get('password').value).subscribe(result => {
+      this.authService.authenticate(this.formGroup.get('username').value,
+      this.formGroup.get('password').value).subscribe(result => {
+        console.log(result.success);
         if (result.success){
-          console.log(result)
+          this.showErrorMessage();
         }else {
-          this.router.navigate(['office/home'])
+          this.showSuccessMessage();
+          setTimeout(() => {
+            this.router.navigate(['office/home'])
+          }, 3000);
         }
       });
 
     }
+  }
+
+  showSuccessMessage() {
+    this.messageService.add({key: 'tc', severity:'success', summary:'Zalogowany.', detail:'Za chwilę zostaniesz przekierowny na stronę główną.'});
+  }
+
+  showErrorMessage() {
+    this.messageService.add({key: 'tc', severity:'error', summary:'Błąd podczas logowania.', detail:'Skontaktuj się z administratorem.'});
   }
 }

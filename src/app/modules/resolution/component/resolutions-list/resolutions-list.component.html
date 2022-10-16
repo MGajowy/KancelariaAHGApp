@@ -11,8 +11,8 @@
     <mat-list-item class="subpage-header">Lista uchwał</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
-  <div *ngIf="resolutionList.listaUchwal.length > 0; else emptyList ">
-    <mat-accordion *ngFor="let resolution of resolutionList.listaUchwal">
+  <div *ngIf="resolutionList?.listaUchwal.length > 0; else emptyList ">
+    <mat-accordion *ngFor="let resolution of resolutionList?.listaUchwal">
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>

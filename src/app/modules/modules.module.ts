@@ -58,7 +58,7 @@ import { OnlineHelpComponent } from './about/online-help/online-help.component';
 import { CareerComponent } from './about/career/career.component';
 import { GMapModule } from 'primeng/gmap';
 import {TreeModule} from 'primeng/tree';
-import {Message,MessageService} from 'primeng/api';
+import {MessageService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 @NgModule({
   declarations: [

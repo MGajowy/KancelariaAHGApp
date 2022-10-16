@@ -5,6 +5,7 @@ import { UserDTO } from 'src/app/generated/REST';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserSexEnum } from 'src/app/generated/UserSexEnum';
 import { RolesName } from 'src/app/generated/RolesName';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-update-user',
@@ -25,7 +26,8 @@ export class UpdateUserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private messageService: MessageService,
   ) { }
 
   ngOnInit() {
@@ -40,9 +42,15 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateUser() {
-    // this.user = new UserDTO();
     this.userService.updateUser(this.id, this.user)
-      .subscribe(data => { this.user = data });
+      .subscribe(data => { 
+        this.user = data 
+        if (data.status === 200) {
+          this.showSuccessMessage();
+        } else {
+          this.showErrorMessage();
+        }
+      });
 
     // this.role.push(this.rola);
     // this.user.role = this.role;
@@ -60,5 +68,13 @@ export class UpdateUserComponent implements OnInit {
   reloadData() {
     this.term = new FormControl('');
     this.userService.getUserList(({ term: this.term.value }));
+  }
+
+  showSuccessMessage() {
+    this.messageService.add({key: 'tc', severity:'success', summary:'Zmodyfikowano użytkownika.'});
+  }
+
+  showErrorMessage() {
+    this.messageService.add({key: 'tc', severity:'error', summary:'Błąd podczas modyfikacji użytkownika', detail:'Skontaktuj się z administratorem, lub spróbuj ponownie.'});
   }
 }

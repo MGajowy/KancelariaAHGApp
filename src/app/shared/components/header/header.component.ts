@@ -7,41 +7,41 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class  HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
-  czyZalogowany: boolean ;
-  nazwaPrzycisku = '';
-  uzytkownik ='';
-  zalogujText = 'Zaloguj';
-  wylogujText = 'Wyloguj';
+  isLogged: boolean;
+  nameButton = '';
+  user = '';
+  loginText = 'Zaloguj';
+  logoutText = 'Wyloguj';
 
   constructor(private router: Router, private authService: AuthServiceService) { }
 
   ngOnInit() {
 
     if (this.authService.isUserLoggedIn()) {
-      this.uzytkownik = this.authService.getUser();
-      this.nazwaPrzycisku = this.wylogujText + " " +  this.uzytkownik;
-    }else{
-      this.nazwaPrzycisku = this.zalogujText;
+      this.user = this.authService.getUser();
+      this.nameButton = this.logoutText + " " + this.user;
+    } else {
+      this.nameButton = this.loginText;
     }
 
   }
 
-  wybor(){
-    this.czyZalogowany = this.authService.isUserLoggedIn();
-    if (this.czyZalogowany){
-     return this.wyloguj();
-    }else {
-    return this.zaloguj();
+  checkMethod() {
+    this.isLogged = this.authService.isUserLoggedIn();
+    if (this.isLogged) {
+      return this.logout();
+    } else {
+      return this.login();
     }
   }
 
-  zaloguj() {
-  this.router.navigate(['login']);
+  login() {
+    this.router.navigate(['login']);
   }
 
-  wyloguj(){
+  logout() {
     this.router.navigate(['logout']);
   }
 

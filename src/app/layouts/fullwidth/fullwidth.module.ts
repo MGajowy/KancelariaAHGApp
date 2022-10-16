@@ -1,5 +1,7 @@
 import { ResetPasswordComponent } from './../../modules/admin/user/components/reset-password/reset-password.component';
 import { LogoutComponent } from './../../modules/logout/component/logout.component';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { RegistrationComponent } from './../../modules/registration/component/registration.component';
 import { LoginComponent } from './../../modules/login/component/login.component';
@@ -18,7 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import {MatSelectModule} from '@angular/material/select';
 import { SetPasswordComponent } from 'src/app/modules/admin/user/components/set-password/set-password.component';
-
+import { MessagesModule } from 'primeng/messages';
+import {ToastModule} from 'primeng/toast';
+import {Message,MessageService} from 'primeng/api';
 
 
 @NgModule({
@@ -43,7 +47,13 @@ import { SetPasswordComponent } from 'src/app/modules/admin/user/components/set-
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MatSelectModule
-  ]
+    MatSelectModule,
+    MatListModule,
+    MatDividerModule,
+    ToastModule,
+    MessagesModule
+  ],
+  providers: 
+  [MessageService]
 })
 export class FullwidthModule { }
