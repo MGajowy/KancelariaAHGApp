@@ -40,15 +40,16 @@ export class LoginComponent implements OnInit {
    loginProces() {
     if (this.formGroup.valid){
       this.authService.authenticate(this.formGroup.get('username').value,
-      this.formGroup.get('password').value).subscribe(result => {
-        console.log(result.success);
-        if (result.success){
-          this.showErrorMessage();
-        }else {
-          this.showSuccessMessage();
+      this.formGroup.get('password').value).subscribe(userData => {
+        console.log(status);
+        if (userData.token){
+                this.showSuccessMessage();
           setTimeout(() => {
             this.router.navigate(['office/home'])
           }, 3000);
+         
+        } else {
+          this.showErrorMessage();
         }
       });
 

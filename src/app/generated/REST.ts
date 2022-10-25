@@ -321,7 +321,7 @@ export class TSAllRestApiClient {
      * HTTP POST /rest/register
      * Java method: pl.kancelaria.AHG.shared.restapi.auth.restApi.pub.IAuthPublicRestApi.saveUser
      */
-    saveUser(user: RegistrationDTO): RestResponse<ResponseEntity<any>> {
+    saveUser(user: RegistrationDTO): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/register`, data: user });
     }
 

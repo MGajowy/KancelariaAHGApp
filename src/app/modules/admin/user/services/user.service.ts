@@ -12,6 +12,8 @@ export class UserService {
 
   constructor(private httpClient: HttpClient, private restService: RestService) { }
 
+
+
   getUserList(term): Observable<any> {
     const params = new HttpParams()
       .set('term', term);
@@ -20,11 +22,13 @@ export class UserService {
   // metoda przez restService
   // getUserList(term): Observable<any> {
   //   console.log(this.restService.wszystkieRestAdmin().getUserList(term));
-  //   return this.restService.wszystkieRestAdmin().getUserList(term);
+      // const params = new HttpParams()
+      // .set('term', term);
+  //   return this.restService.wszystkieRestAdmin().getUserList({term});
   // }
 
   register(user: RegistrationDTO): Observable<any> {
-    return this.httpClient.post(`${baseUrl}rest/register`, user);
+    return this.httpClient.post(`${baseUrl}rest/register`, user, {observe: 'response'});
   }
 
   deleteUser(id: number) {

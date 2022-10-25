@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserStateEnum } from 'src/app/generated/UserStateEnum';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-registration',
@@ -13,25 +14,28 @@ import { UserStateEnum } from 'src/app/generated/UserStateEnum';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-    submitted = false;
-    registerForm: FormGroup;
-    listSex = Object.keys(UserSexEnum);
+  submitted = false;
+  registerForm: FormGroup;
+  listSex = Object.keys(UserSexEnum);
+  isLogged: boolean;
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private router: Router,
-        private authenticationService: AuthServiceService,
-        private userService: UserService,
-    ) {}
-    ngOnInit()
-    {
-      if (this.authenticationService.isUserLoggedIn()) {
-        this.router.navigate(['/']);
-        alert('Jesteś zalogowany, aby zarejstrować się ponownie wyloguj się.')
-    }else
-    {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authenticationService: AuthServiceService,
+    private userService: UserService,
+    private messageService: MessageService,
+  ) { }
+  ngOnInit() {
+    this.isLogged = this.authenticationService.isUserLoggedIn();
+    if (this.isLogged) {
+      this.showIsLogedMessage();
+      setTimeout(() => {
+        this.router.navigate(['office/home']);
+      }, 500);
+    } else {
       this.registerForm = this.formBuilder.group({
-        username:  ['', Validators.required],
+        username: ['', Validators.required],
         password: ['', Validators.required, Validators.minLength(6)],
         imie: ['', Validators.required],
         nazwisko: ['', Validators.required],
@@ -40,32 +44,45 @@ export class RegistrationComponent implements OnInit {
         plec: ['', Validators.required],
         stan: [UserStateEnum.NIEAKTYWNY]
       });
-      }
     }
+  }
 
-    //get f() { return this.registerForm.controls; }
+  onSubmit() {
+    this.submitted = true;
 
-    onSubmit(){
-      this.submitted = true;
-
-      if (this.registerForm.invalid) {
-        alert('Uzupełnij pola wymagane zanaczone na kolor czerwony')
-
-        return;
-
-        }else{
+    if (this.registerForm.invalid) {
+      this.showValidationMessage();
+      return;
+    } else {
       this.userService.register(
-         this.registerForm.value)
+        this.registerForm.value)
         .subscribe(result => {
-          if (result.success){
-            console.log(result);
-          }else {
-            this.router.navigate(['']);
+          if (result.status === 201) {
+            this.showSuccessMessage();
+            setTimeout(() => {
+              this.router.navigate(['login']);
+            }, 3000);
+          } else {
+            this.showErrorMessage();
           }
         });
-        alert('Rejestracja zakoczona powodzeniem, zaloguj sie do aplikacji')
-        this.router.navigate(['login']);
-      }
-      }
     }
+  }
+
+  showSuccessMessage() {
+    this.messageService.add({ key: 'tc', severity: 'success', summary: 'Zarejestrowano nowego użytkownika.', detail: 'Za chwilę nastąpi przekierowanie do logowania...' });
+  }
+
+  showErrorMessage() {
+    this.messageService.add({ key: 'tc', severity: 'error', summary: 'Błąd podczas zapisu użytkownika.', detail: 'Skontaktuj się z administratorem, lub spróbuj ponownie.' });
+  }
+
+  showValidationMessage() {
+    this.messageService.add({ key: 'tc', severity: 'error', summary: 'Uzupełnij wymagane pola.' });
+  }
+
+  showIsLogedMessage() {
+    this.messageService.add({ key: 'userIsloggedIn', severity: 'info', summary: 'Użytkownik zologowany', detail: 'Jesteś zalogowana/y, aby zarejstrować się ponownie wyloguj się.' });
+  }
+}
 

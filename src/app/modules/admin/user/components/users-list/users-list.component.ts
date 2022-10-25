@@ -117,15 +117,15 @@ export class UsersListComponent implements OnInit {
     this.position = position;
 
     this.confirmationService.confirm({
-      message: 'Czy chcesz usunac uzytkownika o loginie: ' + login + '?',
-      header: 'Usuwanie uzytkownika',
+      message: `Czy chcesz usunac użytkownika o loginie: ${login} ?`,
+      header: 'Usuwanie użytkownika',
       icon: 'pi pi-info-circle',
       accept: () => {
-        this.msgs = [{ severity: 'info', summary: 'OK.', detail: 'Uzytkownik o loginie: ' + login + ' zostal usuniety.' }];
+        this.msgs = [{ severity: 'success', summary: 'OK.', detail: `Użytkownik o loginie: ${login} został usunięty.`}];
         this.deleteUser(id);
       },
       reject: () => {
-        this.msgs = [{ severity: 'info', summary: 'Anulowano usuwanie użytkownika' + login + '.' }];
+        this.msgs = [{ severity: 'warn', summary: `Anulowano usuwanie użytkownika ${login}.`}];
       },
       key: "positionDialog"
     });

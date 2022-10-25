@@ -95,3 +95,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif,-apple-syste
 .container-box {
   padding-left: 30px;
 }
+
+.p-dialog .p-dialog-header {
+  background: $confirmColor;
+}
+
+.p-button {
+  background: $button-color;
+}
+
+.p-button:enabled:active {
+  background: $focusColor;
+  color: #ffffff;
+  border-color: $button-color;
+}
+
+.p-panelmenu .p-panelmenu-header.p-highlight:not(.p-disabled) > a:hover {
+  border-color: $side-color;
+  background: $focusColor;
+  color: #ffffff;
+}
