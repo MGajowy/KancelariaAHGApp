@@ -60,6 +60,9 @@ import { GMapModule } from 'primeng/gmap';
 import {TreeModule} from 'primeng/tree';
 import {MessageService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
+import { CheckboxModule } from 'primeng/checkbox';
+import {MenuModule} from 'primeng/menu';
+import { RippleModule } from 'primeng/ripple';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -118,7 +121,10 @@ import {ToastModule} from 'primeng/toast';
     GMapModule,
     TreeModule,  
     MessageModule,
-    ToastModule
+    ToastModule,
+    CheckboxModule,
+    MenuModule,
+    RippleModule
   ],
   providers: [
     ConfirmationService,

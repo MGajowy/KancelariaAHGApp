@@ -15,39 +15,45 @@
   <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000">
   </p-confirmDialog>
   <p-messages [value]="msgs"></p-messages>
-  <mat-grid-list *ngIf="categoryList?.listaKategorii.length > 0" cols="3" rowHeight="10:2">
-    <div *ngFor="let categoryResolution of categoryList?.listaKategorii">
-      <mat-grid-tile>
-        {{categoryResolution.rodzajKategorii}}
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <button mat-raised-button color="primary" style="margin-right: 5px"
-          (click)="confirmPosition('top', categoryResolution.id, categoryResolution.rodzajKategorii)">
-          <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
-          Usuń
-        </button>
-        <button mat-raised-button color="primary" style="margin-right: 5px" (click)="modifyCategory(categoryResolution.id)">
-          <mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon>
-          Modyfikuj
-        </button>
-        <button mat-raised-button color="primary" style="margin-right: 5px" (click)="detailsCategory(categoryResolution.id)">
-          <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
-          Szczegóły
-        </button>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <span>{{categoryResolution.czyPubliczny ? "Publiczna " : "Niepubliczna "}}</span>
-        <p-inputSwitch [(ngModel)]="categoryResolution.czyPubliczny"></p-inputSwitch>
-      </mat-grid-tile>
-    </div>
-  </mat-grid-list>
-  <p *ngIf="categoryList?.listaKategorii.length == 0">Lista kategorii jest pusta.</p>
-  <!-- <mat-list>
-  <div mat-subheader>Kategorie uchwał</div>
-  <mat-list-item *ngFor="let kategoria of categoryList.listaKategorii">
-    <mat-icon mat-list-icon>folder</mat-icon>
-    <div mat-line>{{kategoria.rodzajKategorii}}</div>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-</mat-list> -->
+  <div class="container-box" style="width: auto;">
+    <p-table *ngIf="listCategory?.length > 0" [value]="listCategory" styleClass="p-datatable-striped"
+      responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nazwa kategorii</th>
+          <th>Czy publiczny</th>
+          <th>Modyfikuj / Wyświetl szczegóły</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-listCategory>
+        <tr>
+          <td>{{listCategory.rodzajKategorii}}</td>
+          <td>
+            <p-checkbox [(ngModel)]="listCategory.czyPubliczny" disabled="true" binary="true" inputId="binary">
+            </p-checkbox>
+          </td>
+          <td>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
+              <mat-icon>menu_open</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="confirmPosition('top', listCategory.id, listCategory.rodzajKategorii)">
+                <mat-icon>delete</mat-icon>
+                <span>Usuń</span>
+              </button>
+              <button mat-menu-item (click)="modifyCategory(listCategory.id)">
+                <mat-icon>mode_edit</mat-icon>
+                <span>Modyfikuj</span>
+              </button>
+              <button mat-menu-item (click)="detailsCategory(listCategory.id)">
+                <mat-icon>info</mat-icon>
+                <span>Szczegóły</span>
+              </button>
+            </mat-menu>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <p *ngIf="listCategory?.length == 0">Lista kategorii jest pusta.</p>
+  </div>
 </div>

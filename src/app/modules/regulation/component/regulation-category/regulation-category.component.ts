@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfirmationService, Message, PrimeNGConfig } from 'primeng/api';
+import { ConfirmationService, Message } from 'primeng/api';
 import { CategoryDTO, CategoryListDTO } from './../../../../generated/REST';
 import { RegulationService} from '../../service/regulation.service';
 import { FormControl } from '@angular/forms';
@@ -14,7 +14,8 @@ export class RegulationCategoryComponent implements OnInit {
 
   msgs: Message[] = [];
   position: string;
-  listCategory: CategoryListDTO;
+  category: CategoryListDTO;
+  listCategory: CategoryDTO[];
   term: FormControl;
   checked: boolean = true;
 
@@ -40,7 +41,8 @@ export class RegulationCategoryComponent implements OnInit {
 
   reloadData() {
     this.regulationService.getRegulationCategoryListOfTerm(this.term.value).subscribe(res => {
-      this.listCategory = res;
+      this.listCategory = res.listaKategorii;
+      console.log(this.listCategory);
     });
   }
 

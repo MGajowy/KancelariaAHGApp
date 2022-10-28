@@ -16,7 +16,8 @@ import { debounce, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 export class ResolutionCategoryComponent implements OnInit {
   msgs: Message[] = [];
   position: string;
-  categoryList: CategoryListDTO;
+  categorylist: CategoryListDTO;
+  listCategory: CategoryDTO[];
   term: FormControl;
   checked: boolean = true;
   category: CategoryDTOrequest;
@@ -28,7 +29,6 @@ export class ResolutionCategoryComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    // this.reloadData();
     this.wyszukiwarkaKategorii();
   }
 
@@ -43,13 +43,11 @@ export class ResolutionCategoryComponent implements OnInit {
       this.reloadData();
 
     })
-    console.log(this.term.value)
-
   }
 
   reloadData() {
-    this.resolutionService.getResolutionCategoryListOfTerm(this.term.value).subscribe(value => {
-      this.categoryList = value;
+    this.resolutionService.getResolutionCategoryListOfTerm(this.term.value).subscribe(res => {
+      this.listCategory = res.listaKategorii;
     });
   }
 

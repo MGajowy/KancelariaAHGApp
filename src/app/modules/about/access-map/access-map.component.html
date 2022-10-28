@@ -3,39 +3,41 @@
     <mat-list-item class="subpage-header">Kontakt i mapa dojazdu</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
-  <p-gmap [options]="options" [overlays]="overlays" [style]="{'width':'100%','height':'320px','margin-bottom': '1em'}">
-  </p-gmap>
-
-  <mat-grid-list cols="2" rowHeight="1:1">
-    <mat-grid-tile>
-      <div class="contact-size">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>Kontakt:</mat-card-title>
-            <mat-card-subtitle>Kancelaria Adwokacka AHG</mat-card-subtitle>
-          </mat-card-header>
-          <div mat-card-image></div>
-          <mat-card-content>
-            <p>ul. Kościuszki 46/48 lok. 18</p>
-            <p>10-959 Olsztyn</p>
-            <p>Tel. 784 483 074</p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="contact-size">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>Godziny pracy:</mat-card-title>
-          </mat-card-header>
-          <div mat-card-image></div>
-          <mat-card-content>
-            <p>Poniedziałek - czwartek: 9:00 - 17:00</p>
-            <p>Piątek: 9:00 - 15:00</p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="container-box" style="width: auto;">
+    <p-gmap [options]="options" [overlays]="overlays"
+      [style]="{'width':'100%','height':'320px','margin-bottom': '1em'}">
+    </p-gmap>
+    <mat-grid-list cols="2" rowHeight="1:1">
+      <mat-grid-tile>
+        <div class="contact-size">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Kontakt:</mat-card-title>
+              <mat-card-subtitle>Kancelaria Adwokacka AHG</mat-card-subtitle>
+            </mat-card-header>
+            <div mat-card-image></div>
+            <mat-card-content>
+              <p>ul. Kościuszki 46/48 lok. 18</p>
+              <p>10-959 Olsztyn</p>
+              <p>Tel. 784 483 074</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="contact-size">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Godziny pracy:</mat-card-title>
+            </mat-card-header>
+            <div mat-card-image></div>
+            <mat-card-content>
+              <p>Poniedziałek - czwartek: 9:00 - 17:00</p>
+              <p>Piątek: 9:00 - 15:00</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 </div>

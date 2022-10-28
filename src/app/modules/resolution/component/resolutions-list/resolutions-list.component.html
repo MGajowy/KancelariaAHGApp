@@ -11,20 +11,23 @@
     <mat-list-item class="subpage-header">Lista uchwał</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
-  <div *ngIf="resolutionList?.listaUchwal.length > 0; else emptyList ">
-    <mat-accordion *ngFor="let resolution of resolutionList?.listaUchwal">
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <br>{{resolution.opis}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p class="item-detail">Kategoria: {{resolution.nazwaKategorii}}</p>
-        <p class="item-detail">Treść: {{resolution.tresc}}</p>
-      </mat-expansion-panel>
-    </mat-accordion>
+  <div class="container-box" style="width: auto;">
+    <div *ngIf="resolutionList?.listaUchwal.length > 0; else emptyList ">
+      <mat-accordion *ngFor="let resolution of resolutionList?.listaUchwal">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <br>{{resolution.opis}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p class="item-detail">Kategoria: {{resolution.nazwaKategorii}}</p>
+          <p class="item-detail">Treść: {{resolution.tresc}}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <ng-template #emptyList>
+      <p>{{ message }}</p>
+    </ng-template>
   </div>
-  <ng-template #emptyList>
-    <p>{{ message }}</p>
-  </ng-template>
+
 </div>
