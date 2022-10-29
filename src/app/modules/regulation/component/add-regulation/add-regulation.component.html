@@ -6,7 +6,6 @@
 </mat-list>
 <div class="container-box" [hidden]="submitted" style="width: 300px;">
   <form (ngSubmit)="onSubmit()">
-
     <mat-form-field appearance="outline">
       <mat-label>Nazwa</mat-label>
       <input matInput placeholder="Opis rozporzadzenia" required [(ngModel)]="regulation.nazwa" name="opis">

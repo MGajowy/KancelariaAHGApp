@@ -1,21 +1,18 @@
-
 <div class="shadowbox-page">
   <mat-list>
     <mat-list-item class="subpage-header">Szczegóły kategorii</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
-  <div *ngIf="category">
+  <div class="container-box" style="width: auto;">
     <div class="item-detail">
       <label><b>Nazwa kategorii:</b></label> {{category.rodzajKategorii}}
     </div>
     <div class="item-detail">
-      <label><b>Czy opublikowana: </b></label>
-      <mat-checkbox class="example-margin" color="primary" [(ngModel)]="category.czyPubliczny" name="czyPubliczny">
-      </mat-checkbox>
+      <label><b>Publiczna: </b></label> {{category.czyPubliczny ? "Tak" : "Nie"}}
     </div>
     <div>
-  <br>
-  <br>
-  <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="list()">Wróć do listy</button><br>
+      <br>
+      <br>
+      <button mat-raised-button color="primary" style="margin-right: 5px" (click)="list()">Wróć do listy</button><br>
     </div>
-  
+  </div>
