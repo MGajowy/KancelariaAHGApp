@@ -1,6 +1,7 @@
 import { RouterModule, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthServiceService } from 'src/app/core/services/auth/auth-service.service';
 
 
 @Component({
@@ -10,13 +11,41 @@ import { MenuItem } from 'primeng/api';
 })
 export class SidebarComponent {
 
-  //panelOpenState = false;
   items: MenuItem[];
+  isLogged: boolean;
+  isVisible: boolean = false;
+  listRoles: any;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authservice: AuthServiceService
+    ) { }
 
   ngOnInit() {
+    this.checkUserIsLogged()
+
+    if (this.isLogged) {
+      this.checkRoleIsAdmin();
+    }
+
     this.loadMenu();
+  }
+
+  checkUserIsLogged() {
+   this.isLogged = this.authservice.isUserLoggedIn();
+  }
+
+  checkRoleIsAdmin() {
+    this.authservice.getRoles().subscribe(res => {
+      this.listRoles = res;
+      this.listRoles.forEach(element => {
+        if (element == 'ADMIN') {
+          this.isVisible = true;
+          this.loadMenu();
+        } 
+      });
+      
+    })
   }
 
   loadMenu() {
@@ -24,6 +53,7 @@ export class SidebarComponent {
       {
         label: 'Administracja',
         icon: 'pi pi-cog',
+        visible: this.isVisible,
         items: [
           {
             label: 'Użytkownicy',
@@ -39,26 +69,6 @@ export class SidebarComponent {
                 icon: 'pi pi-fw pi-users',
                 command: () => this.nav('/office/user-list')
               },
-              // {
-              //   label: 'Wyszukaj',
-              //   icon: 'pi pi-fw pi-users',
-              //   items: [
-              //     {
-              //       label: 'Filter',
-              //       icon: 'pi pi-fw pi-filter',
-              //       items: [
-              //         {
-              //           label: 'Print',
-              //           icon: 'pi pi-fw pi-print'
-              //         }
-              //       ]
-              //     },
-              //     {
-              //       icon: 'pi pi-fw pi-bars',
-              //       label: 'List'
-              //     }
-              //   ]
-              // }
             ]
           },
           {
@@ -90,6 +100,7 @@ export class SidebarComponent {
           {
             label: 'Dodaj',
             icon: 'pi pi-fw pi-plus',
+            visible: this.isVisible,
             items: [
               {
                 label: 'Dodaj kategorie',
@@ -106,6 +117,7 @@ export class SidebarComponent {
           {
             label: 'Kategorie uchwał',
             icon: 'pi pi-folder-open',
+            visible: this.isVisible,
             command: () => this.nav('/office/category-resolutions')
           },
           {
@@ -122,6 +134,7 @@ export class SidebarComponent {
           {
             label: 'Dodaj',
             icon: 'pi pi-fw pi-plus',
+            visible: this.isVisible,
             items: [
               {
                 label: 'Dodaj kategorie',
@@ -138,6 +151,7 @@ export class SidebarComponent {
           {
             label: 'Kategorie rozporzadzen',
             icon: 'pi pi-folder-open',
+            visible: this.isVisible,
             command: () => this.nav('/office/category-regulations')
           },
           {
@@ -150,6 +164,7 @@ export class SidebarComponent {
       {
         label: 'O Kancelarii',
         icon: 'pi pi-info-circle',
+        // expanded: true,
         items: [
           {
             label: 'Kontakt',
@@ -188,6 +203,7 @@ export class SidebarComponent {
       }
     ];
   }
+
   nav(url) {
     this.router.navigateByUrl(url);
   }

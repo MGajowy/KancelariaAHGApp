@@ -25,7 +25,6 @@ export class AuthServiceService {
           return userData;
         }
       )
-
     );
   }
 
@@ -37,6 +36,10 @@ export class AuthServiceService {
   getUser() {
     const user = sessionStorage.getItem('username');
     return user;
+  }
+
+  getRoles() {
+    return this.httpClient.get<any>(`${baseUrl}rest/uzytkownicy/pub/role`)
   }
 
   logOut() {

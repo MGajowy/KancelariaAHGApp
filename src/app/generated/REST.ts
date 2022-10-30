@@ -105,6 +105,32 @@ export class ResolutionDTO {
     nazwaKategorii: string;
 }
 
+export interface HttpServletRequest extends ServletRequest {
+    method: string;
+    session: HttpSession;
+    userPrincipal: Principal;
+    parts: Part[];
+    headerNames: Enumeration<string>;
+    trailerFields: { [index: string]: string };
+    cookies: Cookie[];
+    contextPath: string;
+    pathInfo: string;
+    remoteUser: string;
+    requestURI: string;
+    pathTranslated: string;
+    requestURL: StringBuffer;
+    servletPath: string;
+    queryString: string;
+    authType: string;
+    trailerFieldsReady: boolean;
+    requestedSessionIdFromUrl: boolean;
+    requestedSessionIdFromCookie: boolean;
+    httpServletMapping: HttpServletMapping;
+    requestedSessionId: string;
+    requestedSessionIdValid: boolean;
+    requestedSessionIdFromURL: boolean;
+}
+
 export class ResetPasswordDTO {
     username: string;
     appUrl: string;
@@ -154,13 +180,285 @@ export class RegulationDTO {
     nazwaKategorii: string;
 }
 
+export interface HttpSession {
+    id: string;
+    creationTime: number;
+    attributeNames: Enumeration<string>;
+    sessionContext: HttpSessionContext;
+    valueNames: string[];
+    new: boolean;
+    servletContext: ServletContext;
+    maxInactiveInterval: number;
+    lastAccessedTime: number;
+}
+
+export interface Principal {
+    name: string;
+}
+
+export interface Part {
+    name: string;
+    size: number;
+    inputStream: any;
+    contentType: string;
+    headerNames: string[];
+    submittedFileName: string;
+}
+
+export interface Enumeration<E> {
+}
+
+export class Cookie implements Cloneable, Serializable {
+    name: string;
+    value: string;
+    version: number;
+    comment: string;
+    domain: string;
+    maxAge: number;
+    path: string;
+    secure: boolean;
+    httpOnly: boolean;
+}
+
+export class AbstractStringBuilder implements Appendable, CharSequence {
+}
+
+export class StringBuffer extends AbstractStringBuilder implements Serializable, Comparable<StringBuffer>, CharSequence {
+}
+
+export interface HttpServletMapping {
+    pattern: string;
+    matchValue: string;
+    servletName: string;
+    mappingMatch: MappingMatch;
+}
+
+export class Locale implements Cloneable, Serializable {
+}
+
+export interface ServletContext {
+    classLoader: ClassLoader;
+    majorVersion: number;
+    minorVersion: number;
+    attributeNames: Enumeration<string>;
+    sessionTimeout: number;
+    serverInfo: string;
+    servletNames: Enumeration<string>;
+    servlets: Enumeration<Servlet>;
+    contextPath: string;
+    filterRegistrations: { [index: string]: FilterRegistration };
+    effectiveSessionTrackingModes: SessionTrackingMode[];
+    effectiveMajorVersion: number;
+    initParameterNames: Enumeration<string>;
+    servletRegistrations: { [index: string]: ServletRegistration };
+    sessionCookieConfig: SessionCookieConfig;
+    jspConfigDescriptor: JspConfigDescriptor;
+    virtualServerName: string;
+    requestCharacterEncoding: string;
+    servletContextName: string;
+    effectiveMinorVersion: number;
+    responseCharacterEncoding: string;
+    defaultSessionTrackingModes: SessionTrackingMode[];
+}
+
+export interface AsyncContext {
+    request: ServletRequest;
+    timeout: number;
+    response: ServletResponse;
+}
+
+export interface ServletRequest {
+    protocol: string;
+    scheme: string;
+    inputStream: any;
+    locale: Locale;
+    contentLength: number;
+    contentLengthLong: number;
+    contentType: string;
+    reader: any;
+    attributeNames: Enumeration<string>;
+    localName: string;
+    parameterMap: { [index: string]: string[] };
+    characterEncoding: string;
+    remoteHost: string;
+    servletContext: ServletContext;
+    asyncContext: AsyncContext;
+    asyncSupported: boolean;
+    dispatcherType: DispatcherType;
+    parameterNames: Enumeration<string>;
+    localAddr: string;
+    locales: Enumeration<Locale>;
+    serverPort: number;
+    secure: boolean;
+    localPort: number;
+    serverName: string;
+    remoteAddr: string;
+    asyncStarted: boolean;
+    remotePort: number;
+}
+
 export class Calendar implements Serializable, Cloneable, Comparable<Calendar> {
+}
+
+export interface HttpSessionContext {
+    ids: Enumeration<string>;
 }
 
 export interface Cloneable {
 }
 
+export interface CharSequence {
+}
+
+export class ClassLoader {
+    parent: ClassLoader;
+    name: string;
+    unnamedModule: Module;
+    registeredAsParallelCapable: boolean;
+    definedPackages: Package[];
+}
+
+export interface Servlet {
+    servletConfig: ServletConfig;
+    servletInfo: string;
+}
+
+export interface FilterRegistration extends Registration {
+    servletNameMappings: string[];
+    urlPatternMappings: string[];
+}
+
+export interface ServletRegistration extends Registration {
+    runAsRole: string;
+    mappings: string[];
+}
+
+export interface SessionCookieConfig {
+    name: string;
+    path: string;
+    comment: string;
+    domain: string;
+    secure: boolean;
+    httpOnly: boolean;
+    maxAge: number;
+}
+
+export interface JspConfigDescriptor {
+    taglibs: TaglibDescriptor[];
+    jspPropertyGroups: JspPropertyGroupDescriptor[];
+}
+
+export interface ServletResponse {
+    locale: Locale;
+    contentType: string;
+    outputStream: ServletOutputStream;
+    writer: PrintWriter;
+    characterEncoding: string;
+    bufferSize: number;
+    committed: boolean;
+}
+
+export interface Appendable {
+}
+
 export interface Comparable<T> {
+}
+
+export class Module implements AnnotatedElement {
+    annotations: Annotation[];
+    declaredAnnotations: Annotation[];
+    layer: ModuleLayer;
+    name: string;
+    descriptor: ModuleDescriptor;
+    classLoader: ClassLoader;
+    named: boolean;
+    packages: string[];
+}
+
+export class NamedPackage {
+}
+
+export class Package extends NamedPackage implements AnnotatedElement {
+    annotations: Annotation[];
+    declaredAnnotations: Annotation[];
+    name: string;
+    sealed: boolean;
+    specificationTitle: string;
+    specificationVersion: string;
+    specificationVendor: string;
+    implementationTitle: string;
+    implementationVersion: string;
+    implementationVendor: string;
+}
+
+export interface ServletConfig {
+    servletName: string;
+    servletContext: ServletContext;
+    initParameterNames: Enumeration<string>;
+}
+
+export interface Registration {
+    name: string;
+    className: string;
+    initParameters: { [index: string]: string };
+}
+
+export interface TaglibDescriptor {
+    taglibURI: string;
+    taglibLocation: string;
+}
+
+export interface JspPropertyGroupDescriptor {
+    buffer: string;
+    deferredSyntaxAllowedAsLiteral: string;
+    defaultContentType: string;
+    scriptingInvalid: string;
+    errorOnUndeclaredNamespace: string;
+    trimDirectiveWhitespaces: string;
+    urlPatterns: string[];
+    elIgnored: string;
+    pageEncoding: string;
+    isXml: string;
+    includePreludes: string[];
+    includeCodas: string[];
+}
+
+export class OutputStream implements Closeable, Flushable {
+}
+
+export class ServletOutputStream extends OutputStream {
+    ready: boolean;
+}
+
+export class Writer implements Appendable, Closeable, Flushable {
+}
+
+export class PrintWriter extends Writer {
+}
+
+export class ModuleLayer {
+}
+
+export class ModuleDescriptor implements Comparable<ModuleDescriptor> {
+    open: boolean;
+    automatic: boolean;
+}
+
+export interface Annotation {
+}
+
+export interface AnnotatedElement {
+    annotations: Annotation[];
+    declaredAnnotations: Annotation[];
+}
+
+export interface Closeable extends AutoCloseable {
+}
+
+export interface Flushable {
+}
+
+export interface AutoCloseable {
 }
 
 export interface HttpClient {
@@ -414,6 +712,14 @@ export class TSAllRestApiClient {
     }
 
     /**
+     * HTTP GET /rest/uzytkownicy/pub/role
+     * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.pub.UserPublicRestApi.getRoles
+     */
+    getRoles(request: HttpServletRequest): RestResponse<RolesName[]> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/uzytkownicy/pub/role`, data: request });
+    }
+
+    /**
      * HTTP GET /rest/uzytkownicy/pub/weryfikuj-token
      * Java method: pl.kancelaria.AHG.shared.restapi.users.restapi.pub.UserPublicRestApi.checkToken
      */
@@ -495,6 +801,12 @@ export type UserSexEnum = "KOBIETA" | "MEZCZYZNA";
 export type RolesName = "USER" | "ADMIN";
 
 export type HttpStatus = "CONTINUE" | "SWITCHING_PROTOCOLS" | "PROCESSING" | "CHECKPOINT" | "OK" | "CREATED" | "ACCEPTED" | "NON_AUTHORITATIVE_INFORMATION" | "NO_CONTENT" | "RESET_CONTENT" | "PARTIAL_CONTENT" | "MULTI_STATUS" | "ALREADY_REPORTED" | "IM_USED" | "MULTIPLE_CHOICES" | "MOVED_PERMANENTLY" | "FOUND" | "MOVED_TEMPORARILY" | "SEE_OTHER" | "NOT_MODIFIED" | "USE_PROXY" | "TEMPORARY_REDIRECT" | "PERMANENT_REDIRECT" | "BAD_REQUEST" | "UNAUTHORIZED" | "PAYMENT_REQUIRED" | "FORBIDDEN" | "NOT_FOUND" | "METHOD_NOT_ALLOWED" | "NOT_ACCEPTABLE" | "PROXY_AUTHENTICATION_REQUIRED" | "REQUEST_TIMEOUT" | "CONFLICT" | "GONE" | "LENGTH_REQUIRED" | "PRECONDITION_FAILED" | "PAYLOAD_TOO_LARGE" | "REQUEST_ENTITY_TOO_LARGE" | "URI_TOO_LONG" | "REQUEST_URI_TOO_LONG" | "UNSUPPORTED_MEDIA_TYPE" | "REQUESTED_RANGE_NOT_SATISFIABLE" | "EXPECTATION_FAILED" | "I_AM_A_TEAPOT" | "INSUFFICIENT_SPACE_ON_RESOURCE" | "METHOD_FAILURE" | "DESTINATION_LOCKED" | "UNPROCESSABLE_ENTITY" | "LOCKED" | "FAILED_DEPENDENCY" | "TOO_EARLY" | "UPGRADE_REQUIRED" | "PRECONDITION_REQUIRED" | "TOO_MANY_REQUESTS" | "REQUEST_HEADER_FIELDS_TOO_LARGE" | "UNAVAILABLE_FOR_LEGAL_REASONS" | "INTERNAL_SERVER_ERROR" | "NOT_IMPLEMENTED" | "BAD_GATEWAY" | "SERVICE_UNAVAILABLE" | "GATEWAY_TIMEOUT" | "HTTP_VERSION_NOT_SUPPORTED" | "VARIANT_ALSO_NEGOTIATES" | "INSUFFICIENT_STORAGE" | "LOOP_DETECTED" | "BANDWIDTH_LIMIT_EXCEEDED" | "NOT_EXTENDED" | "NETWORK_AUTHENTICATION_REQUIRED";
+
+export type DispatcherType = "FORWARD" | "INCLUDE" | "REQUEST" | "ASYNC" | "ERROR";
+
+export type MappingMatch = "CONTEXT_ROOT" | "DEFAULT" | "EXACT" | "EXTENSION" | "PATH";
+
+export type SessionTrackingMode = "COOKIE" | "URL" | "SSL";
 
 function uriEncoding(template: TemplateStringsArray, ...substitutions: any[]): string {
     let result = "";
