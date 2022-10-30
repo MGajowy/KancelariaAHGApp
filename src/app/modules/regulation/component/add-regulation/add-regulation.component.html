@@ -4,16 +4,18 @@
   <mat-list-item class="subpage-header">Dodaj nowe rozporządzenie</mat-list-item>
   <mat-divider></mat-divider><br>
 </mat-list>
-<div class="container-box" [hidden]="submitted" style="width: 300px;">
+<div class="container-box" [hidden]="submitted" style="width: auto;">
   <form (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
       <mat-label>Nazwa</mat-label>
       <input matInput placeholder="Opis rozporzadzenia" required [(ngModel)]="regulation.nazwa" name="opis">
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <div>
+      <mat-form-field appearance="outline" style="min-width: 430px;">
       <mat-label>Treść</mat-label>
-      <input type="text" matInput placeholder="Treść rozporzadzenia" required [(ngModel)]="regulation.tresc" name="treść">
+      <textarea matInput placeholder="Treść" required [(ngModel)]="regulation.tresc" name="tresc"></textarea>
     </mat-form-field>
+    </div>
     <mat-form-field appearance="fill">
       <mat-label>Kategoria</mat-label>
       <mat-select required [(ngModel)]="regulation.kategoria" name="kategoria">

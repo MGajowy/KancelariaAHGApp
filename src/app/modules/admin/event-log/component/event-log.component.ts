@@ -13,6 +13,7 @@ export class EventLogComponent implements OnInit {
   cols: any[];
   respoonse: Boolean;
   newWindow: any;
+  date: Date;
 
 
   constructor(private eventLogServices: EventLogService) { }
@@ -34,9 +35,10 @@ export class EventLogComponent implements OnInit {
     this.eventLogServices.getExportEventLogToPDF().subscribe(x => {
       const blob = new Blob([x], {type: 'application/pdf'});
       const data =  window.URL.createObjectURL(blob);
-      const link = document.createElement('a')
+      const link = document.createElement('a');
+      this.date = new Date();
       link.href = data;
-      link.download = 'dziennikZdarzen.pdf';
+      link.download = 'DziennikZdarzen_' + this.date.toISOString() + '.pdf';
       link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window})); 
     });
   }

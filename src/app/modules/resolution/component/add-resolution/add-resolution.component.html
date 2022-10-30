@@ -1,50 +1,46 @@
 <div class="shadowbox-page">
-<mat-list>
-  <mat-list-item class="subpage-header">Dodaj nowa uchwałe</mat-list-item>
-  <mat-divider></mat-divider><br>
-</mat-list>
+  <mat-list>
+    <mat-list-item class="subpage-header">Dodaj nowa uchwałe</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
 
-<p-toast position="top-center" key="tc"></p-toast>
-<div class="container-box" [hidden]="submitted" style="width: 300px;">
-  <form (ngSubmit)="onSubmit()">
-
-    <mat-form-field appearance="outline">
-      <mat-label>Opis</mat-label>
-      <input matInput placeholder="Opis uchwały" required [(ngModel)]="resolution.opis" name="opis">
-      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-      <!-- <mat-hint>Hint</mat-hint> -->
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Treść</mat-label>
-      <input type="text" matInput placeholder="Treść uchwały" required [(ngModel)]="resolution.tresc" name="treść">
-    </mat-form-field>
-    <!-- <mat-form-field appearance="outline">
-      <mat-label>Kategoria</mat-label>
-      <input matInput placeholder="Kategoria uchwały" required [(ngModel)]="resolution.kategoria" name="kategoria">
-    </mat-form-field> -->
-    <mat-form-field appearance="fill">
-      <mat-label>Kategoria</mat-label>
-      <mat-select required [(ngModel)]="resolution.kategoria" name="kategoria">
-        <mat-option *ngFor="let categoryResolution of category?.listaKategorii" [value]="categoryResolution.id">{{categoryResolution.rodzajKategorii}} </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Czy publiczny</mat-label>
-      <mat-select required [(ngModel)]="resolution.czyPubliczny" name="czyPubliczny">
-        <mat-option value="true">Tak</mat-option>
-        <mat-option value="false">Nie</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div>
-      <button mat-raised-button color="primary" type="submit" class="btn btn-success">Dodaj uchwale</button>
-    </div>
-  </form>
-</div>
-<div [hidden]="!submitted">
-  <h4>Uchwala została poprawnie dodana!</h4>
-  <button mat-raised-button color="primary" class="btn btn-success" (click)="newResolution()">Dodaj nową
-    uchwałe</button>
-</div>
+  <p-toast position="top-center" key="tc"></p-toast>
+  <div class="container-box" [hidden]="submitted" style="width: auto;">
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Opis</mat-label>
+        <input matInput placeholder="Opis uchwały" required [(ngModel)]="resolution.opis" name="opis">
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="outline" style="min-width: 430px;">
+          <mat-label>Treść</mat-label>
+          <textarea matInput placeholder="Treść" required [(ngModel)]="resolution.tresc" name="tresc"></textarea>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Kategoria</mat-label>
+        <mat-select required [(ngModel)]="resolution.kategoria" name="kategoria">
+          <mat-option *ngFor="let categoryResolution of category?.listaKategorii" [value]="categoryResolution.id">
+            {{categoryResolution.rodzajKategorii}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Czy publiczny</mat-label>
+        <mat-select required [(ngModel)]="resolution.czyPubliczny" name="czyPubliczny">
+          <mat-option value="true">Tak</mat-option>
+          <mat-option value="false">Nie</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button color="primary" type="submit" class="btn btn-success">Dodaj uchwale</button>
+      </div>
+    </form>
+  </div>
+  <div [hidden]="!submitted">
+    <h4>Uchwala została poprawnie dodana!</h4>
+    <button mat-raised-button color="primary" class="btn btn-success" (click)="newResolution()">Dodaj nową
+      uchwałe</button>
+  </div>
 </div>
 
 

@@ -15,13 +15,14 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Nr. telefonu</mat-label>
-        <input type="text" matInput placeholder="Telefon" required [(ngModel)]="notification.phoneNumber" name="telefon">
+        <input type="text" matInput placeholder="Telefon" required [(ngModel)]="notification.phoneNumber"
+          name="telefon">
       </mat-form-field>
       <div>
-        <mat-form-field appearance="fill" style="width: 600px;">
-        <mat-label>Treść wiadomości</mat-label>
-        <textarea matInput placeholder="Treść" required [(ngModel)]="notification.message" name="tresc"></textarea>
-      </mat-form-field>
+        <mat-form-field appearance="fill" style="min-width: 650px;">
+          <mat-label>Treść wiadomości</mat-label>
+          <textarea matInput placeholder="Treść" required [(ngModel)]="notification.message" name="tresc"></textarea>
+        </mat-form-field>
       </div>
       <div>
         <button mat-raised-button color="primary" type="submit" class="btn btn-success">Wyślij wiadomość</button>

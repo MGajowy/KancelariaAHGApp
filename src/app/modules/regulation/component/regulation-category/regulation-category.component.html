@@ -16,7 +16,8 @@
   </p-confirmDialog>
   <p-messages [value]="msgs"></p-messages>
   <div class="container-box" style="width: auto;">
-    <p-table *ngIf="listCategory?.length > 0" [value]="listCategory" styleClass="p-datatable-striped" responsiveLayout="scroll">
+    <p-table *ngIf="listCategory?.length > 0" [value]="listCategory" styleClass="p-datatable-striped"
+      responsiveLayout="scroll">
       <ng-template pTemplate="header">
         <tr>
           <th>Nazwa kategorii</th>
@@ -26,9 +27,12 @@
       </ng-template>
       <ng-template pTemplate="body" let-listCategory>
         <tr>
-          <td>{{listCategory.rodzajKategorii}}</td>
           <td>
-              <p-checkbox [(ngModel)]="listCategory.czyPubliczny" disabled="true" binary="true" inputId="binary"></p-checkbox>
+            <span class="ellipsis">{{listCategory.rodzajKategorii}}</span>
+          </td>
+          <td>
+            <p-checkbox [(ngModel)]="listCategory.czyPubliczny" disabled="true" binary="true" inputId="binary">
+            </p-checkbox>
           </td>
           <td>
             <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
@@ -54,5 +58,5 @@
     </p-table>
     <p *ngIf="listCategory?.length == 0">Lista kategorii jest pusta.</p>
   </div>
-  
+
 </div>

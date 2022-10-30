@@ -27,7 +27,9 @@
       </ng-template>
       <ng-template pTemplate="body" let-listCategory>
         <tr>
-          <td>{{listCategory.rodzajKategorii}}</td>
+          <td>
+            <span class="ellipsis">{{listCategory.rodzajKategorii}}</span>
+          </td>
           <td>
             <p-checkbox [(ngModel)]="listCategory.czyPubliczny" disabled="true" binary="true" inputId="binary">
             </p-checkbox>

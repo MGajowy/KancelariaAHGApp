@@ -125,3 +125,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif,-apple-syste
 .mat-form-field {
 padding-right: 15px;
 }
+
+.ellipsis {
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
