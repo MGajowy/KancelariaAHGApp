@@ -30,8 +30,10 @@ export class ResolutionsListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-      this.getRole();
-      this.wyszukiwarkaUchwal();
+    if (this.authservice.isUserLoggedIn()) {
+         this.getRole();
+    }
+    this.wyszukiwarkaUchwal();
   }
 
   getRole(): boolean {
