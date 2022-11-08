@@ -23,14 +23,16 @@ export class ModifyCategoryComponent implements OnInit {
     {value: 'false', viewValue: 'NIE'},
   ]
 
-  constructor(private router: Router, private resolutionSevice: ResolutionService, private route: ActivatedRoute) { }
+  constructor(
+    private router: Router, 
+    private resolutionSevice: ResolutionService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.category = new CategoryDTOrequest();
     this.id = this.route.snapshot.params['id'];
     this.resolutionSevice.detailsCategory(this.id)
       .subscribe(data => {
-        console.log(data)
         this.category = data;
       }, error => console.log(error));
   }

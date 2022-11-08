@@ -57,12 +57,13 @@ import { SpecializationComponent } from './about/specialization/specialization.c
 import { OnlineHelpComponent } from './about/online-help/online-help.component';
 import { CareerComponent } from './about/career/career.component';
 import { GMapModule } from 'primeng/gmap';
-import {TreeModule} from 'primeng/tree';
-import {MessageService} from 'primeng/api';
-import {ToastModule} from 'primeng/toast';
+import { TreeModule } from 'primeng/tree';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 import { CheckboxModule } from 'primeng/checkbox';
-import {MenuModule} from 'primeng/menu';
+import { MenuModule} from 'primeng/menu';
 import { RippleModule } from 'primeng/ripple';
+import { ModifyResolutionComponent } from './resolution/component/modify-resolution/modify-resolution.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -88,7 +89,8 @@ import { RippleModule } from 'primeng/ripple';
     AccessMapComponent,
     SpecializationComponent,
     OnlineHelpComponent,
-    CareerComponent
+    CareerComponent,
+    ModifyResolutionComponent,
   ],
   imports: [
     CommonModule,

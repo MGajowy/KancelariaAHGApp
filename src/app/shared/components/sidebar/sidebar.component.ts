@@ -19,7 +19,7 @@ export class SidebarComponent {
   constructor(
     private router: Router,
     private authservice: AuthServiceService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.checkUserIsLogged()
@@ -32,7 +32,7 @@ export class SidebarComponent {
   }
 
   checkUserIsLogged() {
-   this.isLogged = this.authservice.isUserLoggedIn();
+    this.isLogged = this.authservice.isUserLoggedIn();
   }
 
   checkRoleIsAdmin() {
@@ -42,9 +42,9 @@ export class SidebarComponent {
         if (element == 'ADMIN') {
           this.isVisible = true;
           this.loadMenu();
-        } 
+        }
       });
-      
+
     })
   }
 

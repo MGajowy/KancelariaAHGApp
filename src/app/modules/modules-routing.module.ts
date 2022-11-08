@@ -25,6 +25,7 @@ import { AccessMapComponent } from './about/access-map/access-map.component';
 import { SpecializationComponent } from './about/specialization/specialization.component';
 import { OnlineHelpComponent } from './about/online-help/online-help.component';
 import { CareerComponent } from './about/career/career.component';
+import { ModifyResolutionComponent } from './resolution/component/modify-resolution/modify-resolution.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,11 @@ const routes: Routes = [
   {
     path: 'add-resolutions',
     component: AddResolutionComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'modify-resolutions/:id',
+    component: ModifyResolutionComponent,
     canActivate: [AuthGuardService]
   },
   {

@@ -11,6 +11,9 @@
     <mat-list-item class="subpage-header">Lista uchwał</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
+  <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000">
+  </p-confirmDialog>
+  <p-messages [value]="msgs"></p-messages>
   <div class="container-box" style="width: auto;">
     <div *ngIf="resolutionList?.listaUchwal.length > 0; else emptyList ">
       <mat-accordion *ngFor="let resolution of resolutionList?.listaUchwal">
@@ -22,6 +25,18 @@
           </mat-expansion-panel-header>
           <p class="item-detail">Kategoria: {{resolution.nazwaKategorii}}</p>
           <p class="item-detail">Treść: {{resolution.tresc}}</p>
+          <div *ngIf="adminRole">
+            <button mat-raised-button color="primary" style="margin-right: 5px"
+              (click)="confirmPosition('top', resolution.id, resolution.opis)">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
+              Usuń
+            </button>
+            <button mat-raised-button color="primary" style="margin-right: 5px"
+              (click)="modifyResolution(resolution.id)">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon>
+              Modyfikuj
+            </button>
+          </div>
         </mat-expansion-panel>
       </mat-accordion>
     </div>

@@ -5,22 +5,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { baseUrl } from 'src/environments/environment';
-import { CategoryDTO, CategoryDTOrequest, CreateResotutionDTO, ResolutionDTO } from 'src/app/generated/REST';
+import { CategoryDTO, CategoryDTOrequest, CreateResotutionDTO, ResolutionDTO, ResolutionRequestDTO } from 'src/app/generated/REST';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResolutionService {
 
-
-  // private baseUrl = 'http://localhost:8020/kategorie/wszystkieKategorie';
-
   constructor(private httpClient: HttpClient, private restService: RestService) { }
 
-  // getStryng(){
-
-  //   return this.restService.wszystkieRestAdmin().getStr();
-  // }
   getResolutionList(): Observable<any> {
     return this.httpClient.get(`${baseUrl}rest/kategorie/pub/wszystkieKategorie`);
   }
@@ -58,12 +51,12 @@ export class ResolutionService {
     return this.httpClient.post(`${baseUrl}rest/uchwaly/secured/dodaj-uchwale`, resolutionDTO, {observe: 'response'});
   }
 
-  updateResolution(id: number, resolutionDTO: ResolutionDTO): Observable<any> {
+  updateResolution(id: number, resolutionDTO: ResolutionRequestDTO): Observable<any> {
     return this.httpClient.put(`${baseUrl}rest/uchwaly/secured/modyfikuj-uchwale/${id}`, resolutionDTO);
   }
 
   deleteResolution(id: number): Observable<any> {
-    return this.httpClient.delete(`${baseUrl}rest/uchwaly/secured/usun-uchwalee/${id}`);
+    return this.httpClient.delete(`${baseUrl}rest/uchwaly/secured/usun-uchwale/${id}`, {observe: 'response'});
   }
 
   getResolutionsAll(): Observable<any> {
@@ -74,6 +67,10 @@ export class ResolutionService {
     const params = new HttpParams()
     .set('opis', opis)
     return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwalWgOpis`, { params })
+  }
+
+  detailsResolution(id: number) : Observable<any> {
+    return this.httpClient.get(`${baseUrl}rest/uchwaly/secured/szczegoly-uchwaly/${id}`);
   }
 
 }

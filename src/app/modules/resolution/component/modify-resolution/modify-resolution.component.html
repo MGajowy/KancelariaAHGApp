@@ -1,0 +1,40 @@
+<div class="shadowbox-page">
+  <mat-list>
+    <mat-list-item class="subpage-header">Modyfikuj uchwałę</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
+  <div class="container-box" style="width: auto;">
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nazwa uchwały</mat-label>
+        <input matInput placeholder="Nazwa" required [(ngModel)]="resolution.opis" name="nazwa">
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="outline" style="min-width: 430px;">
+          <mat-label>Treść uchwały</mat-label>
+          <textarea matInput placeholder="Treść" required [(ngModel)]="resolution.tresc" name="tresc"></textarea>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Kategoria</mat-label>
+        <mat-select required [(ngModel)]="resolution.idKategorii" name="kategoria">
+          <mat-option *ngFor="let categoryResolution of category?.listaKategorii" [value]="categoryResolution.id">
+            {{categoryResolution.rodzajKategorii}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Czy publiczny</mat-label>
+        <select matNativeControl required [(ngModel)]="resolution.czyPubliczny" name="czyPubliczny">
+          <option *ngFor="let item of list" [selected]="resolution.czyPubliczny === item.value" [value]="item.value">
+            {{item.viewValue}}</option>
+        </select>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button color="primary" type="submit" class="btn btn-success"
+          style="margin-right: 5px">Zapisz</button>
+        <button mat-raised-button color="primary" style="margin-right: 5px"
+          (click)="goToListResolution()">Cofnij</button>
+      </div>
+    </form>
+  </div>
+</div>
