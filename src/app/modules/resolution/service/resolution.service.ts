@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { baseUrl } from 'src/environments/environment';
-import { CategoryDTO, CategoryDTOrequest, CreateResotutionDTO, ResolutionDTO, ResolutionRequestDTO } from 'src/app/generated/REST';
+import { CategoryDTO, CreateResotutionDTO } from 'src/app/generated/REST';
+import { ResolutionRequestDTO } from 'src/app/generated/ResolutionRequestDTO';
 
 @Injectable({
   providedIn: 'root'

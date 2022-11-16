@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResolutionService } from '../../service/resolution.service';
-import { CategoryListDTO, ResolutionRequestDTO } from './../../../../generated/REST';
+import { CategoryListDTO } from './../../../../generated/REST';
+import { ResolutionRequestDTO } from 'src/app/generated/ResolutionRequestDTO';
 
 interface Choise {
   value: string;
