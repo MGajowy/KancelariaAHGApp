@@ -24,4 +24,10 @@ getFiles() {
     }));
   }
 
+  getReputationById(id: any): Observable<any> {
+    return this.http.post(`${baseUrl}rest/pomocOnline/pub/opinie`, id )};
+
+  getAllReputation(): Observable<any> {
+      return this.http.get(`${baseUrl}rest/pomocOnline/pub/opinieLista`)};
+  
 }
