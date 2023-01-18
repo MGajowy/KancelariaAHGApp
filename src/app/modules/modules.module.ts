@@ -64,6 +64,9 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { MenuModule} from 'primeng/menu';
 import { RippleModule } from 'primeng/ripple';
 import { ModifyResolutionComponent } from './resolution/component/modify-resolution/modify-resolution.component';
+import { ReputationListComponent } from './reputation/component/reputation-list/reputation-list.component';
+import { AddReputataionComponent } from './reputation/component/add-reputation/add-reputataion.component';
+import { OrderListModule } from 'primeng/orderlist';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -91,6 +94,8 @@ import { ModifyResolutionComponent } from './resolution/component/modify-resolut
     OnlineHelpComponent,
     CareerComponent,
     ModifyResolutionComponent,
+    AddReputataionComponent,
+    ReputationListComponent
   ],
   imports: [
     CommonModule,
@@ -126,7 +131,8 @@ import { ModifyResolutionComponent } from './resolution/component/modify-resolut
     ToastModule,
     CheckboxModule,
     MenuModule,
-    RippleModule
+    RippleModule,
+    OrderListModule    
   ],
   providers: [
     ConfirmationService,

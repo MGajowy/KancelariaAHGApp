@@ -137,3 +137,9 @@ padding-right: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.p-button.p-button-info, .p-buttonset.p-button-info  .p-button, .p-splitbutton.p-button-info  .p-button {
+    min-width: 50px;
+    margin: 8px;
+  }
+

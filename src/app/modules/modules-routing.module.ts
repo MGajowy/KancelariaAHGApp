@@ -26,6 +26,7 @@ import { SpecializationComponent } from './about/specialization/specialization.c
 import { OnlineHelpComponent } from './about/online-help/online-help.component';
 import { CareerComponent } from './about/career/career.component';
 import { ModifyResolutionComponent } from './resolution/component/modify-resolution/modify-resolution.component';
+import { ReputationListComponent } from './reputation/component/reputation-list/reputation-list.component';
 
 const routes: Routes = [
   {
@@ -144,6 +145,10 @@ const routes: Routes = [
   {
     path: 'career',
     component: CareerComponent,
+  },
+  {
+    path: 'reputation',
+    component: ReputationListComponent,
   }
 
 ];

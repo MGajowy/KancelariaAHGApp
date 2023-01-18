@@ -172,7 +172,7 @@ export class SidebarComponent {
             items: [
               {
                 label: 'Mapa dojazdu',
-                icon: 'pi pi-compass',
+                icon: 'pi pi-map-marker',
                 command: () => this.nav('/office/access-map')
               },
             ]
@@ -190,7 +190,7 @@ export class SidebarComponent {
           },
           {
             label: 'Pomoc online',
-            icon: 'pi pi-fw pi-calendar-times',
+            icon: 'pi pi-question',
             command: () => this.nav('/office/online-help')
           }
 
@@ -198,8 +198,13 @@ export class SidebarComponent {
       },
       {
         label: 'Kariera',
-        icon: 'pi pi-info',
+        icon: 'pi pi-thumbs-up',
         command: () => this.nav('/office/career')
+      },
+      {
+        label: 'Opinie',
+        icon: 'pi pi-star',
+        command: () => this.nav('/office/reputation')
       }
     ];
   }

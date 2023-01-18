@@ -1,0 +1,27 @@
+<div class="shadowbox-page">
+  <mat-list>
+    <mat-list-item class="subpage-header">Opinie klientów</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
+  <app-add-reputataion></app-add-reputataion>
+  <div class="container-box" style="width: auto; margin-top: 10px;">
+    <mat-list>
+      <mat-list-item class="subpage-header">Kancelaria AHG - opinie</mat-list-item>
+      <mat-divider></mat-divider><br>
+    </mat-list>
+    <p-orderList [value]="reputationList">
+      <ng-template let-reputation pTemplate="item">
+        <h5>{{reputation.user}}</h5>
+        <p-card [style]="{'width': '500px'}">
+          <p>{{reputation.description}}</p>
+        </p-card>
+        <div>
+          <p-button icon="pi pi-thumbs-up" styleClass="p-button-info" badge="{{reputation.like}}"
+            badgeClass="p-badge-danger" (click)="addLike(reputation.id)"></p-button>
+          <p-button icon="pi pi-thumbs-down" styleClass="p-button-info" badge="{{reputation.notLike}}"
+            badgeClass="p-badge-danger" (click)="addNotLike(reputation.id)"></p-button>
+        </div>
+      </ng-template>
+    </p-orderList>
+  </div>
+</div>
