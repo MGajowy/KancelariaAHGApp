@@ -2,7 +2,6 @@ import { UserPasswordDTO } from './../../../../../generated/REST';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Password } from 'primeng';
 import { LocationDTO } from 'src/app/generated/REST';
 import { AuthServiceService } from 'src/app/core/services/auth/auth-service.service';
 import { takeUntil } from 'rxjs/operators';

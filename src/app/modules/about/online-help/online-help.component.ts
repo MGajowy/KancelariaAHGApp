@@ -13,11 +13,7 @@ export class OnlineHelpComponent implements OnInit {
 
   notification: OnlineHelpRequestDto = new OnlineHelpRequestDto;
   submitted = false;
-  reputation: any;
-  reputationList: any;
-  rep = {
-    id: 1
-  }
+
 
   constructor(
     private aboutService: AboutServiceService,
@@ -27,13 +23,7 @@ export class OnlineHelpComponent implements OnInit {
 
   ngOnInit() {
     this.submitted;
-    this.primengConfig.ripple = true;
-    this.aboutService.getReputationById(this.rep).subscribe(result => 
-      this.reputation = result)
-    this.aboutService.getAllReputation().subscribe(list => 
-      this.reputationList = list);
-    console.log(this.reputation);
-  
+    this.primengConfig.ripple = true;  
   }
 
   onSubmit() {

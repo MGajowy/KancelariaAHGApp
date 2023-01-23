@@ -18,7 +18,7 @@ getReputationList(): Observable<any> {
 }
 
 getReputationById(getReputation: GetReputation): Observable<any> {
-  return this.httpClient.get(`${baseUrl}rest/reputation/pub/getOne`, getReputation);
+  return this.httpClient.post(`${baseUrl}rest/reputation/pub/getOne`, getReputation);
 }
 
 addReputation(addReputation: AddReputation): Observable<any> {
@@ -37,7 +37,9 @@ addNotLikeReputation(id: number): Observable<any> {
 }
 
 deleteReputation(id: number): Observable<any> {
-  return this.httpClient.delete(`${baseUrl}rest/reputation/secured/delete/${id}`);
+  return this.httpClient.delete(`${baseUrl}rest/reputation/secured/delete/${id}`, {observe: 'response'})
+  .pipe(map(data => {
+    return data;
+  }));
 }
-
 }

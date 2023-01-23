@@ -4,20 +4,22 @@
     <mat-list-item class="subpage-header">Dodaj własną opinie</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
-  <form (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="outline">
-      <mat-label>Login</mat-label>
-      <input matInput placeholder="Login" required [(ngModel)]="reputation.user" name="login">
-    </mat-form-field>
-    <div>
-      <mat-form-field appearance="fill" style="min-width: 650px;">
-        <mat-label>Treść Opinii</mat-label>
-        <textarea matInput placeholder="Treść" required [(ngModel)]="reputation.description" name="tresc"></textarea>
+  <div class="container-box" style="width: auto;">
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Login</mat-label>
+        <input matInput placeholder="Login" required [(ngModel)]="reputation.user" name="login">
       </mat-form-field>
-    </div>
-    <div>
-      <button mat-raised-button color="primary" type="submit" class="btn btn-success">Wyślij opinie</button>
-    </div>
-  </form>
+      <div>
+        <mat-form-field appearance="fill" style="min-width: 650px;">
+          <mat-label>Treść Opinii</mat-label>
+          <textarea matInput placeholder="Treść" required [(ngModel)]="reputation.description" name="tresc"></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button color="primary" type="submit" class="btn btn-success">Wyślij opinie</button>
+      </div>
+    </form>
+  </div>
 
 </div>

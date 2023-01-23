@@ -3,13 +3,13 @@
     <mat-list-item class="subpage-header">Opinie klientów</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
-  <app-add-reputataion></app-add-reputataion>
+  <app-add-reputataion (addNewReputation)="reloadList($event)"></app-add-reputataion>
   <div class="container-box" style="width: auto; margin-top: 10px;">
     <mat-list>
       <mat-list-item class="subpage-header">Kancelaria AHG - opinie</mat-list-item>
       <mat-divider></mat-divider><br>
     </mat-list>
-    <p-orderList [value]="reputationList">
+    <p-orderList [value]="reputationList" *ngIf="reputationList?.length > 0; else emptyList ">
       <ng-template let-reputation pTemplate="item">
         <h5>{{reputation.user}}</h5>
         <p-card [style]="{'width': '500px'}">
@@ -21,7 +21,17 @@
           <p-button icon="pi pi-thumbs-down" styleClass="p-button-info" badge="{{reputation.notLike}}"
             badgeClass="p-badge-danger" (click)="addNotLike(reputation.id)"></p-button>
         </div>
+        <div *ngIf="adminRole">
+          <button mat-raised-button color="primary" style="margin-right: 5px; float: right;"
+            (click)="deleteReputation(reputation.id)">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
+            Usuń opinie
+          </button>
+        </div>
       </ng-template>
     </p-orderList>
+    <ng-template #emptyList>
+      <p>{{ message }}</p>
+    </ng-template>
   </div>
 </div>
