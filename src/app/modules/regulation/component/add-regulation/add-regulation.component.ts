@@ -17,7 +17,7 @@ export class AddRegulationComponent implements OnInit {
   constructor(
     private regulationServices: RegulationService,
     private messageService: MessageService,
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getCategoryList();
@@ -50,6 +50,10 @@ export class AddRegulationComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.regulation.kategoria == null || this.regulation.nazwa == null ||
+      this.regulation.tresc == null)
+      this.showValidationMessage();
+      else 
     this.save();
   }
 
@@ -59,6 +63,10 @@ export class AddRegulationComponent implements OnInit {
 
   showErrorMessage() {
     this.messageService.add({key: 'tc', severity:'error', summary:'Błąd dodania rozporządzenia.', detail:'Skontaktuj się z administratorem'});
+  }
+
+  showValidationMessage() {
+    this.messageService.add({ key: 'tc', severity: 'info', summary: 'Uzupełnij wymagane pola.' });
   }
 
 }

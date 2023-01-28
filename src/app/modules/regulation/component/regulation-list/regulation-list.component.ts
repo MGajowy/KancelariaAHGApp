@@ -12,7 +12,7 @@ export class RegulationListComponent implements OnInit {
 
   regulationList: RegulationListDTO;
   regulation: RegulationDTO;
-  message: String = 'Lista rozporzadzen jest pusta.'
+  message: String = 'Lista rozporządzeń jest pusta.'
   term: FormControl;
 
   constructor (

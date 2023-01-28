@@ -24,7 +24,6 @@ export class AddResolutionComponent implements OnInit {
     private router: Router,
     private resolutionServices: ResolutionService,
     private messageService: MessageService,
-
   ) { }
 
   ngOnInit() {
@@ -38,8 +37,7 @@ export class AddResolutionComponent implements OnInit {
     // });
   }
 
-  newResolution(): void
-  {
+  newResolution(): void {
     this.submitted = false;
     this.resolution = new CreateResotutionDTO;
   }
@@ -54,11 +52,15 @@ export class AddResolutionComponent implements OnInit {
         }
         this.submitted = true;
       },
-      error => console.log(error));
-       this.resolution = new CreateResotutionDTO;
+        error => console.log(error));
+    this.resolution = new CreateResotutionDTO;
   }
-  onSubmit(){
-    this.save();
+  onSubmit() {
+    if (this.resolution.kategoria == null || this.resolution.opis == null
+      || this.resolution.tresc == null)
+      this.showValidationMessage();
+    else
+      this.save();
   }
 
   private categoryList() {
@@ -68,11 +70,16 @@ export class AddResolutionComponent implements OnInit {
   }
 
   showSuccessMessage() {
-    this.messageService.add({key: 'tc', severity:'success', summary:'Dodano uchwałę.'});
+    this.messageService.add({ key: 'tc', severity: 'success', summary: 'Dodano uchwałę.' });
   }
 
   showErrorMessage() {
-    this.messageService.add({key: 'tc', severity:'error', summary:'Błąd dodania uchwały.', detail:'Skontaktuj się z administratorem'});
+    this.messageService.add({ key: 'tc', severity: 'error', summary: 'Błąd dodania uchwały.', detail: 'Skontaktuj się z administratorem' });
   }
+
+  showValidationMessage() {
+    this.messageService.add({ key: 'tc', severity: 'info', summary: 'Uzupełnij wymagane pola.' });
+  }
+
 
 }

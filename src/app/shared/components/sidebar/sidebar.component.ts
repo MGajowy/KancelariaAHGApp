@@ -76,7 +76,7 @@ export class SidebarComponent {
             icon: 'pi pi-fw pi-video',
             items: [
               {
-                label: 'Dziennik zdarzen',
+                label: 'Dziennik zdarzeń',
                 icon: 'pi pi-chart-bar',
                 command: () => this.nav('/office/event-log')
               }
@@ -108,7 +108,7 @@ export class SidebarComponent {
                 command: () => this.nav('/office/add-category-resolutions')
               },
               {
-                label: 'Dodaj uchwałe',
+                label: 'Dodaj uchwałę',
                 icon: 'pi pi-fw pi-file',
                 command: () => this.nav('/office/add-resolutions')
               }
@@ -142,20 +142,20 @@ export class SidebarComponent {
                 command: () => this.nav('/office/add-category-regulations')
               },
               {
-                label: 'Dodaj rozporządzenia',
+                label: 'Dodaj rozporządzenie',
                 icon: 'pi pi-fw pi-file',
                 command: () => this.nav('/office/add-regulations')
               }
             ]
           },
           {
-            label: 'Kategorie rozporzadzen',
+            label: 'Kategorie rozporządzeń',
             icon: 'pi pi-folder-open',
             visible: this.isVisible,
             command: () => this.nav('/office/category-regulations')
           },
           {
-            label: 'Lista rozporzadzen',
+            label: 'Lista rozporządzeń',
             icon: 'pi pi-fw pi-file',
             command: () => this.nav('/office/list-regulations')
           }
