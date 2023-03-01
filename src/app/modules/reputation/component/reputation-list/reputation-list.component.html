@@ -11,6 +11,8 @@
     </mat-list>
     <p-orderList [value]="reputationList" *ngIf="reputationList?.length > 0; else emptyList ">
       <ng-template let-reputation pTemplate="item">
+        <hr>
+        <h5>{{dateInfo + reputation.dateAdded}}</h5>
         <h5>{{reputation.user}}</h5>
         <p-card [style]="{'width': '500px'}">
           <p>{{reputation.description}}</p>
@@ -30,6 +32,7 @@
         </div>
       </ng-template>
     </p-orderList>
+    <p-paginator [rows]="5" [totalRecords]="100" [rowsPerPageOptions]="[10,20,30]"></p-paginator>
     <ng-template #emptyList>
       <p>{{ message }}</p>
     </ng-template>

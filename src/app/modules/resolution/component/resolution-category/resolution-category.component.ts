@@ -46,7 +46,8 @@ export class ResolutionCategoryComponent implements OnInit {
   }
 
   reloadData() {
-    this.resolutionService.getResolutionCategoryListOfTerm(this.term.value).subscribe(res => {
+    this.resolutionService.getResolutionCategoryListOfTerm(this.term.value)
+    .subscribe(res => {
       this.listCategory = res.listaKategorii;
     });
   }

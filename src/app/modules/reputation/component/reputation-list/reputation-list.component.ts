@@ -12,6 +12,7 @@ export class ReputationListComponent implements OnInit {
 
   reputationList: Reputation[];
   message: string = 'Lista opinii jest pusta.'
+  dateInfo: string = 'Data: '
   like: string;
   notLike: string;
   adminRole: boolean = false;
@@ -56,6 +57,7 @@ export class ReputationListComponent implements OnInit {
   loadList() {
     this.reputationService.getReputationList().subscribe(result => {
       this.reputationList = result;
+      // this.reputationList.sort().reverse();
     })
   }
 
@@ -72,7 +74,6 @@ export class ReputationListComponent implements OnInit {
   }
 
   reloadList(result: boolean) {
-    console.log(result);
     this.reloadNewList = result;
     if (this.reloadNewList) {
       this.loadList();

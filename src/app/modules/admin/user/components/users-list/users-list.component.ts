@@ -146,6 +146,11 @@ export class UsersListComponent implements OnInit {
     this.reloadData();
   }
 
+  paginate(event) {
+    
+    console.log(event)
+  }
+
   showSuccessSendEmailResetMessage() {
     this.messageService.add({key: 'tc', severity:'success', summary:'E-mail z resetem hasła został wysłany do użytkownika.'});
   }

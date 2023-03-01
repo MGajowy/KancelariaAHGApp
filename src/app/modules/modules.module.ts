@@ -67,6 +67,7 @@ import { ModifyResolutionComponent } from './resolution/component/modify-resolut
 import { ReputationListComponent } from './reputation/component/reputation-list/reputation-list.component';
 import { AddReputataionComponent } from './reputation/component/add-reputation/add-reputataion.component';
 import { OrderListModule } from 'primeng/orderlist';
+import {PaginatorModule} from 'primeng/paginator';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -132,7 +133,8 @@ import { OrderListModule } from 'primeng/orderlist';
     CheckboxModule,
     MenuModule,
     RippleModule,
-    OrderListModule    
+    OrderListModule,
+    PaginatorModule
   ],
   providers: [
     ConfirmationService,
