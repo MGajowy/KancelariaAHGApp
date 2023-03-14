@@ -24,6 +24,8 @@
           <p>Treść: {{regulation.tresc}}</p>
         </mat-expansion-panel>
       </mat-accordion>
+      <p-paginator [rows]="pageSize" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20,30]"
+        (onPageChange)="paginate($event)"></p-paginator>
     </div>
     <ng-template #emptyList>
       <p>{{ message }}</p>

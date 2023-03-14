@@ -21,17 +21,20 @@ export class ResolutionsListComponent implements OnInit {
   listRoles: any;
   msgs: Message[] = [];
   position: string;
+  pageNumber: number = 0;
+  pageSize: number = 5;
+  totalRecords: number = 0;
 
-  constructor (
+  constructor(
     private resolutionService: ResolutionService,
     private router: Router,
     private authservice: AuthServiceService,
     private confirmationService: ConfirmationService,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     if (this.authservice.isUserLoggedIn()) {
-         this.getRole();
+      this.getRole();
     }
     this.wyszukiwarkaUchwal();
   }
@@ -48,7 +51,7 @@ export class ResolutionsListComponent implements OnInit {
     return this.adminRole;
   }
 
-  private wyszukiwarkaUchwal() : void {
+  private wyszukiwarkaUchwal(): void {
     this.term = new FormControl('');
     this.reloadData();
     this.term.valueChanges.pipe(
@@ -60,8 +63,9 @@ export class ResolutionsListComponent implements OnInit {
   }
 
   reloadData() {
-    this.resolutionService.getResolutionOfDescription(this.term.value).subscribe(res => {
+    this.resolutionService.getResolutionOfDescriptionAndPagination(this.term.value, this.pageNumber, this.pageSize).subscribe(res => {
       this.resolutionList = res;
+      this.totalRecords = res.totalRecords;
     })
   }
 
@@ -93,6 +97,12 @@ export class ResolutionsListComponent implements OnInit {
         this.reloadData();
       },
         error => console.log(error));
+  }
+
+  paginate(event) {
+    this.pageNumber = event.page;
+    this.pageSize = event.rows;
+    this.reloadData();
   }
 
 }

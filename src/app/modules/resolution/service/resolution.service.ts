@@ -25,7 +25,7 @@ export class ResolutionService {
 
   getResolutionCategoryListOfTerm(term): Observable<any> {
     const params = new HttpParams()
-    .set('term', term)
+      .set('term', term)
     return this.httpClient.get(`${baseUrl}rest/kategorie/pub/wyszukajKategorie`, { params })
   }
 
@@ -34,10 +34,10 @@ export class ResolutionService {
   }
 
   createCategory(categoryDTO: CategoryDTO): Observable<any> {
-    return this.httpClient.post(`${baseUrl}rest/kategorie/secured/dodaj-kategorie`, categoryDTO, {observe: 'response'})
-    .pipe(map(data => {
-      return data.status;
-    }));
+    return this.httpClient.post(`${baseUrl}rest/kategorie/secured/dodaj-kategorie`, categoryDTO, { observe: 'response' })
+      .pipe(map(data => {
+        return data.status;
+      }));
   }
 
   updateCategory(id: number, value: any): Observable<any> {
@@ -49,7 +49,7 @@ export class ResolutionService {
   }
 
   createResolution(resolutionDTO: CreateResotutionDTO): Observable<any> {
-    return this.httpClient.post(`${baseUrl}rest/uchwaly/secured/dodaj-uchwale`, resolutionDTO, {observe: 'response'});
+    return this.httpClient.post(`${baseUrl}rest/uchwaly/secured/dodaj-uchwale`, resolutionDTO, { observe: 'response' });
   }
 
   updateResolution(id: number, resolutionDTO: ResolutionRequestDTO): Observable<any> {
@@ -57,20 +57,26 @@ export class ResolutionService {
   }
 
   deleteResolution(id: number): Observable<any> {
-    return this.httpClient.delete(`${baseUrl}rest/uchwaly/secured/usun-uchwale/${id}`, {observe: 'response'});
+    return this.httpClient.delete(`${baseUrl}rest/uchwaly/secured/usun-uchwale/${id}`, { observe: 'response' });
   }
 
   getResolutionsAll(): Observable<any> {
     return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwal`);
   }
 
-  getResolutionOfDescription(opis) : Observable<any> {
+  getResolutionOfDescription(description): Observable<any> {
     const params = new HttpParams()
-    .set('opis', opis)
+      .set('description', description)
     return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwalWgOpis`, { params })
   }
 
-  detailsResolution(id: number) : Observable<any> {
+  getResolutionOfDescriptionAndPagination(description, pageNumber: number, pageSize: number): Observable<any> {
+    const params = new HttpParams()
+      .set('description', description)
+    return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwalWgOpis/${pageNumber}/${pageSize}`, { params })
+  }
+
+  detailsResolution(id: number): Observable<any> {
     return this.httpClient.get(`${baseUrl}rest/uchwaly/secured/szczegoly-uchwaly/${id}`);
   }
 

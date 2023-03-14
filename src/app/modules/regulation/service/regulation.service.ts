@@ -60,10 +60,16 @@ export class RegulationService {
   //   return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwal`);
   // }
 
-  getResolutionOfDescription(nazwa) : Observable<any> {
+  getRegulationOfDescription(name) : Observable<any> {
     const params = new HttpParams()
-    .set('nazwa', nazwa)
+    .set('name', name)
     return this.httpClient.get(`${baseUrl}rest/rozporzadzenia/pub/listaRozporzadzenWgOpis`, { params })
+  }
+
+  getRegulationOfDescriptionAndPagination(name, pageNumber: number, pageSize: number) : Observable<any> {
+    const params = new HttpParams()
+    .set('name', name)
+    return this.httpClient.get(`${baseUrl}rest/rozporzadzenia/pub/listaRozporzadzenWgOpis/${pageNumber}/${pageSize}`, { params })
   }
 
 }
