@@ -1,5 +1,13 @@
 <div class="shadowbox-page">
   <mat-list>
+    <mat-list-item>
+      <div style="float: right;">
+        <mat-form-field>
+          <input Simply-Space type="text" matInput placeholder="wyszukaj..." [formControl]="term">
+          <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
+        </mat-form-field>
+      </div>
+    </mat-list-item>
     <mat-list-item class="subpage-header">Dziennik zdarzen</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
@@ -29,6 +37,8 @@
           <p *ngIf="logList?.listaLogow.length == 0">Dziennik zdarzeń jest pusty.</p>
         </ng-template>
       </mat-card>
+      <p-paginator *ngIf="logList?.listaLogow.length > 0" [rows]="pageSize" [totalRecords]="totalRecords"
+        [rowsPerPageOptions]="[5,10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
     </div>
   </div>
 </div>

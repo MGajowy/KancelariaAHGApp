@@ -48,7 +48,6 @@ export class RegulationListComponent implements OnInit {
     this.pageNumber = event.page;
     this.pageSize = event.rows;
     this.reloadData();
-    console.log(this.pageNumber) 
   }
 
 }
