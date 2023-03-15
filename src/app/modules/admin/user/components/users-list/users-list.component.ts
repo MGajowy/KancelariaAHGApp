@@ -29,6 +29,10 @@ export class UsersListComponent implements OnInit {
   userStateEnum = UserStateEnum;
   term: FormControl;
 
+  pageSize: number = 5;
+  pageNumber: number = 0;
+  totalRecords: number = 0;
+
   constructor(
     private userService: UserService,
     private loginService: LoginService,
@@ -57,9 +61,16 @@ export class UsersListComponent implements OnInit {
     })
   }
 
+  // reloadData() {
+  //   this.userService.getUserList(this.term.value).subscribe(res => {
+  //     this.listUsers = res;
+  //   })
+  // }
+
   reloadData() {
-    this.userService.getUserList(this.term.value).subscribe(res => {
+    this.userService.getUserListByNameAndPage(this.term.value, this.pageNumber, this.pageSize).subscribe(res => {
       this.listUsers = res;
+      this.totalRecords = res.totalRecord;
     })
   }
 
@@ -147,8 +158,9 @@ export class UsersListComponent implements OnInit {
   }
 
   paginate(event) {
-    
-    console.log(event)
+    this.pageNumber = event.page;
+    this.pageSize = event.rows;
+    this.reloadData();
   }
 
   showSuccessSendEmailResetMessage() {

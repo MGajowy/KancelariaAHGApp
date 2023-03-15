@@ -85,7 +85,7 @@
         </button>
       </mat-expansion-panel>
     </mat-accordion>
-    <p-paginator [rows]="5" [totalRecords]="100" [rowsPerPageOptions]="[10,20,30]"
-      (onPageChange)="paginate($event)"></p-paginator>
+    <p-paginator *ngIf="listUsers?.listaUzytkownikow.length > 0" [rows]="pageSize" [totalRecords]="totalRecords"
+      [rowsPerPageOptions]="[5,10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
   </div>
 </div>

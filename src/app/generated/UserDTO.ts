@@ -12,6 +12,7 @@ export class UserDTO {
     telefon: string;
     plec: UserSexEnum;
     role: RolesName[];
+    dateAdded: string;
 }
 
 export type UserStateEnum = "AKTYWNY" | "NIEAKTYWNY" | "ZABLOKOWANY" | "USUNIETY";

@@ -19,6 +19,13 @@ export class UserService {
       .set('term', term);
     return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/listaUzytkownikow`, { params });
   }
+
+  getUserListByNameAndPage(term, pageNumber: number, pageSize: number): Observable<any> {
+    const params = new HttpParams()
+      .set('term', term)
+    return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/listaUzytkownikow/${pageNumber}/${pageSize}`, { params })
+  }
+  
   // metoda przez restService
   // getUserList(term): Observable<any> {
   //   console.log(this.restService.wszystkieRestAdmin().getUserList(term));
