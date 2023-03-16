@@ -31,8 +31,8 @@
           </button>
         </div>
       </ng-template>
+      <p-paginator [rows]="5" [totalRecords]="100" [rowsPerPageOptions]="[10,20,30]"></p-paginator>
     </p-orderList>
-    <p-paginator [rows]="5" [totalRecords]="100" [rowsPerPageOptions]="[10,20,30]"></p-paginator>
     <ng-template #emptyList>
       <p>{{ message }}</p>
     </ng-template>

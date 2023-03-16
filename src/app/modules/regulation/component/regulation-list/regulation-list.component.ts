@@ -14,6 +14,9 @@ export class RegulationListComponent implements OnInit {
   regulation: RegulationDTO;
   message: String = 'Lista rozporządzeń jest pusta.'
   term: FormControl;
+  pageSize: number = 5;
+  pageNumber: number = 0;
+  totalRecords: number = 0;
 
   constructor (
     private regulationService: RegulationService,
@@ -35,9 +38,16 @@ export class RegulationListComponent implements OnInit {
   }
 
   reloadData() {
-    this.regulationService.getResolutionOfDescription(this.term.value).subscribe(res => {
+    this.regulationService.getRegulationOfDescriptionAndPagination(this.term.value, this.pageNumber, this.pageSize).subscribe(res => {
       this.regulationList = res;
+      this.totalRecords = res.totalRecords;
     })
+  }
+
+  paginate(event) {
+    this.pageNumber = event.page;
+    this.pageSize = event.rows;
+    this.reloadData();
   }
 
 }

@@ -24,6 +24,7 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <p class="item-detail">Kategoria: {{resolution.nazwaKategorii}}</p>
+          <p class="item-detail">Data dodania: {{resolution.dateAdded}}</p>
           <p class="item-detail">Treść: {{resolution.tresc}}</p>
           <div *ngIf="adminRole">
             <button mat-raised-button color="primary" style="margin-right: 5px"
@@ -39,6 +40,8 @@
           </div>
         </mat-expansion-panel>
       </mat-accordion>
+      <p-paginator [rows]="pageSize" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20,30]"
+        (onPageChange)="paginate($event)"></p-paginator>
     </div>
     <ng-template #emptyList>
       <p>{{ message }}</p>
