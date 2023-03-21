@@ -21,7 +21,7 @@ export class AddRegulationComponent implements OnInit {
 
   ngOnInit() {
     this.getCategoryList();
-    this.regulation.czyPubliczny = true;
+    this.regulation.isPublic = true;
   }
 
   newRegulation(): void {
@@ -50,8 +50,8 @@ export class AddRegulationComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.regulation.kategoria == null || this.regulation.nazwa == null ||
-      this.regulation.tresc == null)
+    if (this.regulation.category == null || this.regulation.regulationName == null ||
+      this.regulation.contents == null)
       this.showValidationMessage();
       else 
     this.save();

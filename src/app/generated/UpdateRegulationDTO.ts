@@ -2,8 +2,8 @@
 /* eslint-disable */
 
 export class UpdateRegulationDTO {
-    nazwa: string;
-    tresc: string;
-    czyPubliczny: boolean;
-    idKategorii: number;
+    regulationName: string;
+    contents: string;
+    isPublic: boolean;
+    categoryId: number;
 }

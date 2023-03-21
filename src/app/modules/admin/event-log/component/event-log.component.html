@@ -11,13 +11,13 @@
     <mat-list-item class="subpage-header">Dziennik zdarzen</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
-  <div *ngIf="logList?.listaLogow.length > 0 else emptyEventLog">
+  <div *ngIf="logList?.logList.length > 0 else emptyEventLog">
     <button mat-raised-button color="primary" class="btn btn-success" (click)="exportToPDF()">Pobierz PDF</button>
   </div>
   <div class="row">
     <div class="col-xs-12">
       <mat-card style="margin-top: 20px; margin-bottom: 20px;">
-        <p-table *ngIf="logList?.listaLogow.length > 0" [columns]="cols" [value]="logList.listaLogow">
+        <p-table *ngIf="logList?.logList.length > 0" [columns]="cols" [value]="logList.logList">
           <ng-template pTemplate="header" let-columns>
             <tr>
               <th *ngFor="let col of columns">
@@ -34,10 +34,10 @@
           </ng-template>
         </p-table>
         <ng-template #emptyEventLog>
-          <p *ngIf="logList?.listaLogow.length == 0">Dziennik zdarzeń jest pusty.</p>
+          <p *ngIf="logList?.logList.length == 0">Dziennik zdarzeń jest pusty.</p>
         </ng-template>
       </mat-card>
-      <p-paginator *ngIf="logList?.listaLogow.length > 0" [rows]="pageSize" [totalRecords]="totalRecords"
+      <p-paginator *ngIf="logList?.logList.length > 0" [rows]="pageSize" [totalRecords]="totalRecords"
         [rowsPerPageOptions]="[5,10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
     </div>
   </div>
