@@ -18,10 +18,6 @@ export class ResolutionService {
   getResolutionList(): Observable<any> {
     return this.httpClient.get(`${baseUrl}rest/kategorie/pub/wszystkieKategorie`);
   }
-  // metoda przez wygenerowane resty z beckendu, implementacja poprzez SERVICE (RestService)
-  // getResolutionList(): Observable<any> {
-  //   return this.restService.wszystkieRestAdmin().pobierzListCategoryDto();
-  // }
 
   getResolutionCategoryListOfTerm(term): Observable<any> {
     const params = new HttpParams()
@@ -64,21 +60,26 @@ export class ResolutionService {
     return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwal`);
   }
 
-  getResolutionOfDescription(description): Observable<any> {
+  getResolutionOfDescription(term): Observable<any> {
     const params = new HttpParams()
-      .set('description', description)
-    return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwalWgOpis`, { params })
+      .set('term', term)
+    return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwalWgNazwa`, { params })
   }
 
-  getResolutionOfDescriptionAndPagination(description, pageNumber: number, pageSize: number): Observable<any> {
+  getResolutionOfDescriptionAndPagination(term, pageNumber: number, pageSize: number): Observable<any> {
     const params = new HttpParams()
-      .set('description', description)
-    return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwalWgOpis/${pageNumber}/${pageSize}`, { params })
+      .set('term', term)
+    return this.httpClient.get(`${baseUrl}rest/uchwaly/pub/listaUchwalWgNazwa/${pageNumber}/${pageSize}`, { params })
   }
 
   detailsResolution(id: number): Observable<any> {
     return this.httpClient.get(`${baseUrl}rest/uchwaly/secured/szczegoly-uchwaly/${id}`);
   }
+
+  // metoda przez wygenerowane resty z beckendu, implementacja poprzez SERVICE (RestService)
+  // getResolutionList(): Observable<any> {
+  //   return this.restService.wszystkieRestAdmin().pobierzListCategoryDto();
+  // }
 
 }
 

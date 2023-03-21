@@ -21,7 +21,6 @@ export class DetailsCategoryComponent implements OnInit {
 
     this.resolutionService.detailsCategory(this.id)
     .subscribe(data => {
-      console.log(data);
       this.category = data;
     }, error => console.log(error));
 }

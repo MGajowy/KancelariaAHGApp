@@ -7,25 +7,25 @@
     <form (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill">
         <mat-label>Nazwa uchwały</mat-label>
-        <input matInput placeholder="Nazwa" required [(ngModel)]="resolution.opis" name="nazwa">
+        <input matInput placeholder="Nazwa" required [(ngModel)]="resolution.resolutionName" name="name">
       </mat-form-field>
       <div>
         <mat-form-field appearance="outline" style="min-width: 430px;">
           <mat-label>Treść uchwały</mat-label>
-          <textarea matInput placeholder="Treść" required [(ngModel)]="resolution.tresc" name="tresc"></textarea>
+          <textarea matInput placeholder="Treść" required [(ngModel)]="resolution.contents" name="contents"></textarea>
         </mat-form-field>
       </div>
       <mat-form-field appearance="fill">
         <mat-label>Kategoria</mat-label>
-        <mat-select required [(ngModel)]="resolution.idKategorii" name="kategoria">
-          <mat-option *ngFor="let categoryResolution of category?.listaKategorii" [value]="categoryResolution.id">
-            {{categoryResolution.rodzajKategorii}} </mat-option>
+        <mat-select required [(ngModel)]="resolution.categoryId" name="category">
+          <mat-option *ngFor="let categoryResolution of category?.categoryList" [value]="categoryResolution.id">
+            {{categoryResolution.categoryName}} </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Czy publiczny</mat-label>
-        <select matNativeControl required [(ngModel)]="resolution.czyPubliczny" name="czyPubliczny">
-          <option *ngFor="let item of list" [selected]="resolution.czyPubliczny === item.value" [value]="item.value">
+        <select matNativeControl required [(ngModel)]="resolution.isPublic" name="isPublic">
+          <option *ngFor="let item of list" [selected]="resolution.isPublic=== item.value" [value]="item.value">
             {{item.viewValue}}</option>
         </select>
       </mat-form-field>

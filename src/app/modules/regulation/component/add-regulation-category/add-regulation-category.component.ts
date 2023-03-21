@@ -19,12 +19,12 @@ export class AddRegulationCategoryComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.category.czyPubliczny = false;
+    this.category.isPublic = false;
   }
 
   private save(){
-    if (this.category.czyPubliczny == null)
-    this.category.czyPubliczny = false;
+    if (this.category.isPublic == null)
+    this.category.isPublic = false;
     this.regulationService.createCategory(this.category)
       .subscribe(res => {
         if (res === 201) {

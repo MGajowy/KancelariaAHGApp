@@ -15,20 +15,20 @@
   </p-confirmDialog>
   <p-messages [value]="msgs"></p-messages>
   <div class="container-box" style="width: auto;">
-    <div *ngIf="resolutionList?.listaUchwal.length > 0; else emptyList ">
-      <mat-accordion *ngFor="let resolution of resolutionList?.listaUchwal">
+    <div *ngIf="resolutionList?.resolutionsList.length > 0; else emptyList ">
+      <mat-accordion *ngFor="let resolution of resolutionList?.resolutionsList">
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <br>{{resolution.opis}}
+              <br>{{resolution.resolutionName}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p class="item-detail">Kategoria: {{resolution.nazwaKategorii}}</p>
+          <p class="item-detail">Kategoria: {{resolution.categoryName}}</p>
           <p class="item-detail">Data dodania: {{resolution.dateAdded}}</p>
-          <p class="item-detail">Treść: {{resolution.tresc}}</p>
+          <p class="item-detail">Treść: {{resolution.contents}}</p>
           <div *ngIf="adminRole">
             <button mat-raised-button color="primary" style="margin-right: 5px"
-              (click)="confirmPosition('top', resolution.id, resolution.opis)">
+              (click)="confirmPosition('top', resolution.id, resolution.resolutionName)">
               <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
               Usuń
             </button>

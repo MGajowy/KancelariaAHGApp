@@ -48,7 +48,7 @@ export class ResolutionCategoryComponent implements OnInit {
   reloadData() {
     this.resolutionService.getResolutionCategoryListOfTerm(this.term.value)
     .subscribe(res => {
-      this.listCategory = res.listaKategorii;
+      this.listCategory = res.categoryList;
     });
   }
 
@@ -84,8 +84,8 @@ export class ResolutionCategoryComponent implements OnInit {
 
   modifyStatusCategory(id: number, category: CategoryDTOrequest ) {
     this.category = new CategoryDTOrequest();
-    this.category.rodzajKategorii = category.rodzajKategorii;
-    this.category.czyPubliczny = category.czyPubliczny;
+    this.category.categoryName = category.categoryName;
+    this.category.isPublic = category.isPublic;
     this.resolutionService.updateCategory(id, this.category)
   }
 

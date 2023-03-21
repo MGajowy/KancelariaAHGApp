@@ -28,7 +28,7 @@ export class AddResolutionComponent implements OnInit {
 
   ngOnInit() {
     this.categoryList();
-    this.resolution.czyPubliczny = true;
+    this.resolution.isPublic = true;
     // this.resolutionForm = this.formBuilder.group({
     //   opis: ['', Validators.required],
     //   tresc: ['', Validators.required],
@@ -56,8 +56,8 @@ export class AddResolutionComponent implements OnInit {
     this.resolution = new CreateResotutionDTO;
   }
   onSubmit() {
-    if (this.resolution.kategoria == null || this.resolution.opis == null
-      || this.resolution.tresc == null)
+    if (this.resolution.categoryId == null || this.resolution.resolutionName == null
+      || this.resolution.contents == null)
       this.showValidationMessage();
     else
       this.save();

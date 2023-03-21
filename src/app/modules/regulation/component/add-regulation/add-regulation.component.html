@@ -8,24 +8,24 @@
   <form (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
       <mat-label>Nazwa</mat-label>
-      <input matInput placeholder="Opis rozporzadzenia" required [(ngModel)]="regulation.regulationName" name="opis">
+      <input matInput placeholder="Opis rozporzadzenia" required [(ngModel)]="regulation.regulationName" name="name">
     </mat-form-field>
     <div>
       <mat-form-field appearance="outline" style="min-width: 430px;">
       <mat-label>Treść</mat-label>
-      <textarea matInput placeholder="Treść" required [(ngModel)]="regulation.contents" name="tresc"></textarea>
+      <textarea matInput placeholder="Treść" required [(ngModel)]="regulation.contents" name="contents"></textarea>
     </mat-form-field>
     </div>
     <mat-form-field appearance="fill">
       <mat-label>Kategoria</mat-label>
-      <mat-select required [(ngModel)]="regulation.category" name="kategoria">
-        <mat-option *ngFor="let category of categoryList?.listaKategorii" [value]="category.id">
-          {{category.rodzajKategorii}} </mat-option>
+      <mat-select required [(ngModel)]="regulation.category" name="category">
+        <mat-option *ngFor="let category of categoryList?.categoryList" [value]="category.id">
+          {{category.categoryName}} </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Czy publiczny</mat-label>
-      <mat-select required [(ngModel)]="regulation.isPublic" name="czyPubliczny">
+      <mat-select required [(ngModel)]="regulation.isPublic" name="isPublic">
         <mat-option value="true">Tak</mat-option>
         <mat-option value="false">Nie</mat-option>
       </mat-select>
