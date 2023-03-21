@@ -37,12 +37,12 @@ export class RegistrationComponent implements OnInit {
       this.registerForm = this.formBuilder.group({
         username: ['', Validators.required],
         password: ['', Validators.required, Validators.minLength(6)],
-        imie: ['', Validators.required],
-        nazwisko: ['', Validators.required],
+        name: ['', Validators.required],
+        surname: ['', Validators.required],
         email: ['', Validators.required, Validators.email],
-        telefon: ['', Validators.required],
-        plec: ['', Validators.required],
-        stan: [UserStateEnum.NIEAKTYWNY]
+        phoneNumber: ['', Validators.required],
+        sex: ['', Validators.required],
+        activationState: [UserStateEnum.NIEAKTYWNY]
       });
     }
   }

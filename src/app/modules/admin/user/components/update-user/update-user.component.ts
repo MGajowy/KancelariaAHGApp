@@ -5,7 +5,7 @@ import { UserDTO } from 'src/app/generated/REST';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserSexEnum } from 'src/app/generated/UserSexEnum';
 import { RolesName } from 'src/app/generated/RolesName';
-import {MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-update-user',
@@ -16,11 +16,11 @@ export class UpdateUserComponent implements OnInit {
 
   id: number;
   user: UserDTO;
-  rola: RolesName;
+  roles: RolesName;
   role: RolesName[];
   submitted = false;
-  listaPlci = Object.keys(UserSexEnum);
-  listaRol = Object.keys(RolesName);
+  sexList = Object.keys(UserSexEnum);
+  rolesList = Object.keys(RolesName);
   term: FormControl;
 
   constructor(
@@ -43,17 +43,14 @@ export class UpdateUserComponent implements OnInit {
 
   updateUser() {
     this.userService.updateUser(this.id, this.user)
-      .subscribe(data => { 
-        this.user = data 
+      .subscribe(data => {
+        this.user = data
         if (data.status === 200) {
           this.showSuccessMessage();
         } else {
           this.showErrorMessage();
         }
       });
-
-    // this.role.push(this.rola);
-    // this.user.role = this.role;
     this.gotoList();
   }
 
@@ -71,10 +68,10 @@ export class UpdateUserComponent implements OnInit {
   }
 
   showSuccessMessage() {
-    this.messageService.add({key: 'tc', severity:'success', summary:'Zmodyfikowano użytkownika.'});
+    this.messageService.add({ key: 'tc', severity: 'success', summary: 'Zmodyfikowano użytkownika.' });
   }
 
   showErrorMessage() {
-    this.messageService.add({key: 'tc', severity:'error', summary:'Błąd podczas modyfikacji użytkownika', detail:'Skontaktuj się z administratorem, lub spróbuj ponownie.'});
+    this.messageService.add({ key: 'tc', severity: 'error', summary: 'Błąd podczas modyfikacji użytkownika', detail: 'Skontaktuj się z administratorem, lub spróbuj ponownie.' });
   }
 }

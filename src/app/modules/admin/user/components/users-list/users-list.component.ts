@@ -61,12 +61,6 @@ export class UsersListComponent implements OnInit {
     })
   }
 
-  // reloadData() {
-  //   this.userService.getUserList(this.term.value).subscribe(res => {
-  //     this.listUsers = res;
-  //   })
-  // }
-
   reloadData() {
     this.userService.getUserListByNameAndPage(this.term.value, this.pageNumber, this.pageSize).subscribe(res => {
       this.listUsers = res;

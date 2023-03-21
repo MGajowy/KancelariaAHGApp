@@ -6,10 +6,10 @@
   <div class="container-box" style="width: auto;">
     <div *ngIf="user">
       <div class="item-detail">
-        <label><b>Imię:</b></label> {{user.imie}}
+        <label><b>Imię:</b></label> {{user.name}}
       </div>
       <div class="item-detail">
-        <label><b>Nazwisko: </b></label> {{user.nazwisko}}
+        <label><b>Nazwisko: </b></label> {{user.surname}}
       </div>
       <div class="item-detail">
         <label><b>Login: </b></label> {{user.username}}
@@ -21,16 +21,16 @@
         <label><b>e-mail: </b></label> {{user.email}}
       </div>
       <div class="item-detail">
-        <label><b>Płeć: </b></label> {{user.plec}}
+        <label><b>Płeć: </b></label> {{user.sex}}
       </div>
       <div class="item-detail">
-        <label><b>Telefon: </b></label> {{user.telefon}}
+        <label><b>Telefon: </b></label> {{user.phoneNumber}}
       </div>
       <div class="item-detail">
-        <label><b>Stan konta: </b></label> {{user.stan}}
+        <label><b>Stan konta: </b></label> {{user.activationState}}
       </div>
       <div class="item-detail">
-        <label><b>Rola systemowa: </b></label> {{user.role}}
+        <label><b>Rola systemowa: </b></label> {{user.roles}}
       </div>
       <div class="item-detail">
         <label><b>Data utworzenia: </b></label> {{user.dateAdded}}

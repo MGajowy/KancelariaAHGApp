@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
     if (this.formGroup.valid){
       this.authService.authenticate(this.formGroup.get('username').value,
       this.formGroup.get('password').value).subscribe(userData => {
-        console.log(status);
         if (userData.token){
                 this.showSuccessMessage();
           setTimeout(() => {
