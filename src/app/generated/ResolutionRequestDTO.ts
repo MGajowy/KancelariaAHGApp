@@ -2,8 +2,8 @@
 /* eslint-disable */
 
 export class ResolutionRequestDTO {
-    opis: string;
-    tresc: string;
-    czyPubliczny: boolean;
-    idKategorii: number;
+    resolutionName: string;
+    contents: string;
+    isPublic: boolean;
+    categoryId: number;
 }

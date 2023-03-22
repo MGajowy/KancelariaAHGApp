@@ -7,12 +7,12 @@
     <form (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill">
         <mat-label>Nazwa</mat-label>
-        <input matInput placeholder="Nazwa kategorii" required [(ngModel)]="category.rodzajKategorii" name="nazwa">
+        <input matInput placeholder="Nazwa kategorii" required [(ngModel)]="category.categoryName" name="nazwa">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Czy publiczny</mat-label>
-        <select matNativeControl required [(ngModel)]="category.czyPubliczny" name="czyPubliczny">
-          <option *ngFor="let item of list" [selected]="category.czyPubliczny === item.value" [value]="item.value">
+        <select matNativeControl required [(ngModel)]="category.isPublic" name="isPublic">
+          <option *ngFor="let item of list" [selected]="category.isPublic === item.value" [value]="item.value">
             {{item.viewValue}}</option>
         </select>
       </mat-form-field>

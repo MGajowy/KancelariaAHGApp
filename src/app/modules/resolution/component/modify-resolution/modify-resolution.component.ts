@@ -37,9 +37,9 @@ export class ModifyResolutionComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.resolutionService.detailsResolution(this.id)
       .subscribe(data => {
-        this.resolution.czyPubliczny = data.czyPubliczny;
-        this.resolution.opis = data.opis;
-        this.resolution.tresc = data.tresc;
+        this.resolution.isPublic = data.isPublic;
+        this.resolution.resolutionName = data.resolutionName;
+        this.resolution.contents = data.contents;
       },
         error => console.log(error));
   }

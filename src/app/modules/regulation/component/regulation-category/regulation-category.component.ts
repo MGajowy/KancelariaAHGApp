@@ -41,8 +41,7 @@ export class RegulationCategoryComponent implements OnInit {
 
   reloadData() {
     this.regulationService.getRegulationCategoryListOfTerm(this.term.value).subscribe(res => {
-      this.listCategory = res.listaKategorii;
-      console.log(this.listCategory);
+      this.listCategory = res.categoryList;
     });
   }
 

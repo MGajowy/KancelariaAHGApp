@@ -5,7 +5,6 @@
     <mat-divider></mat-divider><br>
   </mat-list>
 
-
   <div fxLayoutAlign="center center" fxFlexFill class="main-div">
     <mat-card fxFlex="50">
       <mat-toolbar color="primary">Uzupelnij formularz</mat-toolbar>
@@ -14,17 +13,13 @@
           <mat-label>Login</mat-label>
           <input matInput placeholder="Podaj login" formControlName="username" class="login-form">
         </mat-form-field>
-        <!-- <mat-form-field>
-        <mat-label>Hasło</mat-label>
-        <input matInput type = "password" placeholder="Podaj hasło" formControlName="password" class="login-form">
-      </mat-form-field> -->
         <mat-form-field>
           <mat-label>Imię</mat-label>
-          <input matInput placeholder="Podaj imię" formControlName="imie" class="login-form">
+          <input matInput placeholder="Podaj imię" formControlName="name" class="login-form">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Nazwisko</mat-label>
-          <input matInput placeholder="Podaj nazwisko" formControlName="nazwisko" class="login-form">
+          <input matInput placeholder="Podaj nazwisko" formControlName="surname" class="login-form">
         </mat-form-field>
         <mat-form-field>
           <mat-label>e-mail</mat-label>
@@ -35,22 +30,18 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Telefon</mat-label>
-          <input matInput type="tel" placeholder="Podaj telefon" formControlName="telefon" class="login-form">
+          <input matInput type="tel" placeholder="Podaj telefon" formControlName="phoneNumber" class="login-form">
         </mat-form-field>
-        <!-- <mat-form-field>
-        <mat-label>Płeć</mat-label>
-        <input matInput placeholder="Podaj płeć" formControlName="plec" class="login-form">
-      </mat-form-field> -->
         <mat-form-field appearance="fill">
           <mat-label>Płeć</mat-label>
-          <mat-select formControlName="plec">
+          <mat-select formControlName="sex">
             <mat-option *ngFor="let item of listSex" [value]="item">{{item}} </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Rola systemowa</mat-label>
-          <mat-select formControlName="rola">
-            <mat-option *ngFor="let role of listRole" [value]="role">{{role}} </mat-option>
+          <mat-select formControlName="rolesName">
+            <mat-option *ngFor="let item of listRole" [value]="item">{{item}} </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>

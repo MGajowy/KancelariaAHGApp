@@ -9,24 +9,24 @@
     <form (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline">
         <mat-label>Opis</mat-label>
-        <input matInput placeholder="Opis uchwały" required [(ngModel)]="resolution.opis" name="opis">
+        <input matInput placeholder="Opis uchwały" required [(ngModel)]="resolution.resolutionName" name="opis">
       </mat-form-field>
       <div>
         <mat-form-field appearance="outline" style="min-width: 430px;">
           <mat-label>Treść</mat-label>
-          <textarea matInput placeholder="Treść" required [(ngModel)]="resolution.tresc" name="tresc"></textarea>
+          <textarea matInput placeholder="Treść" required [(ngModel)]="resolution.contents" name="tresc"></textarea>
         </mat-form-field>
       </div>
       <mat-form-field appearance="fill">
         <mat-label>Kategoria</mat-label>
-        <mat-select required [(ngModel)]="resolution.kategoria" name="kategoria">
-          <mat-option *ngFor="let categoryResolution of category?.listaKategorii" [value]="categoryResolution.id">
-            {{categoryResolution.rodzajKategorii}} </mat-option>
+        <mat-select required [(ngModel)]="resolution.categoryId" name="kategoria">
+          <mat-option *ngFor="let categoryResolution of category?.categoryList" [value]="categoryResolution.id">
+            {{categoryResolution.categoryName}} </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Czy publiczny</mat-label>
-        <mat-select required [(ngModel)]="resolution.czyPubliczny" name="czyPubliczny">
+        <mat-select required [(ngModel)]="resolution.isPublic" name="czyPubliczny">
           <mat-option value="true">Tak</mat-option>
           <mat-option value="false">Nie</mat-option>
         </mat-select>

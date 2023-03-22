@@ -9,18 +9,18 @@
     <form (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline">
         <mat-label>Nazwa kategorii</mat-label>
-        <input matInput placeholder="Wpisz nazwe kategorii" required [(ngModel)]="category.rodzajKategorii"
-          name="rodzajKategorii" #nazwaKategorii>
+        <input matInput placeholder="Wpisz nazwe kategorii" required [(ngModel)]="category.categoryName"
+          name="categoryName" #categoryName>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Czy publiczny</mat-label>
-        <mat-select required [(ngModel)]="category.czyPubliczny" name="czyPubliczny">
+        <mat-select required [(ngModel)]="category.isPublic" name="isPublic">
           <mat-option value="true">Tak</mat-option>
           <mat-option value="false">Nie</mat-option>
         </mat-select>
       </mat-form-field>
       <div>
-        <button [disabled]="nazwaKategorii.value === ''" mat-raised-button color="primary" type="submit"
+        <button [disabled]="categoryName.value === ''" mat-raised-button color="primary" type="submit"
           class="btn btn-success">Dodaj kategorie</button>
       </div>
     </form>

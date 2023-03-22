@@ -12,17 +12,17 @@
     <mat-divider></mat-divider><br>
   </mat-list>
   <div class="container-box" style="width: auto;">
-    <div *ngIf="regulationList?.listaRozporzadzen.length > 0; else emptyList ">
-      <mat-accordion *ngFor="let regulation of regulationList?.listaRozporzadzen">
+    <div *ngIf="regulationList?.regulationList.length > 0; else emptyList ">
+      <mat-accordion *ngFor="let regulation of regulationList?.regulationList">
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <br>{{regulation.nazwa}}
+              <br>{{regulation.regulationName}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p class="item-detail">Kategoria: {{regulation.nazwaKategorii}}</p>
+          <p class="item-detail">Kategoria: {{regulation.regulationName}}</p>
           <p class="item-detail">Data dodania: {{regulation.dateAdded}}</p>
-          <p class="item-detail">Treść: {{regulation.tresc}}</p>
+          <p class="item-detail">Treść: {{regulation.contents}}</p>
         </mat-expansion-panel>
       </mat-accordion>
       <p-paginator [rows]="pageSize" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20,30]"

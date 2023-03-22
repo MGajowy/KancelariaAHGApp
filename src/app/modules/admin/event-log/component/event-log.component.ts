@@ -28,9 +28,9 @@ export class EventLogComponent implements OnInit {
 
     this.cols = [
       // { field: 'id', header: 'ID' },
-      { field: 'czynnosc', header: 'Nazwa czynności' },
-      { field: 'uzytkownik', header: 'Użytkownik' },
-      { field: 'dataCzynnosci', header: 'Data dodania'}
+      { field: 'action', header: 'Nazwa czynności' },
+      { field: 'userName', header: 'Użytkownik' },
+      { field: 'dateAction', header: 'Data dodania logu'}
     ];
   }
 

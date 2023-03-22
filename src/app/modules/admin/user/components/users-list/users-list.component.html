@@ -36,11 +36,11 @@
   </p-confirmDialog>
   <p-messages [value]="msgs"></p-messages>
   <div class="container-box" style="width: auto;">
-    <mat-accordion *ngFor="let user of listUsers?.listaUzytkownikow">
+    <mat-accordion *ngFor="let user of listUsers?.usersList">
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <br>{{user.imie}} {{user.nazwisko}}
+            <br>{{user.name}} {{user.surname}}
           </mat-panel-title>
           <mat-panel-description>
             <!-- {{panelOpenState ? 'Pokaż szczegóły' : 'Ukryj szczegóy'}} -->
@@ -48,11 +48,8 @@
         </mat-expansion-panel-header>
         <p>Login: {{user.username}}</p>
         <p>E-mail: {{user.email}}</p>
-        <p>Płeć: {{user.plec}}</p>
-        <p>Telefon: {{user.telefon}}</p>
-        <!-- <button  mat-raised-button color="primary" style="margin-right: 5px" (click)="deleteUser(user.id)">
-      <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
-      Usuń</button> -->
+        <p>Płeć: {{user.sex}}</p>
+        <p>Telefon: {{user.phoneNumber}}</p>
         <button mat-raised-button color="primary" style="margin-right: 5px"
           (click)="confirmPosition('top', user.id, user.username)">
           <mat-icon aria-hidden="false" aria-label="Example home icon">delete_sweep</mat-icon>
@@ -67,7 +64,7 @@
           <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
           Szczegóły
         </button>
-        <ng-container *ngIf="user.stan === userStateEnum.NIEAKTYWNY; else unActivate">
+        <ng-container *ngIf="user.activationState === userStateEnum.NIEAKTYWNY; else unActivate">
           <button mat-raised-button color="primary" style="margin-right: 5px" (click)="activeUser(user.id, url)">
             <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
             Aktywuj użytkownika
@@ -85,7 +82,7 @@
         </button>
       </mat-expansion-panel>
     </mat-accordion>
-    <p-paginator *ngIf="listUsers?.listaUzytkownikow.length > 0" [rows]="pageSize" [totalRecords]="totalRecords"
+    <p-paginator *ngIf="listUsers?.usersList.length > 0" [rows]="pageSize" [totalRecords]="totalRecords"
       [rowsPerPageOptions]="[5,10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
   </div>
 </div>

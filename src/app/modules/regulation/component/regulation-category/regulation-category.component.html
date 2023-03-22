@@ -28,10 +28,10 @@
       <ng-template pTemplate="body" let-listCategory>
         <tr>
           <td>
-            <span class="ellipsis">{{listCategory.rodzajKategorii}}</span>
+            <span class="ellipsis">{{listCategory.categoryName}}</span>
           </td>
           <td>
-            <p-checkbox [(ngModel)]="listCategory.czyPubliczny" disabled="true" binary="true" inputId="binary">
+            <p-checkbox [(ngModel)]="listCategory.isPublic" disabled="true" binary="true" inputId="binary">
             </p-checkbox>
           </td>
           <td>
@@ -39,7 +39,7 @@
               <mat-icon>menu_open</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="confirmPosition('top', listCategory.id, listCategory.rodzajKategorii)">
+              <button mat-menu-item (click)="confirmPosition('top', listCategory.id, listCategory.categoryName)">
                 <mat-icon>delete</mat-icon>
                 <span>Usuń</span>
               </button>

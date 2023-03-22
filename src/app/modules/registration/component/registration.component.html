@@ -13,11 +13,11 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Imię</mat-label>
-        <input matInput placeholder="Podaj imię" formControlName="imie" class="login-form">
+        <input matInput placeholder="Podaj imię" formControlName="name" class="login-form">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Nazwisko</mat-label>
-        <input matInput placeholder="Podaj nazwisko" formControlName="nazwisko" class="login-form">
+        <input matInput placeholder="Podaj nazwisko" formControlName="surname" class="login-form">
       </mat-form-field>
       <mat-form-field>
         <mat-label>e-mail</mat-label>
@@ -28,22 +28,14 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Telefon</mat-label>
-        <input matInput type="tel" placeholder="Podaj telefon" formControlName="telefon" class="login-form">
+        <input matInput type="tel" placeholder="Podaj telefon" formControlName="phoneNumber" class="login-form">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Płeć</mat-label>
-        <mat-select formControlName="plec">
+        <mat-select formControlName="sex">
           <mat-option *ngFor="let item of listSex" [value]="item">{{item}} </mat-option>
         </mat-select>
       </mat-form-field>
-      <!-- <mat-form-field>
-        <mat-label>Płeć</mat-label>
-        <input matInput placeholder="Podaj płeć" formControlName="plec" class="login-form">
-      </mat-form-field> -->
-      <!-- <mat-form-field>
-        <mat-label>stan</mat-label>
-        <input matInput placeholder="Podaj stan" formControlName="stan" class="login-form">
-      </mat-form-field> -->
       <button mat-raised-button type="submit">Zarejestruj</button>
     </form>
   </mat-card>

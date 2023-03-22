@@ -8,8 +8,8 @@
     <div class="item-detail">
       <mat-form-field class="example-form-field">
         <mat-label>Imię</mat-label>
-        <input matInput type="text" [(ngModel)]="user.imie">
-        <button mat-button *ngIf="user.imie" matSuffix mat-icon-button aria-label="Clear" (click)="user.imie=''">
+        <input matInput type="text" [(ngModel)]="user.name">
+        <button mat-button *ngIf="user.name" matSuffix mat-icon-button aria-label="Clear" (click)="user.name=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -17,9 +17,9 @@
     <div class="item-detail">
       <mat-form-field class="example-form-field">
         <mat-label>Nazwisko</mat-label>
-        <input matInput type="text" [(ngModel)]="user.nazwisko">
-        <button mat-button *ngIf="user.nazwisko" matSuffix mat-icon-button aria-label="Clear"
-          (click)="user.nazwisko=''">
+        <input matInput type="text" [(ngModel)]="user.surname">
+        <button mat-button *ngIf="user.surname" matSuffix mat-icon-button aria-label="Clear"
+          (click)="user.surname=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -56,8 +56,8 @@
     <div class="item-detail">
       <mat-form-field class="example-form-field">
         <mat-label>Telefon</mat-label>
-        <input matInput type="text" [(ngModel)]="user.telefon">
-        <button mat-button *ngIf="user.telefon" matSuffix mat-icon-button aria-label="Clear" (click)="user.telefon=''">
+        <input matInput type="text" [(ngModel)]="user.phoneNumber">
+        <button mat-button *ngIf="user.phoneNumber" matSuffix mat-icon-button aria-label="Clear" (click)="user.phoneNumber=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -65,16 +65,16 @@
     <div class="item-detail">
       <mat-form-field appearance="fill">
         <mat-label>Płeć</mat-label>
-        <mat-select [(ngModel)]="user.plec">
-          <mat-option *ngFor="let plec of listaPlci" [value]="plec">{{plec}}</mat-option>
+        <mat-select [(ngModel)]="user.sex">
+          <mat-option *ngFor="let item of sexList" [value]="item">{{item}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div class="item-detail">
       <mat-form-field appearance="fill">
         <mat-label>Rola systemowa</mat-label>
-        <mat-select [(ngModel)]="rola">
-          <mat-option *ngFor="let rola of listaRol" [value]="rola">{{rola}}</mat-option>
+        <mat-select [(ngModel)]="roles">
+          <mat-option *ngFor="let item of rolesList" [value]="item">{{item}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>

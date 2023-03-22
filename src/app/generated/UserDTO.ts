@@ -3,15 +3,15 @@
 
 export class UserDTO {
     id: number;
-    imie: string;
-    nazwisko: string;
+    name: string;
+    surname: string;
     username: string;
     password: string;
-    stan: UserStateEnum;
+    activationState: UserStateEnum;
     email: string;
-    telefon: string;
-    plec: UserSexEnum;
-    role: RolesName[];
+    phoneNumber: string;
+    sex: UserSexEnum;
+    roles: RolesName[];
     dateAdded: string;
 }
 
