@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AboutServiceService} from '../service/about-service.service';
+import { AboutServiceService } from '../service/about-service.service';
 import { OnlineHelpRequestDto } from 'src/app/generated/REST';
 import { MessageService} from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';

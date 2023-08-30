@@ -1,0 +1,45 @@
+<div class="shadowbox-page">
+  <mat-list>
+    <mat-list-item>
+      <div style="float: right;">
+        <mat-form-field>
+          <input Simply-Space type="text" matInput placeholder="wyszukaj dokumentu..." [formControl]="term">
+          <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
+        </mat-form-field>
+      </div>
+    </mat-list-item>
+    <mat-list-item class="subpage-header">Twoje dokumenty</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
+  <div class="row">
+    <div class="col-xs-12">
+      <mat-card style="margin-top: 20px; margin-bottom: 20px;">
+        <p-table *ngIf="documents?.documentList.length > 0 else emptyDocument" [columns]="cols"
+          [value]="documents.documentList">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                <button mat-raised-button color="primary" *ngIf="col.field === 'id' else diffrentRow "
+                  class="btn btn-success" (click)="downloadFile(rowData.id)">Pobierz</button>
+                <ng-template #diffrentRow>
+                  {{rowData[col.field]}}
+                </ng-template>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <ng-template #emptyDocument>
+          <p *ngIf="documents?.documentList.length == 0">Lista dokumentów jest pusta - wyszukaj ponownie lub zaloguj się do aplikacji.</p>
+        </ng-template>
+      </mat-card>
+      <p-paginator *ngIf="documents?.documentList.length > 0" [rows]="pageSize" [totalRecords]="totalRecords"
+        [rowsPerPageOptions]="[5,10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
+    </div>
+  </div>

@@ -1,0 +1,33 @@
+<div class="shadowbox-page">
+  <mat-list>
+    <mat-list-item class="subpage-header">Wyślij dokumenty do użytkownika</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
+  <p-toast position="top-center" key="tc"></p-toast>
+  <div class="container-box" style="width: auto;">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Dodaj i wyślij dokument do użytkownika</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-subtitle>
+        <div class="card flex justify-content-center" style="min-width: 430px;">
+          <p-multiSelect [options]="userDTO" defaultLabel="Wybierz użytkownika z listy" [(ngModel)]="selectedUsers"
+            [filter]="true" optionLabel="name"></p-multiSelect>
+        </div>
+      </mat-card-subtitle>
+
+      <mat-card-subtitle>
+        <input type="file" class="mat-raised-button" id="customFile" (change)="selectFile($event)">
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+      </mat-card-subtitle>
+      <div>
+        <button mat-raised-button [disabled]="!selectedFiles " (click)="upload()">Zapisz
+          plik</button>
+      </div>
+    </mat-card>
+
+  </div>
+</div>

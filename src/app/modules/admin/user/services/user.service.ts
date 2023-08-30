@@ -61,4 +61,8 @@ export class UserService {
   detailsUser(id: number): Observable<any> {
     return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/szczegoly-uzytkownika/${id}`);
   }
+
+  getAllUsers(): Observable<any> {
+    return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/uzytkownicy`);
+  }
 }

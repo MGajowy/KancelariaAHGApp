@@ -27,6 +27,9 @@ import { OnlineHelpComponent } from './about/online-help/online-help.component';
 import { CareerComponent } from './about/career/career.component';
 import { ModifyResolutionComponent } from './resolution/component/modify-resolution/modify-resolution.component';
 import { ReputationListComponent } from './reputation/component/reputation-list/reputation-list.component';
+import { DocumentClientListComponent } from './document/component/document-client-list/document-client-list.component';
+import { DocumentListComponent } from './document/component/document-list/document-list.component';
+import { UpdateDocumentComponent } from './document/component/update-document/update-document.component';
 
 const routes: Routes = [
   {
@@ -149,7 +152,20 @@ const routes: Routes = [
   {
     path: 'reputation',
     component: ReputationListComponent,
+  },
+  {
+    path: 'document-list',
+    component: DocumentListComponent,
+  },
+  {
+    path: 'document-client-list',
+    component: DocumentClientListComponent,
+  },
+  {
+    path: 'update-document',
+    component: UpdateDocumentComponent,
   }
+
 
 ];
 

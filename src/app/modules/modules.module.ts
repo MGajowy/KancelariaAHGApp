@@ -66,8 +66,13 @@ import { RippleModule } from 'primeng/ripple';
 import { ModifyResolutionComponent } from './resolution/component/modify-resolution/modify-resolution.component';
 import { ReputationListComponent } from './reputation/component/reputation-list/reputation-list.component';
 import { AddReputataionComponent } from './reputation/component/add-reputation/add-reputataion.component';
+import { DocumentClientListComponent} from './document/component/document-client-list/document-client-list.component';
+import { DocumentListComponent} from './document/component/document-list/document-list.component';
+import { UpdateDocumentComponent} from './document/component/update-document/update-document.component';
 import { OrderListModule } from 'primeng/orderlist';
-import {PaginatorModule} from 'primeng/paginator';
+import { PaginatorModule } from 'primeng/paginator';
+import { FileUploadModule } from 'primeng/fileupload';
+import { MultiSelectModule } from 'primeng/multiselect';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -96,7 +101,11 @@ import {PaginatorModule} from 'primeng/paginator';
     CareerComponent,
     ModifyResolutionComponent,
     AddReputataionComponent,
-    ReputationListComponent
+    ReputationListComponent,
+    DocumentClientListComponent,
+    DocumentListComponent,
+    UpdateDocumentComponent
+    
   ],
   imports: [
     CommonModule,
@@ -134,7 +143,9 @@ import {PaginatorModule} from 'primeng/paginator';
     MenuModule,
     RippleModule,
     OrderListModule,
-    PaginatorModule
+    PaginatorModule,
+    FileUploadModule, 
+    MultiSelectModule
   ],
   providers: [
     ConfirmationService,
