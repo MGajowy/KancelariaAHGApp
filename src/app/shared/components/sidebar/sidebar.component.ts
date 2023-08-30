@@ -162,6 +162,29 @@ export class SidebarComponent {
         ]
       },
       {
+        label: 'Dokumenty',
+        icon: 'pi pi-fw pi-file',
+        items: [
+          {
+            label: 'Dodaj dokument',
+            icon: 'pi pi pi-upload',
+            visible: this.isVisible,
+            command: () => this.nav('/office/update-document')
+          },
+          {
+            label: 'Lista dokumentów',
+            icon: 'pi pi-list',
+            visible: this.isVisible,
+            command: () => this.nav('/office/document-list')
+          },
+          {
+            label: 'Twoje dokumenty ',
+            icon: 'pi pi-fw pi-file',
+            command: () => this.nav('/office/document-client-list')
+          }
+        ]
+      },
+      {
         label: 'O Kancelarii',
         icon: 'pi pi-info-circle',
         // expanded: true,
@@ -198,12 +221,12 @@ export class SidebarComponent {
       },
       {
         label: 'Kariera',
-        icon: 'pi pi-thumbs-up',
+        icon: 'pi pi-briefcase',
         command: () => this.nav('/office/career')
       },
       {
         label: 'Opinie',
-        icon: 'pi pi-star',
+        icon: 'pi pi-comment',
         command: () => this.nav('/office/reputation')
       }
     ];

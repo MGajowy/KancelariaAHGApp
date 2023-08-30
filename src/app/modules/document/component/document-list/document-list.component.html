@@ -1,0 +1,60 @@
+<div class="shadowbox-page">
+  <mat-list>
+    <mat-list-item>
+      <div style="float: right;">
+        <mat-form-field>
+          <input Simply-Space type="text" matInput placeholder="wyszukaj dokumentu..." [formControl]="term">
+          <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
+        </mat-form-field>
+      </div>
+    </mat-list-item>
+    <mat-list-item class="subpage-header">Dokumenty klientów</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
+  <div class="container-box" style="width: auto;">
+    <div class="row">
+      <mat-card-subtitle>
+        <div class="card flex justify-content-center" style="min-width: 430px;">
+          <p-multiSelect [options]="userDTO" defaultLabel="Wybierz użytkownika z listy" [(ngModel)]="selectedUsers"
+            [filter]="true" optionLabel="name"></p-multiSelect>
+        </div>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <button mat-raised-button color="primary" class="btn btn-success" (click)="searchDocuments()">Wyszukaj
+          dokumenty</button>
+      </mat-card-subtitle>
+      <div class="col-xs-12" *ngIf="documents?.documentList.length > 0">
+        <mat-card style="margin-top: 20px; margin-bottom: 20px;">
+          <p-table *ngIf="documents?.documentList.length > 0 else emptyDocument" [columns]="cols"
+            [value]="documents.documentList">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{col.header}}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">
+                  <button mat-raised-button color="primary" *ngIf="col.field === 'id' else diffrentRow "
+                    class="btn btn-success" (click)="downloadFile(rowData.id)">Pobierz</button>
+                  <ng-template #diffrentRow>
+                    {{rowData[col.field]}}
+                  </ng-template>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+          <ng-template #emptyDocument>
+            <p *ngIf="documents?.documentList.length == 0">Lista dokumentów jest pusta lub wyszukaj ponownie.</p>
+          </ng-template>
+        </mat-card>
+        <ng-template #emptyUser>
+          <p>Wybierz użytkownika</p>
+        </ng-template>
+        <p-paginator *ngIf="documents?.documentList.length > 0" [rows]="pageSize" [totalRecords]="totalRecords"
+          [rowsPerPageOptions]="[5,10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
+      </div>
+    </div>
+  </div>
