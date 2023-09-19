@@ -14,11 +14,16 @@ const routes: Routes = [{
   path: '',
   component: DefaultComponent,
   children: [
-  {
-    path: 'office',
-    loadChildren: () => import('./modules/modules.module').then (m => m.ModulesModule)
-  }
-]
+    {
+      path: '',
+      redirectTo: '/office/home',
+      pathMatch: 'full'
+    },
+    {
+      path: 'office',
+      loadChildren: () => import('./modules/modules.module').then(m => m.ModulesModule)
+    }
+  ]
 }, {
   path: '',
   component: FullwidthComponent,
