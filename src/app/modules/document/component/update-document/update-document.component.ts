@@ -45,14 +45,12 @@ export class UpdateDocumentComponent implements OnInit {
   getUserList() {
     this.userService.getAllUsers().subscribe(res => {
       this.userDTO = res.userDocument
-      console.log(this.userDTO)
     }
     )
   }
 
   upload() {
     this.currentFileUpload = this.selectedFiles.item(0)
-    console.log(this.currentFileUpload);
     this.userId = this.selectedUsers[0].id;
     this.documentSevice.uploadDocument(this.currentFileUpload, this.userId).subscribe(data => {
 
