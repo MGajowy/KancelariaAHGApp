@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   name = new FormControl('', [Validators.required]);
   surname = new FormControl('', [Validators.required]);
-  phoneNumber = new FormControl('', [Validators.required]);
+  phoneNumber = new FormControl('', [Validators.required, Validators.minLength(9), Validators.pattern('[- +()0-9]+')]);
   sex = new FormControl('', [Validators.required]);
   activationState = new FormControl(UserStateEnum.NIEAKTYWNY);
 
