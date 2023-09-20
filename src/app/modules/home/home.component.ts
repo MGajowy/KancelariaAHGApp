@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
     this.homeService.getJudgments().subscribe(data => 
       {
         this.list = data.items;
-        console.log(this.list)
       }
       )
   }

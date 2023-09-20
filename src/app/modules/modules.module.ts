@@ -73,6 +73,7 @@ import { OrderListModule } from 'primeng/orderlist';
 import { PaginatorModule } from 'primeng/paginator';
 import { FileUploadModule } from 'primeng/fileupload';
 import { MultiSelectModule } from 'primeng/multiselect';
+
 @NgModule({
   declarations: [
     HomeComponent,

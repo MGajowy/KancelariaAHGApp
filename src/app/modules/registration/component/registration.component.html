@@ -3,39 +3,74 @@
   <mat-card fxFlex="50">
     <mat-toolbar color="primary">Rejestracja</mat-toolbar>
     <form fxLayoutAlign="streach" fxLayout="column" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
       <mat-form-field>
         <mat-label>Login</mat-label>
-        <input matInput placeholder="Podaj login" formControlName="username" class="login-form">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Hasło</mat-label>
-        <input matInput type="password" placeholder="Podaj hasło" formControlName="password" class="login-form">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Imię</mat-label>
-        <input matInput placeholder="Podaj imię" formControlName="name" class="login-form">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Nazwisko</mat-label>
-        <input matInput placeholder="Podaj nazwisko" formControlName="surname" class="login-form">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>e-mail</mat-label>
-        <input matInput placeholder="Podaj e-mail" formControlName="email" class="login-form">
-        <mat-error *ngIf="registerForm.hasError('required')">
-          Email is <strong>required</strong>
+        <input matInput placeholder="Podaj login" [formControl]="username" class="login-form"
+          [errorStateMatcher]="matcher">
+        <mat-error *ngIf="username.hasError('required')">
+          Login jest <strong>wymagany</strong>
         </mat-error>
       </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Hasło</mat-label>
+        <input matInput type="password" placeholder="Podaj hasło" [formControl]="password" class="login-form"
+          [errorStateMatcher]="matcher">
+
+        <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
+          Hasło nie może być krótsze niż 8 znaków
+        </mat-error>
+        <mat-error *ngIf="password.hasError('required')">
+          Hasło jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Imię</mat-label>
+        <input matInput placeholder="Podaj imię" [formControl]="name" class="login-form" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="name.hasError('required')">
+          Imię jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nazwisko</mat-label>
+        <input matInput placeholder="Podaj nazwisko" [formControl]="surname" class="login-form"
+          [errorStateMatcher]="matcher">
+        <mat-error *ngIf="surname.hasError('required')">
+          Nazwisko jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>e-mail</mat-label>
+        <input matInput placeholder="Podaj e-mail" type="email" [formControl]="email" class="login-form"
+          [errorStateMatcher]="matcher">
+        <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+          Proszę wpisać poprawny adres e-mail - przykład: adam.kowalski@example.pl
+        </mat-error>
+        <mat-error *ngIf="email.hasError('required')">
+          Email jest <strong>wymagany</strong>
+        </mat-error>
+      </mat-form-field>
+
       <mat-form-field>
         <mat-label>Telefon</mat-label>
-        <input matInput type="tel" placeholder="Podaj telefon" formControlName="phoneNumber" class="login-form">
+        <input matInput type="tel" placeholder="Podaj telefon" [formControl]="phoneNumber" class="login-form"
+          [errorStateMatcher]="matcher">
+        <mat-error *ngIf="phoneNumber.hasError('required')">
+          Numer telefonu jest <strong>wymagany</strong>
+        </mat-error>
       </mat-form-field>
+
       <mat-form-field appearance="fill">
         <mat-label>Płeć</mat-label>
-        <mat-select formControlName="sex">
+        <mat-select [formControl]="sex">
           <mat-option *ngFor="let item of listSex" [value]="item">{{item}} </mat-option>
         </mat-select>
       </mat-form-field>
+
       <button mat-raised-button type="submit">Zarejestruj</button>
     </form>
   </mat-card>

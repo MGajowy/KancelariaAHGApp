@@ -29,15 +29,16 @@
           organami administracji publicznej i samorządowej.</p>
       </mat-card-content>
       <br>
-      <mat-card-header >
+      <mat-card-header>
         <mat-card-title>Ostatnie 10 orzeczeń z Systemu Analizy Orzeczeń Sądowych</mat-card-title>
       </mat-card-header>
-        <div>
-          <li *ngFor="let judgment of list">
-            <a href="https://www.saos.org.pl/judgments/{{judgment.id}}">{{judgment.judgmentDate}} {{judgment.courtCases[0].caseNumber}} {{judgment.division.court.name}}</a>
-            <p>...{{judgment.textContent}}...</p>
-          </li>
-        </div>
+      <div>
+        <li *ngFor="let judgment of list">
+          <a href="https://www.saos.org.pl/judgments/{{judgment.id}}">{{judgment.judgmentDate}}
+            {{judgment.courtCases[0].caseNumber}} {{judgment.division.court.name}}</a>
+          <p>...{{judgment.textContent}}...</p>
+        </li>
+      </div>
     </mat-card>
   </div>
 </div>
