@@ -77,13 +77,13 @@ export class DocumentListDTO {
 }
 
 export interface MultipartFile extends InputStreamSource {
-    contentType: string;
-    originalFilename: string;
     name: string;
     empty: boolean;
     bytes: any;
     resource: Resource;
     size: number;
+    contentType: string;
+    originalFilename: string;
 }
 
 export class RegulationListDTO {
@@ -154,29 +154,29 @@ export class Reputation {
 }
 
 export interface HttpServletRequest extends ServletRequest {
+    method: string;
     session: HttpSession;
     userPrincipal: Principal;
     parts: Part[];
-    requestedSessionIdFromUrl: boolean;
-    requestedSessionId: string;
     httpServletMapping: HttpServletMapping;
-    requestedSessionIdFromCookie: boolean;
-    requestedSessionIdFromURL: boolean;
+    requestedSessionId: string;
+    requestedSessionIdFromUrl: boolean;
     trailerFieldsReady: boolean;
+    requestedSessionIdFromURL: boolean;
+    requestedSessionIdFromCookie: boolean;
     requestedSessionIdValid: boolean;
-    trailerFields: { [index: string]: string };
-    headerNames: Enumeration<string>;
     cookies: Cookie[];
-    authType: string;
-    pathTranslated: string;
-    pathInfo: string;
-    contextPath: string;
-    queryString: string;
+    headerNames: Enumeration<string>;
+    trailerFields: { [index: string]: string };
     remoteUser: string;
-    servletPath: string;
-    requestURI: string;
     requestURL: StringBuffer;
-    method: string;
+    pathTranslated: string;
+    contextPath: string;
+    pathInfo: string;
+    requestURI: string;
+    queryString: string;
+    authType: string;
+    servletPath: string;
 }
 
 export class ResetPasswordDTO {
@@ -226,13 +226,13 @@ export class ResponseEntity<T> extends HttpEntity<T> {
 
 export class AbstractResource implements Resource {
     inputStream: any;
-    readable: boolean;
-    url: URL;
+    open: boolean;
     file: any;
+    url: URL;
+    readable: boolean;
     description: string;
     uri: URI;
     filename: string;
-    open: boolean;
 }
 
 export class ByteArrayResource extends AbstractResource {
@@ -251,13 +251,13 @@ export class DocumentDTO {
 }
 
 export interface Resource extends InputStreamSource {
-    readable: boolean;
-    url: URL;
+    open: boolean;
     file: any;
+    url: URL;
+    readable: boolean;
     description: string;
     uri: URI;
     filename: string;
-    open: boolean;
 }
 
 export interface InputStreamSource {
@@ -270,15 +270,15 @@ export class ReputationAdd {
 }
 
 export interface HttpSession {
+    id: string;
     creationTime: number;
     attributeNames: Enumeration<string>;
-    valueNames: string[];
     new: boolean;
+    valueNames: string[];
     sessionContext: HttpSessionContext;
     lastAccessedTime: number;
     maxInactiveInterval: number;
     servletContext: ServletContext;
-    id: string;
 }
 
 export interface Principal {
@@ -286,22 +286,19 @@ export interface Principal {
 }
 
 export interface Part {
-    contentType: string;
-    submittedFileName: string;
-    headerNames: string[];
     name: string;
     size: number;
     inputStream: any;
+    contentType: string;
+    submittedFileName: string;
+    headerNames: string[];
 }
 
 export interface HttpServletMapping {
     pattern: string;
-    matchValue: string;
     servletName: string;
+    matchValue: string;
     mappingMatch: MappingMatch;
-}
-
-export interface Enumeration<E> {
 }
 
 export class Cookie implements Cloneable, Serializable {
@@ -316,6 +313,9 @@ export class Cookie implements Cloneable, Serializable {
     httpOnly: boolean;
 }
 
+export interface Enumeration<E> {
+}
+
 export class AbstractStringBuilder implements Appendable, CharSequence {
 }
 
@@ -325,65 +325,65 @@ export class StringBuffer extends AbstractStringBuilder implements Serializable,
 export class Locale implements Cloneable, Serializable {
 }
 
+export interface AsyncContext {
+    request: ServletRequest;
+    timeout: number;
+    response: ServletResponse;
+}
+
 export interface ServletContext {
+    classLoader: ClassLoader;
     majorVersion: number;
     minorVersion: number;
     attributeNames: Enumeration<string>;
-    servletNames: Enumeration<string>;
     servlets: Enumeration<Servlet>;
-    serverInfo: string;
     sessionTimeout: number;
+    serverInfo: string;
+    servletNames: Enumeration<string>;
+    initParameterNames: Enumeration<string>;
     servletRegistrations: { [index: string]: ServletRegistration };
     effectiveMinorVersion: number;
-    servletContextName: string;
-    sessionCookieConfig: SessionCookieConfig;
     filterRegistrations: { [index: string]: FilterRegistration };
+    sessionCookieConfig: SessionCookieConfig;
+    effectiveMajorVersion: number;
+    effectiveSessionTrackingModes: SessionTrackingMode[];
     requestCharacterEncoding: string;
     jspConfigDescriptor: JspConfigDescriptor;
     defaultSessionTrackingModes: SessionTrackingMode[];
-    responseCharacterEncoding: string;
-    effectiveSessionTrackingModes: SessionTrackingMode[];
-    effectiveMajorVersion: number;
     virtualServerName: string;
-    initParameterNames: Enumeration<string>;
+    responseCharacterEncoding: string;
+    servletContextName: string;
     contextPath: string;
-    classLoader: ClassLoader;
-}
-
-export interface AsyncContext {
-    request: ServletRequest;
-    response: ServletResponse;
-    timeout: number;
 }
 
 export interface ServletRequest {
-    contentLength: number;
-    contentLengthLong: number;
-    contentType: string;
-    locale: Locale;
-    localName: string;
-    attributeNames: Enumeration<string>;
-    parameterMap: { [index: string]: string[] };
-    reader: any;
-    characterEncoding: string;
-    dispatcherType: DispatcherType;
-    asyncStarted: boolean;
-    remotePort: number;
-    remoteAddr: string;
-    servletContext: ServletContext;
-    remoteHost: string;
-    locales: Enumeration<Locale>;
-    serverName: string;
-    localPort: number;
-    secure: boolean;
-    asyncContext: AsyncContext;
-    parameterNames: Enumeration<string>;
-    localAddr: string;
-    serverPort: number;
-    asyncSupported: boolean;
     protocol: string;
     scheme: string;
     inputStream: any;
+    locale: Locale;
+    contentLength: number;
+    contentLengthLong: number;
+    contentType: string;
+    attributeNames: Enumeration<string>;
+    localName: string;
+    parameterMap: { [index: string]: string[] };
+    reader: any;
+    characterEncoding: string;
+    serverName: string;
+    asyncSupported: boolean;
+    localPort: number;
+    asyncStarted: boolean;
+    remotePort: number;
+    parameterNames: Enumeration<string>;
+    localAddr: string;
+    asyncContext: AsyncContext;
+    remoteAddr: string;
+    secure: boolean;
+    servletContext: ServletContext;
+    dispatcherType: DispatcherType;
+    remoteHost: string;
+    locales: Enumeration<Locale>;
+    serverPort: number;
 }
 
 export class UserDocumentDTO {
@@ -407,44 +407,6 @@ export interface Cloneable {
 export interface CharSequence {
 }
 
-export interface Servlet {
-    servletConfig: ServletConfig;
-    servletInfo: string;
-}
-
-export interface ServletRegistration extends Registration {
-    mappings: string[];
-    runAsRole: string;
-}
-
-export interface SessionCookieConfig {
-    comment: string;
-    domain: string;
-    path: string;
-    secure: boolean;
-    maxAge: number;
-    httpOnly: boolean;
-    name: string;
-}
-
-export interface FilterRegistration extends Registration {
-    urlPatternMappings: string[];
-    servletNameMappings: string[];
-}
-
-export interface JspConfigDescriptor {
-    jspPropertyGroups: JspPropertyGroupDescriptor[];
-    taglibs: TaglibDescriptor[];
-}
-
-export class ClassLoader {
-    parent: ClassLoader;
-    name: string;
-    unnamedModule: Module;
-    registeredAsParallelCapable: boolean;
-    definedPackages: Package[];
-}
-
 export interface ServletResponse {
     locale: Locale;
     contentType: string;
@@ -455,42 +417,61 @@ export interface ServletResponse {
     committed: boolean;
 }
 
+export class ClassLoader {
+    parent: ClassLoader;
+    name: string;
+    unnamedModule: Module;
+    registeredAsParallelCapable: boolean;
+    definedPackages: Package[];
+}
+
+export interface Servlet {
+    servletConfig: ServletConfig;
+    servletInfo: string;
+}
+
+export interface ServletRegistration extends Registration {
+    mappings: string[];
+    runAsRole: string;
+}
+
+export interface FilterRegistration extends Registration {
+    urlPatternMappings: string[];
+    servletNameMappings: string[];
+}
+
+export interface SessionCookieConfig {
+    name: string;
+    path: string;
+    comment: string;
+    domain: string;
+    maxAge: number;
+    secure: boolean;
+    httpOnly: boolean;
+}
+
+export interface JspConfigDescriptor {
+    taglibs: TaglibDescriptor[];
+    jspPropertyGroups: JspPropertyGroupDescriptor[];
+}
+
 export interface Appendable {
 }
 
 export interface Comparable<T> {
 }
 
-export interface ServletConfig {
-    servletName: string;
-    initParameterNames: Enumeration<string>;
-    servletContext: ServletContext;
+export class OutputStream implements Closeable, Flushable {
 }
 
-export interface Registration {
-    initParameters: { [index: string]: string };
-    name: string;
-    className: string;
+export class ServletOutputStream extends OutputStream {
+    ready: boolean;
 }
 
-export interface JspPropertyGroupDescriptor {
-    buffer: string;
-    trimDirectiveWhitespaces: string;
-    errorOnUndeclaredNamespace: string;
-    scriptingInvalid: string;
-    deferredSyntaxAllowedAsLiteral: string;
-    defaultContentType: string;
-    urlPatterns: string[];
-    elIgnored: string;
-    pageEncoding: string;
-    includeCodas: string[];
-    includePreludes: string[];
-    isXml: string;
+export class Writer implements Appendable, Closeable, Flushable {
 }
 
-export interface TaglibDescriptor {
-    taglibLocation: string;
-    taglibURI: string;
+export class PrintWriter extends Writer {
 }
 
 export class Module implements AnnotatedElement {
@@ -511,26 +492,45 @@ export class Package extends NamedPackage implements AnnotatedElement {
     annotations: Annotation[];
     declaredAnnotations: Annotation[];
     name: string;
+    sealed: boolean;
     specificationTitle: string;
     specificationVersion: string;
     specificationVendor: string;
     implementationTitle: string;
     implementationVersion: string;
     implementationVendor: string;
-    sealed: boolean;
 }
 
-export class OutputStream implements Closeable, Flushable {
+export interface ServletConfig {
+    servletName: string;
+    initParameterNames: Enumeration<string>;
+    servletContext: ServletContext;
 }
 
-export class ServletOutputStream extends OutputStream {
-    ready: boolean;
+export interface Registration {
+    name: string;
+    className: string;
+    initParameters: { [index: string]: string };
 }
 
-export class Writer implements Appendable, Closeable, Flushable {
+export interface TaglibDescriptor {
+    taglibLocation: string;
+    taglibURI: string;
 }
 
-export class PrintWriter extends Writer {
+export interface JspPropertyGroupDescriptor {
+    buffer: string;
+    pageEncoding: string;
+    urlPatterns: string[];
+    elIgnored: string;
+    isXml: string;
+    includeCodas: string[];
+    includePreludes: string[];
+    deferredSyntaxAllowedAsLiteral: string;
+    errorOnUndeclaredNamespace: string;
+    scriptingInvalid: string;
+    defaultContentType: string;
+    trimDirectiveWhitespaces: string;
 }
 
 export class ModuleLayer {
@@ -846,6 +846,14 @@ export class TSAllRestApiClient {
      */
     deleteRegulation(id: number): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/rozporzadzenia/secured/usun-rozporzadzenie`, data: id });
+    }
+
+    /**
+     * HTTP GET /rest/saos/pub/judgments
+     * Java method: pl.kancelaria.AHG.externalApi.saosApi.shared.SaosPublicRestApi.getJudgments
+     */
+    getJudgments(): RestResponse<string> {
+        return this.httpClient.request({ method: "GET", url: uriEncoding`rest/saos/pub/judgments` });
     }
 
     /**
