@@ -38,9 +38,12 @@
   <div class="container-box" style="width: auto;">
     <mat-accordion *ngFor="let user of listUsers?.usersList">
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <br>{{user.name}} {{user.surname}}
+        <mat-expansion-panel-header >
+          <mat-panel-title >
+            <br>
+              <mat-icon *ngIf="user.activationState === userStateEnum.NIEAKTYWNY">person_off</mat-icon>
+              <mat-icon *ngIf="user.activationState === userStateEnum.AKTYWNY">person</mat-icon>
+              {{user.name}} {{user.surname}}
           </mat-panel-title>
           <mat-panel-description>
             <!-- {{panelOpenState ? 'Pokaż szczegóły' : 'Ukryj szczegóy'}} -->

@@ -25,25 +25,25 @@ export class UserService {
       .set('term', term)
     return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/listaUzytkownikow/${pageNumber}/${pageSize}`, { params })
   }
-  
+
   // metoda przez restService
   // getUserList(term): Observable<any> {
   //   console.log(this.restService.wszystkieRestAdmin().getUserList(term));
-      // const params = new HttpParams()
-      // .set('term', term);
+  // const params = new HttpParams()
+  // .set('term', term);
   //   return this.restService.wszystkieRestAdmin().getUserList({term});
   // }
 
   register(user: RegistrationDTO): Observable<any> {
-    return this.httpClient.post(`${baseUrl}rest/register`, user, {observe: 'response'});
+    return this.httpClient.post(`${baseUrl}rest/register`, user, { observe: 'response' });
   }
 
   deleteUser(id: number) {
-    return this.httpClient.delete(`${baseUrl}rest/uzytkownicy/secured/usun-uzytkownika/${id}`, {observe: 'response'});
+    return this.httpClient.delete(`${baseUrl}rest/uzytkownicy/secured/usun-uzytkownika/${id}`, { observe: 'response' });
   }
 
   addUser(user: AddUserDTO): Observable<any> {
-    return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/dodaj-uzytkownika`, user, {observe: 'response'});
+    return this.httpClient.post(`${baseUrl}rest/uzytkownicy/secured/dodaj-uzytkownika`, user, { observe: 'response' });
   }
 
   activateUser(loca: LocationDTO): Observable<any> {
@@ -55,7 +55,7 @@ export class UserService {
   }
 
   updateUser(id: number, value: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}rest/uzytkownicy/secured/modyfikuj-uzytkownika/${id}`, value, {observe: 'response'});
+    return this.httpClient.put(`${baseUrl}rest/uzytkownicy/secured/modyfikuj-uzytkownika/${id}`, value, { observe: 'response' });
   }
 
   detailsUser(id: number): Observable<any> {
@@ -64,5 +64,11 @@ export class UserService {
 
   getAllUsers(): Observable<any> {
     return this.httpClient.get(`${baseUrl}rest/uzytkownicy/secured/uzytkownicy`);
+  }
+
+  checkLogin(login): Observable<any> {
+    const params = new HttpParams()
+      .set('login', login)
+    return this.httpClient.get(`${baseUrl}rest/checkLogin`, { params });
   }
 }

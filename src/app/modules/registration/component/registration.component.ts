@@ -36,6 +36,7 @@ export class RegistrationComponent implements OnInit {
   registerForm: FormGroup;
   listSex = Object.keys(UserSexEnum);
   isLogged: boolean;
+  checkLoginFlag: boolean;
 
   matcher = new MyErrorStateMatcher();
 
@@ -71,23 +72,33 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+
     if (this.registerForm.invalid) {
       this.showValidationMessage();
       return;
-    } else {
-      this.userService.register(
-        this.registerForm.value)
-        .subscribe(result => {
-          if (result.status === 201) {
-            this.showSuccessMessage();
-            setTimeout(() => {
-              this.router.navigate(['login']);
-            }, 3000);
-          } else {
-            this.showErrorMessage();
-          }
-        });
     }
+
+    this.userService.checkLogin(this.registerForm.get('username').value).subscribe(response => {
+      this.checkLoginFlag = response;
+
+      if (this.checkLoginFlag === true) {
+        this.userService.register(
+          this.registerForm.value)
+          .subscribe(result => {
+            if (result.status === 201) {
+              this.showSuccessMessage();
+              setTimeout(() => {
+                this.router.navigate(['login']);
+              }, 3000);
+            } else {
+              this.showErrorMessage();
+            }
+          });
+      } else {
+        this.showLoginMessage();
+      }
+
+    })
   }
 
   showSuccessMessage() {
@@ -100,6 +111,10 @@ export class RegistrationComponent implements OnInit {
 
   showValidationMessage() {
     this.messageService.add({ key: 'tc', severity: 'error', summary: 'Uzupełnij wymagane pola.' });
+  }
+
+  showLoginMessage() {
+    this.messageService.add({ key: 'tc', severity: 'error', summary: 'Podany login już instnieje, zmień login i spróbuj ponownie' });
   }
 
   showIsLogedMessage() {

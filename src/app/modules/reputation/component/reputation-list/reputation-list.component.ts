@@ -3,6 +3,7 @@ import { ReputationService } from '../../service/reputation.service';
 import { Reputation } from './../../../../generated/REST';
 import { AuthServiceService } from 'src/app/core/services/auth/auth-service.service';
 import { MessageService } from 'primeng/api';
+
 @Component({
   selector: 'app-reputation-list',
   templateUrl: './reputation-list.component.html',
@@ -22,7 +23,7 @@ export class ReputationListComponent implements OnInit {
   constructor(
     private reputationService: ReputationService,
     private authservice: AuthServiceService,
-    private messageService: MessageService
+    private messageService: MessageService,
   ) { }
 
   ngOnInit() {

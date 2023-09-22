@@ -59,8 +59,7 @@
 
         <mat-form-field>
           <mat-label>Telefon</mat-label>
-          <input matInput type="tel" placeholder="Podaj telefon" [formControl]="phoneNumber" class="login-form"
-            >
+          <input matInput type="tel" placeholder="Podaj telefon" [formControl]="phoneNumber" class="login-form">
           <mat-error *ngIf="phoneNumber.hasError('minlength') && !phoneNumber.hasError('required')">
             Numer telefonu musi mieć conajmniej 9 cyfr
           </mat-error>

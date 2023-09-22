@@ -32,6 +32,8 @@ export class AddUserComponent implements OnInit {
   listSex = Object.keys(UserSexEnum);
   listRole = Object.keys(RolesName);
 
+  checkLoginFlag: boolean;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -58,20 +60,35 @@ export class AddUserComponent implements OnInit {
     if (this.registerForm.invalid) {
       this.showValidationMessage();
       return;
-    } else {
-      this.userService.addUser(
-        this.registerForm.value)
-        .subscribe(result => {
-          if (result.status === 201) {
-            this.showSuccessMessage();
-          } else {
-            this.showErrorMessage();
-          }
-        });
-      setTimeout(() => {
-        this.router.navigate(['office/user-list'])
-      }, 3000);
     }
+
+    this.userService.checkLogin(this.registerForm.get('username').value).subscribe(response => {
+      this.checkLoginFlag = response;
+
+      if (this.checkLoginFlag === true) {
+        this.userService.addUser(
+          this.registerForm.value)
+          .subscribe(result => {
+            if (result.status === 201) {
+              this.showSuccessMessage();
+            } else {
+              this.showErrorMessage();
+            }
+          });
+        setTimeout(() => {
+          this.router.navigate(['office/user-list'])
+        }, 3000);
+
+      } else {
+        this.showLoginMessage();
+      }
+
+
+
+    })
+
+
+
   }
 
   showSuccessMessage() {
@@ -84,6 +101,10 @@ export class AddUserComponent implements OnInit {
 
   showValidationMessage() {
     this.messageService.add({ key: 'tc', severity: 'error', summary: 'Uzupełnij wymagane pola.' });
+  }
+
+  showLoginMessage() {
+    this.messageService.add({ key: 'tc', severity: 'error', summary: 'Podany login już instnieje, zmień login i spróbuj ponownie' });
   }
 
 }
