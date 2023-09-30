@@ -46,6 +46,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif,-apple-syste
 
 .mat-raised-button.mat-primary {
   background-color: $button-color;
+  margin-left: 5px;
+
 }
 
 .p-panelmenu .p-panelmenu-header:not(.p-highlight):not(.p-disabled) > a:hover {

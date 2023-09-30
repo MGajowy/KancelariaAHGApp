@@ -33,6 +33,7 @@ export class UpdateDocumentComponent implements OnInit {
   userDTO: UserDocumentDTO[];
   selectedUsers: UserDocumentDTO[];
 
+  loading = false;
 
   constructor(private documentSevice: DocumentService,
     private messageService: MessageService,
@@ -52,12 +53,14 @@ export class UpdateDocumentComponent implements OnInit {
   upload() {
     this.currentFileUpload = this.selectedFiles.item(0)
     this.userId = this.selectedUsers[0].id;
+    this.loading = true;
     this.documentSevice.uploadDocument(this.currentFileUpload, this.userId).subscribe(data => {
-
       if (data === 201) {
         this.showSuccessMessage();
+        this.loading = false;
       } else {
         this.showErrorMessage();
+        this.loading = false;
       }
 
     },

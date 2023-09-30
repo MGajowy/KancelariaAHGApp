@@ -39,7 +39,7 @@
           <p *ngIf="documents?.documentList.length == 0">Lista dokumentów jest pusta - wyszukaj ponownie lub zaloguj się do aplikacji.</p>
         </ng-template>
       </mat-card>
-      <p-paginator *ngIf="documents?.documentList.length > 0" [rows]="pageSize" [totalRecords]="totalRecords"
+      <p-paginator *ngIf="documents?.documentList.length > 0" [rows]="pageSize" [totalRecords]="totalRecord"
         [rowsPerPageOptions]="[5,10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
     </div>
   </div>

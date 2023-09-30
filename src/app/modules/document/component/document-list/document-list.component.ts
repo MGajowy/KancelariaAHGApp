@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { DocumentListDTO, UserDocumentDTO } from 'src/app/generated/REST';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { UserService } from 'src/app/modules/admin/user/services/user.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-document-list',
@@ -24,7 +25,9 @@ export class DocumentListComponent implements OnInit {
   status: string;
   docName: string;
 
-  constructor(private documentService: DocumentService,
+  constructor(
+    private documentService: DocumentService,
+    private messageService: MessageService,
     private userService: UserService) { }
 
   ngOnInit() {
@@ -33,7 +36,7 @@ export class DocumentListComponent implements OnInit {
       { field: 'docName', header: 'Nazwa pliku' },
       { field: 'docType', header: 'Typ pliku' },
       { field: 'createDate', header: 'Data utworzenia' },
-      { field: 'id', header: 'Akcja' }
+      { field: 'id', header: 'Akcje' }
     ];
   }
 
@@ -59,6 +62,8 @@ export class DocumentListComponent implements OnInit {
   reloadData() {
     this.documentService.getDocumentListForUser(this.userId, this.pageNumber, this.pageSize, this.term.value, this.status).subscribe(response => {
       this.documents = response;
+      if (this.documents.documentList.length == 0)
+        this.showInfoEmptyListMessage();
       this.totalRecord = response.totalRecords;
     })
   }
@@ -78,6 +83,29 @@ export class DocumentListComponent implements OnInit {
       link.href = window.URL.createObjectURL(blob);
       link.click();
     })
+  }
+
+  deleteDocument(id: number) {
+    this.documentService.deleteDocument(id).subscribe(data => {
+      if (data === 200) {
+        this.showSuccessMessage();
+        this.reloadData();
+      } else {
+        this.showErrorMessage();
+      }
+    })
+  }
+
+  showSuccessMessage() {
+    this.messageService.add({ key: 'tc', severity: 'success', summary: 'Dokument został usunięty' });
+  }
+
+  showErrorMessage() {
+    this.messageService.add({ key: 'tc', severity: 'error', summary: 'Wystąpił błąd', detail: 'Dokument nie został usunięty' });
+  }
+
+  showInfoEmptyListMessage() {
+    this.messageService.add({ key: 'tc', severity: 'info', summary: 'Brak wyników :( ', detail: 'Lista dokumentów jest pusta' });
   }
 
 }

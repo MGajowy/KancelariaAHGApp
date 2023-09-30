@@ -11,21 +11,29 @@
     <mat-list-item class="subpage-header">Dokumenty klientów</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
+  <p-toast position="top-center" key="tc"></p-toast>
   <div class="container-box" style="width: auto;">
     <div class="row">
-      <mat-card-subtitle>
-        <div class="card flex justify-content-center" style="min-width: 430px;">
-          <p-multiSelect [options]="userDTO" defaultLabel="Wybierz użytkownika z listy" [(ngModel)]="selectedUsers"
-            [filter]="true" optionLabel="name"></p-multiSelect>
+      <div class="p-d-flex">
+        <div class="p-mr-2">
+          <mat-card-subtitle>
+            <div class="card flex justify-content-center" style="min-width: 430px;">
+              <p-multiSelect [options]="userDTO" defaultLabel="Wybierz użytkownika z listy" [(ngModel)]="selectedUsers"
+                [filter]="true" optionLabel="name"></p-multiSelect>
+            </div>
+          </mat-card-subtitle>
         </div>
-      </mat-card-subtitle>
-      <mat-card-subtitle>
-        <button mat-raised-button color="primary" class="btn btn-success" (click)="searchDocuments()">Wyszukaj
-          dokumenty</button>
-      </mat-card-subtitle>
+        <div class="p-mr-2">
+          <mat-card-subtitle>
+            <button mat-raised-button color="primary" class="btn btn-success" (click)="searchDocuments()">Wyszukaj
+              dokumenty</button>
+          </mat-card-subtitle>
+        </div>
+      </div>
+
       <div class="col-xs-12" *ngIf="documents?.documentList.length > 0">
         <mat-card style="margin-top: 20px; margin-bottom: 20px;">
-          <p-table *ngIf="documents?.documentList.length > 0 else emptyDocument" [columns]="cols"
+          <p-table *ngIf="documents?.documentList.length > 0; else emptyDocument" [columns]="cols"
             [value]="documents.documentList">
             <ng-template pTemplate="header" let-columns>
               <tr>
@@ -39,6 +47,8 @@
                 <td *ngFor="let col of columns">
                   <button mat-raised-button color="primary" *ngIf="col.field === 'id' else diffrentRow "
                     class="btn btn-success" (click)="downloadFile(rowData.id)">Pobierz</button>
+                  <button mat-raised-button color="primary" *ngIf="col.field === 'id' else diffrentRow "
+                    class="btn btn-success" (click)="deleteDocument(rowData.id)">Usuń</button>
                   <ng-template #diffrentRow>
                     {{rowData[col.field]}}
                   </ng-template>
@@ -53,7 +63,7 @@
         <ng-template #emptyUser>
           <p>Wybierz użytkownika</p>
         </ng-template>
-        <p-paginator *ngIf="documents?.documentList.length > 0" [rows]="pageSize" [totalRecords]="totalRecords"
+        <p-paginator *ngIf="documents?.documentList.length > 0" [rows]="pageSize" [totalRecords]="totalRecord"
           [rowsPerPageOptions]="[5,10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
       </div>
     </div>

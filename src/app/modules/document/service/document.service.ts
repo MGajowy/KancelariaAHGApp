@@ -33,7 +33,7 @@ export class DocumentService {
   }
 
   deleteDocument(id: number): Observable<any> {
-    return this.httpClient.delete(`${baseUrl}rest/document/secured/delete/${id}`);
+    return this.httpClient.delete(`${baseUrl}rest/document/secured/delete/${id}`, {observe: 'response' }).pipe(map(data => {return data.status}));
   }
 
   uploadDocument(file: File, userId): Observable<any> {

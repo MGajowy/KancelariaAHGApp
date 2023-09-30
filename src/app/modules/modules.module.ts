@@ -73,6 +73,7 @@ import { OrderListModule } from 'primeng/orderlist';
 import { PaginatorModule } from 'primeng/paginator';
 import { FileUploadModule } from 'primeng/fileupload';
 import { MultiSelectModule } from 'primeng/multiselect';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -146,7 +147,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     OrderListModule,
     PaginatorModule,
     FileUploadModule, 
-    MultiSelectModule
+    MultiSelectModule,
+    ProgressSpinnerModule
   ],
   providers: [
     ConfirmationService,
