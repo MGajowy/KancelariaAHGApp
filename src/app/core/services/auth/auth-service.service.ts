@@ -53,7 +53,6 @@ export class AuthServiceService {
 
   setNewPassword(dto: UserPasswordDTO): Observable<any> {
     return this.httpClient.post<any>(`${baseUrl}rest/ustaw-haslo`, dto);
-
   }
 
   resetPassword(dto: UserPasswordDTO): Observable<any> {

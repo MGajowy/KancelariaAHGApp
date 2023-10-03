@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { DocumentService } from '../../service/document.service';
 import { MessageService } from 'primeng/api';
 import { UserDocumentDTO } from 'src/app/generated/REST';
 import { UserService } from 'src/app/modules/admin/user/services/user.service';
+import { baseUrl } from 'src/environments/environment';
 
 interface UploadEvent {
   originalEvent: Event;
   files: File[];
 }
 
-
 interface User {
   name: string,
   surname: string,
   id: number
 }
-
 
 @Component({
   selector: 'app-update-document',
@@ -24,20 +22,21 @@ interface User {
 })
 export class UpdateDocumentComponent implements OnInit {
 
+  hiddenUpload: boolean = false;
   selectedFiles: FileList;
-  currentFileUpload: File;
   userId: number;
-  selectedFile = null;
-  changeImage = false;
-
   userDTO: UserDocumentDTO[];
   selectedUsers: UserDocumentDTO[];
 
-  loading = false;
+  uploadedFiles: any[] = [];
+  url: string;
 
-  constructor(private documentSevice: DocumentService,
+  fileSize: number = 1000000;
+
+  constructor(
     private messageService: MessageService,
-    private userService: UserService) { }
+    private userService: UserService) {
+  }
 
   ngOnInit() {
     this.getUserList()
@@ -50,37 +49,23 @@ export class UpdateDocumentComponent implements OnInit {
     )
   }
 
-  upload() {
-    this.currentFileUpload = this.selectedFiles.item(0)
+  onError(event) {
+      this.showErrorMessage();
+  }
+
+  getUser() {
     this.userId = this.selectedUsers[0].id;
-    this.loading = true;
-    this.documentSevice.uploadDocument(this.currentFileUpload, this.userId).subscribe(data => {
-      if (data === 201) {
-        this.showSuccessMessage();
-        this.loading = false;
-      } else {
-        this.showErrorMessage();
-        this.loading = false;
-      }
-
-    },
-      error => console.log(error));
-  }
-
-  change($event) {
-    this.changeImage = true;
-  }
-
-  changedImage(event) {
-    this.selectedFile = event.target.files[0];
-  }
-
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
+    this.url = `${baseUrl}rest/document/secured/upload?userId=` + this.userId;
+    this.hiddenUpload = true;
   }
 
   onUpload(event) {
-    this.selectedFile = event.target.files;
+
+    for (let file of event.files) {
+      this.uploadedFiles.push(file);
+    }
+
+    this.showSuccessMessage();
   }
 
   showSuccessMessage() {

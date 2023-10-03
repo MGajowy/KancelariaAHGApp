@@ -113,6 +113,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif,-apple-syste
   background: $button-color;
 }
 
+.p-fileupload .p-fileupload-buttonbar .p-button {
+  background: $button-color;
+}
+
 .p-button:enabled:active {
   background: $focusColor;
   color: #ffffff;

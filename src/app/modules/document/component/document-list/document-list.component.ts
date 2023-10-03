@@ -48,7 +48,7 @@ export class DocumentListComponent implements OnInit {
     this.term.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged()).subscribe(() => {
-        this.reloadData();
+      this.reloadData();
       })
   }
 
@@ -76,7 +76,7 @@ export class DocumentListComponent implements OnInit {
 
   downloadFile(id: number): void {
     this.documentService.downloadDocument(id).subscribe(res => {
-      const documentName = res.headers.get('contenet-disposition')?.split(';')[1].split('=')[1];
+      const documentName = res.headers.get('content-disposition')?.split(';')[1].split('=')[1].trim();
       const blob: Blob = res.body as Blob;
       const link = document.createElement('a');
       link.download = documentName;

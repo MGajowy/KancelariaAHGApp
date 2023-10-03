@@ -20,7 +20,6 @@ export class DocumentClientListComponent implements OnInit {
   totalRecord: number = 0;
   // date: Date;
 
-
   constructor(private documentService: DocumentService) { }
 
   ngOnInit() {

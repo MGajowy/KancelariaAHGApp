@@ -7,7 +7,7 @@
   <div class="container-box" style="width: auto;">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Dodaj i wyślij dokument do użytkownika</mat-card-title>
+        <mat-card-title>Krok 1: Wybierz użytkownika</mat-card-title>
       </mat-card-header>
 
       <div class="p-d-flex">
@@ -20,21 +20,26 @@
           </mat-card-subtitle>
         </div>
         <div class="p-mr-2">
-          <mat-card-subtitle>
-            <input type="file" class="mat-raised-button" id="customFile" (change)="selectFile($event)">
-          </mat-card-subtitle>
-          <mat-card-subtitle>
-          </mat-card-subtitle>
-        </div>
-        <div class="p-mr-2">
-          <button mat-raised-button [disabled]="!selectedFiles " (click)="upload()">Zapisz
-            plik</button>
+          <button mat-raised-button color="primary" class="btn btn-success" (click)="getUser()">Zatwierdź wybór
+            użytkownika
+          </button>
         </div>
       </div>
-      <ng-tempate *ngIf="loading">
-        <p-progressSpinner></p-progressSpinner>
-      </ng-tempate>
+    </mat-card>
+
+    <mat-card *ngIf="hiddenUpload">
+      <mat-card-header>
+        <mat-card-title>Krok 2: Dodaj pliki</mat-card-title>
+      </mat-card-header>
+      <div class="p-mr-2">
+        <p-fileUpload name="file" url="{{url}}" multiple="multiple" chooseLabel="Wybierz" uploadLabel="Dodaj"
+          cancelLabel="Anuluj" (onError)="onError($event)" (onUpload)="onUpload($event)"
+          maxFileSize="fileSize"></p-fileUpload>
+
+      </div>
     </mat-card>
 
   </div>
+
+
 </div>

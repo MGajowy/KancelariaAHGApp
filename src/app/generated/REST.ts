@@ -76,16 +76,6 @@ export class DocumentListDTO {
     totalRecords: number;
 }
 
-export interface MultipartFile extends InputStreamSource {
-    name: string;
-    empty: boolean;
-    bytes: any;
-    resource: Resource;
-    size: number;
-    contentType: string;
-    originalFilename: string;
-}
-
 export class RegulationListDTO {
     regulationList: RegulationDTO[];
     totalRecords: number;
@@ -155,28 +145,28 @@ export class Reputation {
 
 export interface HttpServletRequest extends ServletRequest {
     method: string;
-    userPrincipal: Principal;
     session: HttpSession;
+    userPrincipal: Principal;
     parts: Part[];
-    requestedSessionIdFromCookie: boolean;
-    httpServletMapping: HttpServletMapping;
-    requestedSessionIdFromUrl: boolean;
-    requestedSessionIdValid: boolean;
-    trailerFieldsReady: boolean;
-    requestedSessionId: string;
-    requestedSessionIdFromURL: boolean;
-    cookies: Cookie[];
-    headerNames: Enumeration<string>;
-    trailerFields: { [index: string]: string };
-    pathTranslated: string;
-    requestURL: StringBuffer;
-    pathInfo: string;
-    contextPath: string;
+    queryString: string;
     remoteUser: string;
     requestURI: string;
+    pathInfo: string;
+    contextPath: string;
     servletPath: string;
-    queryString: string;
     authType: string;
+    pathTranslated: string;
+    requestURL: StringBuffer;
+    cookies: Cookie[];
+    trailerFields: { [index: string]: string };
+    headerNames: Enumeration<string>;
+    trailerFieldsReady: boolean;
+    requestedSessionIdFromUrl: boolean;
+    requestedSessionId: string;
+    requestedSessionIdValid: boolean;
+    requestedSessionIdFromCookie: boolean;
+    httpServletMapping: HttpServletMapping;
+    requestedSessionIdFromURL: boolean;
 }
 
 export class ResetPasswordDTO {
@@ -228,8 +218,8 @@ export class AbstractResource implements Resource {
     inputStream: any;
     open: boolean;
     file: any;
-    url: URL;
     readable: boolean;
+    url: URL;
     description: string;
     uri: URI;
     filename: string;
@@ -250,18 +240,14 @@ export class DocumentDTO {
     userID: number;
 }
 
-export interface Resource extends InputStreamSource {
-    open: boolean;
-    file: any;
-    url: URL;
-    readable: boolean;
-    description: string;
-    uri: URI;
-    filename: string;
-}
-
-export interface InputStreamSource {
-    inputStream: any;
+export interface MultipartFile extends InputStreamSource {
+    name: string;
+    empty: boolean;
+    bytes: any;
+    resource: Resource;
+    size: number;
+    contentType: string;
+    originalFilename: string;
 }
 
 export class ReputationAdd {
@@ -269,20 +255,20 @@ export class ReputationAdd {
     description: string;
 }
 
-export interface Principal {
-    name: string;
-}
-
 export interface HttpSession {
     id: string;
     creationTime: number;
     attributeNames: Enumeration<string>;
-    lastAccessedTime: number;
-    maxInactiveInterval: number;
-    sessionContext: HttpSessionContext;
-    valueNames: string[];
-    new: boolean;
     servletContext: ServletContext;
+    valueNames: string[];
+    sessionContext: HttpSessionContext;
+    new: boolean;
+    maxInactiveInterval: number;
+    lastAccessedTime: number;
+}
+
+export interface Principal {
+    name: string;
 }
 
 export interface Part {
@@ -290,15 +276,14 @@ export interface Part {
     size: number;
     inputStream: any;
     contentType: string;
-    submittedFileName: string;
     headerNames: string[];
+    submittedFileName: string;
 }
 
-export interface HttpServletMapping {
-    pattern: string;
-    matchValue: string;
-    servletName: string;
-    mappingMatch: MappingMatch;
+export class AbstractStringBuilder implements Appendable, CharSequence {
+}
+
+export class StringBuffer extends AbstractStringBuilder implements Serializable, Comparable<StringBuffer>, CharSequence {
 }
 
 export class Cookie implements Cloneable, Serializable {
@@ -316,13 +301,20 @@ export class Cookie implements Cloneable, Serializable {
 export interface Enumeration<E> {
 }
 
-export class AbstractStringBuilder implements Appendable, CharSequence {
-}
-
-export class StringBuffer extends AbstractStringBuilder implements Serializable, Comparable<StringBuffer>, CharSequence {
+export interface HttpServletMapping {
+    pattern: string;
+    matchValue: string;
+    servletName: string;
+    mappingMatch: MappingMatch;
 }
 
 export class Locale implements Cloneable, Serializable {
+}
+
+export interface AsyncContext {
+    request: ServletRequest;
+    timeout: number;
+    response: ServletResponse;
 }
 
 export interface ServletContext {
@@ -330,30 +322,24 @@ export interface ServletContext {
     majorVersion: number;
     minorVersion: number;
     attributeNames: Enumeration<string>;
-    requestCharacterEncoding: string;
-    servletRegistrations: { [index: string]: ServletRegistration };
-    responseCharacterEncoding: string;
-    initParameterNames: Enumeration<string>;
+    contextPath: string;
+    sessionTimeout: number;
+    servletNames: Enumeration<string>;
+    servlets: Enumeration<Servlet>;
+    serverInfo: string;
     servletContextName: string;
     effectiveMajorVersion: number;
-    filterRegistrations: { [index: string]: FilterRegistration };
-    defaultSessionTrackingModes: SessionTrackingMode[];
-    effectiveSessionTrackingModes: SessionTrackingMode[];
-    jspConfigDescriptor: JspConfigDescriptor;
-    virtualServerName: string;
     effectiveMinorVersion: number;
+    initParameterNames: Enumeration<string>;
+    requestCharacterEncoding: string;
+    effectiveSessionTrackingModes: SessionTrackingMode[];
+    filterRegistrations: { [index: string]: FilterRegistration };
+    virtualServerName: string;
+    responseCharacterEncoding: string;
+    jspConfigDescriptor: JspConfigDescriptor;
     sessionCookieConfig: SessionCookieConfig;
-    serverInfo: string;
-    sessionTimeout: number;
-    servlets: Enumeration<Servlet>;
-    servletNames: Enumeration<string>;
-    contextPath: string;
-}
-
-export interface AsyncContext {
-    request: ServletRequest;
-    timeout: number;
-    response: ServletResponse;
+    defaultSessionTrackingModes: SessionTrackingMode[];
+    servletRegistrations: { [index: string]: ServletRegistration };
 }
 
 export interface ServletRequest {
@@ -364,26 +350,26 @@ export interface ServletRequest {
     contentLengthLong: number;
     contentType: string;
     locale: Locale;
-    localName: string;
     attributeNames: Enumeration<string>;
+    localName: string;
     parameterMap: { [index: string]: string[] };
-    reader: any;
     characterEncoding: string;
-    parameterNames: Enumeration<string>;
-    serverName: string;
-    servletContext: ServletContext;
-    localPort: number;
-    dispatcherType: DispatcherType;
+    reader: any;
     asyncContext: AsyncContext;
-    asyncSupported: boolean;
-    secure: boolean;
-    remoteAddr: string;
-    locales: Enumeration<Locale>;
     remotePort: number;
+    locales: Enumeration<Locale>;
     localAddr: string;
-    asyncStarted: boolean;
-    serverPort: number;
+    servletContext: ServletContext;
+    dispatcherType: DispatcherType;
     remoteHost: string;
+    localPort: number;
+    asyncStarted: boolean;
+    remoteAddr: string;
+    serverPort: number;
+    asyncSupported: boolean;
+    serverName: string;
+    secure: boolean;
+    parameterNames: Enumeration<string>;
 }
 
 export class UserDocumentDTO {
@@ -397,14 +383,38 @@ export class URL implements Serializable {
 export class URI implements Comparable<URI>, Serializable {
 }
 
+export interface Resource extends InputStreamSource {
+    open: boolean;
+    file: any;
+    readable: boolean;
+    url: URL;
+    description: string;
+    uri: URI;
+    filename: string;
+}
+
+export interface InputStreamSource {
+    inputStream: any;
+}
+
 export interface HttpSessionContext {
     ids: Enumeration<string>;
+}
+
+export interface CharSequence {
 }
 
 export interface Cloneable {
 }
 
-export interface CharSequence {
+export interface ServletResponse {
+    locale: Locale;
+    contentType: string;
+    outputStream: ServletOutputStream;
+    bufferSize: number;
+    characterEncoding: string;
+    writer: PrintWriter;
+    committed: boolean;
 }
 
 export class ClassLoader {
@@ -415,19 +425,19 @@ export class ClassLoader {
     definedPackages: Package[];
 }
 
-export interface ServletRegistration extends Registration {
-    mappings: string[];
-    runAsRole: string;
+export interface Servlet {
+    servletConfig: ServletConfig;
+    servletInfo: string;
 }
 
 export interface FilterRegistration extends Registration {
-    servletNameMappings: string[];
     urlPatternMappings: string[];
+    servletNameMappings: string[];
 }
 
 export interface JspConfigDescriptor {
-    jspPropertyGroups: JspPropertyGroupDescriptor[];
     taglibs: TaglibDescriptor[];
+    jspPropertyGroups: JspPropertyGroupDescriptor[];
 }
 
 export interface SessionCookieConfig {
@@ -435,30 +445,33 @@ export interface SessionCookieConfig {
     path: string;
     comment: string;
     domain: string;
-    httpOnly: boolean;
     secure: boolean;
     maxAge: number;
+    httpOnly: boolean;
 }
 
-export interface Servlet {
-    servletConfig: ServletConfig;
-    servletInfo: string;
-}
-
-export interface ServletResponse {
-    contentType: string;
-    outputStream: ServletOutputStream;
-    locale: Locale;
-    writer: PrintWriter;
-    bufferSize: number;
-    characterEncoding: string;
-    committed: boolean;
+export interface ServletRegistration extends Registration {
+    mappings: string[];
+    runAsRole: string;
 }
 
 export interface Appendable {
 }
 
 export interface Comparable<T> {
+}
+
+export class OutputStream implements Closeable, Flushable {
+}
+
+export class ServletOutputStream extends OutputStream {
+    ready: boolean;
+}
+
+export class Writer implements Appendable, Closeable, Flushable {
+}
+
+export class PrintWriter extends Writer {
 }
 
 export class Module implements AnnotatedElement {
@@ -488,49 +501,36 @@ export class Package extends NamedPackage implements AnnotatedElement {
     implementationVendor: string;
 }
 
+export interface ServletConfig {
+    servletContext: ServletContext;
+    servletName: string;
+    initParameterNames: Enumeration<string>;
+}
+
 export interface Registration {
     name: string;
     className: string;
     initParameters: { [index: string]: string };
 }
 
+export interface TaglibDescriptor {
+    taglibURI: string;
+    taglibLocation: string;
+}
+
 export interface JspPropertyGroupDescriptor {
     buffer: string;
+    errorOnUndeclaredNamespace: string;
+    trimDirectiveWhitespaces: string;
     scriptingInvalid: string;
     deferredSyntaxAllowedAsLiteral: string;
     defaultContentType: string;
-    errorOnUndeclaredNamespace: string;
-    trimDirectiveWhitespaces: string;
-    pageEncoding: string;
-    isXml: string;
     urlPatterns: string[];
+    isXml: string;
+    includeCodas: string[];
+    pageEncoding: string;
     elIgnored: string;
     includePreludes: string[];
-    includeCodas: string[];
-}
-
-export interface TaglibDescriptor {
-    taglibLocation: string;
-    taglibURI: string;
-}
-
-export interface ServletConfig {
-    initParameterNames: Enumeration<string>;
-    servletName: string;
-    servletContext: ServletContext;
-}
-
-export class OutputStream implements Closeable, Flushable {
-}
-
-export class ServletOutputStream extends OutputStream {
-    ready: boolean;
-}
-
-export class Writer implements Appendable, Closeable, Flushable {
-}
-
-export class PrintWriter extends Writer {
 }
 
 export class ModuleLayer {
@@ -628,7 +628,7 @@ export class TSAllRestApiClient {
      * HTTP POST /rest/document/secured/upload
      * Java method: pl.kancelaria.AHG.shared.restapi.modules.document.restApi.secured.DocumentSecuredRestApi.uploadMultipatrFiles
      */
-    uploadMultipatrFiles(multipartFile: MultipartFile): RestResponse<ResponseEntity<HttpStatus>> {
+    uploadMultipatrFiles(multipartFile: MultipartFile[]): RestResponse<ResponseEntity<HttpStatus>> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest/document/secured/upload`, data: multipartFile });
     }
 

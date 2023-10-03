@@ -14,22 +14,27 @@
   <p-toast position="top-center" key="tc"></p-toast>
   <div class="container-box" style="width: auto;">
     <div class="row">
-      <div class="p-d-flex">
-        <div class="p-mr-2">
-          <mat-card-subtitle>
-            <div class="card flex justify-content-center" style="min-width: 430px;">
-              <p-multiSelect [options]="userDTO" defaultLabel="Wybierz użytkownika z listy" [(ngModel)]="selectedUsers"
-                [filter]="true" optionLabel="name"></p-multiSelect>
-            </div>
-          </mat-card-subtitle>
+      <mat-card style="margin-top: 20px; margin-bottom: 20px;">
+        <mat-card-header>
+          <mat-card-title>Wyszukiwanie dokumentów</mat-card-title>
+        </mat-card-header>
+        <div class="p-d-flex">
+          <div class="p-mr-2">
+            <mat-card-subtitle>
+              <div class="card flex justify-content-center" style="min-width: 430px;">
+                <p-multiSelect [options]="userDTO" defaultLabel="Wybierz użytkownika z listy"
+                  [(ngModel)]="selectedUsers" [filter]="true" optionLabel="name"></p-multiSelect>
+              </div>
+            </mat-card-subtitle>
+          </div>
+          <div class="p-mr-2">
+            <mat-card-subtitle>
+              <button mat-raised-button color="primary" class="btn btn-success" (click)="searchDocuments()">Wyszukaj
+                dokumenty</button>
+            </mat-card-subtitle>
+          </div>
         </div>
-        <div class="p-mr-2">
-          <mat-card-subtitle>
-            <button mat-raised-button color="primary" class="btn btn-success" (click)="searchDocuments()">Wyszukaj
-              dokumenty</button>
-          </mat-card-subtitle>
-        </div>
-      </div>
+      </mat-card>
 
       <div class="col-xs-12" *ngIf="documents?.documentList.length > 0">
         <mat-card style="margin-top: 20px; margin-bottom: 20px;">
