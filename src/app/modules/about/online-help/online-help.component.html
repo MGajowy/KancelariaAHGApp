@@ -4,30 +4,37 @@
     <mat-divider></mat-divider><br>
   </mat-list>
   <div class="container-box" [hidden]="submitted" style="width: auto;">
-    <form (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="outline">
-        <mat-label>Imię i nazwisko</mat-label>
-        <input matInput placeholder="Imię i nazwisko" required [(ngModel)]="notification.name" name="imie">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input type="text" matInput placeholder="Email" required [(ngModel)]="notification.email" name="email">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Nr. telefonu</mat-label>
-        <input type="text" matInput placeholder="Telefon" required [(ngModel)]="notification.phoneNumber"
-          name="telefon">
-      </mat-form-field>
-      <div>
-        <mat-form-field appearance="fill" style="min-width: 650px;">
-          <mat-label>Treść wiadomości</mat-label>
-          <textarea matInput placeholder="Treść" required [(ngModel)]="notification.message" name="tresc"></textarea>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Formularz kontaktowy</mat-card-title>
+        <mat-card-subtitle>Uzupełnij formularz, widomość z potwierdzeniem wysyłki zostanie przesłana na Twój adres email
+        </mat-card-subtitle>
+      </mat-card-header>
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Imię i nazwisko</mat-label>
+          <input matInput placeholder="Imię i nazwisko" required [(ngModel)]="notification.name" name="imie">
         </mat-form-field>
-      </div>
-      <div>
-        <button mat-raised-button color="primary" type="submit" class="btn btn-success">Wyślij wiadomość</button>
-      </div>
-    </form>
+        <mat-form-field appearance="outline">
+          <mat-label>Twój Email</mat-label>
+          <input type="text" matInput placeholder="Email" required [(ngModel)]="notification.email" name="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Nr. telefonu</mat-label>
+          <input type="text" matInput placeholder="Telefon" required [(ngModel)]="notification.phoneNumber"
+            name="telefon">
+        </mat-form-field>
+        <div>
+          <mat-form-field appearance="fill" style="min-width: 650px;">
+            <mat-label>Treść wiadomości</mat-label>
+            <textarea matInput placeholder="Treść" required [(ngModel)]="notification.message" name="tresc"></textarea>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" type="submit" class="btn btn-success">Wyślij wiadomość</button>
+        </div>
+      </form>
+    </mat-card>
   </div>
   <p-messages></p-messages>
 </div>

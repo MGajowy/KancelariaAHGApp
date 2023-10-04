@@ -3,7 +3,7 @@
     <mat-list-item>
       <div style="float: right;">
         <mat-form-field>
-          <input Simply-Space type="text" matInput placeholder="wyszukaj dokumentu..." [formControl]="term">
+          <input Simply-Space type="text" matInput placeholder="wyszukaj dokument..." [formControl]="term">
           <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
         </mat-form-field>
       </div>
@@ -22,8 +22,8 @@
           <div class="p-mr-2">
             <mat-card-subtitle>
               <div class="card flex justify-content-center" style="min-width: 430px;">
-                <p-multiSelect [options]="userDTO" defaultLabel="Wybierz użytkownika z listy"
-                  [(ngModel)]="selectedUsers" [filter]="true" optionLabel="name"></p-multiSelect>
+                <p-multiSelect [options]="userDTO" defaultLabel="Wybierz użytkownika z listy" emptyFilterMessage="Nie znaleziono użytkownika"
+                selectionLimit="1" [(ngModel)]="selectedUsers" [filter]="true" optionLabel="name" ></p-multiSelect>
               </div>
             </mat-card-subtitle>
           </div>
@@ -52,7 +52,7 @@
                 <td *ngFor="let col of columns">
                   <button mat-raised-button color="primary" *ngIf="col.field === 'id' else diffrentRow "
                     class="btn btn-success" (click)="downloadFile(rowData.id)">Pobierz</button>
-                  <button mat-raised-button color="primary" *ngIf="col.field === 'id' else diffrentRow "
+                  <button mat-raised-button color="primary" *ngIf="col.field === 'id'"
                     class="btn btn-success" (click)="deleteDocument(rowData.id)">Usuń</button>
                   <ng-template #diffrentRow>
                     {{rowData[col.field]}}

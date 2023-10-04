@@ -68,16 +68,16 @@ export class UpdateDocumentComponent implements OnInit {
     this.showSuccessMessage();
   }
 
+  onChange(event) {
+    this.hiddenUpload = false;
+  }
+
   showSuccessMessage() {
-    this.messageService.add({ key: 'tc', severity: 'success', summary: 'Dodano dokumenty.' });
+    this.messageService.add({ key: 'tc', severity: 'success', summary: 'Wysłano dokumenty do użytkownika' });
   }
 
   showErrorMessage() {
-    this.messageService.add({ key: 'tc', severity: 'error', summary: 'Błąd dodania dokumenty.', detail: 'Skontaktuj się z administratorem' });
-  }
-
-  showValidationMessage() {
-    this.messageService.add({ key: 'tc', severity: 'info', summary: 'Coś poszło nie tak :( ).' });
+    this.messageService.add({ key: 'tc', severity: 'error', summary: 'Błąd dodania dokumentów', detail: 'Coś poszło nie tak :(' });
   }
 
 }
