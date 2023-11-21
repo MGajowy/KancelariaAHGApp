@@ -1,0 +1,60 @@
+<p-toast position="top-center" key="tc"></p-toast>
+<div class="shadowbox-page">
+  <mat-list>
+    <mat-list-item class="subpage-header">Przyjmij nowe zlecenie</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
+  <div class="container-box" [hidden]="submitted" style="width: auto;">
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Nazwisko</mat-label>
+        <input matInput placeholder="Podaj nazwisko" required [(ngModel)]="order.surname" name="surname">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Imię</mat-label>
+        <input matInput placeholder="Podaj imię" required [(ngModel)]="order.name" name="name">
+      </mat-form-field> <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" required [(ngModel)]="order.email" name="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Telefon</mat-label>
+        <input matInput placeholder="Telefon" required [(ngModel)]="order.phoneNumber" name="phoneNumber">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Kwota</mat-label>
+        <input matInput placeholder="Kwota" required [(ngModel)]="order.sum" name="sum">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Raty</mat-label>
+        <mat-select required [(ngModel)]="order.numberOfInstallments" name="numberOfInstallments">
+          <mat-option value="0">0</mat-option>
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+      <mat-label>Rodzaj zlecenia</mat-label>
+      <mat-select required [(ngModel)]="order.caseType" name="type">
+        <mat-option value="Porada">Porada</mat-option>
+        <mat-option value="Sprawa rozwodowa">Sprawa rozwodowa</mat-option>
+        <mat-option value="Sprawa spadkowa">Sprawa spadkowa</mat-option>
+        <mat-option value="Sprawa karna">Sprawa karna</mat-option>
+        <mat-option value="Sprawa cywilna">Sprawa cywilna</mat-option>
+        <mat-option value="Sprawa administracyjna">Sprawa administracyjna</mat-option>
+        <mat-option value="Inne">Inne</mat-option>
+      </mat-select>
+    </mat-form-field>
+      <div>
+        <button mat-raised-button color="primary" type="submit" class="btn btn-success">Przyjmij zlecenie</button>
+      </div>
+    </form>
+  </div>
+  <div [hidden]="!submitted">
+    <button mat-raised-button color="primary" class="btn btn-success" (click)="newOrder()">Przyjmij nowe
+      zlecenie</button>
+  </div>
+</div>

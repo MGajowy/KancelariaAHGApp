@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  adminRole: boolean = false;
+  listRoles: any;
   isLogged: boolean;
   nameButton = '';
   user = '';
@@ -22,10 +24,23 @@ export class HeaderComponent implements OnInit {
     if (this.authService.isUserLoggedIn()) {
       this.user = this.authService.getUser();
       this.nameButton = this.logoutText + " " + this.user;
+      this.checkRole();
     } else {
       this.nameButton = this.loginText;
     }
 
+  }
+
+  checkRole(): boolean {
+    this.authService.getRoles().subscribe(res => {
+      this.listRoles = res;
+      this.listRoles.forEach(element => {
+        if (element == 'ADMIN') {
+          this.adminRole = true;
+        }
+      });
+    })
+    return this.adminRole;
   }
 
   checkMethod() {
