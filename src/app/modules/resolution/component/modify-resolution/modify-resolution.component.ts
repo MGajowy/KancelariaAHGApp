@@ -28,7 +28,7 @@ export class ModifyResolutionComponent implements OnInit {
     private router: Router,
     private resolutionService: ResolutionService,
     private route: ActivatedRoute,
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.categoryList();

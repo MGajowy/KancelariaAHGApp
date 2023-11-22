@@ -1,3 +1,85 @@
-<p>
-  modify-order works!
-</p>
+<p-toast position="top-center" key="tc"></p-toast>
+<div class="shadowbox-page">
+  <mat-list>
+    <mat-list-item class="subpage-header">Modyfikuj zlecenia</mat-list-item>
+    <mat-divider></mat-divider><br>
+  </mat-list>
+  <div class="container-box" style="width: auto;">
+    <div class="row">
+      <mat-card style="margin-top: 20px; margin-bottom: 20px;">
+        <mat-card-header>
+          <mat-card-title>Zlecenie {{order.surname}} {{order.name}}</mat-card-title>
+        </mat-card-header>
+        <div class="p-d-flex">
+          <div class="p-mr-2">
+            <mat-card-subtitle>
+              <form (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="fill">
+                  <mat-label>Imię</mat-label>
+                  <input matInput placeholder="Nazwa" required [(ngModel)]="order.name" name="name">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Nazwisko</mat-label>
+                  <input matInput placeholder="Nazwa" required [(ngModel)]="order.surname" name="surname">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="Email" required [(ngModel)]="order.email" name="email">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Numer telefonu</mat-label>
+                  <input matInput placeholder="Numer telefonu" required [(ngModel)]="order.phoneNumber"
+                    name="phoneNumber">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Typ sprawy</mat-label>
+                  <select matNativeControl required [(ngModel)]="order.caseType" name="caseType">
+                    <option *ngFor="let item of type" [selected]="order.caseType === item.value" [value]="item.value">
+                      {{item.value}}</option>
+                  </select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Ilość rat</mat-label>
+                  <select matNativeControl required [(ngModel)]="order.numberOfInstallments"
+                    name="numberOfInstallments">
+                    <option *ngFor="let item of numberOfInstallments"
+                      [selected]="order.numberOfInstallments === item.value" [value]="item.value">
+                      {{item.value}}</option>
+                  </select>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Kwota</mat-label>
+                  <input matInput placeholder="Kwota" required [(ngModel)]="order.sum" name="sum">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Data przyjęcia zlecenia</mat-label>
+                  <input matInput placeholder="Data rozpoczęcia" required [(ngModel)]="order.dateOfAdmission"
+                    name="dateAdd">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" *ngIf="order.endDate != null">
+                  <mat-label>Data zakończenia zlecenia</mat-label>
+                  <input matInput placeholder="Data zakończenia" required [(ngModel)]="order.endDate" name="dateEnd">
+                </mat-form-field>
+
+                <div>
+                  <button mat-raised-button color="primary" type="submit" class="btn btn-success"
+                    style="margin-right: 5px">Zapisz</button>
+                  <button mat-raised-button color="primary" style="margin-right: 5px"
+                    (click)="goToListOrders()">Cofnij</button>
+                </div>
+              </form>
+            </mat-card-subtitle>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

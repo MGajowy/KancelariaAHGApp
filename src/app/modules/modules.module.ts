@@ -79,6 +79,8 @@ import {AddOrderComponent} from './admin/order/component/add-order/add-order.com
 import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
 import { ModifyOrderComponent } from './admin/order/component/modify-order/modify-order.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -158,7 +160,9 @@ import { ModifyOrderComponent } from './admin/order/component/modify-order/modif
     MultiSelectModule,
     ProgressSpinnerModule,
     DialogModule,
-    CalendarModule
+    CalendarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     ConfirmationService,

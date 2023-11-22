@@ -18,6 +18,10 @@ export class OrderService {
     return this.httpClient.get(`${baseUrl}rest/administracja/secured/order/${pageNumber}/${pageSize}`, { params });
   }
 
+  detailsOrder(id: number): Observable<any> {
+    return this.httpClient.get(`${baseUrl}rest/administracja/secured/order/${id}`);
+  }
+
   createOrder(order: any): Observable<any> {
     return this.httpClient.post(`${baseUrl}rest/administracja/secured/order/`, order, { observe: 'response' })
       .pipe(map(data => {
@@ -26,7 +30,10 @@ export class OrderService {
   }
 
   updateOrder(id: number, value: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}rest/administracja/secured/order/${id}`, value);
+    return this.httpClient.put(`${baseUrl}rest/administracja/secured/order/${id}`, value, {observe: 'response'})
+    .pipe(map(data => {
+      return data.status;
+    }));
   }
 
   deleteOrder(id: number): Observable<any> {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderDTO } from 'src/app/generated/REST';
 import { OrderService } from '../../services/order.service';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-order',
@@ -16,6 +17,7 @@ export class AddOrderComponent implements OnInit {
   constructor(
     private orderService : OrderService,
     private messageService: MessageService,
+    private router: Router,
     ) { }
 
   ngOnInit() {
@@ -31,6 +33,9 @@ export class AddOrderComponent implements OnInit {
       .subscribe(data => {
         if (data === 201) {
           this.showSuccessMessage();
+          setTimeout(() => {
+            this.router.navigate(['office/orders-list'])
+          }, 1500);
         } else {
           this.showErrorMessage();
         }
@@ -61,7 +66,4 @@ export class AddOrderComponent implements OnInit {
   showValidationMessage() {
     this.messageService.add({ key: 'tc', severity: 'info', summary: 'Uzupełnij wymagane pola.' });
   }
-
-
-
 }

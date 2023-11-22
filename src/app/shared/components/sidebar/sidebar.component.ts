@@ -87,7 +87,7 @@ export class SidebarComponent {
             icon: 'pi pi-database',
             items: [
               {
-                label: 'Przyjmij zlecenie',
+                label: 'Nowe zlecenie',
                 icon: 'pi pi-fw pi-plus',
                 command: () => this.nav('/office/add-order')
               }, 
