@@ -74,6 +74,13 @@ import { PaginatorModule } from 'primeng/paginator';
 import { FileUploadModule } from 'primeng/fileupload';
 import { MultiSelectModule } from 'primeng/multiselect';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {OrdersListComponent} from './admin/order/component/orders-list/orders-list.component';
+import {AddOrderComponent} from './admin/order/component/add-order/add-order.component';
+import { DialogModule } from 'primeng/dialog';
+import { CalendarModule } from 'primeng/calendar';
+import { ModifyOrderComponent } from './admin/order/component/modify-order/modify-order.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -106,7 +113,10 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     ReputationListComponent,
     DocumentClientListComponent,
     DocumentListComponent,
-    UpdateDocumentComponent
+    UpdateDocumentComponent,
+    AddOrderComponent,
+    OrdersListComponent,
+    ModifyOrderComponent
     
   ],
   imports: [
@@ -148,7 +158,11 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     PaginatorModule,
     FileUploadModule, 
     MultiSelectModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    DialogModule,
+    CalendarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     ConfirmationService,

@@ -30,6 +30,9 @@ import { ReputationListComponent } from './reputation/component/reputation-list/
 import { DocumentClientListComponent } from './document/component/document-client-list/document-client-list.component';
 import { DocumentListComponent } from './document/component/document-list/document-list.component';
 import { UpdateDocumentComponent } from './document/component/update-document/update-document.component';
+import { AddOrderComponent } from './admin/order/component/add-order/add-order.component';
+import { OrdersListComponent } from './admin/order/component/orders-list/orders-list.component';
+import { ModifyOrderComponent } from './admin/order/component/modify-order/modify-order.component';
 
 const routes: Routes = [
   {
@@ -164,6 +167,18 @@ const routes: Routes = [
   {
     path: 'update-document',
     component: UpdateDocumentComponent,
+  },
+  {
+    path: 'add-order',
+    component: AddOrderComponent,
+  },
+  {
+    path: 'orders-list',
+    component: OrdersListComponent
+  },
+  {
+    path: 'mofidy-order/:id',
+    component: ModifyOrderComponent
   }
 
 

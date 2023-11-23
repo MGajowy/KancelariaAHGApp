@@ -4,6 +4,9 @@
     <span class="navbar-text">Kancelaria Adwokacka AHG</span>
   </div>
   <div fxLayout="row" fxLayoutGap="10px">
+    <button *ngIf="adminRole" mat-raised-button color="primary" routerLink="/office/add-order">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">add_box</mat-icon>
+      Nowe zlecenie</button>
     <button mat-raised-button color="primary" routerLink="/office/home">
       <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
       Strona startowa</button>

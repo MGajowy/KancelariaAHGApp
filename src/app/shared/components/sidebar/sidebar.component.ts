@@ -83,6 +83,22 @@ export class SidebarComponent {
             ]
           },
           {
+            label: 'Zlecenia klientów',
+            icon: 'pi pi-database',
+            items: [
+              {
+                label: 'Nowe zlecenie',
+                icon: 'pi pi-fw pi-plus',
+                command: () => this.nav('/office/add-order')
+              }, 
+              {
+                label: 'Lista zleceń',
+                icon: 'pi pi-list',
+                command: () => this.nav('/office/orders-list')
+              }
+            ]
+          },
+          {
             label: 'Konfiguracja systemu',
             icon: 'pi pi-cog',
             //command: () => this.nav('')

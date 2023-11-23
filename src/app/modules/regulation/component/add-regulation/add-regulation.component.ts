@@ -30,7 +30,8 @@ export class AddRegulationComponent implements OnInit {
   }
 
   getCategoryList() {
-    this.regulationServices.getRegulationCategoryList().subscribe(value => {
+    this.regulationServices.getRegulationCategoryList()
+    .subscribe(value => {
       this.categoryList = value;
     })
   }
