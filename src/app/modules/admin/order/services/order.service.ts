@@ -50,4 +50,8 @@ export class OrderService {
       }));
   }
 
+  exportOrdersToPDF(): Observable<Blob> {
+    return this.httpClient.get(`${baseUrl}rest/administracja/secured/exportOrdersPDF`, { responseType: 'blob' })
+  }
+  
 }

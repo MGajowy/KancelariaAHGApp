@@ -7,13 +7,13 @@
           <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
         </mat-form-field>
       </div>
+      <div *ngIf="logList?.logList.length > 0 else emptyEventLog" style="margin-left: auto;">
+        <button mat-raised-button color="primary" class="btn btn-success" (click)="exportToPDF()">Pobierz PDF</button>
+      </div>
     </mat-list-item>
-    <mat-list-item class="subpage-header">Dziennik zdarzen</mat-list-item>
+    <mat-list-item class="subpage-header">Dziennik zdarzeń</mat-list-item>
     <mat-divider></mat-divider><br>
   </mat-list>
-  <div *ngIf="logList?.logList.length > 0 else emptyEventLog">
-    <button mat-raised-button color="primary" class="btn btn-success" (click)="exportToPDF()">Pobierz PDF</button>
-  </div>
   <div class="row">
     <div class="col-xs-12">
       <mat-card style="margin-top: 20px; margin-bottom: 20px;">

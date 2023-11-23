@@ -8,6 +8,9 @@
           <i class="fa fa-eraser" matSuffix style="cursor: pointer;"></i>
         </mat-form-field>
       </div>
+      <div *ngIf="orders?.orderDTOList.length > 0" style="margin-left: auto;">
+        <button mat-raised-button color="primary" class="btn btn-success" (click)="exportToPDF()">Pobierz PDF</button>
+      </div>
     </mat-list-item>
     <mat-list-item class="subpage-header">Lista wszystkich zleceń</mat-list-item>
     <mat-divider></mat-divider><br>
@@ -28,7 +31,7 @@
             <tr>
               <td *ngFor="let col of columns">
 
-                <button mat-icon-button  *ngIf="col.field === 'menu'" [matMenuTriggerFor]="menu" aria-label="menu">
+                <button mat-icon-button *ngIf="col.field === 'menu'" [matMenuTriggerFor]="menu" aria-label="menu">
                   <mat-icon>menu_open</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
@@ -42,15 +45,17 @@
                   </button>
                 </mat-menu>
 
-                <button mat-raised-button color="primary" *ngIf="col.field === 'endDate' && rowData[col.field] == null else diffrentRow "
+                <button mat-raised-button color="primary"
+                  *ngIf="col.field === 'endDate' && rowData[col.field] == null else diffrentRow "
                   class="btn btn-success" (click)="getDialog(rowData.id)">Zakończ</button>
-                  <p-dialog header="Zakończenie zlecenia" [(visible)]="visible" [style]="{width: '50vw'}" >
-                    <p>
-                        Podaj datę zakończenia zlecenia: 
-                    </p>
-                    <div class="flex py-2 justify-content-center">
-                        <p-calendar appendTo="body" [(ngModel)]="date" [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
-                      <button mat-raised-button color="primary" class="btn btn-success" (click)="closeOrder()">Zatwierdź</button>
+                <p-dialog header="Zakończenie zlecenia" [(visible)]="visible" [style]="{width: '50vw'}">
+                  <p>
+                    Podaj datę zakończenia zlecenia:
+                  </p>
+                  <div class="flex py-2 justify-content-center">
+                    <p-calendar appendTo="body" [(ngModel)]="date" [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
+                    <button mat-raised-button color="primary" class="btn btn-success"
+                      (click)="closeOrder()">Zatwierdź</button>
                   </div>
                 </p-dialog>
                 <ng-template #diffrentRow>

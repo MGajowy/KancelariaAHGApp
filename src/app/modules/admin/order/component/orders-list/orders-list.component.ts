@@ -91,7 +91,6 @@ export class OrdersListComponent implements OnInit {
   }
 
   modifyOrder(id: number) {
-    //todo zaimplementować komponent modyfikacji
     this.router.navigate(['/office/mofidy-order', id]);
   }
 
@@ -112,9 +111,17 @@ export class OrdersListComponent implements OnInit {
     this.orderid = id;
   }
 
-
-
-
+  exportToPDF() {
+    this.orderService.exportOrdersToPDF().subscribe(x => {
+      const blob = new Blob([x], {type: 'application/pdf'});
+      const data =  window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      this.date = new Date();
+      link.href = data;
+      link.download = 'ListaZlecen_' + this.date.toISOString() + '.pdf';
+      link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window})); 
+    });
+  }
 
   showSuccessMessage() {
     this.messageService.add({ key: 'tc', severity: 'success', summary: 'Zlecenie zostało zakończone' });
